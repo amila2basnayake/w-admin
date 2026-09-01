@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markets &amp; Order Book · Waterfind Staff Console (wireframe)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="wf-console.css">
+</head>
+<body>
+<div class="wf-app">
+
+  <header class="wf-header">
+    <div class="wf-logo"><i class="fa fa-tint drop"></i><span class="word"><b>WATER</b><span>FIND</span></span></div>
+    <span class="console-tag">Broker Console</span>
+    <div class="spacer"></div>
+    <div class="wf-search"><i class="fa fa-search"></i><input placeholder="Search clients, markets, trade #…"></div>
+    <span class="wf-wire">WIREFRAME</span>
+    <div class="wf-welcome">Welcome back,<br><b>Dion Martin</b> · <small>Broker · Sales</small></div>
+    <div class="wf-hicon sm"><i class="fa fa-bell"></i><span class="dot">4</span></div>
+    <div class="wf-hicon"><i class="fa fa-user"></i></div>
+  </header>
+
+  <div class="wf-body">
+    <nav class="wf-rail">
+      <ul>
+        <li><a href="01-broker-desk.html"><span class="stripe"></span><span class="ic"><i class="fa fa-tachometer"></i></span><span class="lbl">Broker Desk</span></a></li>
+        <li class="active"><a href="02-markets-orderbook.html"><span class="stripe"></span><span class="ic"><i class="fa fa-exchange"></i></span><span class="lbl">Markets &amp; Order Book</span></a></li>
+        <li><a href="03-client-360.html"><span class="stripe"></span><span class="ic"><i class="fa fa-users"></i></span><span class="lbl">Clients<span class="cnt">142</span></span></a></li>
+        <li><a href="04-settlements-trust.html"><span class="stripe"></span><span class="ic"><i class="fa fa-university"></i></span><span class="lbl">Settlements &amp; Trust<span class="cnt">6</span></span></a></li>
+        <li class="bottom"><a href="05-admin-console.html"><span class="stripe"></span><span class="ic"><i class="fa fa-cog"></i></span><span class="lbl">Admin &amp; Settings</span></a></li>
+      </ul>
+    </nav>
+
+    <main class="wf-content">
+      <div class="wf-crumbs">Home <i class="fa fa-angle-right"></i> Markets <i class="fa fa-angle-right"></i> 7 VIC Murray (Barmah→SA) GMW – High R</div>
+
+      <!-- market selector toolbar -->
+      <div class="toolbar">
+        <span class="lbl">Market</span>
+        <select style="min-width:340px">
+          <option>7 VIC MURRAY (BARMAH TO SA) GMW – HIGH R  ·  region 515</option>
+          <option>1A GREATER GOULBURN – HIGH R  ·  region 1165601</option>
+          <option>3 LOWER GOULBURN – HIGH R  ·  region 509</option>
+          <option>NSW MURRAY BELOW BARMAH – GENERAL SECURITY  ·  region 1044</option>
+        </select>
+        <span class="sep"></span>
+        <span class="lbl">Product</span>
+        <div class="seg"><button class="on">Temporary (allocation)</button><button>Permanent (entitlement)</button></div>
+        <span class="sep"></span>
+        <span class="lbl">Season</span>
+        <select><option>2025–26</option><option>2026–27</option></select>
+        <span class="spacer"></span>
+        <span class="freshness"><i class="fa fa-clock-o"></i> Book as-of 15 Jun 2026</span>
+      </div>
+
+      <div class="wf-titlebar">
+        7 VIC MURRAY (BARMAH TO SA) GMW – HIGH R
+        <span class="sub">region 515 · VIC – GMW · Temporary · 1:1 conversion into 72 destinations</span>
+        <span class="spacer"></span>
+        <span class="pill live dot" style="font-size:11px">Market live</span>
+      </div>
+
+      <!-- price strip -->
+      <div class="wf-kpis k5">
+        <div class="wf-kpi green"><div class="lab">Best bid</div><div class="num">$420<small>/ML</small></div><div class="delta up">27 live buy orders</div></div>
+        <div class="wf-kpi purple"><div class="lab">Best ask</div><div class="num">$445<small>/ML</small></div><div class="delta flat">9 live sell orders</div></div>
+        <div class="wf-kpi"><div class="lab">Last settled</div><div class="num">$415<small>/ML</small></div><div class="delta flat">median · last 6 mo (n=7)</div></div>
+        <div class="wf-kpi orange"><div class="lab">Bid depth</div><div class="num">5,635<small> ML</small></div><div class="delta flat">vs 1,240 ML ask</div></div>
+        <div class="wf-kpi"><div class="lab">Spread</div><div class="num">$25<small>/ML</small></div><div class="delta flat">5.9% of mid</div></div>
+      </div>
+
+      <div class="cols c-3-2">
+        <!-- order book ladder -->
+        <div>
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-bars"></i> Order book <span class="spacer"></span><span class="ctrl"><i class="fa fa-refresh"></i> Live</span><span class="ctrl"><i class="fa fa-sitemap"></i> Depth</span></div>
+            <div class="wf-panel-body flush">
+              <div class="book">
+                <div class="col bids">
+                  <div class="col-h"><span>Bid $/ML</span><span>Volume ML</span><span>#</span></div>
+                  <div class="lvl"><span class="bar" style="width:100%"></span><span class="px">$420</span><span>1,250</span><span class="c">4</span></div>
+                  <div class="lvl"><span class="bar" style="width:82%"></span><span class="px">$415</span><span>1,020</span><span class="c">6</span></div>
+                  <div class="lvl"><span class="bar" style="width:70%"></span><span class="px">$410</span><span>860</span><span class="c">5</span></div>
+                  <div class="lvl"><span class="bar" style="width:52%"></span><span class="px">$405</span><span>640</span><span class="c">3</span></div>
+                  <div class="lvl"><span class="bar" style="width:44%"></span><span class="px">$400</span><span>540</span><span class="c">4</span></div>
+                  <div class="lvl"><span class="bar" style="width:28%"></span><span class="px">$390</span><span>345</span><span class="c">2</span></div>
+                  <div class="lvl"><span class="bar" style="width:75%"></span><span class="px">$380</span><span>940</span><span class="c">3</span></div>
+                </div>
+                <div class="col asks">
+                  <div class="col-h"><span>Ask $/ML</span><span>Volume ML</span><span>#</span></div>
+                  <div class="lvl"><span class="bar" style="width:34%"></span><span class="px">$445</span><span>210</span><span class="c">2</span></div>
+                  <div class="lvl"><span class="bar" style="width:46%"></span><span class="px">$450</span><span>285</span><span class="c">1</span></div>
+                  <div class="lvl"><span class="bar" style="width:30%"></span><span class="px">$455</span><span>180</span><span class="c">1</span></div>
+                  <div class="lvl"><span class="bar" style="width:58%"></span><span class="px">$460</span><span>360</span><span class="c">2</span></div>
+                  <div class="lvl"><span class="bar" style="width:15%"></span><span class="px">$470</span><span>95</span><span class="c">1</span></div>
+                  <div class="lvl"><span class="bar" style="width:18%"></span><span class="px">$485</span><span>110</span><span class="c">1</span></div>
+                  <div class="lvl muted"><span></span><span class="muted">— thin above —</span><span></span></div>
+                </div>
+                <div class="book-mid"><i class="fa fa-arrows-v"></i> Last trade $415 · <span class="spread">spread $25 (bid $420 / ask $445)</span></div>
+              </div>
+              <div class="wf-note"><i class="fa fa-info-circle"></i> Liveness derived (no status column): <code>deleted IS NOT TRUE · date_completed IS NULL · quantity_avelable&gt;0 · date_effective≤asof · date_expired≥asof</code>. There is no stored best-bid/offer or depth table — this ladder is computed from <code>order_listing</code> each load.</div>
+            </div>
+          </div>
+
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-history"></i> Recent settled trades · region 515 · temp <span class="spacer"></span><span class="ctrl">n = 7 · last 6 mo</span></div>
+            <div class="wf-panel-body flush">
+              <table class="wf-table">
+                <thead><tr><th>Settled</th><th>Seller</th><th>Buyer</th><th class="r">Volume</th><th class="r">$/ML</th><th class="c">×rate</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">05 Feb 2026</td><td>C. Nguyen</td><td>Riverina Almonds</td><td class="r">120 ML</td><td class="r strong">$435</td><td class="c">1.00</td></tr>
+                  <tr><td class="mono">28 Jan 2026</td><td>Njernda A.C.</td><td>Sunraysia Citrus</td><td class="r">90 ML</td><td class="r strong">$420</td><td class="c">1.00</td></tr>
+                  <tr><td class="mono">14 Jan 2026</td><td>Paisley Hill</td><td>GMW pool</td><td class="r">200 ML</td><td class="r strong">$410</td><td class="c">1.00</td></tr>
+                  <tr><td class="mono">23 Oct 2025</td><td>Njernda A.C.</td><td>M. Farhi</td><td class="r">100 ML</td><td class="r strong">$300</td><td class="c">1.00</td></tr>
+                </tbody>
+              </table>
+              <div class="wf-note"><i class="fa fa-line-chart"></i> Median $415/ML (range $370–435). Corroborated by <code>external_sales</code> + <code>waterx_transaction</code> (to Jun 2026). <span class="badge-est"><i class="fa fa-flask"></i> Region indicative price $60 is ~4 yrs stale — suppressed.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- place order panel -->
+        <div>
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-plus-circle"></i> Place order on behalf of client</div>
+            <div class="wf-panel-body">
+              <div class="field" style="margin-bottom:14px">
+                <label>Side</label>
+                <div class="seg purple" style="width:100%"><button style="flex:1">Buy this Water</button><button class="on" style="flex:1">Sell my Water</button></div>
+              </div>
+              <div class="formgrid one">
+                <div class="field">
+                  <label>Client / account</label>
+                  <select><option>Kyle Egan — Njernda Aboriginal Corp (2026296)</option><option>Paisley Hill Pastoral (2031884)</option><option>Riverina Almonds P/L (2044120)</option></select>
+                </div>
+                <div class="field">
+                  <label>Holding <span class="hint">— tradable in region 515</span></label>
+                  <select><option>REG · 372.0 ML · High R · spot ✓ (property 88214)</option></select>
+                </div>
+              </div>
+              <div class="formgrid" style="margin-top:14px">
+                <div class="field"><label>Volume (ML)</label><input value="100"></div>
+                <div class="field"><label>Limit price $/ML</label><input value="415"></div>
+              </div>
+              <div class="formgrid" style="margin-top:14px">
+                <div class="field"><label>Expires</label><input value="30 Sep 2026"></div>
+                <div class="field"><label>Season</label><select><option>2025–26</option></select></div>
+              </div>
+
+              <hr class="soft">
+              <table class="wf-table" style="font-size:13px">
+                <tbody>
+                  <tr><td>Gross (100 ML × $415)</td><td class="r strong">$41,500.00</td></tr>
+                  <tr><td>− Waterfind brokerage <span class="badge-est"><i class="fa fa-flask"></i> est ~2.7%</span></td><td class="r neg">−$1,120.00</td></tr>
+                  <tr><td>− GST on brokerage (10%)</td><td class="r neg">−$112.00</td></tr>
+                  <tr class="total"><td>≈ Net to client</td><td class="r">$40,268.00</td></tr>
+                </tbody>
+              </table>
+              <p class="tiny muted" style="margin:8px 0 12px"><i class="fa fa-info-circle"></i> Net is an <b>estimate</b> — the exact rate resolves from the client's negotiated override (<code>fees_registry_user</code>/<code>fee_code</code>) in app code, and is only certain after settlement.</p>
+
+              <button class="wf-btn wf-btn-purple block"><i class="fa fa-gavel"></i> Review &amp; place sell order</button>
+              <p class="tiny muted" style="text-align:center; margin-top:8px">Routes through <code>addNewOrderListing</code> under <code>@LockMarket</code> · auto-clears against the book</p>
+            </div>
+          </div>
+
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-crosshairs"></i> Match preview</div>
+            <div class="wf-panel-body">
+              <div class="callout good">
+                <div class="h"><i class="fa fa-check-circle"></i> Clears immediately at $415</div>
+                <p>100 ML sell fully covered by <span class="num">5,635 ML</span> of bids at-or-above $415. Fills against 4 buyers, no price impact. Coverage ratio <span class="num">≫ 1</span>.</p>
+              </div>
+              <div class="legend" style="margin-top:4px">
+                <span><i class="fa fa-map-marker"></i> 72 reachable destinations · all 1:1</span>
+              </div>
+              <p class="tiny muted" style="margin-top:8px">Reachability from <code>order_region</code> after the RTR <code>suspended</code> filter <b>and</b> the STR state-gate + seasonal window. Ignoring the STR gate over-reports corridors by ~26%.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="tiny muted" style="margin-top:6px"><i class="fa fa-info-circle"></i> Wireframe / reference only — illustrative data from the loaded <code>waterfind-db</code>. Order path per <code>docs/architecture/08-buy-sell-order-path.md</code>.</p>
+    </main>
+  </div>
+</div>
+</body>
+</html>

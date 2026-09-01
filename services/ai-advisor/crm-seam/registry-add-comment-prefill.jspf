@@ -1,0 +1,90 @@
+<%-- ============ AI Advisor call-note prefill (Add Comment popup) ============
+     Pasted into jsp/admin/registry/registry-add-comment.jsp (both CRM trees) directly after the
+     #note textarea's own inline <script> (the Escape-key fix) by deploy-client-rail.mjs.
+     Reference copy: services/ai-advisor/crm-seam/registry-add-comment-prefill.jspf
+
+     When the popup opens with an empty textarea, ask the AI Advisor sidecar whether it has the
+     note for the call this popup is being written up after (the logged-in broker's most recent
+     ended, recorded call with this client that has no comment yet). Ready -> the text goes into
+     #note and the page's own taCount() runs, so the character counter and the "Service Comment"
+     auto-tick behave exactly as if the broker had typed it. Still drafting -> poll a few times
+     (the textarea shows "Drafting from your call..." as its placeholder meanwhile). Anything else
+     -> nothing happens and the popup is the plain popup.
+
+     Never overwrites text: not after a postback (the textarea comes back filled), not once the
+     broker starts typing (polling stops). Saving is unchanged: the broker reviews/edits and submits
+     the same form as always. The sidecar never writes to the CRM.
+
+     Auth: the same short-lived bearer token the Client Rail uses, fetched same-origin from
+     /ai-client-advisor.html?token=1&clientId=<uid> (staff session + the client resolved server
+     side; the token is bound to that client), then one GET to the sidecar with it.
+     ASCII only in this file: the JSP is served as ISO-8859-1.  --%>
+<script type="text/javascript">
+(function () {
+    var POLL_MS = 2500, MAX_WAIT_MS = 90000, PLACEHOLDER = 'Drafting from your call...';
+    function wfaiPrefill() {
+    try {
+        if (!window.fetch || !window.JSON) return;
+        var ta = document.getElementById('note');
+        if (!ta) return;
+        if (ta.value && ta.value.replace(/\s+/g, '').length > 0) return;   // postback / already typed
+        var uidEl = document.getElementById('dob_user_id');
+        var uid = uidEl ? uidEl.value : '';
+        if (!uid || !/^\d+$/.test(uid)) return;
+
+        var typed = false, stopped = false, started = new Date().getTime();
+        var onInput = function () { if (ta.value && ta.value.replace(/\s+/g, '').length > 0) typed = true; };
+        if (ta.addEventListener) { ta.addEventListener('input', onInput, false); ta.addEventListener('keydown', onInput, false); }
+        var finish = function () {
+            stopped = true;
+            if (ta.getAttribute('placeholder') === PLACEHOLDER) ta.removeAttribute('placeholder');
+        };
+        var fill = function (r) {
+            finish();
+            if (typed || (ta.value && ta.value.replace(/\s+/g, '').length > 0)) return;   // never overwrite
+            ta.value = r.text || '';
+            if (typeof taCount === 'function') { try { taCount(ta, 'myCounter'); } catch (e) {} }
+            if (r.check && r.check.length && ta.parentNode) {
+                var chk = document.createElement('div');
+                chk.style.cssText = 'margin:3px 0 0 0;font-size:11px;color:#8a6d3b;width:640px;';
+                chk.appendChild(document.createTextNode('Check: ' + r.check.join('; ')));
+                ta.parentNode.appendChild(chk);
+            }
+            try { ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); } catch (e) {}
+        };
+        var ask = function (base, token) {
+            if (stopped || typed) { finish(); return; }
+            fetch(base.replace(/\/+$/, '') + '/assist/call-note/prefill', {
+                headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/json' },
+                cache: 'no-store'
+            }).then(function (res) {
+                if (!res.ok) { finish(); return null; }
+                return res.json();
+            }).then(function (r) {
+                if (!r) return;
+                if (r.status === 'ready') { fill(r); return; }
+                if (r.status === 'drafting' && new Date().getTime() - started < MAX_WAIT_MS) {
+                    if (!ta.getAttribute('placeholder')) ta.setAttribute('placeholder', PLACEHOLDER);
+                    setTimeout(function () { ask(base, token); }, POLL_MS);
+                    return;
+                }
+                finish();
+            }).catch(function () { finish(); });
+        };
+        fetch('/ai-client-advisor.html?token=1&clientId=' + uid, { credentials: 'same-origin', cache: 'no-store' })
+            .then(function (res) { return res.ok ? res.json() : null; })
+            .then(function (t) { if (t && t.token && t.base) ask(t.base, t.token); })
+            .catch(function () {});
+    } catch (e) {}
+    }
+    // Runs once the whole form exists: the character counter (#myCounter) and the Service
+    // Comment checkbox that taCount() drives are rendered AFTER the textarea.
+    if (document.readyState === 'loading') {
+        if (document.addEventListener) document.addEventListener('DOMContentLoaded', wfaiPrefill, false);
+        else window.onload = (function (prev) { return function () { if (prev) { try { prev(); } catch (e) {} } wfaiPrefill(); }; })(window.onload);
+    } else {
+        wfaiPrefill();
+    }
+})();
+</script>
+<%-- ========== end AI Advisor call-note prefill ========== --%>

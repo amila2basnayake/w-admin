@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copilot Dock · Waterfind Water-Rights Assistant (wireframe)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../staff-console/wf-console.css">
+<link rel="stylesheet" href="wf-ai.css">
+</head>
+<body>
+<div class="wf-app">
+
+  <header class="wf-header">
+    <div class="wf-logo"><i class="fa fa-tint drop"></i><span class="word"><b>WATER</b><span>FIND</span></span></div>
+    <span class="console-tag">Broker Console</span>
+    <div class="spacer"></div>
+    <div class="wf-search"><i class="fa fa-search"></i><input placeholder="Search clients, markets, trade #…"></div>
+    <span class="wf-wire">WIREFRAME</span>
+    <div class="wf-welcome">Welcome back,<br><b>Dion Martin</b> · <small>Broker · Sales</small></div>
+    <div class="wf-hicon sm"><i class="fa fa-bell"></i><span class="dot">4</span></div>
+    <div class="wf-hicon"><i class="fa fa-user"></i></div>
+  </header>
+
+  <div class="wf-body">
+    <nav class="wf-rail">
+      <ul>
+        <li><a href="../staff-console/01-broker-desk.html"><span class="stripe"></span><span class="ic"><i class="fa fa-tachometer"></i></span><span class="lbl">Broker Desk</span></a></li>
+        <li class="active"><a href="../staff-console/02-markets-orderbook.html"><span class="stripe"></span><span class="ic"><i class="fa fa-exchange"></i></span><span class="lbl">Markets &amp; Order Book</span></a></li>
+        <li><a href="../staff-console/03-client-360.html"><span class="stripe"></span><span class="ic"><i class="fa fa-users"></i></span><span class="lbl">Clients<span class="cnt">142</span></span></a></li>
+        <li><a href="../staff-console/04-settlements-trust.html"><span class="stripe"></span><span class="ic"><i class="fa fa-university"></i></span><span class="lbl">Settlements &amp; Trust<span class="cnt">6</span></span></a></li>
+        <li class="bottom"><a href="../staff-console/05-admin-console.html"><span class="stripe"></span><span class="ic"><i class="fa fa-cog"></i></span><span class="lbl">Admin &amp; Settings</span></a></li>
+        <li class="ai"><a href="01-assistant-workspace.html"><span class="stripe"></span><span class="ic"><i class="fa fa-comments"></i></span><span class="lbl">AI Assistant<span class="tagnew">AI</span></span></a></li>
+      </ul>
+    </nav>
+
+    <!-- ══ dock layout: host screen (left) + copilot drawer (right) ══ -->
+    <div class="dock-layout">
+
+      <!-- host screen: Markets & Order Book (region 515) -->
+      <main class="dock-main">
+        <div class="wf-crumbs">Home <i class="fa fa-angle-right"></i> Markets &amp; Order Book <i class="fa fa-angle-right"></i> Region 515</div>
+        <div class="wf-titlebar">
+          7 VIC MURRAY (BARMAH→SA) GMW – HIGH R
+          <span class="sub">region 515 · temporary · southern connected · as of 15 Jun 2026 snapshot</span>
+          <span class="spacer"></span>
+          <span class="tb-act"><i class="fa fa-star-o"></i> Watch</span>
+          <span class="tb-act"><i class="fa fa-refresh"></i> Refresh</span>
+        </div>
+
+        <div class="wf-kpis k4">
+          <div class="wf-kpi"><div class="lab"><i class="fa fa-arrow-down"></i> Best bid</div><div class="num">$420</div><div class="delta flat">5,635 ML bid depth</div></div>
+          <div class="wf-kpi orange"><div class="lab"><i class="fa fa-arrow-up"></i> Best ask</div><div class="num">$445</div><div class="delta flat">1,820 ML ask depth</div></div>
+          <div class="wf-kpi green"><div class="lab"><i class="fa fa-exchange"></i> Last settled</div><div class="num">$415</div><div class="delta up"><i class="fa fa-arrow-up"></i> median 90d</div></div>
+          <div class="wf-kpi purple"><div class="lab"><i class="fa fa-tint"></i> Season allocation</div><div class="num">100<small>%</small></div><div class="delta flat">High reliability</div></div>
+        </div>
+
+        <div class="wf-panel">
+          <div class="wf-panel-head"><i class="fa fa-bars"></i> Order book — derived ladder <span class="spacer"></span><span class="ctrl">liveness computed · no status column</span></div>
+          <div class="wf-panel-body flush">
+            <div class="book">
+              <div class="col bids">
+                <div class="col-h"><span>Bid</span><span>Qty ML</span><span></span></div>
+                <div class="lvl"><span class="px">$420</span><span>1,200</span><span class="c">4</span><i class="bar" style="width:72%"></i></div>
+                <div class="lvl"><span class="px">$415</span><span>1,760</span><span class="c">6</span><i class="bar" style="width:88%"></i></div>
+                <div class="lvl"><span class="px">$410</span><span>1,475</span><span class="c">5</span><i class="bar" style="width:80%"></i></div>
+                <div class="lvl"><span class="px">$405</span><span>1,200</span><span class="c">3</span><i class="bar" style="width:66%"></i></div>
+              </div>
+              <div class="col asks">
+                <div class="col-h"><span>Ask</span><span>Qty ML</span><span></span></div>
+                <div class="lvl"><span class="px">$445</span><span>520</span><span class="c">2</span><i class="bar" style="width:34%"></i></div>
+                <div class="lvl"><span class="px">$452</span><span>640</span><span class="c">3</span><i class="bar" style="width:44%"></i></div>
+                <div class="lvl"><span class="px">$460</span><span>410</span><span class="c">2</span><i class="bar" style="width:28%"></i></div>
+                <div class="lvl"><span class="px">$475</span><span>250</span><span class="c">1</span><i class="bar" style="width:18%"></i></div>
+              </div>
+              <div class="book-mid">Mid $432.50 <span class="spread">· spread $25 (5.9%)</span> · last $415</div>
+            </div>
+            <div class="wf-note"><i class="fa fa-info-circle"></i> Ladder is computed — order liveness is derived (no status column) and depth is live opposite-side <code>quantity_avelable</code> reachable via <code>order_region</code>.</div>
+          </div>
+        </div>
+
+        <div class="wf-panel">
+          <div class="wf-panel-head"><i class="fa fa-pencil-square-o"></i> Place order on behalf <span class="spacer"></span><span class="ctrl"><i class="fa fa-magic"></i> Draft prepared by AI</span></div>
+          <div class="wf-panel-body">
+            <div class="formgrid">
+              <div class="field"><label>Client</label><input value="Kyle Egan · Njernda Aboriginal Corp (2026296)"></div>
+              <div class="field"><label>Side</label><div class="seg purple"><button>Buy</button><button class="on">Sell</button></div></div>
+              <div class="field"><label>Volume (ML)</label><input value="100"></div>
+              <div class="field"><label>Limit price / ML</label><input value="$415"></div>
+            </div>
+            <hr class="soft">
+            <div class="rowflex"><span class="tiny muted">Est. gross <b class="strong" style="color:var(--wf-ink)">$41,500</b> · est. net after 2.67% override <b class="strong" style="color:var(--wf-green-dk)">$40,392</b> <span class="badge-est">est</span></span><span class="spacer"></span><button class="wf-btn wf-btn-default sm"><i class="fa fa-eye"></i> Match preview</button><button class="wf-btn wf-btn-primary sm"><i class="fa fa-check"></i> Review &amp; submit</button></div>
+          </div>
+        </div>
+        <p class="tiny muted"><i class="fa fa-info-circle"></i> The draft above was prepared from the copilot's answer on the right — you still review &amp; submit it through the order path.</p>
+      </main>
+
+      <!-- ══ copilot drawer — context-aware, docked to this screen ══ -->
+      <aside class="dock">
+        <div class="dock-head">
+          <span class="ai-mark"><i class="fa fa-tint"></i><span class="spark"><i class="fa fa-star"></i></span></span>
+          <div class="t">Waterfind AI<small>Copilot · watching this screen</small></div>
+          <span class="spacer"></span>
+          <span class="dh-ic" title="Expand to full page"><i class="fa fa-expand"></i></span>
+          <span class="dh-ic" title="Collapse"><i class="fa fa-angle-double-right"></i></span>
+        </div>
+
+        <div class="dock-tab-row">
+          <button class="dt active"><i class="fa fa-comment-o"></i> Chat</button>
+          <button class="dt"><i class="fa fa-lightbulb-o"></i> Suggestions <span class="pill orange" style="padding:0 6px">2</span></button>
+          <button class="dt"><i class="fa fa-question-circle-o"></i> Explain</button>
+        </div>
+
+        <div class="dock-body">
+          <div class="scopebar" style="margin-bottom:14px"><i class="fa fa-eye"></i> Reading: <b>Region 515 order book</b></div>
+
+          <div class="chat">
+            <!-- proactive opener -->
+            <div class="msg ai">
+              <div class="av"><i class="fa fa-tint"></i></div>
+              <div class="stack2">
+                <div class="who"><b>Waterfind AI</b> · 09:40</div>
+                <div class="bubble">
+                  <p>You're on region <b>515</b>. Spread is wide (<b>$25 / 5.9%</b>) but the bid side is deep — <b>5,635&nbsp;ML</b> across four levels, best bid <b>$420</b>. A 100&nbsp;ML sell would clear comfortably near the top of book.</p>
+                  <div class="cites"><span class="cite"><i class="fa fa-table"></i> <code>order_region</code> depth</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="msg user">
+              <div class="av"><i class="fa fa-user"></i></div>
+              <div class="stack2"><div class="who"><b>You</b> · 09:41</div>
+                <div class="bubble">Good time to sell 100&nbsp;ML here for Njernda?</div></div>
+            </div>
+
+            <div class="msg ai">
+              <div class="av"><i class="fa fa-tint"></i></div>
+              <div class="stack2">
+                <div class="who"><b>Waterfind AI</b> · grounded · 09:41</div>
+                <div class="bubble">
+                  <p class="lead">Reasonable — you're near a seasonal high.</p>
+                  <p>Last settled <b>$415</b>, best bid <b>$420</b>; both well above Njernda's Oct sale at <b>$300</b>. At $415 the estimated net is <b>$40,392</b> after their 2.67% override.</p>
+                  <p style="margin-bottom:0">I've pre-filled a <b>Sell · 100 ML · $415</b> draft on the left. Two cautions before you submit:</p>
+                  <ul style="margin-bottom:0">
+                    <li>Depth is a <b>15 Jun snapshot</b> — refresh the book for live best bid.</li>
+                    <li>Confirm the sell corridor is open (515 → destination) on the STR gate.</li>
+                  </ul>
+                  <div class="cites">
+                    <span class="cite"><i class="fa fa-table"></i> <code>order_completed</code></span>
+                    <span class="cite"><i class="fa fa-table"></i> <code>fees_registry_user</code></span>
+                  </div>
+                  <div class="ans-acts">
+                    <button class="ans-act primary"><i class="fa fa-check"></i> Use the draft</button>
+                    <button class="ans-act"><i class="fa fa-random"></i> Check corridors</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="followups" style="padding-left:0;margin-top:16px">
+            <button class="chip"><i class="fa fa-line-chart"></i> 515 price trend</button>
+            <button class="chip"><i class="fa fa-users"></i> Who else holds 515?</button>
+          </div>
+        </div>
+
+        <div class="dock-foot">
+          <div class="composer">
+            <textarea class="box" rows="1" placeholder="Ask about this screen…"></textarea>
+            <div class="tools">
+              <span class="tool-pill on"><i class="fa fa-check-circle"></i> Grounded</span>
+              <span class="tool-icon"><i class="fa fa-paperclip"></i></span>
+              <span class="spacer"></span>
+              <button class="send-btn"><i class="fa fa-paper-plane"></i></button>
+            </div>
+          </div>
+          <div class="composer-foot"><i class="fa fa-info-circle"></i> Decision support · logged to <code>action_log</code></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.dock-tab-row .dt').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.dock-tab-row .dt').forEach(function(x){x.classList.remove('active')});
+      b.classList.add('active');
+    });
+  });
+  document.querySelectorAll('.composer .box').forEach(function(t){
+    t.addEventListener('input', function(){ t.style.height='auto'; t.style.height=Math.min(t.scrollHeight,120)+'px'; });
+  });
+</script>
+</body>
+</html>

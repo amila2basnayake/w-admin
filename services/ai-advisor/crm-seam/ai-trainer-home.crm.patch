@@ -1,0 +1,58 @@
+Index: webapp/jsp/common/manager-homepage-links.jsp
+===================================================================
+--- webapp/jsp/common/manager-homepage-links.jsp	(revision 25467)
++++ webapp/jsp/common/manager-homepage-links.jsp	(working copy)
+@@ -18,6 +18,8 @@
+ 		pageIndex = 5;
+ 	} else if(servletPath.indexOf("ceo") != -1) {
+ 		pageIndex = 6;
++	} else if(servletPath.indexOf("ai-trainer") != -1) {
++		pageIndex = 7;
+ 	}
+ 	
+ 	boolean isExecutive = wfDelegate.hasAccess(UserRoles.ROLE_EXECUTIVE, loggedInUserId);
+@@ -27,11 +29,14 @@
+ 	boolean showWAIIFManager = wfDelegate.hasAccess(UserRoles.ROLE_WAIIF_MANAGER, loggedInUserId);
+ 	boolean showMarketingTeam = wfDelegate.hasAccess(UserRoles.ROLE_MARKETING_TEAM, loggedInUserId);
+ 	boolean showCeo = wfDelegate.hasAccess(UserRoles.ROLE_CEO, loggedInUserId);
++	// AI Trainer Home is gated on the AI_TRAINER role alone (not the executive catch-all): it is a
++	// working tool that edits what the AI Water Advisor tells clients, so the grant is explicit.
++	boolean showAiTrainer = wfDelegate.hasAccess(UserRoles.ROLE_AI_TRAINER, loggedInUserId);
+ 	
+ 	boolean isBroker = wfDelegate.isLoggedInUserIsSales();
+ 	
+ 	// only show the specialised homepages to users with the required roles
+-	if(isExecutive || showSalesManager || showTradeManager || showWAIIFManager || showCeo)
++	if(isExecutive || showSalesManager || showTradeManager || showWAIIFManager || showMarketingTeam || showCeo || showAiTrainer)
+ 	{
+ 		String selectedStyle = "style=\"font-weight:bold; color:#0093d0;\"";
+ %>
+@@ -106,7 +111,17 @@
+ 		</td>
+ 		<%
+ 			}
++
++			if(showAiTrainer)
++			{
+ 		%>
++		<td>
++			<a <%=pageIndex==7 ? selectedStyle : "" %>
++				href="/ai-trainer-home.html">AI Trainer Home</a> &nbsp;
++		</td>
++		<%
++			}
++		%>
+ 	</tr>
+ </table>
+ <div class="spacer"></div>
+Index: src/com/waterfind/business/user/UserRoles.java
+===================================================================
+--- src/com/waterfind/business/user/UserRoles.java	(revision 25467)
++++ src/com/waterfind/business/user/UserRoles.java	(working copy)
+@@ -34,4 +34,6 @@
+ 	public final static String ROLE_OLD_HOMEPAGE_USER = "OLD_HOMEPAGE_USER";
+ 	public final static String ROLE_THIRD_PARTY_BROKER = "THIRD_PARTY_BROKER";
+ 	public final static String ROLE_GLOBAL_ADMIN = "GLOBAL_ADMIN";
++	/** AI Trainer: maintains the AI Water Advisor's knowledge base (AI Trainer Home / Knowledge Curator). */
++	public final static String ROLE_AI_TRAINER = "AI_TRAINER";
+ }

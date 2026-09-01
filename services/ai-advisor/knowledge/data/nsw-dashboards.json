@@ -1,0 +1,211 @@
+{
+  "dataset": "nsw-dashboards",
+  "description": "NSW DPIE/DPE public water dashboards (Tableau CSV views, updated daily, CC-BY — attribute NSW DPE). Trade prices are per valley for the current water year to date; balance and usage are STATEWIDE aggregates.",
+  "trade": {
+    "as_at": "2026-08-30",
+    "semantics": "Current-water-year-to-date NSW trade summary per regulated valley: allocation-trade weighted average $/ML and entitlement trade $/share for selected licence categories (null = no trades reported).",
+    "rows": [
+      {
+        "water_source": "HUNTER",
+        "allocation_weighted_avg_price_per_ml": 50,
+        "entitlement_trade_per_share": 2600
+      },
+      {
+        "water_source": "LACHLAN",
+        "allocation_weighted_avg_price_per_ml": 248.276235124,
+        "entitlement_trade_per_share": 1800
+      },
+      {
+        "water_source": "LOWER DARLING",
+        "allocation_weighted_avg_price_per_ml": 379.130966952,
+        "entitlement_trade_per_share": null
+      },
+      {
+        "water_source": "LOWER NAMOI",
+        "allocation_weighted_avg_price_per_ml": 180,
+        "entitlement_trade_per_share": null
+      },
+      {
+        "water_source": "MACQUARIE AND CUDGEGONG",
+        "allocation_weighted_avg_price_per_ml": 299.997736122,
+        "entitlement_trade_per_share": 4935.185185185
+      },
+      {
+        "water_source": "MURRUMBIDGEE",
+        "allocation_weighted_avg_price_per_ml": 357.324765284,
+        "entitlement_trade_per_share": 2743.073593074
+      },
+      {
+        "water_source": "NEW SOUTH WALES MURRAY",
+        "allocation_weighted_avg_price_per_ml": 279.679621488,
+        "entitlement_trade_per_share": 2345.093363511
+      },
+      {
+        "water_source": "PEEL",
+        "allocation_weighted_avg_price_per_ml": 60,
+        "entitlement_trade_per_share": null
+      },
+      {
+        "water_source": "RICHMOND",
+        "allocation_weighted_avg_price_per_ml": 45.85,
+        "entitlement_trade_per_share": null
+      }
+    ]
+  },
+  "balance": {
+    "as_at": "2026-08-30",
+    "semantics": "STATEWIDE NSW cumulative water balance by month: fractions of total entitlement (e.g. 0.16 = 16%) split into cumulative allocations made this water year plus carryover from last year. Not per valley.",
+    "rows": [
+      {
+        "water_year": "2025-26",
+        "month": "Jul",
+        "total_balance_fraction": 0.25,
+        "cumulative_allocation_fraction": 0.09,
+        "carryover_fraction": 0.16
+      },
+      {
+        "water_year": "2026-27",
+        "month": "Jul",
+        "total_balance_fraction": 0.31,
+        "cumulative_allocation_fraction": 0.16,
+        "carryover_fraction": 0.15
+      },
+      {
+        "water_year": "2025-26",
+        "month": "Aug",
+        "total_balance_fraction": 0.35,
+        "cumulative_allocation_fraction": 0.19,
+        "carryover_fraction": 0.16
+      },
+      {
+        "water_year": "2026-27",
+        "month": "Aug",
+        "total_balance_fraction": 0.42,
+        "cumulative_allocation_fraction": 0.27,
+        "carryover_fraction": 0.15
+      },
+      {
+        "water_year": "2025-26",
+        "month": "Sep",
+        "total_balance_fraction": 0.43,
+        "cumulative_allocation_fraction": 0.27,
+        "carryover_fraction": 0.16
+      },
+      {
+        "water_year": "2025-26",
+        "month": "Oct",
+        "total_balance_fraction": 0.48,
+        "cumulative_allocation_fraction": 0.32,
+        "carryover_fraction": 0.16
+      },
+      {
+        "water_year": "2025-26",
+        "month": "Nov",
+        "total_balance_fraction": 0.48,
+        "cumulative_allocation_fraction": 0.32,
+        "carryover_fraction": 0.16
+      },
+      {
+        "water_year": "2025-26",
+        "month": "Dec",
+        "total_balance_fraction": 0.48,
+        "cumulative_allocation_fraction": 0.32,
+        "carryover_fraction": 0.16
+      },
+      {
+        "water_year": "2025-26",
+        "month": "Jan",
+        "total_balance_fraction": 0.48,
+        "cumulative_allocation_fraction": 0.32,
+        "carryover_fraction": 0.16
+      },
+      {
+        "water_year": "2025-26",
+        "month": "Feb",
+        "total_balance_fraction": 0.48,
+        "cumulative_allocation_fraction": 0.32,
+        "carryover_fraction": 0.16
+      },
+      {
+        "water_year": "2025-26",
+        "month": "Mar",
+        "total_balance_fraction": 0.48,
+        "cumulative_allocation_fraction": 0.32,
+        "carryover_fraction": 0.16
+      },
+      {
+        "water_year": "2025-26",
+        "month": "Apr",
+        "total_balance_fraction": 0.48,
+        "cumulative_allocation_fraction": 0.32,
+        "carryover_fraction": 0.16
+      },
+      {
+        "water_year": "2025-26",
+        "month": "May",
+        "total_balance_fraction": 0.48,
+        "cumulative_allocation_fraction": 0.32,
+        "carryover_fraction": 0.16
+      },
+      {
+        "water_year": "2025-26",
+        "month": "Jun",
+        "total_balance_fraction": 0.48,
+        "cumulative_allocation_fraction": 0.32,
+        "carryover_fraction": 0.16
+      }
+    ]
+  },
+  "usage": {
+    "as_at": "8/28/2026",
+    "semantics": "STATEWIDE NSW water usage this water year to date, ML, by source type. script_run is the dashboard refresh date.",
+    "rows": [
+      {
+        "script_run": "8/28/2026",
+        "source_type": "GW",
+        "name": "Groundwater",
+        "usage_ml": 815915.3
+      },
+      {
+        "script_run": "8/28/2026",
+        "source_type": "REG",
+        "name": "Regulated Rivers",
+        "usage_ml": 3752196.4
+      },
+      {
+        "script_run": "8/28/2026",
+        "source_type": "UNREG",
+        "name": "Unregulated Rivers",
+        "usage_ml": 149556.1
+      }
+    ]
+  },
+  "current_wy_note": "The current water year is still open and only reflects the usage, balance available and trades to date",
+  "as_at": "2026-08-30",
+  "last_refresh": {
+    "at": "2026-08-30",
+    "method": "refresh-nsw-dashboards.ts",
+    "sources_attempted": [
+      {
+        "url": "https://tableau.dpie.nsw.gov.au/t/DPIEExternal/views/WaterTradeDashboard/WaterTradeSnapshot.csv",
+        "status": "ok (9 valleys)",
+        "updated": true
+      },
+      {
+        "url": "https://tableau.dpie.nsw.gov.au/t/DPIEExternal/views/AllocationsDashboard/CumulativeWaterBalance.csv",
+        "status": "ok (14 month-rows)",
+        "updated": true
+      },
+      {
+        "url": "https://tableau.dpie.nsw.gov.au/t/DPIEExternal/views/UsageDashboard/WaterAccountSummary.csv",
+        "status": "ok (3 source types)",
+        "updated": true
+      },
+      {
+        "url": "https://tableau.dpie.nsw.gov.au/t/DPIEExternal/views/UtilisationDashboard/UtilisationRate.csv",
+        "status": "ok (note)",
+        "updated": true
+      }
+    ]
+  }
+}

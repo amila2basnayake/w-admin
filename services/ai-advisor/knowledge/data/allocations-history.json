@@ -1,0 +1,398 @@
+{
+  "dataset": "allocations-history",
+  "description": "Historical opening and final (end-of-season) allocation / seasonal-determination percentages by state, valley, licence class and season. Feeds allocation-probability forecasting (Workstream C).",
+  "provenance": {
+    "source_name": "Northern Victoria Resource Manager (seasonal determination history), NSW DCCEEW/WaterNSW allocation statements & AWD history, SA DEW historical allocations",
+    "source_url": [
+      "https://nvrm.net.au/seasonal-determinations/history",
+      "https://nvrm.net.au/outlooks/historical-outlooks/2025-26-season/outlook-1-july-2025.html",
+      "https://www.waterregister.vic.gov.au/water-availability-and-use/seasonal-determinations",
+      "https://www.water.dcceew.nsw.gov.au/our-work/allocations-and-availability/allocations/available-water-determinations",
+      "https://www.environment.sa.gov.au/topics/river-murray/water-allocation/historical-allocations"
+    ],
+    "fetched_at": "2026-07-08",
+    "licence_or_terms_note": "Government determination history, mostly CC BY 4.0 - attribute the issuing agency. Values tagged confidence=high were pulled directly from the primary determination page; confidence=reported were compiled from secondary reporting/search extraction of that history and MUST be re-verified against the primary determination archives (NVRM per-season pages, NSW AWD archive, SA DEW historical allocations) before being used for forecasting or advice.",
+    "gaps": [
+      "The NVRM per-season history pages and NSW AWD archive are the authoritative primary records but were not each fetched individually; most pre-2026 values here are 'reported' (secondary/search) and are indicative. Densify by fetching each NVRM season page and the NSW AWD dataset directly.",
+      "NSW machine-readable AWD history (Data.NSW) returns HTTP 403 to fetch. VIC Water Register seasonal-determination search is a JS form (no server-side table).",
+      "final_pct is the end-of-season determination where known; null where not captured. Opening = 1 July determination.",
+      "granularity_achieved: seasons ~2020-21 through 2026-27 for the marquee southern valleys (VIC Murray/Goulburn, NSW Murray/Murrumbidgee, SA River Murray); partial coverage of Campaspe/Loddon and NSW northern valleys."
+    ],
+    "last_refresh": {
+      "at": "2026-08-30T17:43:38.912Z",
+      "sources": [
+        {
+          "url": "multiple (NVRM/NSW AWD/SA DEW archives)",
+          "status": "not auto-parsed — curated dataset, values preserved",
+          "updated_records": 0
+        }
+      ]
+    }
+  },
+  "unit_note": "opening_pct / final_pct are percent of entitlement (NSW AWD), of HRWS/LRWS (VIC seasonal determination), or of entitlement (SA). Compare like-for-like classes only.",
+  "history": [
+    {
+      "state": "VIC",
+      "valley": "Murray",
+      "licence_class": "HRWS",
+      "season": "2026-27",
+      "opening_pct": 29,
+      "final_pct": null,
+      "source_name": "NVRM current seasonal determination",
+      "source_url": "https://nvrm.net.au/seasonal-determinations/current",
+      "confidence": "high"
+    },
+    {
+      "state": "VIC",
+      "valley": "Murray",
+      "licence_class": "HRWS",
+      "season": "2025-26",
+      "opening_pct": 39,
+      "final_pct": null,
+      "source_name": "NVRM 2025-26 opening outlook",
+      "source_url": "https://nvrm.net.au/outlooks/historical-outlooks/2025-26-season/outlook-1-july-2025.html",
+      "confidence": "high"
+    },
+    {
+      "state": "VIC",
+      "valley": "Murray",
+      "licence_class": "HRWS",
+      "season": "2024-25",
+      "opening_pct": 68,
+      "final_pct": 100,
+      "source_name": "NVRM determination history (via search)",
+      "source_url": "https://nvrm.net.au/seasonal-determinations/history",
+      "confidence": "reported"
+    },
+    {
+      "state": "VIC",
+      "valley": "Murray",
+      "licence_class": "HRWS",
+      "season": "2023-24",
+      "opening_pct": 80,
+      "final_pct": 100,
+      "source_name": "NVRM determination history (via search)",
+      "source_url": "https://nvrm.net.au/seasonal-determinations/history",
+      "confidence": "reported"
+    },
+    {
+      "state": "VIC",
+      "valley": "Murray",
+      "licence_class": "HRWS",
+      "season": "2022-23",
+      "opening_pct": 94,
+      "final_pct": 100,
+      "source_name": "NVRM determination history (via search)",
+      "source_url": "https://nvrm.net.au/seasonal-determinations/history",
+      "confidence": "reported"
+    },
+    {
+      "state": "VIC",
+      "valley": "Murray",
+      "licence_class": "HRWS",
+      "season": "2021-22",
+      "opening_pct": 52,
+      "final_pct": 100,
+      "source_name": "NVRM determination history (via search)",
+      "source_url": "https://nvrm.net.au/seasonal-determinations/history/2021-22-season/seasonal-determination-16-august-2021.html",
+      "confidence": "reported"
+    },
+    {
+      "state": "VIC",
+      "valley": "Goulburn",
+      "licence_class": "HRWS",
+      "season": "2026-27",
+      "opening_pct": 15,
+      "final_pct": null,
+      "source_name": "NVRM current seasonal determination",
+      "source_url": "https://nvrm.net.au/seasonal-determinations/current",
+      "confidence": "high"
+    },
+    {
+      "state": "VIC",
+      "valley": "Goulburn",
+      "licence_class": "HRWS",
+      "season": "2025-26",
+      "opening_pct": 31,
+      "final_pct": null,
+      "source_name": "NVRM 2025-26 opening outlook",
+      "source_url": "https://nvrm.net.au/outlooks/historical-outlooks/2025-26-season/outlook-1-july-2025.html",
+      "confidence": "high"
+    },
+    {
+      "state": "VIC",
+      "valley": "Goulburn",
+      "licence_class": "HRWS",
+      "season": "2024-25",
+      "opening_pct": 73,
+      "final_pct": 100,
+      "source_name": "NVRM determination history (via search)",
+      "source_url": "https://nvrm.net.au/seasonal-determinations/history",
+      "confidence": "reported"
+    },
+    {
+      "state": "VIC",
+      "valley": "Goulburn",
+      "licence_class": "HRWS",
+      "season": "2023-24",
+      "opening_pct": 100,
+      "final_pct": 100,
+      "source_name": "NVRM determination history (via search)",
+      "source_url": "https://nvrm.net.au/seasonal-determinations/history",
+      "confidence": "reported"
+    },
+    {
+      "state": "VIC",
+      "valley": "Goulburn",
+      "licence_class": "HRWS",
+      "season": "2022-23",
+      "opening_pct": 66,
+      "final_pct": 100,
+      "source_name": "NVRM determination history (via search)",
+      "source_url": "https://nvrm.net.au/seasonal-determinations/history",
+      "confidence": "reported"
+    },
+    {
+      "state": "VIC",
+      "valley": "Goulburn",
+      "licence_class": "HRWS",
+      "season": "2021-22",
+      "opening_pct": 66,
+      "final_pct": 100,
+      "source_name": "NVRM determination history (via search)",
+      "source_url": "https://nvrm.net.au/seasonal-determinations/history/2021-22-season/seasonal-determination-16-august-2021.html",
+      "confidence": "reported"
+    },
+    {
+      "state": "VIC",
+      "valley": "Campaspe",
+      "licence_class": "HRWS",
+      "season": "2026-27",
+      "opening_pct": 35,
+      "final_pct": null,
+      "source_name": "NVRM current seasonal determination",
+      "source_url": "https://nvrm.net.au/seasonal-determinations/current",
+      "confidence": "high"
+    },
+    {
+      "state": "VIC",
+      "valley": "Campaspe",
+      "licence_class": "HRWS",
+      "season": "2025-26",
+      "opening_pct": 100,
+      "final_pct": null,
+      "source_name": "NVRM 2025-26 opening outlook",
+      "source_url": "https://nvrm.net.au/outlooks/historical-outlooks/2025-26-season/outlook-1-july-2025.html",
+      "confidence": "high"
+    },
+    {
+      "state": "VIC",
+      "valley": "Loddon",
+      "licence_class": "HRWS",
+      "season": "2026-27",
+      "opening_pct": 3,
+      "final_pct": null,
+      "source_name": "NVRM current seasonal determination",
+      "source_url": "https://nvrm.net.au/seasonal-determinations/current",
+      "confidence": "high"
+    },
+    {
+      "state": "VIC",
+      "valley": "Loddon",
+      "licence_class": "HRWS",
+      "season": "2025-26",
+      "opening_pct": 31,
+      "final_pct": null,
+      "source_name": "NVRM 2025-26 opening outlook",
+      "source_url": "https://nvrm.net.au/outlooks/historical-outlooks/2025-26-season/outlook-1-july-2025.html",
+      "confidence": "high"
+    },
+    {
+      "state": "NSW",
+      "valley": "Murrumbidgee",
+      "licence_class": "general security",
+      "season": "2026-27",
+      "opening_pct": 0,
+      "final_pct": null,
+      "source_name": "NSW opening allocations announcement",
+      "source_url": "https://www.netimes.com.au/2026/07/03/water-secured-for-communities-as-nsw-opening-allocations-announced/",
+      "confidence": "high"
+    },
+    {
+      "state": "NSW",
+      "valley": "Murrumbidgee",
+      "licence_class": "general security",
+      "season": "2025-26",
+      "opening_pct": 0,
+      "final_pct": null,
+      "source_name": "NSW allocation reporting (via search)",
+      "source_url": "https://www.water.dcceew.nsw.gov.au/our-work/allocations-and-availability/allocations/available-water-determinations",
+      "confidence": "reported"
+    },
+    {
+      "state": "NSW",
+      "valley": "Murrumbidgee",
+      "licence_class": "general security",
+      "season": "2024-25",
+      "opening_pct": null,
+      "final_pct": 68,
+      "source_name": "NSW allocation reporting (via search); final reached May 2025",
+      "source_url": "https://www.waterfind.com.au/murrumbidgee-out-for-the-2024-25-season/",
+      "confidence": "reported"
+    },
+    {
+      "state": "NSW",
+      "valley": "Murrumbidgee",
+      "licence_class": "general security",
+      "season": "2023-24",
+      "opening_pct": null,
+      "final_pct": 100,
+      "source_name": "NSW allocation reporting (via search); full by 1 Feb 2024",
+      "source_url": "https://www.water.dcceew.nsw.gov.au/our-work/allocations-and-availability/allocations/available-water-determinations",
+      "confidence": "reported"
+    },
+    {
+      "state": "NSW",
+      "valley": "Murrumbidgee",
+      "licence_class": "general security",
+      "season": "2022-23",
+      "opening_pct": 35,
+      "final_pct": 100,
+      "source_name": "NSW allocation reporting (via search)",
+      "source_url": "https://www.water.dcceew.nsw.gov.au/our-work/allocations-and-availability/allocations/available-water-determinations",
+      "confidence": "reported"
+    },
+    {
+      "state": "NSW",
+      "valley": "Murrumbidgee",
+      "licence_class": "general security",
+      "season": "2021-22",
+      "opening_pct": null,
+      "final_pct": 100,
+      "source_name": "NSW allocation reporting (via search)",
+      "source_url": "https://www.water.dcceew.nsw.gov.au/our-work/allocations-and-availability/allocations/available-water-determinations",
+      "confidence": "reported"
+    },
+    {
+      "state": "NSW",
+      "valley": "Murrumbidgee",
+      "licence_class": "general security",
+      "season": "2020-21",
+      "opening_pct": null,
+      "final_pct": 100,
+      "source_name": "NSW allocation reporting (via search)",
+      "source_url": "https://www.water.dcceew.nsw.gov.au/our-work/allocations-and-availability/allocations/available-water-determinations",
+      "confidence": "reported"
+    },
+    {
+      "state": "NSW",
+      "valley": "Murray",
+      "licence_class": "general security",
+      "season": "2026-27",
+      "opening_pct": 0,
+      "final_pct": null,
+      "source_name": "NSW opening allocations announcement",
+      "source_url": "https://www.netimes.com.au/2026/07/03/water-secured-for-communities-as-nsw-opening-allocations-announced/",
+      "confidence": "high"
+    },
+    {
+      "state": "NSW",
+      "valley": "Murray",
+      "licence_class": "general security",
+      "season": "2025-26",
+      "opening_pct": 0,
+      "final_pct": null,
+      "source_name": "NSW allocation reporting (via search); opened zero (dry-year run)",
+      "source_url": "https://www.denipt.com.au/news/no-opening-allocation-for-murray/",
+      "confidence": "reported"
+    },
+    {
+      "state": "NSW",
+      "valley": "Murray",
+      "licence_class": "general security",
+      "season": "2023-24",
+      "opening_pct": null,
+      "final_pct": 100,
+      "source_name": "NSW allocation reporting (via search)",
+      "source_url": "https://www.water.dcceew.nsw.gov.au/our-work/allocations-and-availability/allocations/available-water-determinations",
+      "confidence": "reported"
+    },
+    {
+      "state": "NSW",
+      "valley": "Murray",
+      "licence_class": "general security",
+      "season": "2021-22",
+      "opening_pct": null,
+      "final_pct": 100,
+      "source_name": "NSW allocation reporting (via search)",
+      "source_url": "https://www.water.dcceew.nsw.gov.au/our-work/allocations-and-availability/allocations/available-water-determinations",
+      "confidence": "reported"
+    },
+    {
+      "state": "SA",
+      "valley": "River Murray",
+      "licence_class": "Class 3 (high security) / private irrigation",
+      "season": "2026-27",
+      "opening_pct": 83,
+      "final_pct": null,
+      "source_name": "SA DEW opening allocation announcement",
+      "source_url": "https://www.environment.sa.gov.au/news-hub/news/articles/2026/06/opening-allocation-for-sa-river-murray-irrigators-announced",
+      "confidence": "high"
+    },
+    {
+      "state": "SA",
+      "valley": "River Murray",
+      "licence_class": "Class 3 (high security) / private irrigation",
+      "season": "2025-26",
+      "opening_pct": null,
+      "final_pct": 100,
+      "source_name": "SA DEW historical allocations (via search); 100% for a run of recent years",
+      "source_url": "https://www.environment.sa.gov.au/topics/river-murray/water-allocation/historical-allocations",
+      "confidence": "reported"
+    },
+    {
+      "state": "SA",
+      "valley": "River Murray",
+      "licence_class": "Class 3 (high security) / private irrigation",
+      "season": "2024-25",
+      "opening_pct": null,
+      "final_pct": 100,
+      "source_name": "SA DEW historical allocations (via search)",
+      "source_url": "https://www.environment.sa.gov.au/topics/river-murray/water-allocation/historical-allocations",
+      "confidence": "reported"
+    },
+    {
+      "state": "SA",
+      "valley": "River Murray",
+      "licence_class": "Class 3 (high security) / private irrigation",
+      "season": "2023-24",
+      "opening_pct": null,
+      "final_pct": 100,
+      "source_name": "SA DEW historical allocations (via search)",
+      "source_url": "https://www.environment.sa.gov.au/topics/river-murray/water-allocation/historical-allocations",
+      "confidence": "reported"
+    },
+    {
+      "state": "SA",
+      "valley": "River Murray",
+      "licence_class": "Class 3 (high security) / private irrigation",
+      "season": "2022-23",
+      "opening_pct": null,
+      "final_pct": 100,
+      "source_name": "SA DEW historical allocations (via search)",
+      "source_url": "https://www.environment.sa.gov.au/topics/river-murray/water-allocation/historical-allocations",
+      "confidence": "reported"
+    },
+    {
+      "state": "SA",
+      "valley": "River Murray",
+      "licence_class": "Class 3 (high security) / private irrigation",
+      "season": "2021-22",
+      "opening_pct": null,
+      "final_pct": 100,
+      "source_name": "SA DEW historical allocations (via search)",
+      "source_url": "https://www.environment.sa.gov.au/topics/river-murray/water-allocation/historical-allocations",
+      "confidence": "reported"
+    }
+  ]
+}

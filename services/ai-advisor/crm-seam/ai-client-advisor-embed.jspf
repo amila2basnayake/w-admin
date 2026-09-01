@@ -1,0 +1,172 @@
+<%-- ================= AI Advisor client rail (broker-assist) =================
+     Pasted at the END of jsp/admin/registry/segments/user-reg-details.body.jsp (both CRM trees).
+     Reference copy: services/ai-advisor/crm-seam/ai-client-advisor-embed.jspf
+
+     A 400px advisor rail docked to the right edge of the BROWSER (not the page), living in the
+     dead gutter beside the fixed 1024px CRM column. The launcher joins the page's existing
+     right-edge tab stack (Market Data top:107, Survey top:160 -> AI Advisor top:213). Opening it
+     never moves the page: the rail overlays the gutter (at >=1824px it covers nothing at all;
+     narrower, it covers the record's right edge only while open).
+
+     All elements are created in JS and appended to document.body — they must NOT live inside
+     #market_section, whose overflow:hidden would clip them. Plain DOM APIs only (no jQuery
+     dependency; the page's own jQuery version stays irrelevant). The iframe src is set lazily on
+     first open so the SPA boot is not paid on every client page view. Rail chrome actions
+     (close / width cycle / pop-out) arrive from the iframe via postMessage.
+
+     State survives this page's full postbacks via sessionStorage:
+       wfai.open.<clientId> = '1'  -> reopen after reload
+       wfai.width           = 340|400|560
+     (the panel itself also restores its conversation + composer draft the same way).
+
+     INLINE TILE (side-by-side trial vs the rail): the same panel is also inserted into the page
+     flow as a fieldset directly after the Contact Notes fieldset, matching that segment's tile
+     markup. It loads /ai-client-advisor.html?...&popout=1 — popout mode already hides the
+     close/width/pop-out chrome, which is meaningless inline. The iframe src is set lazily on
+     first scroll-into-view. Both surfaces share the panel's sessionStorage keys, so they show
+     the same conversation. Remove whichever loses the trial.                                --%>
+<style type="text/css">
+    #wfai-tab {
+        padding: 4px; position: fixed; top: 213px; right: 0px; z-index: 1190;
+        border-width: 1px 0px 1px 1px; border-style: solid; border-color: #26794c;
+        font-size: 11px; background: #d9efe3; color: #1b3a2d; cursor: pointer;
+        -moz-border-radius: 5px 0px 0px 5px; -webkit-border-radius: 5px 0px 0px 5px;
+        -khtml-border-radius: 5px 0px 0px 5px; border-radius: 5px 0px 0px 5px;
+    }
+    #wfai-tab:hover { background: #bfe3cf; }
+    #wfai-rail {
+        position: fixed; top: 0; right: -600px; height: 100%; width: 400px; z-index: 1200;
+        background: #fff; border-left: 1px solid #b9c4bc; box-shadow: -3px 0 14px rgba(0,0,0,.18);
+        transition: right 0.25s;
+    }
+    body.wfai-open #wfai-rail { right: 0; }
+    #wfai-rail.wfai-w340 { width: 340px; }
+    #wfai-rail.wfai-w560 { width: 560px; }
+    #wfai-rail iframe { display: block; width: 100%; height: 100%; border: 0; }
+    /* The page NEVER shifts. The rail overlays the dead gutter; below ~1824px it temporarily
+       covers the record's right edge while open. Deliberate: the earlier pin-left rule slammed
+       the centered column ~432px left on a 1920px screen, which read as the whole page jumping. */
+    /* Below ~1366px there is no side-by-side room for 400px — auto-narrow. */
+    @media (max-width: 1366px) {
+        #wfai-rail, #wfai-rail.wfai-w560 { width: 340px; }
+    }
+</style>
+<script type="text/javascript">
+(function () {
+    var elId = document.getElementById('userId');
+    var elNm = document.getElementById('clientName');
+    var clientId = elId ? elId.value : '';
+    var clientName = (elNm && elNm.value) ? elNm.value : 'Client';
+    if (!clientId || !/^\d+$/.test(clientId)) return;   // no resolvable client -> no launcher
+
+    // Six identical "Registry Record Details" browser tabs is how the wrong client gets advised.
+    try { document.title = clientName + ' · Registry'; } catch (e) {}
+
+    var OPEN_KEY = 'wfai.open.' + clientId, WIDTH_KEY = 'wfai.width';
+    var WIDTHS = [340, 400, 560];
+    function ss(k, v) { try { if (v === undefined) return sessionStorage.getItem(k); if (v === null) sessionStorage.removeItem(k); else sessionStorage.setItem(k, v); } catch (e) { return null; } }
+
+    var tab = document.createElement('div');
+    tab.id = 'wfai-tab';
+    tab.title = 'AI Advisor — chat about ' + clientName + ' (Alt+A)';
+    tab.innerHTML = 'AI<br/>Advisor';
+    document.body.appendChild(tab);
+
+    var rail = document.createElement('div');
+    rail.id = 'wfai-rail';
+    var frame = document.createElement('iframe');
+    frame.setAttribute('allow', 'microphone');
+    frame.setAttribute('title', 'AI Advisor — ' + clientName);
+    rail.appendChild(frame);
+    document.body.appendChild(rail);
+
+    function applyWidth() {
+        var w = parseInt(ss(WIDTH_KEY), 10);
+        rail.className = w === 340 ? 'wfai-w340' : w === 560 ? 'wfai-w560' : '';
+    }
+    function isOpen() { return (' ' + document.body.className + ' ').indexOf(' wfai-open ') >= 0; }
+    function openRail() {
+        if (!frame.src) frame.src = '/ai-client-advisor.html?clientId=' + clientId;
+        // The Survey drawer shares this edge (z-index 1) — close it so the two never stack.
+        try { if (typeof hideSurveyDiv === 'function') hideSurveyDiv(); } catch (e) {}
+        document.body.className += ' wfai-open';
+        ss(OPEN_KEY, '1');
+    }
+    function closeRail() {
+        document.body.className = document.body.className.replace(/\bwfai-open\b/g, '').replace(/\s+/g, ' ');
+        ss(OPEN_KEY, null);
+    }
+    function toggleRail() { if (isOpen()) closeRail(); else openRail(); }
+    function cycleWidth() {
+        var cur = parseInt(ss(WIDTH_KEY), 10) || 400;
+        var next = WIDTHS[(indexOf(WIDTHS, cur) + 1) % WIDTHS.length];
+        ss(WIDTH_KEY, String(next)); applyWidth();
+    }
+    function popOut() {
+        try {
+            window.open('/ai-client-advisor.html?clientId=' + clientId + '&popout=1',
+                'wfadv_' + clientId, 'width=460,height=980');
+        } catch (e) {}
+        closeRail();
+    }
+    function indexOf(arr, v) { for (var i = 0; i < arr.length; i++) if (arr[i] === v) return i; return -1; }
+
+    if (tab.addEventListener) tab.addEventListener('click', toggleRail, false);
+    else tab.attachEvent('onclick', toggleRail);
+
+    // Rail chrome lives inside the iframe (consistent styling); its buttons message up.
+    if (window.addEventListener) {
+        window.addEventListener('message', function (ev) {
+            // Only the rail iframe / its pop-out (same origin) may drive the page.
+            if (ev.origin && ev.origin !== window.location.origin) return;
+            var d = ev.data || {};
+            if (d.type === 'wfai-close') closeRail();
+            else if (d.type === 'wfai-width') cycleWidth();
+            else if (d.type === 'wfai-popout') popOut();
+        }, false);
+        // Alt+A toggle; Esc closes when focus is on the parent page (the iframe handles its own).
+        window.addEventListener('keydown', function (ev) {
+            if (ev.altKey && (ev.key === 'a' || ev.key === 'A')) { toggleRail(); ev.preventDefault(); }
+            else if (ev.key === 'Escape' && isOpen()) closeRail();
+        }, false);
+    }
+
+    applyWidth();
+    if (ss(OPEN_KEY) === '1') openRail();   // survive this page's full postbacks
+
+    // ---- inline tile: the panel again, docked under Contact Notes in the page flow ----
+    (function () {
+        var n = document.getElementById('contactNotesTable');
+        while (n && n.nodeName !== 'FIELDSET') n = n.parentNode;
+        var anchor = n && n.parentNode;                 // the notes segment's overflow wrapper div
+        if (!anchor || !anchor.parentNode) return;      // no Contact Notes segment -> no tile
+        var wrap = document.createElement('div');
+        wrap.id = 'wfai-tile';
+        wrap.style.cssText = 'overflow:auto;width:100%;float:left';
+        var fs = document.createElement('fieldset');
+        fs.style.cssText = 'width:95%;float:left;margin:1em';
+        var legend = document.createElement('legend');
+        legend.appendChild(document.createTextNode('AI Advisor'));
+        fs.appendChild(legend);
+        var tf = document.createElement('iframe');
+        tf.setAttribute('allow', 'microphone');
+        tf.setAttribute('title', 'AI Advisor — ' + clientName);
+        tf.style.cssText = 'display:block;width:100%;height:640px;border:0;background:#fff';
+        fs.appendChild(tf);
+        wrap.appendChild(fs);
+        anchor.parentNode.insertBefore(wrap, anchor.nextSibling);
+        function loadTile() { if (!tf.src) tf.src = '/ai-client-advisor.html?clientId=' + clientId + '&popout=1'; }
+        if (window.IntersectionObserver) {
+            var io = new IntersectionObserver(function (entries) {
+                for (var i = 0; i < entries.length; i++) {
+                    if (entries[i].isIntersecting) { loadTile(); io.disconnect(); return; }
+                }
+            });
+            io.observe(wrap);
+        } else {
+            loadTile();
+        }
+    })();
+})();
+</script>
+<%-- =============== end AI Advisor client rail (broker-assist) =============== --%>

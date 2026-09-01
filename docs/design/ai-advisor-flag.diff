@@ -1,0 +1,376 @@
+diff --git a/crm/waterfind.com.au/sql/schema/REV46-20260707/SchemaUpdate_1.sql b/crm/waterfind.com.au/sql/schema/REV46-20260707/SchemaUpdate_1.sql
+new file mode 100644
+index 0000000..43492e7
+--- /dev/null
++++ b/crm/waterfind.com.au/sql/schema/REV46-20260707/SchemaUpdate_1.sql
+@@ -0,0 +1,3 @@
++--Adding a new column for the per-client AI Advisor flag (default on)
++
++ALTER TABLE waterfind_user ADD COLUMN ai_advisor boolean NOT NULL DEFAULT true;
+diff --git a/crm/waterfind.com.au/src/com/waterfind/action/ChangeAiAdvisorStatusAction.java b/crm/waterfind.com.au/src/com/waterfind/action/ChangeAiAdvisorStatusAction.java
+new file mode 100644
+index 0000000..fd3af75
+--- /dev/null
++++ b/crm/waterfind.com.au/src/com/waterfind/action/ChangeAiAdvisorStatusAction.java
+@@ -0,0 +1,62 @@
++package com.waterfind.action;
++
++
++import java.io.IOException;
++
++import javax.servlet.http.HttpServletRequest;
++import javax.servlet.http.HttpServletResponse;
++
++import org.apache.log4j.Logger;
++import org.apache.struts.action.ActionForm;
++import org.apache.struts.action.ActionForward;
++import org.apache.struts.action.ActionMapping;
++
++import com.waterfind.annotation.AccessRestriction;
++import com.waterfind.annotation.JsonAction;
++import com.waterfind.core.WaterfindUser;
++import com.waterfind.server.WaterfindDelegate;
++import com.waterfind.util.errors.WaterfindErrors;
++
++@JsonAction
++@AccessRestriction(allow = {WaterfindUser.USER_ADMIN, WaterfindUser.USER_BROKER, WaterfindUser.USER_SALES})
++public class ChangeAiAdvisorStatusAction extends WaterfindAction {
++	
++	private static Logger logger = Logger.getLogger(ChangeAiAdvisorStatusAction.class);
++	
++	// Populate the delegate from the ServiceLocator.
++    protected WaterfindDelegate delegate = com.waterfind.Waterfind.getWaterfindDelegate();
++
++	
++	@Override
++	protected ActionForward executeWaterfindAction(ActionMapping mapping,
++			ActionForm form, HttpServletRequest request,
++			HttpServletResponse response) throws WaterfindErrors {
++		
++		// get parameters
++		String _waterfindUserId = request.getParameter("waterfindUserId");
++		String aiAdvisorChecked_ = request.getParameter("aiAdvisor");
++		
++		Long waterfindUserId = Long.parseLong(_waterfindUserId);
++		boolean aiAdvisor = Boolean.parseBoolean(aiAdvisorChecked_);
++		
++		try {
++			
++			boolean result = delegate.updateWaterfindUserAiAdvisor(waterfindUserId, aiAdvisor);
++			
++			this.writeJsonResponse(response, result);
++			
++		}catch(Exception e) {
++			logger.debug("## Change AI Advisor status failed");
++			try {
++				this.writeJsonResponse(response, false);
++			} catch (IOException e1) {
++				e1.printStackTrace();
++			}
++		}
++		
++		return null;
++		
++	}
++	
++	
++}
+diff --git a/crm/waterfind.com.au/src/com/waterfind/business/admin/RegistryUserInformationBo.java b/crm/waterfind.com.au/src/com/waterfind/business/admin/RegistryUserInformationBo.java
+index 429bf07..9419d50 100644
+--- a/crm/waterfind.com.au/src/com/waterfind/business/admin/RegistryUserInformationBo.java
++++ b/crm/waterfind.com.au/src/com/waterfind/business/admin/RegistryUserInformationBo.java
+@@ -202,6 +202,7 @@ public class RegistryUserInformationBo extends WaterfindBusinessObject {
+             return new RegistryUserInformationDto();
+         }
+         boolean isPremiumUser = activeUser.getPremiumUser();
++        boolean isAiAdvisor = activeUser.getAiAdvisor();
+            
+         StripeSubscriptionDetailsDto userSubscription = stripePaymentBo.getStripeSubscriptionDetails(activeUser.getId());
+         
+@@ -220,6 +221,7 @@ public class RegistryUserInformationBo extends WaterfindBusinessObject {
+             long part1Start = System.currentTimeMillis();
+             
+             dto.setPremiumUser(isPremiumUser);
++            dto.setAiAdvisor(isAiAdvisor);
+             
+             if(userSubscription != null) {
+             	dto.setStripeSubscriptionDetails(userSubscription);
+diff --git a/crm/waterfind.com.au/src/com/waterfind/business/core/WaterfindUserBo.java b/crm/waterfind.com.au/src/com/waterfind/business/core/WaterfindUserBo.java
+index 242dbe9..6e0e04e 100644
+--- a/crm/waterfind.com.au/src/com/waterfind/business/core/WaterfindUserBo.java
++++ b/crm/waterfind.com.au/src/com/waterfind/business/core/WaterfindUserBo.java
+@@ -1849,6 +1849,7 @@ public class WaterfindUserBo extends WaterfindBusinessObject {
+ 	    	credentials.setTenants(tenantBo.getTenantsForRegistryUser(regUser.getId()));
+ 	    	credentials.setAssignableRoles(userRoleBo.getAssignableUserRoles());
+ 	    	credentials.setPremiumUser(onlineUser.getPremiumUser());
++	    	credentials.setAiAdvisor(onlineUser.getAiAdvisor());
+ 	    	
+ 	    	// broker details
+ 	    	OnlineUser taggedBroker = onlineUser.getRegistryUser().getSalesTagReferral();
+@@ -2166,6 +2167,14 @@ public class WaterfindUserBo extends WaterfindBusinessObject {
+     	return updates;
+     	
+     }
++    public boolean updateWaterfindUserAiAdvisor(Long waterfindUserId, boolean aiAdvisor) {
++    	WaterfindUser user  = WaterfindUser.getUser(waterfindUserId);
++    	user.setAiAdvisor(aiAdvisor);
++    	user.save();
++    	
++    	return true;
++    }
++
+     public boolean updateWaterfindUser(Long waterfindUserId, boolean premiumUser) {
+     	WaterfindUser user  = WaterfindUser.getUser(waterfindUserId);
+     	user.setPremiumUser(premiumUser);
+diff --git a/crm/waterfind.com.au/src/com/waterfind/core/WFContactUser.hbm.xml b/crm/waterfind.com.au/src/com/waterfind/core/WFContactUser.hbm.xml
+index 43b0bd8..539c7ed 100644
+--- a/crm/waterfind.com.au/src/com/waterfind/core/WFContactUser.hbm.xml
++++ b/crm/waterfind.com.au/src/com/waterfind/core/WFContactUser.hbm.xml
+@@ -159,6 +159,9 @@
+     <property name="premiumUser" type="boolean">
+       <column name="premium_user" not-null="false" default="false"/>
+     </property>
++    <property name="aiAdvisor" type="boolean">
++      <column name="ai_advisor" not-null="true" default="true"/>
++    </property>
+     <many-to-one class="com.waterfind.core.licenceregistry.RegistryUser" name="oldRegistryUser">
+       <column name="registry_user_old"/>
+     </many-to-one>
+diff --git a/crm/waterfind.com.au/src/com/waterfind/core/WFContactUser.java b/crm/waterfind.com.au/src/com/waterfind/core/WFContactUser.java
+index 2a0030e..47e9dff 100644
+--- a/crm/waterfind.com.au/src/com/waterfind/core/WFContactUser.java
++++ b/crm/waterfind.com.au/src/com/waterfind/core/WFContactUser.java
+@@ -50,6 +50,7 @@ public abstract class WFContactUser extends CoreObject {
+     private Set<UserRole> userRoles;
+     private Set<UserTag> userTags;
+     private Boolean premiumUser = Boolean.FALSE;;
++    private Boolean aiAdvisor = Boolean.TRUE;
+     /**
+      * user approved : user can either get emails / login to their panel
+      */
+@@ -256,6 +257,14 @@ public abstract class WFContactUser extends CoreObject {
+ 		this.premiumUser = premiumUser;
+ 	}
+ 
++	public Boolean getAiAdvisor() {
++		return aiAdvisor;
++	}
++
++	public void setAiAdvisor(Boolean aiAdvisor) {
++		this.aiAdvisor = aiAdvisor;
++	}
++
+ 	/**
+      * this method get the name of the user, return first,middle,last name if
+      * the contactName is within the system.
+diff --git a/crm/waterfind.com.au/src/com/waterfind/dto/registryuser/RegistryUserInformationDto.java b/crm/waterfind.com.au/src/com/waterfind/dto/registryuser/RegistryUserInformationDto.java
+index 1c6f0a4..473b50d 100644
+--- a/crm/waterfind.com.au/src/com/waterfind/dto/registryuser/RegistryUserInformationDto.java
++++ b/crm/waterfind.com.au/src/com/waterfind/dto/registryuser/RegistryUserInformationDto.java
+@@ -69,6 +69,7 @@ public class RegistryUserInformationDto {
+     private Long financeSettings;
+     private Integer financeMaxLoan;
+     private boolean premiumUser =new Boolean(false);
++    private boolean aiAdvisor =new Boolean(true);
+     private StripeSubscriptionDetailsDto stripeSubscriptionDetails;
+     
+     /**
+@@ -634,6 +635,14 @@ public class RegistryUserInformationDto {
+ 		this.premiumUser = premiumUser;
+ 	}
+ 
++	public boolean isAiAdvisor() {
++		return aiAdvisor;
++	}
++
++	public void setAiAdvisor(boolean aiAdvisor) {
++		this.aiAdvisor = aiAdvisor;
++	}
++
+ 	public StripeSubscriptionDetailsDto getStripeSubscriptionDetails() {
+ 		return stripeSubscriptionDetails;
+ 	}
+diff --git a/crm/waterfind.com.au/src/com/waterfind/dto/user/UserCredentialsDto.java b/crm/waterfind.com.au/src/com/waterfind/dto/user/UserCredentialsDto.java
+index f297c1a..3eb2de5 100644
+--- a/crm/waterfind.com.au/src/com/waterfind/dto/user/UserCredentialsDto.java
++++ b/crm/waterfind.com.au/src/com/waterfind/dto/user/UserCredentialsDto.java
+@@ -52,6 +52,7 @@ public class UserCredentialsDto implements Serializable, IUserCredentials {
+ 	private String brokerMobile;
+ 	private String brokerEmail;
+ 	private boolean premiumUser;
++	private boolean aiAdvisor = true;
+ 	
+ 	public UserCredentialsDto() {
+ 		
+@@ -498,6 +499,14 @@ public class UserCredentialsDto implements Serializable, IUserCredentials {
+ 	public void setPremiumUser(boolean premiumUser) {
+ 		this.premiumUser = premiumUser;
+ 	}
++
++	public boolean isAiAdvisor() {
++		return aiAdvisor;
++	}
++
++	public void setAiAdvisor(boolean aiAdvisor) {
++		this.aiAdvisor = aiAdvisor;
++	}
+ 	
+ 	
+ }
+diff --git a/crm/waterfind.com.au/src/com/waterfind/server/WaterfindDelegate.java b/crm/waterfind.com.au/src/com/waterfind/server/WaterfindDelegate.java
+index 99553ee..fe019dd 100644
+--- a/crm/waterfind.com.au/src/com/waterfind/server/WaterfindDelegate.java
++++ b/crm/waterfind.com.au/src/com/waterfind/server/WaterfindDelegate.java
+@@ -10480,6 +10480,10 @@ public class WaterfindDelegate implements MetricsDelegate, MyobDelegate {
+ 		return frontEndDataBo.getFrontEndAllocationData();
+ 	}
+ 
++	public boolean updateWaterfindUserAiAdvisor(Long waterfindId, boolean aiAdvisor) {
++		return waterfindUserBo.updateWaterfindUserAiAdvisor(waterfindId,aiAdvisor);
++	}
++
+ 	public boolean updateWaterfindUserPremiumAccess(Long waterfindId, boolean premiumUser) {
+ 		return waterfindUserBo.updateWaterfindUser(waterfindId,premiumUser);
+ 	}
+diff --git a/crm/waterfind.com.au/webapp/WEB-INF/struts-config.xml b/crm/waterfind.com.au/webapp/WEB-INF/struts-config.xml
+index b840dab..286eb22 100644
+--- a/crm/waterfind.com.au/webapp/WEB-INF/struts-config.xml
++++ b/crm/waterfind.com.au/webapp/WEB-INF/struts-config.xml
+@@ -10999,6 +10999,10 @@
+ 		<action
+             path="/change-premium-subscription-status"
+             type="com.waterfind.action.ChangePremiumSubscriptionStatusAction">
++        </action>
++		<action
++            path="/change-ai-advisor-status"
++            type="com.waterfind.action.ChangeAiAdvisorStatusAction">
+         </action>
+ 		<!-- 
+ 			<action path="/upload-transfer-form">
+diff --git a/crm/waterfind.com.au/webapp/jsp/admin/registry/segments/user-reg-details.body.jsp b/crm/waterfind.com.au/webapp/jsp/admin/registry/segments/user-reg-details.body.jsp
+index 8a853d8..54bffb1 100644
+--- a/crm/waterfind.com.au/webapp/jsp/admin/registry/segments/user-reg-details.body.jsp
++++ b/crm/waterfind.com.au/webapp/jsp/admin/registry/segments/user-reg-details.body.jsp
+@@ -216,6 +216,7 @@ var numberSurveys = 0;
+ var surveyDivWidth = 500;
+ var isAdminUser = <c:out value="${registryUserInformationForm.regInfo.userLogin.isAdmin}" default="false"/>;
+ var isPremiumUser =  <c:out value="${registryUserInformationForm.regInfo.premiumUser}" default="false"/>;
++var isAiAdvisor = <c:out value="${registryUserInformationForm.regInfo.aiAdvisor}" default="true"/>;
+ 
+ function toggleSurveyDiv() {
+ 
+@@ -250,6 +251,11 @@ $( document ).ready(function() {
+ 	}else{
+ 		$("#premium_inactive").attr('checked', 'checked');
+ 	}
++	if(isAiAdvisor){
++		$("#ai_advisor_active").attr('checked', 'checked');
++	}else{
++		$("#ai_advisor_inactive").attr('checked', 'checked');
++	}
+      
+ 	$.fn.dataTable.moment( 'DD/MM/YYYY HH:mm' );
+ 	$.fn.dataTable.moment( 'DD/MM/YYYY' );
+@@ -415,6 +421,57 @@ function changePremiumSubscriptionStatus() {
+         console.log('Premium subscription status change cancelled by user');
+     }
+ }
++
++function changeAiAdvisorStatus() {
++    var aiAdvisor = $("input[name='ai_advisor']:checked").val();
++    
++    // Store the currently selected radio button
++    var selectedRadio = $("input[name='ai_advisor']:checked");
++    
++    // Find the previously selected value (the other radio button)
++    var otherRadio = $("input[name='ai_advisor']").not(':checked');
++    
++    // Confirmation message based on AI Advisor status
++    var confirmMessage;
++    if(aiAdvisor == 'true') {
++        confirmMessage = 'Do you want to enable the AI Advisor?';
++    } else {
++        confirmMessage = 'Do you want to disable the AI Advisor?';
++    }
++    
++    // Show confirmation dialog
++    if(confirm(confirmMessage)) {
++        // User clicked "Yes/OK" - proceed with AJAX call
++        var params = 'waterfindUserId=' + $('#userId').val();
++        params += '&aiAdvisor=' + aiAdvisor;
++        
++        $.ajax({
++            type: "GET",
++            url: '/change-ai-advisor-status.html',
++            data: params,
++            success: function(result) {
++                if(result) {
++                    console.log(result);
++                    alert('AI Advisor status updated successfully!');
++                } else {
++                    alert('Error on updating AI Advisor status!');
++                    // Revert radio button on error
++                    otherRadio.prop('checked', true);
++                }
++            },
++            error: function() {
++                alert('Got an error');
++                // Revert radio button on error
++                otherRadio.prop('checked', true);
++            },
++            cache: false
++        });
++    } else {
++        // User clicked "Cancel" - revert the radio button selection
++        otherRadio.prop('checked', true);
++        console.log('AI Advisor status change cancelled by user');
++    }
++}
+ function processForm(data) {
+ 	
+ 	$.each(data, function(k, v) {
+@@ -1664,6 +1721,17 @@ function generateSurveyForm(data) {
+ 							</tr>
+ 							</table>
+ 						</fieldset>
++					 	<fieldset style="width: 46%; float: left; margin: 0em 1em 0em 1em; ">
++					 		<legend>AI Advisor</legend>
++					 		<table cellpadding="10" width="100%" style="height:35px">
++					 		<tr>
++					 			<td style="width:100%" colspan="2">
++					 				<input type="radio" id="ai_advisor_active" name="ai_advisor" value="true" onclick="changeAiAdvisorStatus()"><label for="ai_advisor_active"> Enabled </label>
++					 				<input type="radio" id="ai_advisor_inactive" name="ai_advisor" value="false" onclick="changeAiAdvisorStatus()"> <label for="ai_advisor_inactive"> Disabled </label>
++					 			</td>
++					 		</tr>
++					 		</table>
++					 	</fieldset>
+ 					</div>
+ 				</div>
+ 				
+diff --git a/crm/waterfind.com.au/webapp/jsp/userhome/userhome.jsp b/crm/waterfind.com.au/webapp/jsp/userhome/userhome.jsp
+index 5fc7607..af918ae 100644
+--- a/crm/waterfind.com.au/webapp/jsp/userhome/userhome.jsp
++++ b/crm/waterfind.com.au/webapp/jsp/userhome/userhome.jsp
+@@ -26,6 +26,7 @@
+ 	String endedAt = stripeDetails.getEndedAt();
+ 			
+ 	boolean isPremiumUser = credentials.isPremiumUser();
++	boolean isAiAdvisor = credentials.isAiAdvisor();
+ 
+ 	String publicWebsite = com.waterfind.Waterfind.getPublicUrl();
+ %>
+@@ -760,12 +761,14 @@
+     					<span>Site Budget</span>
+     				</a>
+     			</li>
++    			<% if(isAiAdvisor){ %>
+     			<li>
+     				<a href="#" data-url="true" data-menu-id="ai-advisor" data-page-name="AI Advisor">
+     					<i class="fa fa-comments"></i>
+     					<span>AI Advisor</span>
+     				</a>
+     			</li>
++    			<% } %>
+ 
+     			<!-- ADMIN MENU (commented out) -->
+     		<!--	<li class="menu-section-header">

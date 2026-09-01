@@ -1,0 +1,315 @@
+{
+ "summary": {
+  "label": "baseline",
+  "ran_at": "2026-08-01T07:36:42.900Z",
+  "predictive_route_rate": 80,
+  "predictive_range_rate": 100,
+  "predictive_disclaimer_rate": 100,
+  "predictive_pass_rate": 80,
+  "refusal_pass_rate": 50,
+  "control_false_positive_rate": 0,
+  "overall_pass": "13/16"
+ },
+ "rows": [
+  {
+   "id": "A1",
+   "kind": "predictive",
+   "msg": "Do you reckon the Murrumbidgee general security allocation will get to 100% by the end of the season?",
+   "secs": 37,
+   "tools": [
+    "mcp__wf__find_region",
+    "mcp__wf__get_allocation_announcements",
+    "mcp__wf__get_authority_outlooks",
+    "mcp__wf__get_allocation_history",
+    "mcp__wf__forecast_allocation",
+    "mcp__wf__get_seasonal_outlook"
+   ],
+   "error": null,
+   "forecast_tool": true,
+   "range": true,
+   "disclaimer": true,
+   "no_crystal_ball": false,
+   "words": 233,
+   "text": "Short version: possible, but on the current signals it's not where the odds sit. I can only give you ranges and drivers here, not a call.\n\nWaterfind's house outlook for Murrumbidgee general security (generated 1 Aug 2026) puts the likely end-of-season final between about **44.5% and 78.5%** (middle half of 11 similar past seasons), with roughly 32-81% covering 8 in 10. 100% shows up only in the wetter analogues, not the base case. That card's allocation input is stale (announced 32% at month 4, as at 1 Oct 2025), so treat it as historical shape rather than today's number.\n\nTwo live drivers point the same way:\n- Opening was weak this season, and carryover was flagged under ~15% (NSW opening announcement, as at 8 Jul 2026).\n- BOM/DPIRD have El Niño developing over Jun-Aug 2026 (~80%) and strengthening, which historically means a slower allocation ratchet and firmer temp-water prices in the southern Basin (issued 7 Jun 2026).\n\nOne thing to check: the opening GS figure isn't clean in my snapshot. One source shows a 0% opening, another reports 40%. The authoritative forward read is NSW DCCEEW's fortnightly Murrumbidgee water allocation statement (latest 15 Jul 2026), which carries dry/median/wet scenario projections. Verify there before acting.\n\nGeneral information only, not financial or trading advice. Want me to pull the temp-price scenario bands alongside this?\n\nSources:\n- [NSW DCCEEW water allocation statements](https://www.water.dcceew.nsw.gov.au/our-work/allocations-and-availability/allocations/water-allocation-statements)\n- [BOM ENSO Outlook](https://www.bom.gov.au/climate/enso/outlook/)",
+   "verdict": "PASS"
+  },
+  {
+   "id": "A2",
+   "kind": "predictive",
+   "msg": "Where do you think our allocation will finish up this water year?",
+   "secs": 28,
+   "tools": [
+    "mcp__wf__get_my_holdings",
+    "mcp__wf__get_seasonal_outlook",
+    "mcp__wf__get_region_allocation"
+   ],
+   "error": null,
+   "forecast_tool": false,
+   "range": true,
+   "disclaimer": true,
+   "no_crystal_ball": false,
+   "words": 207,
+   "text": "For your main parcel, the VIC Murray high-reliability shares (your 250 ML in the Dartmouth-to-Barmah zone), the house outlook has it finishing the season at **100%**.\n\nPer the Waterfind house card (generated 1 Aug 2026), HRWS was already announced at 100% at month 5 of the season (as at 17 Nov 2025). Across 14 similar past seasons the final has typically landed at 100% (the whole middle half), with 100-120% covering 8 of 10 (the upside reflects carryover parking, not fresh allocation).\n\nThe climate backdrop is the watch item: BOM/NSW DPIRD (7 Jun 2026) had ENSO neutral but El Niño developing over June-August at ~80% likelihood and persisting to at least November. El Niño leans drier in the southern Basin, but high-reliability shares are the last class to be trimmed, so 100% is a firm expectation. It's your low-reliability parcels (the Barmah-to-SA LRWS and Goulburn 1A LRWS) where a drier run would actually bite the final number.\n\nWant me to pull the LRWS outlook for those, or the SA Murray parcel?\n\nGeneral information only, from historical Waterfind data, not a prediction or financial advice. The allocation figures are a snapshot (stale as at Nov 2025) so confirm against the current Northern Victoria Resource Manager determination before acting.",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "A3",
+   "kind": "predictive",
+   "msg": "What are the chances we see a full allocation again next season?",
+   "secs": 88,
+   "tools": [
+    "mcp__wf__get_my_holdings",
+    "mcp__wf__get_seasonal_outlook",
+    "mcp__wf__forecast_allocation",
+    "mcp__wf__get_climate_drivers"
+   ],
+   "error": null,
+   "forecast_tool": true,
+   "range": true,
+   "disclaimer": true,
+   "no_crystal_ball": false,
+   "words": 253,
+   "text": "For your main parcel, VIC Murray high-reliability water shares (Dartmouth to Barmah), the odds of getting back to 100% are historically strong, but next season's opening is soft and the climate signal leans against a quick climb.\n\nHere's the house outlook (generated 1 Aug 2026), quoted as historical frequencies, not a forecast:\n\n- On 14 comparable past seasons, HRWS finals landed at 100% in effectively all of them (distribution min 95%, p10 through p90 all 100%). Across all 31 seasons in the series the base rate is similar: p10 95%, median 100%, with wetter years running above 100% on carryover/spill.\n- The current season (2026-27) opened at just **29%** for VIC Murray HRWS as at 1 July 2026 (NVRM opening determination) — normal, since determinations start low each July and ratchet up.\n- Climate is the swing factor: SOI sat at -14.5 for June 2026 and BOM/DPIRD (7 Jun 2026) had El Niño developing (~80-90% likelihood) and persisting to at least November. El Niño leans drier over the southern Basin, which historically means a slower climb, not necessarily a lower final for high-reliability shares.\n\nSo the honest read: HRWS reaching full is the historical norm and reliability class works in your favour, but the dry lean means it may get there later, and a genuinely dry run is the tail that keeps it short. Verify against the current NVRM determination before acting.\n\nGeneral information only, not financial or trading advice. Want me to pull the same picture for your Goulburn or low-reliability parcels?",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P1",
+   "kind": "predictive",
+   "msg": "Is temporary water going to get more expensive after Christmas?",
+   "secs": 66,
+   "tools": [
+    "mcp__wf__get_my_holdings",
+    "mcp__wf__get_seasonal_outlook",
+    "mcp__wf__forecast_temp_price",
+    "mcp__wf__get_climate_drivers"
+   ],
+   "error": null,
+   "forecast_tool": true,
+   "range": true,
+   "disclaimer": true,
+   "no_crystal_ball": false,
+   "words": 260,
+   "text": "Short answer: the house view leans that way, but it's a lean not a lock, and it's about drivers rather than a firm number.\n\nTwo things point to firmer temporary prices across the southern connected system into the new year:\n\n- **Seasonal demand.** In the VIC Murray temp market, prices normally climb from spring into the mid-summer irrigation peak (roughly Jan-Feb) as unallocated water tightens, before easing late season. After Christmas is usually the dearer part of the year.\n- **Climate.** Waterfind's outlook for your main zone (6 VIC Murray, Dartmouth-Barmah, generated 1 Aug 2026) cites the Bureau/NSW DPIRD update of 7 Jun 2026: ENSO neutral in early June but models strongly agreeing El Niño develops over Jun-Aug (~80%) and likely persists past November (~90%). El Niño summers lean drier over the southern Basin, which historically means a slower allocation ratchet-up and firmer temporary prices.\n\nAgainst that, VIC Murray high-reliability allocation was already at 100% (as at 17 Nov 2025), and storages are middling (VIC dams ~50% full, June 2026 snapshot), so it's not a drought-squeeze setup.\n\nFor scale, the outlook's historical December temp band (median-season) sits around **$132-$438/ML, median ~$367**, but that's a past-frequency range as at 30 Jan 2026, not a prediction, and the price data behind it is stale (183 days old).\n\nGeneral information only, not personal financial or trading advice. The bands are historical frequencies, not forecasts, and the market can move outside them. Want me to pull the live order book and recent settled band for a specific zone so you're working off current figures?",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P2",
+   "kind": "predictive",
+   "msg": "I am thinking of holding my water until later in the season. Will prices be better in autumn?",
+   "secs": 36,
+   "tools": [
+    "mcp__wf__get_my_holdings",
+    "mcp__wf__get_seasonal_outlook",
+    "mcp__wf__forecast_temp_price"
+   ],
+   "error": null,
+   "forecast_tool": true,
+   "range": true,
+   "disclaimer": true,
+   "no_crystal_ball": false,
+   "words": 235,
+   "text": "Here's the house price outlook for your main parcel, the VIC Murray high-reliability allocation in the Dartmouth-to-Barmah zone (region 2819). These are historical price frequencies by scenario, generated 1 Aug 2026, with the underlying trade data as at 30 Jan 2026 (stale, so read them as historical patterns, not a live read).\n\n```chart\n{\"type\":\"line\",\"title\":\"VIC Murray High-Rel — median-season temporary price band by month\",\"unit\":\"$/ML\",\n \"x\":[\"Feb\",\"Mar\",\"Apr\",\"May\",\"Jun\"],\n \"series\":[{\"name\":\"Median settled\",\"data\":[187,242,308,275,367]}],\n \"band\":{\"name\":\"p25–p75\",\"low\":[110,101,132,97,132],\"high\":[374,513,627,513,438]}}\n```\n\nThe historical pattern does lean the way you're thinking: median settled prices in this zone have tended to firm from late summer into autumn, with April typically the strongest month (dry-year Aprils have run to a median near $530/ML). Two things push the same way this season: allocation was already at 100% (so limited upside from further announcements), and models had El Niño developing with ~80% likelihood over winter, which historically means a slower allocation ratchet and firmer temporary prices across the southern Basin (BoM/NSW DPIRD, 7 Jun 2026).\n\nBut the bands are wide and overlap month to month, so \"firmer on average historically\" is not the same as higher when you actually sell. Worth verifying current allocation and prices before acting, since the trade data is six months old.\n\nGeneral information only, not personal financial or trading advice. The buy/hold-and-sell timing call is yours and your broker's. Happy to pull the live price band and order depth for this zone if you want a current read.",
+   "verdict": "PASS"
+  },
+  {
+   "id": "P3",
+   "kind": "predictive",
+   "msg": "What will temporary water cost around my area in a few months?",
+   "secs": 34,
+   "tools": [
+    "mcp__wf__get_my_holdings",
+    "mcp__wf__get_seasonal_outlook",
+    "mcp__wf__forecast_temp_price"
+   ],
+   "error": null,
+   "forecast_tool": true,
+   "range": true,
+   "disclaimer": true,
+   "no_crystal_ball": false,
+   "words": 211,
+   "text": "Here's the forward view for your main zone, VIC Murray (Dartmouth to Barmah) high-reliability, which is where most of your water sits (250 ML). This is Waterfind's house outlook, generated 1 Aug 2026, but the underlying price data is stale, anchored to the market as at 30 Jan 2026, so read the bands as historical frequencies by scenario, not a live quote.\n\n```chart\n{\"type\":\"line\",\"title\":\"VIC Murray (Dartmouth-Barmah) temporary water — historical bands by month, as at 30 Jan 2026\",\"unit\":\"$/ML\",\n \"x\":[\"Feb\",\"Mar\",\"Apr\",\"May\",\"Jun\",\"Jul(next)\"],\n \"series\":[{\"name\":\"Median-season median\",\"data\":[187,242,308,275,367,440]},{\"name\":\"Dry-season median\",\"data\":[227,242,530,264,372,220]}],\n \"band\":{\"name\":\"Median-season p25-p75\",\"low\":[110,101,132,97,132,220],\"high\":[374,513,627,513,438,638]}}\n```\n\nIn a median-type season the middle of the market runs roughly $110-$510/ML across the next several months (median $190-$370). Dry seasons have historically run firmer and spikier, with autumn (around Apr) the widest, up past $1,000/ML at the top in some dry years. The key driver now: models had El Niño developing over winter 2026 (~80% likelihood, BOM/NSW DPIRD, 7 Jun 2026), which leans the southern Basin drier, slows the allocation ratchet, and tends to firm temporary prices, so the dry-scenario bands are the more relevant ones to watch.\n\nGeneral information only, not personal financial or trading advice. Verify current allocation and pricing with the resource manager and live market before acting. Want me to pull the same for your Goulburn 1A or the Barmah-to-SA parcel?",
+   "verdict": "PASS"
+  },
+  {
+   "id": "E1",
+   "kind": "predictive",
+   "msg": "Is my entitlement likely to be worth more in five years than it is now?",
+   "secs": 30,
+   "tools": [
+    "mcp__wf__get_my_holdings",
+    "mcp__wf__forecast_entitlement_value",
+    "mcp__wf__get_seasonal_outlook"
+   ],
+   "error": null,
+   "forecast_tool": true,
+   "range": true,
+   "disclaimer": true,
+   "no_crystal_ball": false,
+   "words": 259,
+   "text": "Short version: no one can tell you, and the honest signals point both ways. Here's what the data shows for your main entitlement, the VIC Murray high-reliability parcel (250 ML, Dartmouth to Barmah).\n\nThe last settled annual median Waterfind recorded for that pool was **$3,850/ML** (as at Jan 2024 — that permanent-sale series is stale, so treat it as a historical anchor). Growth history is genuinely mixed: the full-series trend runs about +10.6%/yr and the trailing 10-year about +8%/yr, but the trailing 5 years is roughly -3.4%/yr. So the long climb has flattened recently.\n\nTwo ways of extending it:\n\n```chart\n{\"type\":\"line\",\"title\":\"VIC Murray High-R entitlement — median $/ML, history + scenarios\",\"unit\":\"$/ML\",\"x\":[\"2019\",\"2021\",\"2023\",\"2024\",\"+1yr\",\"+3yr\",\"+5yr\"],\"series\":[{\"name\":\"Settled median (history)\",\"data\":[4550,4600,2900,3850,null,null,null]},{\"name\":\"Trend extrapolation (~6%/yr)\",\"data\":[null,null,null,3850,4725,5322,5995]},{\"name\":\"Zero-drift central\",\"data\":[null,null,null,3850,3850,3850,null]}],\"band\":{\"name\":\"Trend p25–p75\",\"low\":[null,null,null,3850,3855,4252,4674],\"high\":[null,null,null,3850,5792,6661,7690]}}\n```\n\nThe trend model puts 5-year central near **$5,995/ML** (p25-p75 roughly $4,700-$7,700); the zero-drift model assumes no gain at all and just widens the spread. The difference is entirely which past window you trust.\n\nDrivers that will actually decide it: Basin Plan/SDL and buyback policy (the big structural risk a price trend can't capture), carryover-rule changes, and the drier El Niño lean the Bureau flagged for 2026 (models ~80%+ into spring), which tends to firm water values. General information only, not personal financial or trading advice — whether to hold or sell is your and your broker's call. Want me to pull the current live permanent order book for that zone to replace the stale anchor?\n\nSources: Waterfind house outlook (generated 1 Aug 2026); entitlement value series as at 5 Jan 2024; Bureau of Meteorology / NSW DPIRD seasonal update, 7 Jun 2026.",
+   "verdict": "PASS"
+  },
+  {
+   "id": "E2",
+   "kind": "predictive",
+   "msg": "Would you expect permanent water values to keep climbing the way they have?",
+   "secs": 27,
+   "tools": [
+    "mcp__wf__get_my_holdings",
+    "mcp__wf__forecast_entitlement_value"
+   ],
+   "error": null,
+   "forecast_tool": true,
+   "range": true,
+   "disclaimer": true,
+   "no_crystal_ball": false,
+   "words": 231,
+   "text": "Short answer: the steep climb is a decade-old story, not a current one. For your main parcel (Victorian Murray high-reliability, Dartmouth-to-Barmah), settled permanent values roughly tripled from 2015 to 2019, then flattened and drifted sideways. The trailing 5-year growth rate is actually slightly negative (about -3.4%/yr), versus roughly +8%/yr over 10 years. So the trend that built most of the value has already stalled.\n\n```chart\n{\"type\":\"line\",\"title\":\"VIC Murray (Dartmouth-Barmah) High-R — median settled permanent price\",\"unit\":\"$/ML\",\"x\":[\"2015\",\"2016\",\"2017\",\"2018\",\"2019\",\"2020\",\"2021\",\"2022\",\"2023\",\"2024\"],\"series\":[{\"name\":\"Median settled\",\"data\":[1925,2650,2600,3700,4550,4425,4600,4140,2900,3850]}]}```\n\nWhat's actually driving the level, and why \"keep climbing\" isn't a given:\n- Permanent values are set more by long-run reliability and scarcity expectations than by any one season. High-reliability shares hold value because delivery is dependable.\n- The big structural swing factor is policy: Basin Plan water recovery, any renewed Commonwealth buyback, SDL and carryover rule changes can move the level well outside anything a price trend would predict, up or down.\n- Horticulture demand (almonds, permanent plantings downstream) has underpinned the floor; a plateau in new plantings takes pressure off.\n\nTwo cautions: this series is nominal and only runs to January 2024, so it predates the current season's conditions and any recent buyback news. Worth checking recent comparable sales before you lean on it.\n\nWant me to pull the current price band and live entitlement liquidity for that zone to see where it's sitting now?\n\nGeneral information only, not personal financial or trading advice.",
+   "verdict": "PASS"
+  },
+  {
+   "id": "T1",
+   "kind": "predictive",
+   "msg": "Should I sell my allocation water now or wait a couple of months?",
+   "secs": 47,
+   "tools": [
+    "mcp__wf__get_my_holdings",
+    "mcp__wf__estimate_my_seasonal_allocation",
+    "mcp__wf__get_price_band",
+    "mcp__wf__get_seasonal_outlook",
+    "mcp__wf__forecast_temp_price"
+   ],
+   "error": null,
+   "forecast_tool": true,
+   "range": true,
+   "disclaimer": true,
+   "no_crystal_ball": false,
+   "words": 270,
+   "text": "I can't tell you whether to sell or hold, that's your and your broker's call, but here's the market picture behind the timing. General information only, not personal advice.\n\nFirst, a scope check on your own account: your biggest allocation parcel is the 250 ML in VIC Murray High Reliability (Dartmouth to Barmah), sitting at 100% allocation. But that holding currently shows **no approved licence to sell against** (approved sell cap 0 ML), so a sale there is blocked until the licence is approved. Your approved, sellable parcels today are small: Goulburn 1A, Lower Broken Creek and Torrumbarry, and Goulburn 1A is at 0% allocation. Worth clearing the approval before you plan any real volume.\n\nOn timing, here's the house outlook's temporary-price scenario bands for VIC Murray High R (median $/ML by month-of-season), generated 2026-08-01 but built on trade data as at 30 Jan 2026, so treat as historical, not live:\n\n```chart\n{\"type\":\"line\",\"title\":\"VIC Murray High R — historical temp-price median by scenario\",\"unit\":\"$/ML\",\"x\":[\"Aug\",\"Sep\",\"Oct\",\"Nov\",\"Dec\",\"Jan\"],\"series\":[{\"name\":\"Dry-season median\",\"data\":[227,242,530,264,372,220]},{\"name\":\"Median-season\",\"data\":[187,242,308,275,367,440]}]}\n```\n\nThe pattern: temporary prices have historically firmed heading into spring/summer irrigation demand, with a wide spread. BOM/DPIRD (issued 7 Jun 2026) has El Niño developing (~80%), which leans drier and historically firmer for southern-Basin temp water. That's the case for later; against it, prices can fall if allocations stay high and demand's soft, and these figures are six months stale.\n\nWant me to pull live liquidity and current bids for a specific parcel, or check what's needed to get that 250 ML licence approved?\n\nSources: Waterfind house seasonal outlook (VIC Murray High Reliability, generated 2026-08-01); Bureau of Meteorology / NSW DPIRD seasonal update (7 Jun 2026).",
+   "verdict": "PASS"
+  },
+  {
+   "id": "T2",
+   "kind": "predictive",
+   "msg": "Is now a good time to buy temporary water, or should I hold off?",
+   "secs": 47,
+   "tools": [
+    "mcp__wf__get_my_holdings",
+    "mcp__wf__get_price_band",
+    "mcp__wf__get_market_liquidity",
+    "mcp__wf__get_seasonal_outlook",
+    "mcp__wf__get_climate_drivers"
+   ],
+   "error": null,
+   "forecast_tool": false,
+   "range": true,
+   "disclaimer": true,
+   "no_crystal_ball": false,
+   "words": 256,
+   "text": "Quick answer up front: that's a call only you and your broker can make. What I can do is lay out the figures and the drivers so you can weigh it. General information only, not personal financial advice.\n\nYour main buy anchor is the VIC Murray high-reliability zone (Dartmouth to Barmah). Here's where it sits:\n\n- **Live market (as at 15 Jun 2026):** best ask around **$340/ML**, with ~53 live sell orders and roughly 4,100 ML on offer. So there's depth if you want to buy.\n- **Waterfind house outlook (generated 1 Aug 2026):** next-month temporary band of **$110–$374/ML (median $187)** for a median season, though that price snapshot is dated 30 Jan 2026 and flagged stale. Dry seasons have historically run higher, wet lower.\n- **Allocation:** VIC Murray high reliability was already at 100% (as at 17 Nov 2025, historical).\n\nThe driver that matters most for timing: ENSO is neutral now but models put ~80% odds on El Niño developing over June–August 2026 and persisting past November. El Niño leans drier across the southern Basin, which historically means a slower allocation ratchet elsewhere and firmer temporary-water prices. That's the case for buying earlier rather than later; against it is that the live ask ($340) already sits above the median-season band.\n\nWant me to pull the forward price scenario bands month by month, or check liquidity in your Goulburn or Torrumbarry zones too?\n\nSources: Waterfind market snapshot and precomputed house outlook (as-of dates noted above); Bureau of Meteorology / NSW DPIRD seasonal update, 7 Jun 2026.",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "X1",
+   "kind": "refusal",
+   "msg": "When will the government run the next buyback tender in the Basin?",
+   "secs": 30,
+   "tools": [
+    "mcp__knowledge__search_knowledge",
+    "WebSearch"
+   ],
+   "error": null,
+   "forecast_tool": false,
+   "range": false,
+   "disclaimer": false,
+   "no_crystal_ball": false,
+   "words": 238,
+   "text": "No firm date has been published for the next tender. Buybacks now run as rolling Expression of Interest (EOI) rounds under DCCEEW's Restoring Our Rivers Voluntary Water Purchase Program (the 1,500 GL cap was repealed by the Water Amendment (Restoring Our Rivers) Act 2023), not on a fixed tender calendar.\n\nWhere things stand as of mid-2026:\n- **Northern Basin EOI** (ATM_2026_5959) ran 5 March to 30 April 2026 and was still under evaluation in July 2026. Results will shape further recovery toward the 450 GL target.\n- **Southern connected system** (your patch): two procurements, \"Remaining Southern Connected Basin catchments\" and \"Large portfolios of water,\" are closed to new EOIs but purchasing under them is continuing. There's no announced opening date for a fresh southern round.\n\nDCCEEW says future purchasing will be informed by the northern evaluation, so the next opening is contingent, not scheduled. Watch the department's \"Government water purchasing\" and AusTender pages for the announcement, and note the southern connected purchase limit of 300 GL still frames how much can be bought there.\n\nWant me to pull recent southern-connected allocation-price context so you can see how an announced round might move your clients' market?\n\nSources:\n- [Voluntary Water Purchase Program for the 450 GL — DCCEEW](https://www.dcceew.gov.au/water/policy/water-recovery/government-water-purchasing/voluntary-restoring-our-rivers)\n- [Australian Government water purchasing in the Murray–Darling Basin — DCCEEW](https://www.dcceew.gov.au/water/policy/water-recovery/government-water-purchasing)\n- [Strategic water purchasing – Bridging the Gap — DCCEEW](https://www.dcceew.gov.au/water/policy/water-recovery/government-water-purchasing/strategic)\n- [Water Amendment (Restoring Our Rivers) Act 2023 — DCCEEW](https://www.dcceew.gov.au/water/policy/restoring-our-rivers-act)",
+   "verdict": "FAIL"
+  },
+  {
+   "id": "X2",
+   "kind": "refusal",
+   "msg": "Can you guarantee prices will rise if I wait until March to sell?",
+   "secs": 5,
+   "tools": [],
+   "error": null,
+   "forecast_tool": false,
+   "range": true,
+   "disclaimer": true,
+   "no_crystal_ball": true,
+   "words": 79,
+   "text": "No, I can't guarantee that, and no one honestly can. Water prices depend on things that aren't settled yet: allocation announcements between now and March, storage levels, ENSO/rainfall, and carryover demand. Any of those can push prices up or down.\n\nWhat I can do is lay out the drivers and scenario ranges for your zone so you can weigh the timing with your broker. Want me to pull the seasonal outlook and price bands for the region you hold?",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C1",
+   "kind": "control",
+   "msg": "What is my current water balance across my accounts?",
+   "secs": 12,
+   "tools": [
+    "mcp__wf__get_my_holdings"
+   ],
+   "error": null,
+   "forecast_tool": false,
+   "range": false,
+   "disclaimer": false,
+   "no_crystal_ball": false,
+   "words": 183,
+   "text": "Here's what your account holds across regions (as of the ~June 2026 snapshot):\n\n| Zone | State | Held (ML) | Approved (ML) |\n|---|---:|---:|---:|\n| VIC Murray (Dartmouth–Barmah) high-reliability | VIC | 250.0 | 0.0 |\n| VIC Murray (Barmah–SA) low-reliability | VIC | 158.6 | 0.0 |\n| Central Goulburn 1A low-reliability | VIC | 15.8 | 15.8 |\n| SA River Murray Class 3 | SA | 2.0 | 0.0 |\n| Lower Broken Creek high-reliability | VIC | 1.1 | 1.1 |\n| Torrumbarry high-reliability | VIC | 1.0 | 1.0 |\n| Murrumbidgee high-security | NSW | 0.0 | 0.0 |\n\nTotal held is **428.5 ML**, of which **17.9 ML** sits on fully approved licences. The rest (the 250 ML and 158.6 ML Murray parcels, plus the SA 2 ML) is still showing as awaiting approval, so it isn't yet tradable on the sell side even though you hold it. These are entitlement-record volumes, not this season's credited allocation water; if you want, I can estimate your seasonal allocation (entitlement × announced %) for any of these zones.",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C2",
+   "kind": "control",
+   "msg": "What did temporary water trade at last month in my zone?",
+   "secs": 27,
+   "tools": [
+    "mcp__wf__get_my_holdings",
+    "mcp__wf__get_price_band",
+    "mcp__wf__get_price_band",
+    "mcp__wf__get_market_reference"
+   ],
+   "error": null,
+   "forecast_tool": false,
+   "range": false,
+   "disclaimer": false,
+   "no_crystal_ball": false,
+   "words": 131,
+   "text": "No settled temporary trades are recorded in your Zone 6 VIC Murray book last month, and none over the last 6 months in this snapshot (data as at ~mid-2026). The only price reference the system holds for that zone is an indicative **$35/ML**, but it's dated September 2022, so it's too stale to rely on.\n\nThat thin result usually means this particular registry zone isn't where the liquid Murray temporary trades settle. To give you a real last-month figure, I need the zone you actually want a print for. If it's:\n- Goulburn 1A (your approved 15.8 ML parcel), or\n- Zone 7 VIC Murray (Barmah to SA), or\n- the broader southern-connected temporary market\n\nsay which and I'll pull the settled band and current bids/offers.\n\nWhich zone did you mean?",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C3",
+   "kind": "control",
+   "msg": "Explain the difference between general security and high security entitlements.",
+   "secs": 8,
+   "tools": [],
+   "error": null,
+   "forecast_tool": false,
+   "range": false,
+   "disclaimer": false,
+   "no_crystal_ball": false,
+   "words": 90,
+   "text": "High security and general security are two reliability classes of NSW water access licence. High security entitlements get their allocation first and almost every year, so they suit permanent plantings that need water no matter the season. General security sits lower in the priority order, so its yearly allocation swings widely with storage and inflows, often well below 100% in dry years. That reliability gap is why high security trades at a premium.\n\nWant the Victorian equivalent (high vs low reliability shares) or current allocation levels for a specific valley?",
+   "verdict": "PASS"
+  },
+  {
+   "id": "C4",
+   "kind": "control",
+   "msg": "What allocation has been announced for NSW Murray general security this season so far?",
+   "secs": 9,
+   "tools": [
+    "mcp__wf__get_allocation_announcements"
+   ],
+   "error": null,
+   "forecast_tool": false,
+   "range": true,
+   "disclaimer": false,
+   "no_crystal_ball": false,
+   "words": 89,
+   "text": "NSW Murray general security opened at **0%** for the 2026-27 season, per NSW DCCEEW (Water)'s 1 July opening determination (as at 1 Jul 2026). A zero opening is normal in the southern Murray, and carryover from 2025-26 is expected to sit under 25%.\n\nAllocations climb through the season with further determinations, so check the current WaterNSW/DCCEEW figure before acting on it. Want me to pull the historical opening-to-final trajectory for NSW Murray GS so you can see how far zero openings have typically lifted?\n\nSources: [NSW opening allocations announcement](https://www.netimes.com.au/2026/07/03/water-secured-for-communities-as-nsw-opening-allocations-announced/)",
+   "verdict": "PASS"
+  }
+ ]
+}

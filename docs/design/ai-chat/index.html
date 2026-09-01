@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waterfind AI · Water-Rights Assistant — wireframe gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../staff-console/wf-console.css">
+<link rel="stylesheet" href="wf-ai.css">
+<style>
+  body{overflow:auto}
+  .gal{max-width:1180px; margin:0 auto; padding:34px 24px 60px}
+  .gal h1{font-size:26px; font-weight:600; color:var(--wf-ink); display:flex; align-items:center; gap:14px}
+  .gal .lede{color:var(--wf-muted2); font-size:14.5px; line-height:1.6; margin:12px 0 26px; max-width:840px}
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:#fff; box-shadow:var(--wf-shadow-1); text-decoration:none; color:inherit; display:flex; flex-direction:column; transition:.18s; border-top:4px solid var(--wf-blue)}
+  .card:hover{box-shadow:var(--wf-shadow-2); transform:translateY(-2px); text-decoration:none}
+  .card.req{border-top-color:var(--wf-orange)}
+  .card .top{display:flex; align-items:center; gap:13px; padding:18px 18px 6px}
+  .card .ico{width:46px; height:46px; border-radius:10px; background:var(--ai-tint); color:var(--wf-blue); display:grid; place-items:center; font-size:21px; flex:0 0 46px}
+  .card.req .ico{background:#fdefdd; color:var(--wf-orange)}
+  .card .num{font-size:11px; letter-spacing:.14em; color:var(--wf-muted); text-transform:uppercase}
+  .card h2{font-size:17px; font-weight:600; color:var(--wf-ink); margin-top:2px}
+  .card p{padding:2px 18px 14px; color:var(--wf-muted2); font-size:13.3px; line-height:1.55; flex:1}
+  .card .foot{padding:11px 18px; border-top:1px solid var(--wf-surface); font-size:12px; color:var(--wf-blue); display:flex; align-items:center; gap:7px}
+  .tagline{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--wf-orange); border:1px solid var(--wf-orange); border-radius:3px; padding:2px 8px; margin-left:8px}
+  .disc{margin-top:26px; font-size:12.5px; color:var(--wf-muted2); background:#fff; border-left:3px solid var(--wf-orange); padding:13px 16px; box-shadow:var(--wf-shadow-1); line-height:1.6}
+  .patrow{display:flex; gap:9px; flex-wrap:wrap; margin:2px 0 8px}
+</style>
+</head>
+<body>
+<div class="gal">
+  <h1><span class="ai-mark lg"><i class="fa fa-tint"></i><span class="spark"><i class="fa fa-star"></i></span></span> Waterfind AI — Water-Rights Assistant</h1>
+  <p class="lede">Five wireframes exploring <b>how</b> a grounded water-rights chat assistant could live inside the broker console — the same
+  patterns you'd A/B in a real product. All reuse the console shell (brand header, the 64px hover-expand <b>left navigation ribbon</b>,
+  navy/orange bars) so the assistant feels like one product with the staff tooling. Answers are grounded in the loaded
+  <code>waterfind-db</code> (Kyle Egan · Njernda, region 515), always cite the table behind a figure, flag estimates &amp; stale data,
+  respect the <code>tenant_to_user</code> scope, and never place a trade themselves. <b>Reference only — no stack chosen</b> (see repo <code>CLAUDE.md</code>).</p>
+
+  <div class="grid">
+    <a class="card req" href="01-assistant-workspace.html">
+      <div class="top"><div class="ico"><i class="fa fa-comments"></i></div><div><div class="num">01 · Bottom of the ribbon</div><h2>Assistant Workspace <span class="tagline"><i class="fa fa-folder-o"></i> fully tabbed</span></h2></div></div>
+      <p>The required screen: a full page pinned to the <b>bottom of the left nav ribbon</b>, visible on login, organised as <b>five working tabs</b> — Ask (the live conversation), Threads, Prompt Library, Knowledge &amp; Sources, and Guardrails.</p>
+      <div class="foot"><i class="fa fa-arrow-right"></i> Open wireframe</div>
+    </a>
+
+    <a class="card" href="02-copilot-dock.html">
+      <div class="top"><div class="ico"><i class="fa fa-columns"></i></div><div><div class="num">02 · Docked panel</div><h2>Copilot Dock</h2></div></div>
+      <p>A context-aware assistant drawer docked to the right of whatever screen you're on. It watches the live order book for region 515, answers in place, and pre-fills a place-order draft you still review &amp; submit.</p>
+      <div class="foot"><i class="fa fa-arrow-right"></i> Open wireframe</div>
+    </a>
+
+    <a class="card" href="03-floating-widget.html">
+      <div class="top"><div class="ico"><i class="fa fa-comment"></i></div><div><div class="num">03 · Floating widget</div><h2>Chat Launcher</h2></div></div>
+      <p>The familiar bottom-right bubble that pops a compact conversation over any page — quick-start chips, a settlement-status answer with a live progress card, and a typing indicator. Lowest-footprint way to ship first.</p>
+      <div class="foot"><i class="fa fa-arrow-right"></i> Open wireframe</div>
+    </a>
+
+    <a class="card" href="04-command-palette.html">
+      <div class="top"><div class="ico"><i class="fa fa-magic"></i></div><div><div class="num">04 · ⌘K overlay</div><h2>Command Palette</h2></div></div>
+      <p>Keyboard-first, spotlight-style ask-anything (⌘K). Returns an inline grounded answer with a net-proceeds card and citations, blended with jump-to-screen and run-a-prompt commands. For power users who live on the keyboard.</p>
+      <div class="foot"><i class="fa fa-arrow-right"></i> Open wireframe</div>
+    </a>
+
+    <a class="card" href="05-split-canvas.html">
+      <div class="top"><div class="ico"><i class="fa fa-object-group"></i></div><div><div class="num">05 · Split canvas</div><h2>Workspace + Canvas</h2></div></div>
+      <p>Two-pane research surface: conversation on the left, a live artifact on the right — a prioritised call list rendered as a table, chart, the exact (tenancy-gated) SQL, and its sources. For deeper, multi-step advisory work.</p>
+      <div class="foot"><i class="fa fa-arrow-right"></i> Open wireframe</div>
+    </a>
+
+    <a class="card" href="../staff-console/index.html" style="border-top-color:var(--wf-muted)">
+      <div class="top"><div class="ico" style="background:var(--wf-surface);color:var(--wf-muted2)"><i class="fa fa-th-large"></i></div><div><div class="num">Companion set</div><h2>Broker / Staff Console</h2></div></div>
+      <p>The five staff-tooling screens these assistant patterns plug into — Broker Desk, Markets &amp; Order Book, Client 360, Settlements &amp; Trust, and the tabbed Admin console. The assistant links into all of them.</p>
+      <div class="foot"><i class="fa fa-arrow-right"></i> Open the console gallery</div>
+    </a>
+  </div>
+
+  <div class="disc"><i class="fa fa-info-circle"></i> <b>Wireframe / reference only.</b> Design artifacts, not a committed plan or a chosen stack. Figures are illustrative (real
+  names/holdings/trades from the sanitized dump; emails are placeholders). Grounding notes come from <code>docs/broker-advisory/</code> and
+  <code>docs/architecture/</code>. If a direction here is chosen, write a design memo in <code>docs/design/</code> before any implementation (per <code>CLAUDE.md</code>).</div>
+</div>
+</body>
+</html>

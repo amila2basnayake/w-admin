@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Broker Desk · Waterfind Staff Console (wireframe)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="wf-console.css">
+</head>
+<body>
+<div class="wf-app">
+
+  <!-- ══ top header (shared shell) ══ -->
+  <header class="wf-header">
+    <div class="wf-logo">
+      <i class="fa fa-tint drop"></i>
+      <span class="word"><b>WATER</b><span>FIND</span></span>
+    </div>
+    <span class="console-tag">Broker Console</span>
+    <div class="spacer"></div>
+    <div class="wf-search"><i class="fa fa-search"></i><input placeholder="Search clients, markets, trade #…"></div>
+    <span class="wf-wire">WIREFRAME</span>
+    <div class="wf-welcome">Welcome back,<br><b>Dion Martin</b> · <small>Broker · Sales</small></div>
+    <div class="wf-hicon sm"><i class="fa fa-bell"></i><span class="dot">4</span></div>
+    <div class="wf-hicon"><i class="fa fa-user"></i></div>
+  </header>
+
+  <div class="wf-body">
+    <!-- ══ left navigation ribbon (shared) — Admin pinned to the BOTTOM ══ -->
+    <nav class="wf-rail">
+      <ul>
+        <li class="active"><a href="01-broker-desk.html"><span class="stripe"></span><span class="ic"><i class="fa fa-tachometer"></i></span><span class="lbl">Broker Desk</span></a></li>
+        <li><a href="02-markets-orderbook.html"><span class="stripe"></span><span class="ic"><i class="fa fa-exchange"></i></span><span class="lbl">Markets &amp; Order Book</span></a></li>
+        <li><a href="03-client-360.html"><span class="stripe"></span><span class="ic"><i class="fa fa-users"></i></span><span class="lbl">Clients<span class="cnt">142</span></span></a></li>
+        <li><a href="04-settlements-trust.html"><span class="stripe"></span><span class="ic"><i class="fa fa-university"></i></span><span class="lbl">Settlements &amp; Trust<span class="cnt">6</span></span></a></li>
+        <li class="bottom"><a href="05-admin-console.html"><span class="stripe"></span><span class="ic"><i class="fa fa-cog"></i></span><span class="lbl">Admin &amp; Settings</span></a></li>
+      </ul>
+    </nav>
+
+    <!-- ══ content ══ -->
+    <main class="wf-content">
+      <div class="wf-crumbs">Home <i class="fa fa-angle-right"></i> Broker Desk</div>
+      <div class="wf-titlebar">
+        BROKER DESK
+        <span class="sub">Your book · southern-connected Murray–Darling markets · as of 1 Jul 2026</span>
+        <span class="spacer"></span>
+        <span class="tb-act"><i class="fa fa-calendar"></i> This season</span>
+        <span class="tb-act"><i class="fa fa-refresh"></i> Refresh</span>
+      </div>
+
+      <!-- KPI row -->
+      <div class="wf-kpis k4">
+        <div class="wf-kpi">
+          <div class="lab"><i class="fa fa-users"></i> My clients</div>
+          <div class="num">142</div>
+          <div class="delta up"><i class="fa fa-arrow-up"></i> 3 new this week</div>
+        </div>
+        <div class="wf-kpi orange">
+          <div class="lab"><i class="fa fa-exchange"></i> Live orders · my markets</div>
+          <div class="num">27</div>
+          <div class="delta flat">Best bid <b>$420</b>/ML · 5,635 ML depth</div>
+        </div>
+        <div class="wf-kpi purple">
+          <div class="lab"><i class="fa fa-university"></i> Settlements in progress</div>
+          <div class="num">6</div>
+          <div class="delta flat">$214,380 held in trust</div>
+        </div>
+        <div class="wf-kpi green">
+          <div class="lab"><i class="fa fa-line-chart"></i> Brokerage · MTD</div>
+          <div class="num">$48.2<small>k</small></div>
+          <div class="delta up"><i class="fa fa-arrow-up"></i> 12% vs last month</div>
+        </div>
+      </div>
+
+      <div class="cols c-2-1">
+        <!-- LEFT column -->
+        <div>
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-star-o"></i> Watched markets <span class="spacer"></span><span class="ctrl"><i class="fa fa-sliders"></i> Temporary</span><span class="ctrl"><i class="fa fa-plus"></i> Add market</span></div>
+            <div class="wf-panel-body flush">
+              <table class="wf-table">
+                <thead>
+                  <tr><th>Market <span class="muted tiny">(region)</span></th><th class="r">Best bid</th><th class="r">Best ask</th><th class="r">Last</th><th class="r">Bid depth</th><th class="c">Season %</th><th class="c">Status</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="strong">7 VIC Murray (Barmah→SA) GMW – High R <span class="sub">515</span></td><td class="r pos">$420</td><td class="r">$445</td><td class="r">$415</td><td class="r">5,635 ML</td><td class="c">100%</td><td class="c"><span class="pill live dot">Live</span></td></tr>
+                  <tr><td class="strong">1A Greater Goulburn – High R <span class="sub">1165601</span></td><td class="r pos">$408</td><td class="r">$430</td><td class="r">$412</td><td class="r">3,120 ML</td><td class="c">100%</td><td class="c"><span class="pill live dot">Live</span></td></tr>
+                  <tr><td class="strong">3 Lower Goulburn – High R <span class="sub">509</span></td><td class="r pos">$402</td><td class="r">$438</td><td class="r">$405</td><td class="r">1,890 ML</td><td class="c">100%</td><td class="c"><span class="pill live dot">Live</span></td></tr>
+                  <tr><td class="strong">7 VIC Murray (Barmah→SA) GMW – Low R <span class="sub">311341</span></td><td class="r pos">$196</td><td class="r">$240</td><td class="r">$210</td><td class="r">640 ML</td><td class="c">0%</td><td class="c"><span class="pill warn dot">Thin</span></td></tr>
+                  <tr><td class="strong">NSW Murray below Barmah – GS <span class="sub">1044</span></td><td class="r pos">$388</td><td class="r">$421</td><td class="r">$395</td><td class="r">2,410 ML</td><td class="c">54%</td><td class="c"><span class="pill live dot">Live</span></td></tr>
+                  <tr><td class="strong">SA River Murray – Class 3 <span class="sub">318</span></td><td class="r muted">—</td><td class="r">$460</td><td class="r">$455</td><td class="r muted">0 ML</td><td class="c">100%</td><td class="c"><span class="pill susp dot">STR susp.</span></td></tr>
+                </tbody>
+              </table>
+              <div class="wf-note"><i class="fa fa-info-circle"></i> Prices from settled trades (<code>order_completed → wateroffer</code>); depth is live opposite-side <code>quantity_avelable</code> reachable via <code>order_region</code>, as-of 15 Jun 2026 snapshot. Indicative prices on <code>region</code> are stale (~2022) and not shown.</div>
+            </div>
+          </div>
+
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-history"></i> Recent settled trades <span class="spacer"></span><span class="ctrl"><i class="fa fa-download"></i> Export</span></div>
+            <div class="wf-panel-body flush">
+              <table class="wf-table">
+                <thead><tr><th>Date</th><th>Side</th><th>Client</th><th>Market</th><th class="r">Volume</th><th class="r">Price/ML</th><th class="r">Gross</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">23 Oct 2025</td><td><span class="pill sell">Sell</span></td><td>Kyle Egan · Njernda</td><td>7 VIC Murray – High R</td><td class="r">100 ML</td><td class="r">$300</td><td class="r strong">$30,000</td></tr>
+                  <tr><td class="mono">18 Jun 2026</td><td><span class="pill sell">Sell</span></td><td>Paisley Hill Pastoral</td><td>1A Greater Goulburn – HR</td><td class="r">250 ML</td><td class="r">$412</td><td class="r strong">$103,000</td></tr>
+                  <tr><td class="mono">11 Jun 2026</td><td><span class="pill buy">Buy</span></td><td>Riverina Almonds P/L</td><td>NSW Murray below Barmah</td><td class="r">500 ML</td><td class="r">$395</td><td class="r strong">$197,500</td></tr>
+                  <tr><td class="mono">05 Jun 2026</td><td><span class="pill sell">Sell</span></td><td>Kyle Egan · Njernda</td><td>3 Lower Goulburn – HR</td><td class="r">80 ML</td><td class="r">$405</td><td class="r strong">$32,400</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT column -->
+        <div>
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-check-square-o"></i> My action queue <span class="spacer"></span><span class="ctrl">4 open</span></div>
+            <div class="wf-panel-body">
+              <ul class="tasklist">
+                <li><span class="ti due"><i class="fa fa-phone"></i></span><span class="tx"><b>Follow up — Kyle Egan (Njernda).</b> Sold 100 ML @ $300 in Oct; market now ~$415. Flag they left value on the table.</span><span class="tm">Due today</span></li>
+                <li><span class="ti"><i class="fa fa-file-text-o"></i></span><span class="tx"><b>Countersign transfer</b> — trade #1378061 (Riverina Almonds), authority docs ready.</span><span class="tm">Tomorrow</span></li>
+                <li><span class="ti"><i class="fa fa-handshake-o"></i></span><span class="tx"><b>New EOI</b> — lease-in 300 ML Murrumbidgee GS, matches 2 clients' latent supply.</span><span class="tm">2 days</span></li>
+                <li><span class="ti"><i class="fa fa-comment-o"></i></span><span class="tx"><b>Return call</b> — Paisley Hill re: carryover options before season close.</span><span class="tm">This week</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-bell-o"></i> Standing alerts firing <span class="spacer"></span><span class="ctrl">3</span></div>
+            <div class="wf-panel-body">
+              <ul class="tasklist">
+                <li><span class="ti"><i class="fa fa-arrow-up"></i></span><span class="tx"><b>Price alert</b> — Region 515 temp crossed <b>$420/ML</b> (rule: notify above $400). 3 clients hold here.</span><span class="tm">2h ago</span></li>
+                <li><span class="ti"><i class="fa fa-tint"></i></span><span class="tx"><b>Allocation update</b> — Murrumbidgee GS lifted <b>27%→32%</b> (effective 2 Feb). Latent sell supply unlocked.</span><span class="tm">Today</span></li>
+                <li><span class="ti due"><i class="fa fa-ban"></i></span><span class="tx"><b>Corridor suspended</b> — SA River Murray Class 3 STR gate closed (seasonal). 1 client order parked.</span><span class="tm">Today</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-university"></i> Settlements — needs attention</div>
+            <div class="wf-panel-body">
+              <div style="margin-bottom:14px">
+                <div class="rowflex"><b class="tiny">#1378061 · Riverina Almonds</b><span class="spacer"></span><span class="tiny muted">65%</span></div>
+                <div class="stages"><span class="st done"><span class="n"><i class="fa fa-check"></i></span>Docs</span><span class="st done"><span class="n"><i class="fa fa-check"></i></span>Funds</span><span class="st active"><span class="n">3</span>Authority</span><span class="st"><span class="n">4</span>Payout</span></div>
+                <div class="prog"><i style="width:65%"></i></div>
+              </div>
+              <div>
+                <div class="rowflex"><b class="tiny">#1378057 · Kyle Egan</b><span class="spacer"></span><span class="tiny muted">100%</span></div>
+                <div class="stages"><span class="st done"><span class="n"><i class="fa fa-check"></i></span>Docs</span><span class="st done"><span class="n"><i class="fa fa-check"></i></span>Funds</span><span class="st done"><span class="n"><i class="fa fa-check"></i></span>Authority</span><span class="st done"><span class="n"><i class="fa fa-check"></i></span>Payout</span></div>
+                <div class="prog g"><i style="width:100%"></i></div>
+              </div>
+              <hr class="soft">
+              <a href="04-settlements-trust.html" class="wf-btn wf-btn-default block sm"><i class="fa fa-arrow-right"></i> Open Settlements &amp; Trust</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="tiny muted" style="margin-top:6px"><i class="fa fa-info-circle"></i> Wireframe / reference only — data is illustrative, drawn from the loaded <code>waterfind-db</code> worked example. No stack chosen (see repo <code>CLAUDE.md</code>).</p>
+    </main>
+  </div>
+</div>
+</body>
+</html>

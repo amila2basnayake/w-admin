@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Waterfind Advisory — The Briefing Room (Wireframe 1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#f5efe2; --paper-2:#efe6d4; --card:#fbf7ee;
+    --ink:#1b1916; --ink-soft:#4b463e; --ink-faint:#8a8377;
+    --teal:#11433f; --teal-2:#1c615a; --clay:#ad4d29; --gold:#937428;
+    --rule:rgba(27,25,22,.16); --rule-soft:rgba(27,25,22,.09);
+    --shadow:0 1px 0 rgba(27,25,22,.04), 0 18px 40px -28px rgba(27,25,22,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;
+    font-size:17px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+  }
+  /* paper grain + faint warm vignette */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity:.05; mix-blend-mode:multiply;
+  }
+  body::after{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:radial-gradient(120% 90% at 50% -10%, rgba(255,255,255,.5), transparent 55%),
+               radial-gradient(120% 120% at 50% 120%, rgba(17,67,63,.06), transparent 60%);
+  }
+  .frame{position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:34px 28px 60px}
+
+  /* ───────── Masthead ───────── */
+  .masthead{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; padding-bottom:14px; border-bottom:2.5px solid var(--ink)}
+  .brand{display:flex; align-items:baseline; gap:16px}
+  .wordmark{font-family:"Fraunces"; font-weight:900; font-size:40px; letter-spacing:-.02em; line-height:.9; color:var(--ink)}
+  .wordmark .drop{color:var(--teal)}
+  .kicker{font-family:"Fraunces"; font-weight:600; font-size:12.5px; letter-spacing:.42em; text-transform:uppercase; color:var(--clay)}
+  .dateline{text-align:right; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); line-height:1.7}
+  .dateline b{color:var(--ink); font-weight:600}
+  .ruleline{display:flex; justify-content:space-between; align-items:center; margin-top:6px; padding-top:6px; border-top:1px solid var(--rule); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint)}
+
+  /* ───────── Body grid ───────── */
+  .grid{display:grid; grid-template-columns:300px 1fr; gap:34px; margin-top:26px}
+
+  /* Dossier (left) */
+  .dossier{position:sticky; top:24px; align-self:start}
+  .dossier h2{font-family:"Fraunces"; font-weight:600; font-size:13px; letter-spacing:.34em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 12px; padding-bottom:8px; border-bottom:1px solid var(--rule)}
+  .client-name{font-family:"Fraunces"; font-weight:600; font-size:24px; line-height:1.12; letter-spacing:-.01em; margin:0 0 3px}
+  .client-sub{font-size:14px; color:var(--ink-soft); font-style:italic; margin-bottom:16px}
+  .stat-row{display:flex; justify-content:space-between; align-items:baseline; gap:10px; padding:7px 0; border-bottom:1px dashed var(--rule-soft)}
+  .stat-row .k{font-size:13.5px; color:var(--ink-soft)}
+  .stat-row .v{font-variant-numeric:tabular-nums; font-weight:600; font-size:15px; text-align:right}
+  .ledger{margin-top:18px}
+  .ledger .lh{font-family:"Fraunces"; font-weight:600; font-size:11.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px}
+  .ledger ul{list-style:none; margin:0; padding:0}
+  .ledger li{display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px solid var(--rule-soft); font-size:13.5px}
+  .ledger li .ml{font-variant-numeric:tabular-nums; font-weight:600; color:var(--teal)}
+  .ledger li span:first-child{color:var(--ink-soft)}
+  .broker-card{margin-top:18px; padding:13px 14px; background:var(--card); border:1px solid var(--rule); border-radius:3px}
+  .broker-card .lh{margin-bottom:5px}
+  .broker-card .who{font-family:"Fraunces"; font-weight:600; font-size:16px}
+  .broker-card .meta{font-size:12.5px; color:var(--ink-soft)}
+
+  /* Conversation (right) */
+  .feed-head{display:flex; align-items:center; gap:14px; margin-bottom:18px}
+  .feed-head .seal{width:42px;height:42px;border-radius:50%; background:var(--teal); color:#f3ead6; display:grid; place-items:center; font-family:"Fraunces"; font-weight:900; font-size:19px; box-shadow:inset 0 0 0 2px rgba(243,234,214,.25), 0 0 0 1px var(--teal)}
+  .feed-head h1{font-family:"Fraunces"; font-weight:600; font-size:21px; margin:0; letter-spacing:-.01em}
+  .feed-head p{margin:1px 0 0; font-size:13px; font-style:italic; color:var(--ink-soft)}
+
+  .exchange{display:flex; flex-direction:column; gap:30px}
+  .msg{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
+
+  /* client question */
+  .q{align-self:flex-end; max-width:74%; background:var(--card); border:1px solid var(--rule); border-left:3px solid var(--clay); border-radius:3px; padding:13px 17px; box-shadow:var(--shadow)}
+  .q .who{font-family:"Fraunces"; font-weight:600; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--clay); margin-bottom:3px}
+  .q p{margin:0; font-size:16.5px; font-style:italic; color:var(--ink)}
+
+  /* advisor reply — the memo */
+  .a{position:relative; padding-left:22px; border-left:2px solid var(--teal)}
+  .a .by{display:flex; align-items:center; gap:9px; margin-bottom:8px}
+  .a .by .dot{width:7px;height:7px;border-radius:50%; background:var(--teal)}
+  .a .by .nm{font-family:"Fraunces"; font-weight:600; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--teal)}
+  .a .lead{font-family:"Fraunces"; font-weight:600; font-size:21px; line-height:1.35; letter-spacing:-.005em; margin:0 0 10px}
+  .a .lead em{color:var(--clay); font-style:italic}
+  .a p{margin:0 0 11px}
+  .a p .num{font-variant-numeric:tabular-nums; font-weight:600}
+
+  /* memo financial table */
+  table.memo{width:100%; border-collapse:collapse; margin:6px 0 12px; font-size:15px}
+  table.memo caption{text-align:left; font-family:"Fraunces"; font-weight:600; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); padding-bottom:7px}
+  table.memo th{text-align:left; font-family:"Fraunces"; font-weight:600; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); padding:0 12px 7px 0; border-bottom:1.5px solid var(--ink)}
+  table.memo th.r,table.memo td.r{text-align:right; padding-right:0}
+  table.memo td{padding:8px 12px 8px 0; border-bottom:1px solid var(--rule-soft); font-variant-numeric:tabular-nums}
+  table.memo tr:last-child td{border-bottom:none}
+  table.memo td.r{font-weight:600}
+  table.memo .mkt{color:var(--ink)}
+  table.memo tr.total td{border-top:1.5px solid var(--ink); border-bottom:none; padding-top:9px; font-weight:600}
+
+  .tag{display:inline-flex; align-items:center; gap:6px; font-family:"Fraunces"; font-weight:600; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; padding:3px 9px; border-radius:2px; vertical-align:middle}
+  .tag.est{background:rgba(173,77,41,.12); color:var(--clay); border:1px solid rgba(173,77,41,.3)}
+  .footnote{font-size:13px; color:var(--ink-soft); font-style:italic; border-top:1px solid var(--rule-soft); padding-top:9px; margin-top:4px}
+  .footnote .stamp{font-style:normal; font-variant-numeric:tabular-nums; color:var(--ink-faint); letter-spacing:.02em}
+
+  /* typing indicator */
+  .typing{display:flex; align-items:center; gap:9px; padding-left:22px; border-left:2px solid var(--rule)}
+  .typing .nm{font-family:"Fraunces"; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint)}
+  .dots{display:inline-flex; gap:4px}
+  .dots i{width:6px;height:6px;border-radius:50%; background:var(--teal); opacity:.4; animation:blink 1.3s infinite}
+  .dots i:nth-child(2){animation-delay:.18s} .dots i:nth-child(3){animation-delay:.36s}
+  @keyframes blink{0%,60%,100%{opacity:.25; transform:translateY(0)} 30%{opacity:1; transform:translateY(-3px)}}
+
+  /* composer */
+  .composer{margin-top:34px; border-top:2px solid var(--ink); padding-top:18px}
+  .suggest{display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:14px}
+  .suggest a{font-size:14px; font-style:italic; color:var(--teal-2); text-decoration:none; border-bottom:1px solid rgba(28,97,90,.4); cursor:pointer; transition:.18s}
+  .suggest a:hover{color:var(--clay); border-color:var(--clay)}
+  .inputbar{display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:6px 6px 6px 18px; box-shadow:var(--shadow)}
+  .inputbar input{flex:1; border:none; background:transparent; font-family:"Newsreader"; font-size:16.5px; font-style:italic; color:var(--ink); outline:none; padding:10px 0}
+  .inputbar input::placeholder{color:var(--ink-faint)}
+  .send{font-family:"Fraunces"; font-weight:600; font-size:14px; letter-spacing:.04em; color:#f3ead6; background:var(--teal); border:none; border-radius:2px; padding:12px 22px; cursor:pointer; transition:.18s}
+  .send:hover{background:var(--clay)}
+  .disclaimer{margin-top:11px; font-size:12px; color:var(--ink-faint); font-style:italic; text-align:center}
+
+  @media(max-width:880px){ .grid{grid-template-columns:1fr} .dossier{position:static} .q{max-width:90%} }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <!-- ───── Masthead ───── -->
+    <header class="masthead">
+      <div class="brand">
+        <div class="wordmark">Water<span class="drop">find</span></div>
+        <div class="kicker">Advisory&nbsp;·&nbsp;The&nbsp;Briefing&nbsp;Room</div>
+      </div>
+      <div class="dateline">
+        Melbourne · Tuesday 23 June 2026<br />
+        Market data <b>as at 19 Jun 2026</b>
+      </div>
+    </header>
+    <div class="ruleline">
+      <span>Private &amp; confidential — prepared for the holder</span>
+      <span>Session 4F·2026 · Independently audited trust accounts</span>
+    </div>
+
+    <div class="grid">
+      <!-- ───── Dossier ───── -->
+      <aside class="dossier">
+        <h2>The Dossier</h2>
+        <p class="client-name">T.A. Field Estates</p>
+        <p class="client-sub">Pty Ltd · Margaret Field, Finance Director</p>
+
+        <div class="stat-row"><span class="k">Registered entitlement</span><span class="v">24,642 ML</span></div>
+        <div class="stat-row"><span class="k">Holdings · markets</span><span class="v">16 · 9</span></div>
+        <div class="stat-row"><span class="k">In hand this season (est.)</span><span class="v">~35%</span></div>
+        <div class="stat-row"><span class="k">Loyalty balance</span><span class="v">—</span></div>
+
+        <div class="ledger">
+          <div class="lh">Principal holdings</div>
+          <ul>
+            <li><span>Murrumbidgee Gen. Security</span><span class="ml">13,067</span></li>
+            <li><span>Lower Lachlan GS</span><span class="ml">6,170</span></li>
+            <li><span>Murrumbidgee Supp. Z4</span><span class="ml">1,917</span></li>
+            <li><span>Murrumbidgee High Sec.</span><span class="ml">1,548</span></li>
+            <li><span>Lower Lachlan Groundwater</span><span class="ml">1,004</span></li>
+            <li><span>+ 11 smaller parcels</span><span class="ml">936</span></li>
+          </ul>
+        </div>
+
+        <div class="broker-card">
+          <div class="lh">Servicing broker</div>
+          <div class="who">Sean Warren</div>
+          <div class="meta">Last contact 5 Feb 2026 · 1 open task</div>
+        </div>
+      </aside>
+
+      <!-- ───── Conversation ───── -->
+      <main>
+        <div class="feed-head">
+          <div class="seal">W</div>
+          <div>
+            <h1>Your Water Rights Adviser</h1>
+            <p>Grounded in your live holdings &amp; settled market trades. Figures reconcile to the register.</p>
+          </div>
+        </div>
+
+        <div class="exchange">
+
+          <!-- Q1 -->
+          <div class="msg q" style="animation-delay:.05s">
+            <div class="who">Margaret Field</div>
+            <p>Before our board meeting I need a clean summary — what water does T.A. Field Estates actually hold right now, and where is it?</p>
+          </div>
+
+          <!-- A1 -->
+          <div class="msg a" style="animation-delay:.18s">
+            <div class="by"><span class="dot"></span><span class="nm">Adviser</span></div>
+            <p class="lead">You hold <em>24,642 ML</em> of registered entitlement — across 16 holdings in 9 markets, ~78% concentrated in the Murrumbidgee.</p>
+            <table class="memo">
+              <caption>Holdings as at 19 Jun 2026 — registered entitlement (permanent asset)</caption>
+              <thead><tr><th class="mkt">Market</th><th class="r">ML</th><th class="r">Share</th></tr></thead>
+              <tbody>
+                <tr><td class="mkt">Murrumbidgee General Security</td><td class="r">13,067</td><td class="r">53%</td></tr>
+                <tr><td class="mkt">Lower Lachlan GS (Cargelligo–Booligal)</td><td class="r">6,170</td><td class="r">25%</td></tr>
+                <tr><td class="mkt">Murrumbidgee Supplementary — Zone 4</td><td class="r">1,917</td><td class="r">8%</td></tr>
+                <tr><td class="mkt">Murrumbidgee High Security</td><td class="r">1,548</td><td class="r">6%</td></tr>
+                <tr><td class="mkt">Lower Lachlan Groundwater</td><td class="r">1,004</td><td class="r">4%</td></tr>
+                <tr><td class="mkt">SA Murray · VIC Murray · 3 others</td><td class="r">936</td><td class="r">4%</td></tr>
+                <tr class="total"><td class="mkt">Total entitlement</td><td class="r">24,642</td><td class="r">100%</td></tr>
+              </tbody>
+            </table>
+            <p class="footnote">This is <em>entitlement</em> — the asset — not this season's seasonal allocation. <span class="stamp">Source: register snapshot 19 Jun 2026.</span></p>
+          </div>
+
+          <!-- Q2 -->
+          <div class="msg q" style="animation-delay:.28s">
+            <div class="who">Margaret Field</div>
+            <p>Our ~13,000 ML of Murrumbidgee General Security — if the board decided to sell that entitlement permanently, what's it worth today?</p>
+          </div>
+
+          <!-- A2 -->
+          <div class="msg a" style="animation-delay:.4s">
+            <div class="by"><span class="dot"></span><span class="nm">Adviser</span></div>
+            <p class="lead">About <em>$42M</em>, indicatively — call it a $34–42M range. <span class="tag est">● Estimate</span></p>
+            <table class="memo">
+              <thead><tr><th class="mkt">Working</th><th class="r">Value</th></tr></thead>
+              <tbody>
+                <tr><td class="mkt">Volume (Murrumbidgee GS entitlement)</td><td class="r">13,067 ML</td></tr>
+                <tr><td class="mkt">Median price — 33 external sales, 12 mo</td><td class="r">$3,190/ML</td></tr>
+                <tr><td class="mkt">Interquartile band</td><td class="r">$2,625–3,200</td></tr>
+                <tr class="total"><td class="mkt">Indicative gross</td><td class="r">~$41.7M</td></tr>
+                <tr><td class="mkt">Less ~1–2% commission</td><td class="r">≈ $41M net</td></tr>
+              </tbody>
+            </table>
+            <p>Two board-relevant caveats: <span class="num">①</span> 13,067 ML is ~1.5% of annual Murrumbidgee GS trade — selling it all at once drops you below that median, so <strong>phase it</strong>. <span class="num">②</span> GST and government transfer fees sit on top.</p>
+            <p class="footnote">Leans on registered external sales — no recent internal permanent settlements in this market. <span class="stamp">Latest comparable: Jan 2026.</span></p>
+          </div>
+
+          <!-- typing -->
+          <div class="msg typing" style="animation-delay:.5s">
+            <span class="nm">Adviser is reviewing the order book</span>
+            <span class="dots"><i></i><i></i><i></i></span>
+          </div>
+
+        </div>
+
+        <!-- composer -->
+        <div class="composer">
+          <div class="suggest">
+            <a>Where can this entitlement legally trade?</a>
+            <a>Model a phased sale over 3 seasons</a>
+            <a>What did we net on our last sale?</a>
+          </div>
+          <div class="inputbar">
+            <input type="text" placeholder="Ask the adviser about your holdings, the market, or a trade…" />
+            <button class="send">Ask</button>
+          </div>
+          <p class="disclaimer">Indicative guidance from live exchange data — not financial advice. Exact net is confirmed on your settlement statement.</p>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

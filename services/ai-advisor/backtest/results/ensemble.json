@@ -1,0 +1,2462 @@
+{
+ "variant": "ensemble",
+ "model": "opus",
+ "ran_at": "2026-08-01T07:30:53.434Z",
+ "sampled": 60,
+ "scored_complete": 60,
+ "failures": [],
+ "variants": {
+  "statistical": {
+   "n": 60,
+   "mean_crps": 5.88,
+   "cov80_rate": 0.85,
+   "cov50_rate": 0.73,
+   "mean_width80": 45.12,
+   "mean_width50": 21.61,
+   "mean_abs_err_p50": 17.29
+  },
+  "llm": {
+   "n": 60,
+   "mean_crps": 2.3,
+   "cov80_rate": 0.95,
+   "cov50_rate": 0.87,
+   "mean_width80": 35.13,
+   "mean_width50": 15.18,
+   "mean_abs_err_p50": 5.01
+  },
+  "ensemble": {
+   "n": 60,
+   "mean_crps": 2.64,
+   "cov80_rate": 0.95,
+   "cov50_rate": 0.88,
+   "mean_width80": 40.58,
+   "mean_width50": 17.41,
+   "mean_abs_err_p50": 5.2
+  }
+ },
+ "by_mos": {
+  "statistical": {
+   "mos_02": {
+    "n": 12,
+    "mean_crps": 9.96,
+    "cov80_rate": 0.75,
+    "cov50_rate": 0.58,
+    "mean_width80": 61.78,
+    "mean_width50": 27.19,
+    "mean_abs_err_p50": 27.52
+   },
+   "mos_04": {
+    "n": 12,
+    "mean_crps": 7.1,
+    "cov80_rate": 0.75,
+    "cov50_rate": 0.67,
+    "mean_width80": 51.77,
+    "mean_width50": 24.54,
+    "mean_abs_err_p50": 19.77
+   },
+   "mos_06": {
+    "n": 12,
+    "mean_crps": 4.3,
+    "cov80_rate": 0.92,
+    "cov50_rate": 0.75,
+    "mean_width80": 40.57,
+    "mean_width50": 19.93,
+    "mean_abs_err_p50": 13.29
+   },
+   "mos_08": {
+    "n": 12,
+    "mean_crps": 4.1,
+    "cov80_rate": 0.92,
+    "cov50_rate": 0.83,
+    "mean_width80": 36.58,
+    "mean_width50": 18.77,
+    "mean_abs_err_p50": 13.28
+   },
+   "mos_10": {
+    "n": 12,
+    "mean_crps": 3.94,
+    "cov80_rate": 0.92,
+    "cov50_rate": 0.83,
+    "mean_width80": 34.92,
+    "mean_width50": 17.64,
+    "mean_abs_err_p50": 12.58
+   }
+  },
+  "llm": {
+   "mos_02": {
+    "n": 12,
+    "mean_crps": 4.74,
+    "cov80_rate": 0.83,
+    "cov50_rate": 0.75,
+    "mean_width80": 48.83,
+    "mean_width50": 21.92,
+    "mean_abs_err_p50": 12.83
+   },
+   "mos_04": {
+    "n": 12,
+    "mean_crps": 2.67,
+    "cov80_rate": 0.92,
+    "cov50_rate": 0.83,
+    "mean_width80": 42.38,
+    "mean_width50": 20.25,
+    "mean_abs_err_p50": 6
+   },
+   "mos_06": {
+    "n": 12,
+    "mean_crps": 1.31,
+    "cov80_rate": 1,
+    "cov50_rate": 0.92,
+    "mean_width80": 24.75,
+    "mean_width50": 10.33,
+    "mean_abs_err_p50": 2.67
+   },
+   "mos_08": {
+    "n": 12,
+    "mean_crps": 1.26,
+    "cov80_rate": 1,
+    "cov50_rate": 0.92,
+    "mean_width80": 27.08,
+    "mean_width50": 10.54,
+    "mean_abs_err_p50": 1.79
+   },
+   "mos_10": {
+    "n": 12,
+    "mean_crps": 1.5,
+    "cov80_rate": 1,
+    "cov50_rate": 0.92,
+    "mean_width80": 32.58,
+    "mean_width50": 12.83,
+    "mean_abs_err_p50": 1.75
+   }
+  },
+  "ensemble": {
+   "mos_02": {
+    "n": 12,
+    "mean_crps": 5.49,
+    "cov80_rate": 0.75,
+    "cov50_rate": 0.75,
+    "mean_width80": 48.25,
+    "mean_width50": 24.75,
+    "mean_abs_err_p50": 12.67
+   },
+   "mos_04": {
+    "n": 12,
+    "mean_crps": 2.89,
+    "cov80_rate": 1,
+    "cov50_rate": 0.83,
+    "mean_width80": 48.33,
+    "mean_width50": 22,
+    "mean_abs_err_p50": 7.25
+   },
+   "mos_06": {
+    "n": 12,
+    "mean_crps": 1.32,
+    "cov80_rate": 1,
+    "cov50_rate": 0.92,
+    "mean_width80": 30.67,
+    "mean_width50": 10.46,
+    "mean_abs_err_p50": 1.33
+   },
+   "mos_08": {
+    "n": 12,
+    "mean_crps": 1.94,
+    "cov80_rate": 1,
+    "cov50_rate": 0.92,
+    "mean_width80": 38.92,
+    "mean_width50": 16.92,
+    "mean_abs_err_p50": 3
+   },
+   "mos_10": {
+    "n": 12,
+    "mean_crps": 1.56,
+    "cov80_rate": 1,
+    "cov50_rate": 1,
+    "mean_width80": 36.75,
+    "mean_width50": 12.92,
+    "mean_abs_err_p50": 1.75
+   }
+  }
+ },
+ "rows": [
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 670,
+    "series_id": 651946,
+    "season": 2011,
+    "mos": 2,
+    "cutoff": "2011-08-31",
+    "announced_pct": 53,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 9.15,
+    "cov80": true,
+    "cov50": false,
+    "width80": 100,
+    "width50": 33,
+    "abs_err_p50": 27
+   },
+   "llm": {
+    "crps_approx": 5.34,
+    "cov80": true,
+    "cov50": true,
+    "width80": 67,
+    "width50": 50,
+    "abs_err_p50": 15
+   },
+   "ensemble": {
+    "crps_approx": 5.79,
+    "cov80": true,
+    "cov50": true,
+    "width80": 67,
+    "width50": 45,
+    "abs_err_p50": 22
+   },
+   "llm_rationale": "At month 2 with 53% announced and the ratchet floor at 53, this season resembles the mid-range starters (offsets -7, -28, -31) that typically climbed strongly to 100-120% finals; the near-neutral SOI regime and broad base rate (most seasons ending 100%+) skew the distribution upward, but low-final dry outcomes keep the lower tail near the floor."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2512,
+    "series_id": 200009,
+    "season": 2004,
+    "mos": 2,
+    "cutoff": "2004-08-31",
+    "announced_pct": 0,
+    "outcome_final_pct": 49
+   },
+   "outcome": 49,
+   "statistical": {
+    "crps_approx": 33.925,
+    "cov80": false,
+    "cov50": false,
+    "width80": 40,
+    "width50": 22.5,
+    "abs_err_p50": 81
+   },
+   "llm": {
+    "crps_approx": 22.1,
+    "cov80": true,
+    "cov50": false,
+    "width80": 115,
+    "width50": 40,
+    "abs_err_p50": 76
+   },
+   "ensemble": {
+    "crps_approx": 30.9,
+    "cov80": false,
+    "cov50": false,
+    "width80": 55,
+    "width50": 30,
+    "abs_err_p50": 79
+   },
+   "llm_rationale": "At month 1 with 0% announced, history strongly favors high final allocations: of 20 seasons starting at 0%, all but one (the SOI +2.4 season ending 35%) finished 100-160%, with a median near 125-130%. The current mildly negative/dry-leaning SOI is consistent with the many negative-SOI seasons that still reached 120-140%, so the distribution is high but retains a low-end tail for a dry-stall outcome."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 1165601,
+    "series_id": 200018,
+    "season": 2012,
+    "mos": 2,
+    "cutoff": "2012-08-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 13.27,
+    "cov80": true,
+    "cov50": false,
+    "width80": 76.5,
+    "width50": 49.80000000000001,
+    "abs_err_p50": 48.5
+   },
+   "llm": {
+    "crps_approx": 1.4,
+    "cov80": true,
+    "cov50": true,
+    "width80": 45,
+    "width50": 10,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 2.05,
+    "cov80": true,
+    "cov50": true,
+    "width80": 65,
+    "width50": 15,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Already at 100% by month 2 signals a clearly wet season, and the ratchet floors every quantile at 100; most comparable high-start seasons capped at exactly 100%, but a meaningful minority of wet years in this product over-allocated to 120-200%, so the upside tail is fat while the median stays at 100."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2818,
+    "series_id": 200007,
+    "season": 2013,
+    "mos": 2,
+    "cutoff": "2013-08-31",
+    "announced_pct": 57,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 4.11,
+    "cov80": true,
+    "cov50": true,
+    "width80": 93,
+    "width50": 35,
+    "abs_err_p50": 5
+   },
+   "llm": {
+    "crps_approx": 2.96,
+    "cov80": true,
+    "cov50": true,
+    "width80": 68,
+    "width50": 22,
+    "abs_err_p50": 5
+   },
+   "ensemble": {
+    "crps_approx": 3.72,
+    "cov80": true,
+    "cov50": true,
+    "width80": 81,
+    "width50": 42,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "At month 2 with 57% announced and a modestly negative SOI (-4.9-like conditions), the closest analogues (offsets -1, -2, -10 at ~50-58% early) almost all ratcheted to 100%, and the base rate across seasons overwhelmingly reaches 100%+; the ratchet floor is 57, the median lands near 100%, with meaningful upside toward 130%+ in wetter outcomes and downside risk from occasional stall seasons (e.g., -5, -6) that ended 35-43%."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 623638,
+    "series_id": 573310,
+    "season": 2006,
+    "mos": 2,
+    "cutoff": "2006-08-31",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 1.843,
+    "cov80": true,
+    "cov50": true,
+    "width80": 36.9,
+    "width50": 22.1,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 10.419999999999998,
+    "cov80": false,
+    "cov50": false,
+    "width80": 61,
+    "width50": 32,
+    "abs_err_p50": 30
+   },
+   "ensemble": {
+    "crps_approx": 8.09,
+    "cov80": false,
+    "cov50": false,
+    "width80": 57,
+    "width50": 31,
+    "abs_err_p50": 26
+   },
+   "llm_rationale": "The three prior seasons that were also at 0% by month 2 finished at ~14/30/46% (all drier-leaning SOI), anchoring the median near 30%; with only a handful of direct analogs and 10 months still to run, the tails stay wide, while the ratchet and the persistent 0% floor the downside near the current level."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 512,
+    "series_id": 247807,
+    "season": 2012,
+    "mos": 2,
+    "cutoff": "2012-08-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 20.275,
+    "cov80": false,
+    "cov50": false,
+    "width80": 84.5,
+    "width50": 53.5,
+    "abs_err_p50": 70.5
+   },
+   "llm": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Already at 100% by month 2 and the ratchet prevents any decline, so the floor is locked at 100%; every historical season that was even remotely this wet finished at 100% and no season exceeded 100%, leaving essentially no upside dispersion."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 162263,
+    "series_id": 200019,
+    "season": 2006,
+    "mos": 2,
+    "cutoff": "2006-08-31",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 3.2809999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 35.8,
+    "width50": 24.9,
+    "abs_err_p50": 13.2
+   },
+   "llm": {
+    "crps_approx": 5.8,
+    "cov80": false,
+    "cov50": false,
+    "width80": 50,
+    "width50": 24,
+    "abs_err_p50": 18
+   },
+   "ensemble": {
+    "crps_approx": 4.4799999999999995,
+    "cov80": false,
+    "cov50": false,
+    "width80": 39,
+    "width50": 24,
+    "abs_err_p50": 15
+   },
+   "llm_rationale": "The most comparable seasons for this product sat at ~0% by month 2 and finished low-to-moderate (4.6, 21.9, and ~30.7% from a 7.4% start), so the distribution centers in the teens; the 0% start signals a dry catchment and caps the floor at 0 via the ratchet, but with 10 months left and inflow uncertainty the early-season band stays wide with meaningful upside."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 423809887,
+    "series_id": 17110540,
+    "season": 2007,
+    "mos": 2,
+    "cutoff": "2007-08-31",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "All seven prior seasons for this product ended at 0% regardless of SOI, and every analog that read 0% at month 2 also finished 0%; the base rate is overwhelmingly zero, so even the upper quantiles stay at 0 despite the early-season timing."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 5501,
+    "series_id": 200016,
+    "season": 1999,
+    "mos": 2,
+    "cutoff": "1999-08-31",
+    "announced_pct": 45,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 21.56,
+    "cov80": false,
+    "cov50": false,
+    "width80": 33,
+    "width50": 0,
+    "abs_err_p50": 55
+   },
+   "llm": {
+    "crps_approx": 4.35,
+    "cov80": true,
+    "cov50": true,
+    "width80": 55,
+    "width50": 45,
+    "abs_err_p50": 10
+   },
+   "ensemble": {
+    "crps_approx": 4.85,
+    "cov80": true,
+    "cov50": true,
+    "width80": 55,
+    "width50": 55,
+    "abs_err_p50": 10
+   },
+   "llm_rationale": "Base rates are dominated by seasons finishing at 100%, and among the three closest analogs at month 2 (40% and 85% starts), all reached 100% final; the mildly positive SOI (~La Nina-leaning) and the ratchet floor of 45% support a high median, though the one 40%-start season that collapsed to 10% keeps the lower tail wide."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 863711,
+    "series_id": 247806,
+    "season": 2012,
+    "mos": 2,
+    "cutoff": "2012-08-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 5.75,
+    "cov80": true,
+    "cov50": true,
+    "width80": 100,
+    "width50": 39,
+    "abs_err_p50": 18
+   },
+   "llm": {
+    "crps_approx": 3.3,
+    "cov80": true,
+    "cov50": true,
+    "width80": 90,
+    "width50": 30,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 4.1,
+    "cov80": true,
+    "cov50": true,
+    "width80": 105,
+    "width50": 40,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Both prior seasons that already announced 100% at month 1 (offsets -1, and the analogous wet-start seasons) finished at 100% or well above, and the current SOI environment plus a full-entitlement opening signals a wet year; the ratchet floors every quantile at 100, with meaningful upside toward the 180-220% outcomes seen in comparable wet seasons."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 676,
+    "series_id": 200014,
+    "season": 1993,
+    "mos": 2,
+    "cutoff": "1993-08-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 120
+   },
+   "outcome": 120,
+   "statistical": {
+    "crps_approx": 3.1249999999999996,
+    "cov80": true,
+    "cov50": true,
+    "width80": 100,
+    "width50": 22.5,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 1.1,
+    "cov80": true,
+    "cov50": true,
+    "width80": 30,
+    "width50": 10,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 1.4,
+    "cov80": true,
+    "cov50": true,
+    "width80": 40,
+    "width50": 12,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "At month 1 with a 100% opening announcement, historical analogs (offsets -2, -5, -8 all opened at 100% and finished 120%) point to a typical 120% final, while the ratchet floors the outcome at 100%; the current mildly La Nina-neutral setup and base rates (finals cluster 100-140%) justify upside toward 130-140% but keep 120% as the median."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2433299,
+    "series_id": 2293845,
+    "season": 2011,
+    "mos": 2,
+    "cutoff": "2011-08-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 3.2319999999999993,
+    "cov80": true,
+    "cov50": true,
+    "width80": 41.599999999999994,
+    "width50": 24,
+    "abs_err_p50": 12
+   },
+   "llm": {
+    "crps_approx": 0.09999999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 5,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.4499999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 15,
+    "width50": 3,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "The season opened at 100% and the ratchet forbids any decline, so the floor is locked at 100; both prior seasons that began at 100% (offsets -2 and, effectively, the many older 100% finals) ended at 100%, with only a modest chance of exceeding 100% as extra inflows arrive early in a clearly wet-leaning setup."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 670,
+    "series_id": 651946,
+    "season": 2011,
+    "mos": 4,
+    "cutoff": "2011-10-31",
+    "announced_pct": 65,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 8.956,
+    "cov80": false,
+    "cov50": false,
+    "width80": 25.799999999999997,
+    "width50": 16,
+    "abs_err_p50": 20
+   },
+   "llm": {
+    "crps_approx": 1.7,
+    "cov80": true,
+    "cov50": true,
+    "width80": 40,
+    "width50": 18,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 3.04,
+    "cov80": true,
+    "cov50": true,
+    "width80": 47,
+    "width50": 26,
+    "abs_err_p50": 8
+   },
+   "llm_rationale": "The nearest analogue at month 4 (offset -1: 65%-ish start at 51%, SOI +10.8, finished 100%) plus a strongly positive current-year lean suggest substantial upside, while base rates across seasons cluster heavily at 100-120%; the ratchet floors everything at 65 and dry analogues (offsets -2,-4,-7) cap the low tail well below the median."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2818,
+    "series_id": 200007,
+    "season": 2013,
+    "mos": 4,
+    "cutoff": "2013-10-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 2.59,
+    "cov80": true,
+    "cov50": true,
+    "width80": 57,
+    "width50": 25,
+    "abs_err_p50": 2
+   },
+   "llm": {
+    "crps_approx": 3.95,
+    "cov80": true,
+    "cov50": true,
+    "width80": 85,
+    "width50": 35,
+    "abs_err_p50": 5
+   },
+   "ensemble": {
+    "crps_approx": 3.5,
+    "cov80": true,
+    "cov50": true,
+    "width80": 80,
+    "width50": 32,
+    "abs_err_p50": 3
+   },
+   "llm_rationale": "Seasons at exactly 100% by month 3 mostly held at 100 but one ratcheted to 144, and other high-starting seasons pushed toward 190–200, so the ratchet floor pins the lower quantiles at 100 while a wet-year upside tail keeps the distribution right-skewed. Month 3 is still early enough (only a quarter through) to leave meaningful room for further step-ups."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2512,
+    "series_id": 200009,
+    "season": 2004,
+    "mos": 4,
+    "cutoff": "2004-10-31",
+    "announced_pct": 28,
+    "outcome_final_pct": 49
+   },
+   "outcome": 49,
+   "statistical": {
+    "crps_approx": 3.5,
+    "cov80": true,
+    "cov50": true,
+    "width80": 90,
+    "width50": 30,
+    "abs_err_p50": 2
+   },
+   "llm": {
+    "crps_approx": 3.65,
+    "cov80": true,
+    "cov50": true,
+    "width80": 65,
+    "width50": 29,
+    "abs_err_p50": 9
+   },
+   "ensemble": {
+    "crps_approx": 3.8099999999999996,
+    "cov80": true,
+    "cov50": true,
+    "width80": 88,
+    "width50": 31,
+    "abs_err_p50": 5
+   },
+   "llm_rationale": "At month 4 with only 28% announced, this looks like a dry/stalled season; the closest analogs (offset -5: 17%->35%; offset -3: 65%->105%) span a wide range, so the median sits modestly above current with the ratchet flooring at 28 and a long upper tail for possible wet-inflow recovery."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 1165601,
+    "series_id": 200018,
+    "season": 2012,
+    "mos": 4,
+    "cutoff": "2012-10-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 13.27,
+    "cov80": true,
+    "cov50": false,
+    "width80": 76.5,
+    "width50": 49.80000000000001,
+    "abs_err_p50": 48.5
+   },
+   "llm": {
+    "crps_approx": 0.4999999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 20,
+    "width50": 2,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.7999999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 35,
+    "width50": 2,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Already at 100% by month 2, so the ratchet floors every quantile at 100 and the modal outcome is a 100% cap, which is where the vast majority of this product's seasons settle. This product can exceed 100% in wet years (120-200%), but those seasons were already above 100 by month 2, so an overshoot here is a minority tail rather than the central case."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 162263,
+    "series_id": 200019,
+    "season": 2006,
+    "mos": 4,
+    "cutoff": "2006-10-31",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 2.661,
+    "cov80": true,
+    "cov50": true,
+    "width80": 28.8,
+    "width50": 23.3,
+    "abs_err_p50": 9.2
+   },
+   "llm": {
+    "crps_approx": 4.27,
+    "cov80": false,
+    "cov50": false,
+    "width80": 43.5,
+    "width50": 24,
+    "abs_err_p50": 13
+   },
+   "ensemble": {
+    "crps_approx": 3.35,
+    "cov80": true,
+    "cov50": false,
+    "width80": 40,
+    "width50": 25,
+    "abs_err_p50": 11
+   },
+   "llm_rationale": "At month 4 with 0% announced, this season most resembles the dry-leaning years that also opened at/near 0% (finals of 0, 4.6, 26.6, 42.6), so the distribution stays low but wide given early-season uncertainty and the demonstrated upside where a 0.8% start still ratcheted to ~43%."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 863711,
+    "series_id": 247806,
+    "season": 2012,
+    "mos": 4,
+    "cutoff": "2012-10-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 5.75,
+    "cov80": true,
+    "cov50": true,
+    "width80": 100,
+    "width50": 39,
+    "abs_err_p50": 18
+   },
+   "llm": {
+    "crps_approx": 5.3,
+    "cov80": true,
+    "cov50": true,
+    "width80": 100,
+    "width50": 50,
+    "abs_err_p50": 8
+   },
+   "ensemble": {
+    "crps_approx": 5.5,
+    "cov80": true,
+    "cov50": true,
+    "width80": 100,
+    "width50": 50,
+    "abs_err_p50": 10
+   },
+   "llm_rationale": "The ratchet floor pins every quantile at or above the current 100%; the two prior seasons that also stood at 100% by month 1 both finished at 100%, but a positive SOI (~4.3, La Nina-leaning) plus the broader base rate of wet seasons reaching 180-220% keeps meaningful upside in the higher quantiles this early in the season."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 423809887,
+    "series_id": 17110540,
+    "season": 2007,
+    "mos": 4,
+    "cutoff": "2007-10-31",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Every one of the seven historical seasons for this product—including all with far less negative SOI than typical—was at 0% at month 4 and finished the season at 0%, so the ratchet floor and base rate both point overwhelmingly to a 0% final allocation."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 512,
+    "series_id": 247807,
+    "season": 2012,
+    "mos": 4,
+    "cutoff": "2012-10-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 20.275,
+    "cov80": false,
+    "cov50": false,
+    "width80": 84.5,
+    "width50": 53.5,
+    "abs_err_p50": 70.5
+   },
+   "llm": {
+    "crps_approx": 0.09999999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 5,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.23999999999999994,
+    "cov80": true,
+    "cov50": true,
+    "width80": 12,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Already at 100% by month 2 signals a very wet season, and the ratchet floor plus history (every comparably wet season finished at 100%) pins the distribution tightly at 100; only a thin upside tail allows for announcements pushing modestly above 100%."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 623638,
+    "series_id": 573310,
+    "season": 2006,
+    "mos": 4,
+    "cutoff": "2006-10-31",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 1.5749999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 44,
+    "width50": 13.9,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 7.9399999999999995,
+    "cov80": true,
+    "cov50": false,
+    "width80": 82,
+    "width50": 40,
+    "abs_err_p50": 27
+   },
+   "ensemble": {
+    "crps_approx": 6.4,
+    "cov80": true,
+    "cov50": false,
+    "width80": 75,
+    "width50": 38,
+    "abs_err_p50": 20
+   },
+   "llm_rationale": "At month 4 with 0% announced, the closest historical analogs are low-start dry-leaning seasons whose finals ranged from 0% (the sole exact-0 match, a very dry -9.5 SOI year) up through ~30-50% recoveries and one outlier near 100%, so the distribution is anchored low with a wide upper tail for potential mid-season inflows."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2433299,
+    "series_id": 2293845,
+    "season": 2011,
+    "mos": 4,
+    "cutoff": "2011-10-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 3.2319999999999993,
+    "cov80": true,
+    "cov50": true,
+    "width80": 41.599999999999994,
+    "width50": 24,
+    "abs_err_p50": 12
+   },
+   "llm": {
+    "crps_approx": 0.09999999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 5,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 1.0599999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 28,
+    "width50": 10,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "The ratchet floor is already at 100% in month 1, so the final allocation cannot fall below 100 and can only rise; historically products starting at 100% finished at 100% (offsets -2, and the long run of 100-final seasons), with only modest upside beyond 100."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 676,
+    "series_id": 200014,
+    "season": 1993,
+    "mos": 4,
+    "cutoff": "1993-10-31",
+    "announced_pct": 120,
+    "outcome_final_pct": 120
+   },
+   "outcome": 120,
+   "statistical": {
+    "crps_approx": 1.8,
+    "cov80": true,
+    "cov50": true,
+    "width80": 40,
+    "width50": 20,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0.15999999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 8,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.3999999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 20,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "All four analog seasons that were at 120% by month 3 ended at exactly 120%, so the median and lower quantiles pin to the 120 ratchet floor; a modest upper tail reflects the rare base-rate case where a full-allocation season stepped up further (e.g. 100→140)."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2818,
+    "series_id": 200007,
+    "season": 2013,
+    "mos": 6,
+    "cutoff": "2013-12-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 2.59,
+    "cov80": true,
+    "cov50": true,
+    "width80": 57,
+    "width50": 25,
+    "abs_err_p50": 2
+   },
+   "llm": {
+    "crps_approx": 3.3,
+    "cov80": true,
+    "cov50": true,
+    "width80": 65,
+    "width50": 30,
+    "abs_err_p50": 5
+   },
+   "ensemble": {
+    "crps_approx": 2.86,
+    "cov80": true,
+    "cov50": true,
+    "width80": 63,
+    "width50": 28,
+    "abs_err_p50": 2
+   },
+   "llm_rationale": "Every one of the 19 prior seasons that reached 100% by any point ended at 100% or higher, and all six seasons at >=93% by month 3 finished at 95-200% (median ~144); with allocation already at 100% in month 3 the ratchet floors every quantile at 100, while the strong historical tendency for high-early seasons to keep climbing pushes the upper tail well above 100."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 5501,
+    "series_id": 200016,
+    "season": 1999,
+    "mos": 4,
+    "cutoff": "1999-10-31",
+    "announced_pct": 45,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 21.56,
+    "cov80": false,
+    "cov50": false,
+    "width80": 33,
+    "width50": 0,
+    "abs_err_p50": 55
+   },
+   "llm": {
+    "crps_approx": 4.35,
+    "cov80": true,
+    "cov50": true,
+    "width80": 55,
+    "width50": 45,
+    "abs_err_p50": 10
+   },
+   "ensemble": {
+    "crps_approx": 6.6,
+    "cov80": true,
+    "cov50": true,
+    "width80": 55,
+    "width50": 50,
+    "abs_err_p50": 30
+   },
+   "llm_rationale": "Base rate strongly favors 100% finals (13 of 15 seasons reached 100), and the two closest analogs at ~40-45% by month 2 (offsets -16, -19) split between a full recovery to 100 and a collapse to 10, so the distribution is wide with a high median but a real dry-year downside pinned to the 45% ratchet floor."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2512,
+    "series_id": 200009,
+    "season": 2004,
+    "mos": 6,
+    "cutoff": "2004-12-31",
+    "announced_pct": 40,
+    "outcome_final_pct": 49
+   },
+   "outcome": 49,
+   "statistical": {
+    "crps_approx": 1.1,
+    "cov80": true,
+    "cov50": true,
+    "width80": 20,
+    "width50": 12,
+    "abs_err_p50": 1
+   },
+   "llm": {
+    "crps_approx": 3.2,
+    "cov80": true,
+    "cov50": true,
+    "width80": 55,
+    "width50": 30,
+    "abs_err_p50": 6
+   },
+   "ensemble": {
+    "crps_approx": 1.85,
+    "cov80": true,
+    "cov50": true,
+    "width80": 35,
+    "width50": 19,
+    "abs_err_p50": 2
+   },
+   "llm_rationale": "The only close analog at month 6 (offset -5: 23% mid-season, ended 35%) suggests a dry-year stall, and this season's 40% is well below the typical 100%+ mid-season readings of wet years, so the distribution is skewed low but retains upside if late inflows arrive; the ratchet floors all quantiles at the current 40%."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 670,
+    "series_id": 651946,
+    "season": 2011,
+    "mos": 6,
+    "cutoff": "2011-12-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 0.11999999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 6,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0.09999999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 5,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.11999999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 6,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "All six past seasons sitting at exactly 100% at month 6 ended the season at 100%, and by mid-season allocations are largely settled, so the distribution is tight at the ratchet floor with only a small chance of a step up to the next tier."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 1165601,
+    "series_id": 200018,
+    "season": 2012,
+    "mos": 6,
+    "cutoff": "2012-12-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 13.27,
+    "cov80": true,
+    "cov50": false,
+    "width80": 76.5,
+    "width50": 49.80000000000001,
+    "abs_err_p50": 48.5
+   },
+   "llm": {
+    "crps_approx": 0.19999999999999996,
+    "cov80": true,
+    "cov50": true,
+    "width80": 10,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.45999999999999985,
+    "cov80": true,
+    "cov50": true,
+    "width80": 23,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Reaching 100% by month 2 means full allocation is effectively secured, and the ratchet plus the recent-regime ceiling (all of the last ~14 seasons topped out at exactly 100%) pin the distribution at 100; only the oldest, exceptionally wet analog seasons exceeded 100%, leaving a modest upper tail."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 623638,
+    "series_id": 573310,
+    "season": 2006,
+    "mos": 6,
+    "cutoff": "2006-12-31",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 0.9289999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 36.2,
+    "width50": 4.1,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 3.7399999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 52,
+    "width50": 30,
+    "abs_err_p50": 12
+   },
+   "ensemble": {
+    "crps_approx": 2.94,
+    "cov80": true,
+    "cov50": true,
+    "width80": 52,
+    "width50": 30,
+    "abs_err_p50": 4
+   },
+   "llm_rationale": "At month 6 the allocation is still 0%, matching the driest analog (offset -4: 0% -> 0% final) amid El Nino-leaning conditions, but several low/zero midpoints later ratcheted meaningfully higher (offset -3: 2.8% -> 46%, offset -8: 0% -> 68%), so the upside tail is wide while the ratchet floors every quantile at the current 0%."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 423809887,
+    "series_id": 17110540,
+    "season": 2007,
+    "mos": 6,
+    "cutoff": "2007-12-31",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0.059999999999999984,
+    "cov80": true,
+    "cov50": true,
+    "width80": 3,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.039999999999999994,
+    "cov80": true,
+    "cov50": true,
+    "width80": 2,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "All seven prior seasons for this product ended at 0% final, and every one that was at 0% at month 6 stayed at 0%; the current negative-SOI (dry) tilt reinforces this, so the distribution is tightly pinned at 0 with only a small upside tail."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 162263,
+    "series_id": 200019,
+    "season": 2006,
+    "mos": 6,
+    "cutoff": "2006-12-31",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 2.4170000000000003,
+    "cov80": true,
+    "cov50": false,
+    "width80": 19.1,
+    "width50": 11.7,
+    "abs_err_p50": 7.5
+   },
+   "llm": {
+    "crps_approx": 2.7299999999999995,
+    "cov80": true,
+    "cov50": false,
+    "width80": 29,
+    "width50": 17,
+    "abs_err_p50": 9
+   },
+   "ensemble": {
+    "crps_approx": 2.645,
+    "cov80": true,
+    "cov50": false,
+    "width80": 26,
+    "width50": 14.5,
+    "abs_err_p50": 8
+   },
+   "llm_rationale": "At month 6 with 0% announced, the closest analogs are the two prior 0%-at-month-6 seasons that finished at 0% (dry, SOI -9.5) and 17.5% (wet, SOI +8.3), plus low-start seasons (1-8%) that ended 4.6-30.7%; the ratchet floors the distribution at the current 0% while a wetter second half could still lift it toward the high-20s."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 512,
+    "series_id": 247807,
+    "season": 2012,
+    "mos": 6,
+    "cutoff": "2012-12-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 20.275,
+    "cov80": false,
+    "cov50": false,
+    "width80": 84.5,
+    "width50": 53.5,
+    "abs_err_p50": 70.5
+   },
+   "llm": {
+    "crps_approx": 0.6499999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 20,
+    "width50": 5,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 1.1999999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 35,
+    "width50": 10,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Already at 100% by month 2, which given the ratchet floor guarantees a final ≥100%; the two comparably strong early seasons (78% and 26% at month 2) both finished at exactly 100%, so the median sits at 100 with modest upside for a wet La Niña-leaning year pushing above entitlement."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 863711,
+    "series_id": 247806,
+    "season": 2012,
+    "mos": 6,
+    "cutoff": "2012-12-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 5.75,
+    "cov80": true,
+    "cov50": true,
+    "width80": 100,
+    "width50": 39,
+    "abs_err_p50": 18
+   },
+   "llm": {
+    "crps_approx": 0.7599999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 28,
+    "width50": 4,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 2.1399999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 72,
+    "width50": 14,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Already at a full 100% in month 1 sets the ratchet floor at 100, and the only close analog (a prior season also at 100% in month 1) plus every recent-era season finished at exactly 100%, so the mode is 100; a modest upper tail reflects older seasons that ran to 180-220%, though that regime looks capped in recent years."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 5501,
+    "series_id": 200016,
+    "season": 1999,
+    "mos": 6,
+    "cutoff": "1999-12-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 0.11999999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 6,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0.09999999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 5,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.11999999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 6,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "At month 6 with allocation already at 100%, the ratchet floor guarantees a final of at least 100%; nearly all historical seasons at 100% by mid-season finished at exactly 100%, with only rare upside beyond, so the distribution is tightly concentrated at 100."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 676,
+    "series_id": 200014,
+    "season": 1993,
+    "mos": 6,
+    "cutoff": "1993-12-31",
+    "announced_pct": 120,
+    "outcome_final_pct": 120
+   },
+   "outcome": 120,
+   "statistical": {
+    "crps_approx": 1.8,
+    "cov80": true,
+    "cov50": true,
+    "width80": 40,
+    "width50": 20,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0.09999999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 5,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.3999999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 20,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "All four analog seasons that stood at 120% by month 3 finished at exactly 120%, so the ratchet floor and the modal outcome coincide; only a small upper tail reflects the rare wet-year push seen in lower-starting seasons (e.g. 100→140)."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 1165601,
+    "series_id": 200018,
+    "season": 2012,
+    "mos": 8,
+    "cutoff": "2013-02-28",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 13.27,
+    "cov80": true,
+    "cov50": false,
+    "width80": 76.5,
+    "width50": 49.80000000000001,
+    "abs_err_p50": 48.5
+   },
+   "llm": {
+    "crps_approx": 0.9499999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 30,
+    "width50": 7,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 5.1,
+    "cov80": true,
+    "cov50": true,
+    "width80": 90,
+    "width50": 50,
+    "abs_err_p50": 8
+   },
+   "llm_rationale": "Already at 100% by month 2 is a wet, strong early signal; comparable early-high seasons all finished at or above 100%, and the ratchet floors every quantile at 100. Median stays at 100 (the common cap) with meaningful upside since the few seasons this strong early ran to 120-200%."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2818,
+    "series_id": 200007,
+    "season": 2013,
+    "mos": 8,
+    "cutoff": "2014-02-28",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 2.59,
+    "cov80": true,
+    "cov50": true,
+    "width80": 57,
+    "width50": 25,
+    "abs_err_p50": 2
+   },
+   "llm": {
+    "crps_approx": 3.4,
+    "cov80": true,
+    "cov50": true,
+    "width80": 55,
+    "width50": 30,
+    "abs_err_p50": 8
+   },
+   "ensemble": {
+    "crps_approx": 3.05,
+    "cov80": true,
+    "cov50": true,
+    "width80": 60,
+    "width50": 29,
+    "abs_err_p50": 4
+   },
+   "llm_rationale": "At 100% by month 3 the season is already a strong wet signal; the closest analogues (seasons at ~94-130% at this point) mostly held near 100% but a meaningful minority ratcheted to 129-144%, with wet-year tails reaching higher, so the distribution is floored at 100 and skewed upward."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2433299,
+    "series_id": 2293845,
+    "season": 2011,
+    "mos": 6,
+    "cutoff": "2011-12-31",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 3.2319999999999993,
+    "cov80": true,
+    "cov50": true,
+    "width80": 41.599999999999994,
+    "width50": 24,
+    "abs_err_p50": 12
+   },
+   "llm": {
+    "crps_approx": 0.7999999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 20,
+    "width50": 8,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 1.0599999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 28,
+    "width50": 10,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "At month 1 the allocation is already at 100% and can only ratchet up, so all quantiles are pinned at or above 100; the two prior seasons that opened at 100% both finished at 100%, and the mildly positive SOI leans wet, giving modest upside toward the 100%+ outcomes common in this product's history."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2512,
+    "series_id": 200009,
+    "season": 2004,
+    "mos": 8,
+    "cutoff": "2005-02-28",
+    "announced_pct": 42,
+    "outcome_final_pct": 49
+   },
+   "outcome": 49,
+   "statistical": {
+    "crps_approx": 1.42,
+    "cov80": true,
+    "cov50": true,
+    "width80": 11,
+    "width50": 10,
+    "abs_err_p50": 7
+   },
+   "llm": {
+    "crps_approx": 1.05,
+    "cov80": true,
+    "cov50": true,
+    "width80": 20,
+    "width50": 9,
+    "abs_err_p50": 2
+   },
+   "ensemble": {
+    "crps_approx": 1.15,
+    "cov80": true,
+    "cov50": true,
+    "width80": 15,
+    "width50": 9,
+    "abs_err_p50": 4
+   },
+   "llm_rationale": "At month 8 this season sits at 42%, far below the near-100%+ typical of most prior seasons, making the sole dry analog (offset -5: 28% to 35% final, +25% relative) the dominant comparable; late-season dry years ratchet up only modestly, so the distribution is tight just above the 42% floor with a thin upside tail for a late inflow rally."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 670,
+    "series_id": 651946,
+    "season": 2011,
+    "mos": 8,
+    "cutoff": "2012-02-29",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 0.11999999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 6,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0.19999999999999996,
+    "cov80": true,
+    "cov50": true,
+    "width80": 10,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.19999999999999996,
+    "cov80": true,
+    "cov50": true,
+    "width80": 10,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "All six historical seasons that stood at exactly 100% by month 6 finished the season at exactly 100%, and at month 6 with half the inflow window elapsed the outcome is well-constrained; the ratchet floors every quantile at 100, with only a modest upper tail reflecting the slim chance of a wet-driven step-up toward the 120% tier seen in some seasons."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 162263,
+    "series_id": 200019,
+    "season": 2006,
+    "mos": 8,
+    "cutoff": "2007-02-28",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 0.5229999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 9.4,
+    "width50": 3.9,
+    "abs_err_p50": 1.4
+   },
+   "llm": {
+    "crps_approx": 1.285,
+    "cov80": true,
+    "cov50": false,
+    "width80": 18,
+    "width50": 9.5,
+    "abs_err_p50": 3.5
+   },
+   "ensemble": {
+    "crps_approx": 0.7799999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 14,
+    "width50": 6,
+    "abs_err_p50": 2
+   },
+   "llm_rationale": "The two historical seasons also at 0% by month 8 ended at 0% and 17.5%, and other low-base seasons rose only modestly (0–6 pts) over the final third; the ratchet floors the downside at 0% while a late wet swing provides limited upside near ~18%."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 512,
+    "series_id": 247807,
+    "season": 2012,
+    "mos": 8,
+    "cutoff": "2013-02-28",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 20.275,
+    "cov80": false,
+    "cov50": false,
+    "width80": 84.5,
+    "width50": 53.5,
+    "abs_err_p50": 70.5
+   },
+   "llm": {
+    "crps_approx": 1,
+    "cov80": true,
+    "cov50": true,
+    "width80": 20,
+    "width50": 8,
+    "abs_err_p50": 2
+   },
+   "ensemble": {
+    "crps_approx": 5,
+    "cov80": true,
+    "cov50": false,
+    "width80": 80,
+    "width50": 44,
+    "abs_err_p50": 10
+   },
+   "llm_rationale": "Already at 100% by month 2 signals an exceptionally wet season, and the ratchet floors every quantile at the current 100%; historical finals for this product cluster at 100% with only modest scope for the 100%+ overshoot noted for wet years, so the median sits at/just above 100 with a right-skewed upside tail."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 423809887,
+    "series_id": 17110540,
+    "season": 2007,
+    "mos": 8,
+    "cutoff": "2008-02-29",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "All 7 historical seasons for this product announced 0% at month 8 and ended at 0%, including seasons with far wetter SOI signals than the current strongly negative (dry El Nino) backdrop; with 0% currently announced, month 8 of 12, and the upward-only ratchet, the final allocation is almost certainly 0%."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 623638,
+    "series_id": 573310,
+    "season": 2006,
+    "mos": 8,
+    "cutoff": "2007-02-28",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 0.13999999999999996,
+    "cov80": true,
+    "cov50": true,
+    "width80": 7,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 2.6399999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 52,
+    "width50": 20,
+    "abs_err_p50": 6
+   },
+   "ensemble": {
+    "crps_approx": 1.4599999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 48,
+    "width50": 10,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Being at 0% two-thirds through the season is a strong dry-year signal, so most of the mass sits at or just above 0; the two direct 0%-at-month-8 analogues split between staying at 0 (dry, negative SOI) and a wet-driven jump to ~68% (strongly positive SOI), giving a fat upside tail while the ratchet floors all quantiles at 0."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 863711,
+    "series_id": 247806,
+    "season": 2012,
+    "mos": 8,
+    "cutoff": "2013-02-28",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 5.75,
+    "cov80": true,
+    "cov50": true,
+    "width80": 100,
+    "width50": 39,
+    "abs_err_p50": 18
+   },
+   "llm": {
+    "crps_approx": 4,
+    "cov80": true,
+    "cov50": true,
+    "width80": 100,
+    "width50": 40,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 4.8,
+    "cov80": true,
+    "cov50": true,
+    "width80": 100,
+    "width50": 40,
+    "abs_err_p50": 8
+   },
+   "llm_rationale": "The ratchet pins all quantiles at 100 (current level) and the sole month-1 analog that also started at 100 (offset -1) ended at 100, anchoring the median; but a 100% start in month 1 is a strongly wet signal and ~1/3 of historical seasons for this product exceeded 100% (reaching 180-220%), so the early-season, one-sided upside is captured in the upper tail."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 5501,
+    "series_id": 200016,
+    "season": 1999,
+    "mos": 8,
+    "cutoff": "2000-02-29",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 0.11999999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 6,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "The season is already at 100% by month 6 and allocations only ratchet upward, so the floor is 100%; every comparable past season that reached 100% at month 6 finished at exactly 100% with no product history of exceeding it, leaving the distribution effectively pinned."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2433299,
+    "series_id": 2293845,
+    "season": 2011,
+    "mos": 8,
+    "cutoff": "2012-02-29",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 3.2319999999999993,
+    "cov80": true,
+    "cov50": true,
+    "width80": 41.599999999999994,
+    "width50": 24,
+    "abs_err_p50": 12
+   },
+   "llm": {
+    "crps_approx": 0.35,
+    "cov80": true,
+    "cov50": true,
+    "width80": 10,
+    "width50": 3,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.6499999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 20,
+    "width50": 5,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Both historical seasons that stood at 100% at month 1 (offsets -2 and -12 through -25 patterns) finished at 100%, and the current positive-La Nina context reinforces a wet season; the ratchet constraint pins the downside at 100, with only modest upside above 100."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 676,
+    "series_id": 200014,
+    "season": 1993,
+    "mos": 8,
+    "cutoff": "1994-02-28",
+    "announced_pct": 120,
+    "outcome_final_pct": 120
+   },
+   "outcome": 120,
+   "statistical": {
+    "crps_approx": 1.8,
+    "cov80": true,
+    "cov50": true,
+    "width80": 40,
+    "width50": 20,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0.19999999999999996,
+    "cov80": true,
+    "cov50": true,
+    "width80": 10,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 1.0999999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 30,
+    "width50": 10,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "All four analog seasons sitting at 120% by month 3 ended exactly at 120%, so the ratchet floor is almost certainly the final value; a small upside tail (a wet year occasionally steps to 130-140%) lifts only the p90."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2818,
+    "series_id": 200007,
+    "season": 2013,
+    "mos": 10,
+    "cutoff": "2014-04-30",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 2.59,
+    "cov80": true,
+    "cov50": true,
+    "width80": 57,
+    "width50": 25,
+    "abs_err_p50": 2
+   },
+   "llm": {
+    "crps_approx": 3.0999999999999996,
+    "cov80": true,
+    "cov50": true,
+    "width80": 60,
+    "width50": 30,
+    "abs_err_p50": 4
+   },
+   "ensemble": {
+    "crps_approx": 2.94,
+    "cov80": true,
+    "cov50": true,
+    "width80": 62,
+    "width50": 28,
+    "abs_err_p50": 3
+   },
+   "llm_rationale": "The ratchet floor pins all quantiles at or above the current 100%; seasons already at 100% by month 3 historically finished between 100% and 200% (median near 100-105%), and the current mildly dry SOI regime tempers the upside relative to the wettest analog years."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 1165601,
+    "series_id": 200018,
+    "season": 2012,
+    "mos": 10,
+    "cutoff": "2013-04-30",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 13.27,
+    "cov80": true,
+    "cov50": false,
+    "width80": 76.5,
+    "width50": 49.80000000000001,
+    "abs_err_p50": 48.5
+   },
+   "llm": {
+    "crps_approx": 0.7999999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 25,
+    "width50": 6,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 5.1,
+    "cov80": true,
+    "cov50": true,
+    "width80": 90,
+    "width50": 50,
+    "abs_err_p50": 8
+   },
+   "llm_rationale": "Already at 100% by month 2 and the ratchet forbids anything below 100, so the floor is firm; historically most seasons cap out at exactly 100%, while the few that finished higher (120–200) were already well above 100% at this point, so meaningful upside exists but is a minority outcome."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2512,
+    "series_id": 200009,
+    "season": 2004,
+    "mos": 10,
+    "cutoff": "2005-04-30",
+    "announced_pct": 49,
+    "outcome_final_pct": 49
+   },
+   "outcome": 49,
+   "statistical": {
+    "crps_approx": 0.019999999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 1,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 2.7699999999999996,
+    "cov80": true,
+    "cov50": false,
+    "width80": 46,
+    "width50": 17,
+    "abs_err_p50": 6
+   },
+   "ensemble": {
+    "crps_approx": 0.2699999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 11,
+    "width50": 1,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "At month 10 the allocation is near-final and can only ratchet up, so p10 pins to the current 49%. This season closely resembles the two low-SOI stalled analogs (35% final and the 105% outlier), but its 49% is unusually low versus the historical base rate, keeping the median only modestly above current while the upper tail allows for a late catch-up toward typical 100%+ finals."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 670,
+    "series_id": 651946,
+    "season": 2011,
+    "mos": 10,
+    "cutoff": "2012-04-30",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 0.11999999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 6,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0.5499999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 15,
+    "width50": 5,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.36,
+    "cov80": true,
+    "cov50": true,
+    "width80": 13,
+    "width50": 2,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "At month 6 with 100% already locked in by the ratchet, the floor is firm; the closest analog (offset -1: 100% at month 6, positive SOI, finished 100%) and most 100%-at-month-6 seasons held flat, while a minority of comparably wet years pushed on toward 120%, so the upside is modest and right-skewed."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 623638,
+    "series_id": 573310,
+    "season": 2006,
+    "mos": 10,
+    "cutoff": "2007-04-30",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 3.3599999999999994,
+    "cov80": true,
+    "cov50": true,
+    "width80": 68,
+    "width50": 30,
+    "abs_err_p50": 5
+   },
+   "ensemble": {
+    "crps_approx": 1.64,
+    "cov80": true,
+    "cov50": true,
+    "width80": 62,
+    "width50": 8,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "At month 10 of 12 the allocation is stuck at 0%, and late-season values are historically sticky, so most mass sits near 0; however the two closest analogs (also 0% at month 10) split between staying flat (SOI -9.5, ended 0%) and a large wet-inflow jump (SOI +8.3, ended ~68%), which drives the substantial upper tail."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 162263,
+    "series_id": 200019,
+    "season": 2006,
+    "mos": 10,
+    "cutoff": "2007-04-30",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 0.14799999999999996,
+    "cov80": true,
+    "cov50": true,
+    "width80": 6.4,
+    "width50": 0.4,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0.74,
+    "cov80": true,
+    "cov50": true,
+    "width80": 17,
+    "width50": 6,
+    "abs_err_p50": 1
+   },
+   "ensemble": {
+    "crps_approx": 0.4299999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 14,
+    "width50": 3,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "The only two historical seasons still at 0% by month 10 ended at 0% (dry, SOI -9.5) and ~17.5% (wet, SOI +8.3), so with just two months left and the ratchet floor the mass sits near the current 0% with an upside tail toward ~17% if late inflows arrive."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 863711,
+    "series_id": 247806,
+    "season": 2012,
+    "mos": 10,
+    "cutoff": "2013-04-30",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 5.75,
+    "cov80": true,
+    "cov50": true,
+    "width80": 100,
+    "width50": 39,
+    "abs_err_p50": 18
+   },
+   "llm": {
+    "crps_approx": 5,
+    "cov80": true,
+    "cov50": true,
+    "width80": 100,
+    "width50": 50,
+    "abs_err_p50": 5
+   },
+   "ensemble": {
+    "crps_approx": 5.5,
+    "cov80": true,
+    "cov50": true,
+    "width80": 100,
+    "width50": 50,
+    "abs_err_p50": 10
+   },
+   "llm_rationale": "The single most-similar season (offset -1: 100% at month 1, SOI +4.3, wet-leaning) ended at 100%, and the ratchet floor already guarantees ≥100%; but with 11 months left, a wet/neutral SOI backdrop, and past seasons frequently reaching 180–220%, there is meaningful upside toward the historical high band."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 423809887,
+    "series_id": 17110540,
+    "season": 2007,
+    "mos": 10,
+    "cutoff": "2008-04-30",
+    "announced_pct": 0,
+    "outcome_final_pct": 0
+   },
+   "outcome": 0,
+   "statistical": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0,
+    "cov80": true,
+    "cov50": true,
+    "width80": 0,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "All seven historical seasons for this product—including every negative-SOI (drier) analog and even wetter-leaning years—showed 0% at month 10 and ended the season at 0%, and with only 2 months left and the allocation still ratcheted at 0%, there is no basis to expect any upward move."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 2433299,
+    "series_id": 2293845,
+    "season": 2011,
+    "mos": 10,
+    "cutoff": "2012-04-30",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 3.2319999999999993,
+    "cov80": true,
+    "cov50": true,
+    "width80": 41.599999999999994,
+    "width50": 24,
+    "abs_err_p50": 12
+   },
+   "llm": {
+    "crps_approx": 0.8499999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 30,
+    "width50": 5,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.9099999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 33,
+    "width50": 5,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Month 1 at 100% starts wet, and the ratchet forbids any quantile below 100; historical seasons opening near full (offsets -2 and -10 through -25) overwhelmingly finished at 100%+, so the distribution is pinned at 100 with modest upside for products that exceed 100% of entitlement."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 5501,
+    "series_id": 200016,
+    "season": 1999,
+    "mos": 10,
+    "cutoff": "2000-04-30",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 0.11999999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 6,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0.09999999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 5,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.11999999999999997,
+    "cov80": true,
+    "cov50": true,
+    "width80": 6,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "At month 6 the allocation is already 100% and can only ratchet upward, so the floor is locked at 100; every historical season that reached 100% by mid-season stayed at 100%, so the final is almost certainly 100% with only slim upside to 105%+ in an unusually wet year."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 512,
+    "series_id": 247807,
+    "season": 2012,
+    "mos": 10,
+    "cutoff": "2013-04-30",
+    "announced_pct": 100,
+    "outcome_final_pct": 100
+   },
+   "outcome": 100,
+   "statistical": {
+    "crps_approx": 20.275,
+    "cov80": false,
+    "cov50": false,
+    "width80": 84.5,
+    "width50": 53.5,
+    "abs_err_p50": 70.5
+   },
+   "llm": {
+    "crps_approx": 0.5499999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 15,
+    "width50": 5,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.9999999999999998,
+    "cov80": true,
+    "cov50": true,
+    "width80": 30,
+    "width50": 8,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "Reaching 100% by month 2 signals a very wet, La Nina-leaning season, so the ratchet floor of 100% is almost certainly the outcome; the only uncertainty is modest upside as some products announce above 100% in strong-inflow years."
+  },
+  {
+   "item": {
+    "kind": "allocation",
+    "region_id": 676,
+    "series_id": 200014,
+    "season": 1993,
+    "mos": 10,
+    "cutoff": "1994-04-30",
+    "announced_pct": 120,
+    "outcome_final_pct": 120
+   },
+   "outcome": 120,
+   "statistical": {
+    "crps_approx": 1.8,
+    "cov80": true,
+    "cov50": true,
+    "width80": 40,
+    "width50": 20,
+    "abs_err_p50": 0
+   },
+   "llm": {
+    "crps_approx": 0.19999999999999996,
+    "cov80": true,
+    "cov50": true,
+    "width80": 10,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "ensemble": {
+    "crps_approx": 0.3999999999999999,
+    "cov80": true,
+    "cov50": true,
+    "width80": 20,
+    "width50": 0,
+    "abs_err_p50": 0
+   },
+   "llm_rationale": "All four historical seasons that were at 120% by month 3 ended exactly at 120%, so the ratchet floor is also the most likely outcome; only a small upside tail (one comparable-region season reached 140%) justifies a p90 above the floor."
+  }
+ ]
+}

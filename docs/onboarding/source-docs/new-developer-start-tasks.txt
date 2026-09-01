@@ -1,0 +1,94 @@
+
+Technologies used in Waterfind CRM application
+Java 6
+JSP
+Postgres 8.2
+Struts
+SVN (for source control)
+GWT (for some of the older pages)
+jquery / bootstrap ( from some of the new pages)
+Ant (for building)
+New User Machine Configuration 
+Preparations:
+Make sure you have the following files ready at hand and installed if appropriate:
+resin-3.1.10
+apache-ant-1.8.1-bin
+baretail.exe
+jdk-6u45-windows-x64
+jdk-7u80-windows-x64
+pgadmin3
+postgresql-8.2.4-windows-bin
+Also add the following to system path:
+resin-3.1.10
+apache-ant-1.8.1
+jdk-6u45-windows-x64 jdk
+Setting up eclipse:
+Obtain Eclipse Oxygen.3a Release (4.7.3a) (new versions untested).
+Install Subversion Plugin 4.2.4 with SVNKit 1.8.12 dependency. See Subversion Eclipse plugin for details. 
+To install Subversion Plugin 4.2.4 specifically, use
+http://download.Eclipse.org/technology/subversive/4.0/update-site/
+by going to Help > Install New Software and typing the above URL in the Work with search box. If there are newer versions present uninstall them first
+Proceed to import projects by right clicking into the Project Explorer sub-window, selecting import > import... and clicking on Checkout Projects from SVN from the SVN folder.
+Checkout following projects: dataimport, datascraper, MyobService, NotificationService, pbxapp, waterfind.com.au, waterfindServiceModel.
+Take a copy of local-server-dev.properties.sample file and make it as local-server-dev.properties file. This is the main properties file for dev environment which need to be updated according to the location of your database and other files.
+Subversion Eclipse plugin
+Our Subversion (SVN) server is accessed using the secure ssh+svn protocol.  In order to access subversion through eclipse, you must configure the SVN plugin called Subclipse.
+Installing the plugin
+1) Go to the eclipse marketplace (usually under the "help" or "about" menu)
+2) Search for "subclipse", and install the latest version.  Also include "SVNKit" which should be an optional dependency.
+3) Open the view called "SVN Repository Exploring" (under the window menu > open perspective > other)
+4) Right click and add a new repository location.
+Use the following details : 
+URL : svn+ssh://svn.nowmarketservices.com/svn/repo/WaterfindDev
+Authentication type : private key
+Username : your linux account username
+Username : your SVN username
+Password : your SVN password
+5) Next, go to Preferences > Team > SVN > SVN interface
+and change the selected client to : SVNKit (Pure Java)
+You should now see the new SVN repository and be able to check out the projects to your workspace. 
+Install Resin Plugin in Eclipse:
+Go to window->Install new software and enter below path in work with column and enter
+http://www.caucho.com/eclipse/
+You can see below window with Resin Application Server Adapter with subdirectories. Select all and install
+
+Please find below guide if you have any trouble.
+https://www.caucho.com/resin-4.0/admin/resin-eclipse-support.xtp
+
+Setting up PostgreSQL
+Obtain binaries for PostgreSQL 8.2.4.
+Navigate to the directory of PostgreSQL 8.2.4 and run the following command prompt command:
+initdb.exe -D B:\postgresql-8.2.4-windows-bin\postgresql-8.2.4 Where B:\ is the destination directory. Note that command prompt must not be in administrative mode. Also the database is large in size and should be given adequate storage space.
+Start the server as a service using the following command.
+pg_ctl.exe -D "B:/postgresql-8.2.4-windows-bin/postgresql-8.2.4/data" start
+(OR)
+You can start the server as a service using below command.
+Important Note: Run the command prompt as an administrator. You may also need to manually start the service.
+pg_ctl.exe register -N postgres -D "B:/postgresql-8.2.4-windows-bin/postgresql-8.2.4/data"
+
+Create a Role 
+createuser -s postgres
+
+
+Add a server in pgAdminIII using the following steps:
+Follow steps for http://hiplab.mc.vanderbilt.edu/projects/soempi/pgadmin_addserver.html where the username and password is both "admin" without quotes.
+Open command prompt making sure it is not administrator mode and RECREATE DATABASE using the following command
+
+createdb --encoding UTF8 --owner=waterfind -U postgres "waterfind-20171116" where 20171116 is the current date of the database
+Repeat the same process for IMPORT INTO DATABASE using the following command:
+
+pg_restore -U waterfind -d "waterfind-20171116" -v "wf1win" where 20171116 is the current date of the database.
+Then run sql queries in missing_tables folder to create missing tables.
+Then run the set of queries which are in sanitize_db.sql file, to sanitize the database before using.
+Generate Hibernate Objects
+When adding a new table or column to the database, and you would like to generate all Daos and Hibernate objects.  There is an Ant target called generate-hbm-pojos, it uses the properties files located in  scripts/dao-generation/hibrenate.properties
+Key Files within the Sever project
+Some key files to look at after the code is checked out.
+struts-config.xml → contains all the end points of the application
+com.waterfind.server.WaterfindDelegate.java → all the calls from the struts endpoints travel through the delegate.  I believe it was created so it acts as a single entry point to the rest of the system to prevent locking and concurrency issues.  This will create a set of files which will need to be copied and pasted into the correct locations.
+Non Server projects
+The application has been broken down its separate projects .ie. dataimport, datascraper, myobservice etc.  If making any changes to these projects, you will need to clean the individual projects and rebuilt the main server project.
+Local Resin
+The application uses resin as the webserver, you will need a local version on your machine to run it.  the configuration file is located in conf directory and the filename is called resin.conf.
+
+

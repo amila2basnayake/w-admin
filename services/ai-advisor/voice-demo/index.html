@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Waterfind voice demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --bg:#f6f7f8; --fg:#1d2733; --muted:#5b6b7a; --line:#d9dee3; --accent:#0b5cad; --ok:#1d7a3a; --warn:#a15c00; --bad:#a51d2d; }
+  * { box-sizing: border-box; }
+  body { margin:0; font: 15px/1.45 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color:var(--fg); background:var(--bg); }
+  main { max-width: 880px; margin: 0 auto; padding: 24px 16px 60px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  p.sub { margin:0 0 20px; color:var(--muted); }
+  section { background:#fff; border:1px solid var(--line); border-radius:10px; padding:16px; margin-bottom:16px; }
+  h2 { font-size: 15px; margin:0 0 10px; }
+  label { display:block; font-size:13px; color:var(--muted); margin: 8px 0 3px; }
+  input, select { width:100%; padding:8px 10px; border:1px solid var(--line); border-radius:6px; font: inherit; }
+  .row { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  button { font: inherit; padding: 9px 14px; border-radius:7px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; margin: 10px 8px 0 0; }
+  button.secondary { background:#fff; color:var(--accent); }
+  button.stop { background:var(--bad); border-color:var(--bad); }
+  button:disabled { opacity:.5; cursor:default; }
+  #status { font-size:13px; color:var(--muted); margin-top:8px; min-height: 18px; }
+  #transcript { border:1px solid var(--line); border-radius:8px; padding: 10px 12px; height: 320px; overflow:auto; background:#fbfcfd; font-size:14px; }
+  .u { margin: 4px 0; } .u.agent b { color: var(--accent); } .u.user b { color: var(--ok); }
+  #caps { font-family: ui-monospace, Menlo, Consolas, monospace; font-size:12px; white-space:pre-wrap; color:var(--muted); }
+  .hint { font-size:12.5px; color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Waterfind voice assistant — browser demo</h1>
+  <p class="sub">Calls the same phone agent through a Retell <em>web call</em> — no phone number needed. Speak, then pause; barge-in works.</p>
+
+  <section>
+    <h2>Capabilities</h2>
+    <div id="caps">loading /voice/health…</div>
+  </section>
+
+  <section>
+    <h2>Start a call</h2>
+    <div class="row">
+      <div>
+        <label>Caller (test clients — postcode / CRN for identity checks)</label>
+        <select id="uid">
+          <option value="">Unidentified caller</option>
+          <option value="119063">Stuart Hodge — RW Hodge &amp; Son, VIC Goulburn, 429 ML (3636 / 2140)</option>
+          <option value="1646557">Luke Van Helvoirt — Birdnest Pty Ltd, VIC Goulburn, 474 ML (3714 / 8121)</option>
+          <option value="316888067">Allan Delves — Kidman Way Farming, NSW Murrumbidgee Irrigation, 544 ML (2680 / 13957)</option>
+          <option value="111013765">Theo Sasopoulos — Mitolo Group, SA + Lachlan, 28,545 ML across 11 markets (5120 / no CRN)</option>
+          <option value="2725534">Beth Ashworth — Victorian Environmental Water Holder, 41,397 ML across 7 markets (3002 / 9317)</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Kind</label>
+        <select id="kind">
+          <option value="inbound">Inbound — caller rings Waterfind</option>
+          <option value="order_confirmation">Outbound — order confirmation</option>
+          <option value="trade_opportunity">Outbound — trade opportunity</option>
+          <option value="market_alert">Outbound — market alert</option>
+          <option value="broker_followup">Outbound — broker follow-up</option>
+        </select>
+      </div>
+      <div>
+        <label>Outbound brief (message / order number)</label>
+        <input id="brief" placeholder="e.g. Allocation for the Goulburn opened at 30 percent">
+      </div>
+    </div>
+    <button id="start">Start call</button>
+    <button id="stop" class="stop" disabled>Hang up</button>
+    <div id="status"></div>
+    <p class="hint">Verification codes go to the sidecar log when the OTP transport is <code>console</code> — read the six digits from there and say them.</p>
+  </section>
+
+  <section>
+    <h2>Transcript</h2>
+    <div id="transcript"></div>
+  </section>
+</main>
+
+<script type="module">
+  const $ = (id) => document.getElementById(id);
+  const status = (s, cls) => { $('status').textContent = s; $('status').style.color = cls === 'bad' ? 'var(--bad)' : cls === 'ok' ? 'var(--ok)' : 'var(--muted)'; };
+  const base = location.pathname.replace(/\/voice\/demo\/?$/, '');
+  const DEMO_KEY = __DEMO_KEY__; // injected by the sidecar when it serves this page
+
+  fetch(base + '/voice/health').then((r) => r.json()).then((c) => {
+    $('caps').textContent = Object.entries(c).map(([k, v]) => `${k.padEnd(16)} ${v === null ? '(unset)' : v}`).join('\n');
+    if (!c.retell_key) status('RETELL_API_KEY is not configured on the sidecar — web calls cannot start.', 'bad');
+    else if (!c.inbound_agent) status('No Retell agent configured — run: npm run voice:setup', 'bad');
+  }).catch(() => { $('caps').textContent = '/voice/health unreachable'; });
+
+  let RetellWebClient = null;
+  async function sdk() {
+    if (RetellWebClient) return RetellWebClient;
+    const m = await import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2/+esm');
+    RetellWebClient = m.RetellWebClient;
+    return RetellWebClient;
+  }
+
+  let client = null;
+  function renderTranscript(list) {
+    const el = $('transcript');
+    el.innerHTML = '';
+    for (const u of list ?? []) {
+      const d = document.createElement('div');
+      d.className = 'u ' + (u.role === 'agent' ? 'agent' : 'user');
+      d.innerHTML = `<b>${u.role === 'agent' ? 'Assistant' : 'You'}:</b> ${String(u.content ?? '').replace(/[<>&]/g, (c) => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}`;
+      el.appendChild(d);
+    }
+    el.scrollTop = el.scrollHeight;
+  }
+
+  $('start').onclick = async () => {
+    try {
+      $('start').disabled = true;
+      status('Requesting a web call…');
+      const kind = $('kind').value;
+      const body = { kind, key: DEMO_KEY || undefined, client_uid: $('uid').value ? Number($('uid').value) : undefined };
+      if (kind !== 'inbound') {
+        const b = $('brief').value.trim();
+        body.payload = kind === 'order_confirmation' ? { order_number: b || undefined, description: b || undefined } : { message: b || undefined };
+      }
+      const r = await fetch(base + '/voice/demo/web-call', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+      const j = await r.json();
+      if (!r.ok) throw new Error(j.error || r.statusText);
+      const Ctor = await sdk();
+      client = new Ctor();
+      client.on('call_started', () => { status(`In call (${j.call_id}) — speak.`, 'ok'); $('stop').disabled = false; });
+      client.on('call_ended', () => { status('Call ended.'); $('start').disabled = false; $('stop').disabled = true; });
+      client.on('agent_start_talking', () => status('Assistant speaking…', 'ok'));
+      client.on('agent_stop_talking', () => status('Listening…', 'ok'));
+      client.on('update', (u) => renderTranscript(u.transcript));
+      client.on('error', (e) => { status('Error: ' + (e?.message ?? e), 'bad'); $('start').disabled = false; $('stop').disabled = true; });
+      await client.startCall({ accessToken: j.access_token });
+    } catch (e) {
+      status('Could not start: ' + (e?.message ?? e), 'bad');
+      $('start').disabled = false;
+    }
+  };
+  $('stop').onclick = () => { try { client?.stopCall(); } catch {} };
+</script>
+</body>
+</html>

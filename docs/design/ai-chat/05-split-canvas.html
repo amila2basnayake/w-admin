@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Split Canvas · Waterfind Water-Rights Assistant (wireframe)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../staff-console/wf-console.css">
+<link rel="stylesheet" href="wf-ai.css">
+</head>
+<body>
+<div class="wf-app">
+
+  <header class="wf-header">
+    <div class="wf-logo"><i class="fa fa-tint drop"></i><span class="word"><b>WATER</b><span>FIND</span></span></div>
+    <span class="console-tag">Broker Console</span>
+    <div class="spacer"></div>
+    <div class="wf-search"><i class="fa fa-search"></i><input placeholder="Search clients, markets, trade #…"></div>
+    <span class="wf-wire">WIREFRAME</span>
+    <div class="wf-welcome">Welcome back,<br><b>Dion Martin</b> · <small>Broker · Sales</small></div>
+    <div class="wf-hicon sm"><i class="fa fa-bell"></i><span class="dot">4</span></div>
+    <div class="wf-hicon"><i class="fa fa-user"></i></div>
+  </header>
+
+  <div class="wf-body">
+    <nav class="wf-rail">
+      <ul>
+        <li><a href="../staff-console/01-broker-desk.html"><span class="stripe"></span><span class="ic"><i class="fa fa-tachometer"></i></span><span class="lbl">Broker Desk</span></a></li>
+        <li><a href="../staff-console/02-markets-orderbook.html"><span class="stripe"></span><span class="ic"><i class="fa fa-exchange"></i></span><span class="lbl">Markets &amp; Order Book</span></a></li>
+        <li><a href="../staff-console/03-client-360.html"><span class="stripe"></span><span class="ic"><i class="fa fa-users"></i></span><span class="lbl">Clients<span class="cnt">142</span></span></a></li>
+        <li><a href="../staff-console/04-settlements-trust.html"><span class="stripe"></span><span class="ic"><i class="fa fa-university"></i></span><span class="lbl">Settlements &amp; Trust<span class="cnt">6</span></span></a></li>
+        <li class="bottom"><a href="../staff-console/05-admin-console.html"><span class="stripe"></span><span class="ic"><i class="fa fa-cog"></i></span><span class="lbl">Admin &amp; Settings</span></a></li>
+        <li class="ai active"><a href="01-assistant-workspace.html"><span class="stripe"></span><span class="ic"><i class="fa fa-comments"></i></span><span class="lbl">AI Assistant<span class="tagnew">AI</span></span></a></li>
+      </ul>
+    </nav>
+
+    <!-- ══ split workspace: conversation (left) + live canvas (right) ══ -->
+    <div class="splitwrap">
+
+      <!-- conversation -->
+      <div class="split-chat">
+        <div class="canvas-head" style="background:var(--wf-blue);border-right-color:var(--wf-orange)">
+          <span class="ai-mark sm" style="background:rgba(255,255,255,.2);box-shadow:none"><i class="fa fa-tint"></i></span>
+          Assistant workspace <span class="spacer"></span><span class="tb-act"><i class="fa fa-plus"></i> New</span>
+        </div>
+        <div class="canvas-body" style="padding:16px 15px">
+          <div class="chat">
+            <div class="msg user">
+              <div class="av"><i class="fa fa-user"></i></div>
+              <div class="stack2"><div class="who"><b>Dion Martin</b> · 09:44</div>
+                <div class="bubble">Which of my clients likely <b>left value on the table</b> this season — sold below where the market went afterwards? Build me a prioritised call list.</div></div>
+            </div>
+
+            <div class="msg ai">
+              <div class="av"><i class="fa fa-tint"></i></div>
+              <div class="stack2">
+                <div class="who"><b>Waterfind AI</b> · grounded · 09:44</div>
+                <div class="bubble">
+                  <p class="lead">Found 5 clients across your book. Total estimated upside ≈ <b>$34,900</b>.</p>
+                  <p>I compared each client's <b>settled sell</b> to the <b>median settled price for that same region &amp; product after their sale date</b>, then ranked by estimated missed value. The full list, a chart, the exact query, and sources are in the canvas&nbsp;→</p>
+                  <p style="margin-bottom:0"><b>Njernda</b> tops it: sold 100&nbsp;ML at $300 in Oct; region 515 has since settled around $415 — a ~$115/ML gap, ≈ <b>$11,500</b> of upside missed on that parcel.</p>
+                  <div class="cites">
+                    <span class="cite"><span class="n">1</span><i class="fa fa-table"></i> <code>order_completed → wateroffer</code></span>
+                    <span class="cite"><span class="n">2</span><i class="fa fa-table"></i> <code>tenant_to_user</code></span>
+                    <span class="cite"><span class="n">3</span><i class="fa fa-table"></i> <code>registry_user</code></span>
+                  </div>
+                  <div class="verify"><i class="fa fa-exclamation-triangle"></i> "Upside" is hindsight vs the later median — it does <b>not</b> mean the client should have waited, and every figure is pre-fee &amp; illustrative. It's a conversation starter, not advice. Consent flags already applied — all 5 are contactable.</div>
+                  <div class="ans-acts">
+                    <button class="ans-act primary"><i class="fa fa-download"></i> Export call list</button>
+                    <button class="ans-act"><i class="fa fa-check-square-o"></i> Add to action queue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="msg ai">
+              <div class="av"><i class="fa fa-tint"></i></div>
+              <div class="stack2"><div class="bubble" style="padding:11px 14px"><span class="thinking"><span class="dots"><i></i><i></i><i></i></span> <span class="step">drafting talking points for Njernda…</span></span></div></div>
+            </div>
+          </div>
+
+          <div class="followups" style="padding-left:0;margin-top:14px">
+            <button class="chip"><i class="fa fa-file-text-o"></i> Draft a call script for Njernda</button>
+            <button class="chip"><i class="fa fa-filter"></i> Only clients with live latent supply</button>
+          </div>
+        </div>
+
+        <div class="dock-foot">
+          <div class="composer">
+            <textarea class="box" rows="1" placeholder="Refine the list, ask a follow-up, or request a new artifact…"></textarea>
+            <div class="tools">
+              <span class="tool-pill on"><i class="fa fa-check-circle"></i> Grounded</span>
+              <span class="tool-pill"><i class="fa fa-lock"></i> Your book</span>
+              <span class="spacer"></span>
+              <span class="tool-pill"><i class="fa fa-cube"></i> Opus 4.8</span>
+              <button class="send-btn"><i class="fa fa-paper-plane"></i></button>
+            </div>
+          </div>
+          <div class="composer-foot"><i class="fa fa-info-circle"></i> Decision support only · verify before contacting clients · logged to <code>action_log</code></div>
+        </div>
+      </div>
+
+      <!-- live canvas -->
+      <div class="split-canvas">
+        <div class="canvas-head">
+          <i class="fa fa-file-text-o"></i> Call list · left value on the table · this season
+          <span class="spacer"></span>
+          <span class="tb-act"><i class="fa fa-refresh"></i> Regenerate</span>
+          <span class="tb-act"><i class="fa fa-download"></i> Export CSV</span>
+          <span class="tb-act"><i class="fa fa-share-alt"></i> Share</span>
+        </div>
+        <div class="canvas-tabs" id="canvastabs">
+          <button class="ct active" data-canvas="table"><i class="fa fa-table"></i> Table</button>
+          <button class="ct" data-canvas="chart"><i class="fa fa-bar-chart"></i> Chart</button>
+          <button class="ct" data-canvas="sql"><i class="fa fa-database"></i> Query</button>
+          <button class="ct" data-canvas="sources"><i class="fa fa-link"></i> Sources</button>
+        </div>
+
+        <div class="canvas-body">
+          <!-- TABLE -->
+          <div class="canvas-doc canvaspanel active" data-panel="table">
+            <h3>Prioritised call list — 5 clients</h3>
+            <div class="sub">Sold below the subsequent median for the same region &amp; product · ranked by estimated missed value · this season · <span class="badge-est">estimates</span></div>
+            <table class="wf-table">
+              <thead><tr><th>Client</th><th class="c">Region</th><th class="r">Sold</th><th class="r">Sale $/ML</th><th class="r">Median since</th><th class="r">Gap/ML</th><th class="r">Est. upside</th></tr></thead>
+              <tbody>
+                <tr><td class="strong">Kyle Egan · Njernda</td><td class="c">515</td><td class="r">100 ML</td><td class="r">$300</td><td class="r">$415</td><td class="r pos">+$115</td><td class="r strong">$11,500</td></tr>
+                <tr><td class="strong">Paisley Hill Pastoral</td><td class="c">1165601</td><td class="r">180 ML</td><td class="r">$355</td><td class="r">$412</td><td class="r pos">+$57</td><td class="r strong">$10,260</td></tr>
+                <tr><td class="strong">Riverina Almonds</td><td class="c">1044</td><td class="r">120 ML</td><td class="r">$340</td><td class="r">$395</td><td class="r pos">+$55</td><td class="r strong">$6,600</td></tr>
+                <tr><td class="strong">Deniliquin Rice Co</td><td class="c">509</td><td class="r">90 ML</td><td class="r">$362</td><td class="r">$405</td><td class="r pos">+$43</td><td class="r strong">$3,870</td></tr>
+                <tr><td class="strong">Barham Grazing Trust</td><td class="c">515</td><td class="r">40 ML</td><td class="r">$398</td><td class="r">$415</td><td class="r pos">+$17</td><td class="r strong">$680</td></tr>
+                <tr class="total"><td>Total</td><td class="c"></td><td class="r">530 ML</td><td class="r"></td><td class="r"></td><td class="r"></td><td class="r">$32,910</td></tr>
+              </tbody>
+            </table>
+            <div class="wf-note"><i class="fa fa-lock"></i> Scoped to your book via the <code>tenant_to_user</code> gate; consent flags checked — all five are opt-in for contact. Figures are pre-fee and illustrative.</div>
+          </div>
+
+          <!-- CHART -->
+          <div class="canvas-doc canvaspanel" data-panel="chart" style="display:none">
+            <h3>Estimated upside by client</h3>
+            <div class="sub">Gap × volume · this season · illustrative</div>
+            <div class="barchart">
+              <div class="bar hi"><div class="fill" style="height:100%"></div><div class="v">$11.5k</div><div class="x">Njernda</div></div>
+              <div class="bar"><div class="fill" style="height:89%"></div><div class="v">$10.3k</div><div class="x">Paisley</div></div>
+              <div class="bar"><div class="fill" style="height:57%"></div><div class="v">$6.6k</div><div class="x">Riverina</div></div>
+              <div class="bar"><div class="fill" style="height:34%"></div><div class="v">$3.9k</div><div class="x">Denil.</div></div>
+              <div class="bar"><div class="fill" style="height:6%"></div><div class="v">$0.7k</div><div class="x">Barham</div></div>
+            </div>
+            <h4><i class="fa fa-info-circle"></i> Read this carefully</h4>
+            <div class="callout warn"><p>Upside is measured against the <b>later</b> median with the benefit of hindsight — it is not a claim the client mis-timed the sale, and it ignores their liquidity needs at the time. Use it to <b>start a conversation</b>, not to grade a decision.</p></div>
+          </div>
+
+          <!-- SQL -->
+          <div class="canvas-doc canvaspanel" data-panel="sql" style="display:none">
+            <h3>The query behind this list</h3>
+            <div class="sub">Read-only · runs with your access scope · shown for auditability</div>
+            <div class="sqlblock"><span class="copy">copy</span><span class="c">-- settled sells vs later median for the same region + product, your book only</span>
+<span class="k">SELECT</span> ru.display_name, oc.region_id, oc.quantity_ml, wo.price_per_ml <span class="k">AS</span> sale_px,
+       m.median_since <span class="k">AS</span> median_px, (m.median_since - wo.price_per_ml) <span class="k">AS</span> gap
+<span class="k">FROM</span> order_completed oc
+<span class="k">JOIN</span> wateroffer wo <span class="k">ON</span> wo.id = oc.wateroffer_id
+<span class="k">JOIN</span> registry_user ru <span class="k">ON</span> ru.id = oc.registry_user_id
+<span class="k">JOIN LATERAL</span> median_after(oc.region_id, oc.product, oc.completed_at) m <span class="k">ON</span> <span class="s">true</span>
+<span class="k">WHERE</span> oc.side = <span class="s">'SELL'</span>
+  <span class="k">AND</span> oc.completed_at &gt;= <span class="s">'2025-07-01'</span>              <span class="c">-- this season</span>
+  <span class="k">AND</span> (m.median_since - wo.price_per_ml) &gt; <span class="s">0</span>       <span class="c">-- sold below later median</span>
+  <span class="k">AND EXISTS</span> (<span class="k">SELECT</span> 1 <span class="k">FROM</span> tenant_to_user tu    <span class="c">-- ← the tenancy gate, always</span>
+              <span class="k">WHERE</span> tu.registry_user_id = ru.id
+                <span class="k">AND</span> tu.tenant_id = :tenant
+                <span class="k">AND</span> tu.broker_id  = :me)
+<span class="k">ORDER BY</span> gap * oc.quantity_ml <span class="k">DESC</span>;</div>
+            <div class="wf-note"><i class="fa fa-shield"></i> The <code>EXISTS (… tenant_to_user …)</code> clause is mandatory — the DB has no row-level isolation, so dropping it would leak every client. Prices come from <code>wateroffer</code> on settled trades, never the stale <code>region</code> indicative.</div>
+          </div>
+
+          <!-- SOURCES -->
+          <div class="canvas-doc canvaspanel" data-panel="sources" style="display:none">
+            <h3>Sources &amp; assumptions</h3>
+            <div class="sub">Every figure traces to a table; every judgement call is stated</div>
+            <h4><i class="fa fa-table"></i> Data read</h4>
+            <table class="wf-table" style="font-size:13px">
+              <thead><tr><th>Source</th><th>Used for</th><th class="c">Freshness</th></tr></thead>
+              <tbody>
+                <tr><td><code>order_completed</code></td><td>Which sells settled, when, how much</td><td class="c">live</td></tr>
+                <tr><td><code>wateroffer</code></td><td>Price per ML on each settled sell</td><td class="c">live</td></tr>
+                <tr><td><code>registry_user</code></td><td>Client name, consent flags</td><td class="c">live</td></tr>
+                <tr><td><code>tenant_to_user</code></td><td>Book scope (the access gate)</td><td class="c">live</td></tr>
+              </tbody>
+            </table>
+            <h4><i class="fa fa-balance-scale"></i> Assumptions</h4>
+            <ul style="font-size:13px;line-height:1.7;color:var(--wf-muted2);padding-left:18px">
+              <li>"Median since" = median settled price for the <b>same region &amp; product</b>, from the client's sale date to today.</li>
+              <li>Upside is <b>pre-fee</b> and <b>hindsight-based</b> — it excludes the client's liquidity needs at the time of sale.</li>
+              <li>The stale ~2022 <code>region</code> indicative price ($60) is <b>excluded</b>; pricing is settled-trade only.</li>
+              <li>Only <b>opt-in</b> clients are listed — consent flags applied before the list was built.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // canvas tab switching
+  var ct = document.getElementById('canvastabs');
+  ct.addEventListener('click', function(e){
+    var b = e.target.closest('.ct'); if(!b) return;
+    var name = b.getAttribute('data-canvas');
+    ct.querySelectorAll('.ct').forEach(function(t){ t.classList.toggle('active', t===b); });
+    document.querySelectorAll('.canvaspanel').forEach(function(p){
+      var on = p.getAttribute('data-panel')===name;
+      p.classList.toggle('active', on); p.style.display = on ? 'block':'none';
+    });
+  });
+  document.querySelectorAll('.composer .box').forEach(function(t){
+    t.addEventListener('input', function(){ t.style.height='auto'; t.style.height=Math.min(t.scrollHeight,120)+'px'; });
+  });
+</script>
+</body>
+</html>

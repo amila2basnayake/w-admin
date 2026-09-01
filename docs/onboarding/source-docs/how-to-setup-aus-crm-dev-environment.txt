@@ -1,0 +1,118 @@
+
+Once you installed required software and setup system path, follow below procedure:
+Checkout following projects: dataimport, datascraper, MyobService, NotificationService, pbxapp, waterfind.com.au, waterfindServiceModel . Please note to checkout only branch called “Iteration45”.
+Once you checkout all the above projects, Take a copy of local-server-dev.properties.sample file and make it as local-server-dev.properties file. This is the main properties file for dev environment which need to be updated according to the location of your database and other files. Do this for the below listed projects.
+dataimport, MyobService, Pbxapp, waterfind.com.au.
+
+Eclipse Preferences for this project:
+Go to Window-> preferences -> Java->Installed JREs , and select your java 1.7 home path. And compiler 1.7
+
+
+Go to Window-> preferences -> Ant->Runtime, make sure your runtime is pointing to your ant-home directory.
+
+
+Go to Window-> preferences -> Server->Runtime Environment, and add Resin 4.0
+
+IMP Note: Don’t forget to restart the eclipse after changing the java version.
+Project Buildpath settings:
+Open properties for waterfind.com.au project->Java Build path and add JRE system library as follows:
+Execution environment to point to JavaSE-1.6(jdk 1.7.9_80) 
+And Java Compiler to point to 1.6 (See below)
+Make sure to do this for the below mentioned projects
+Waterfind.com.au, NotificationService, datascraper and dataimport. 
+Other project has default jdk 1.7 in their build path
+
+
+
+Change local-server-dev.properties file of waterfind.com.au project:
+Uncomment resin.path property variable and update path to point to your resin home directory.
+Change jdbc-waterfind.proxool.driver-url  variable to point to your local database
+Change below file paths to point to your local workspace
+file.docs.path= C:/Kris/Workspaces/WFAUSTrunk/waterfind.com.au/build-dev/waterfind/WEB-INF
+file.path= C:/Kris/Workspaces/WFAUSTrunk/waterfind.com.au/build-dev/waterfind
+file.resource.loader.path= C:/Kris/Workspaces/WFAUSTrunk/waterfind.com.au/build-dev/waterfind/WEB-INF/templates/email
+waterfind.file.images=c:/temp/images
+waterfind.file.images.cache=c:/temp/images/imagecache/
+To run the project in redundancy mode set the below property to true, we do this to avoid sending emails/SMS on certain operations. If the CRM is in redundant mode, it wont send emails out.
+waterfind.is-redundant-server=true
+Add below Content at the end of the properties file:
+waterfind.taskmanager=true
+waterfind.completed.trade.email=user@waterfind.com
+waterfind.email.finance=user@waterfind.com
+waterfind.scrape.auto=false
+
+Update below url to point to your IP:
+waterfind.server.path=http://192.168.5.13
+
+
+#################################################
+waterfind.water.unit.type=ML
+waterfind.tax.unit.type=GST
+waterfind.default.regionid=2816
+
+
+waterfind.public.office.street1=2/108 kingwilliam street
+waterfind.public.office.street2=
+waterfind.public.office.suburb=Adelaide
+waterfind.public.office.state=SA
+waterfind.public.office.postcode=5000
+
+waterfind.public.postal.street1=
+waterfind.public.postal.street2=
+waterfind.public.postal.suburb=
+waterfind.public.postal.state=
+waterfind.public.postal.postcode=
+
+
+dataimport : local-server-dev.properties file changes:
+
+Update the database to point to your local dev database like below:
+jdbc-waterfind.driver-url=jdbc\:postgresql\://localhost/WF-AUS-20211101
+
+pbxapp : local-server-dev.properties file changes:
+Update resin.path to point to your resin home directory, like below
+resin.path=C:/Programs/resin-3.1.10
+
+Update the database to point to your local dev database like below:
+jdbc-waterfind.driver-url=jdbc\:postgresql\://localhost/WF-AUS-20211101
+
+Update below url to point to your IP:
+# Set the local host URL
+#
+##################################
+waterfind.website.secure.url=https://192.168.5.13
+
+Running the build:
+There are some build scripts for running different kinds of builds. 
+Open Ant window: Click window->Show view->Ant-> Ant
+Open build.xml files for all the projects here.
+
+
+
+When you are first running run build-webapp under waterfind.com.au project which builds all the projects. This will take around 20mins to build entire project. 
+After the build successfully completed, go to your resin home directory and open resin.conf file.
+Add your directory path in the resin.conf file under host tag like below:
+  <host id="*">
+        <web-app id="/">
+			 <document-directory>C:/Workspaces/ WFAUSDotsquares45/waterfind.com.au/build-dev/waterfind/</document-directory>
+        </web-app>
+    </host>
+
+Now start Resin web server by running resin.exe which is located under following path:
+C:\Programs\resin-3.1.10\win32
+Open the project in your local IP at port 81:
+http://192.168.5.13:81/index.html
+
+User logins:
+There are basically three different types of profiles.
+Client profile
+Admin profile
+Broker profile
+For each of the above login you can use password as “blue49” as we sanitized the database.
+For testing purpose, use below profiles
+For Client: username: stuart@hodgefarms.com.au
+For Admin: username: kris
+For broker: username: nick.sayer@waterfind.com.au
+
+When you run CRM system in redundancy mode, you will see a red banner at the top of the website like below which shows that the system is running in redundancy mode.
+

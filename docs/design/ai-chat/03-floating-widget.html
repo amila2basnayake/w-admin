@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Floating Chat Widget · Waterfind Water-Rights Assistant (wireframe)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../staff-console/wf-console.css">
+<link rel="stylesheet" href="wf-ai.css">
+</head>
+<body>
+<div class="wf-app">
+
+  <header class="wf-header">
+    <div class="wf-logo"><i class="fa fa-tint drop"></i><span class="word"><b>WATER</b><span>FIND</span></span></div>
+    <span class="console-tag">Broker Console</span>
+    <div class="spacer"></div>
+    <div class="wf-search"><i class="fa fa-search"></i><input placeholder="Search clients, markets, trade #…"></div>
+    <span class="wf-wire">WIREFRAME</span>
+    <div class="wf-welcome">Welcome back,<br><b>Dion Martin</b> · <small>Broker · Sales</small></div>
+    <div class="wf-hicon sm"><i class="fa fa-bell"></i><span class="dot">4</span></div>
+    <div class="wf-hicon"><i class="fa fa-user"></i></div>
+  </header>
+
+  <div class="wf-body">
+    <nav class="wf-rail">
+      <ul>
+        <li class="active"><a href="../staff-console/01-broker-desk.html"><span class="stripe"></span><span class="ic"><i class="fa fa-tachometer"></i></span><span class="lbl">Broker Desk</span></a></li>
+        <li><a href="../staff-console/02-markets-orderbook.html"><span class="stripe"></span><span class="ic"><i class="fa fa-exchange"></i></span><span class="lbl">Markets &amp; Order Book</span></a></li>
+        <li><a href="../staff-console/03-client-360.html"><span class="stripe"></span><span class="ic"><i class="fa fa-users"></i></span><span class="lbl">Clients<span class="cnt">142</span></span></a></li>
+        <li><a href="../staff-console/04-settlements-trust.html"><span class="stripe"></span><span class="ic"><i class="fa fa-university"></i></span><span class="lbl">Settlements &amp; Trust<span class="cnt">6</span></span></a></li>
+        <li class="bottom"><a href="../staff-console/05-admin-console.html"><span class="stripe"></span><span class="ic"><i class="fa fa-cog"></i></span><span class="lbl">Admin &amp; Settings</span></a></li>
+        <li class="ai"><a href="01-assistant-workspace.html"><span class="stripe"></span><span class="ic"><i class="fa fa-comments"></i></span><span class="lbl">AI Assistant<span class="tagnew">AI</span></span></a></li>
+      </ul>
+    </nav>
+
+    <!-- host screen (Broker Desk, condensed) -->
+    <main class="wf-content">
+      <div class="wf-crumbs">Home <i class="fa fa-angle-right"></i> Broker Desk</div>
+      <div class="wf-titlebar">
+        BROKER DESK
+        <span class="sub">Your book · southern-connected Murray–Darling markets · as of 1 Jul 2026</span>
+        <span class="spacer"></span>
+        <span class="tb-act"><i class="fa fa-refresh"></i> Refresh</span>
+      </div>
+
+      <div class="wf-kpis k4">
+        <div class="wf-kpi"><div class="lab"><i class="fa fa-users"></i> My clients</div><div class="num">142</div><div class="delta up"><i class="fa fa-arrow-up"></i> 3 new this week</div></div>
+        <div class="wf-kpi orange"><div class="lab"><i class="fa fa-exchange"></i> Live orders</div><div class="num">27</div><div class="delta flat">Best bid $420 · 5,635 ML</div></div>
+        <div class="wf-kpi purple"><div class="lab"><i class="fa fa-university"></i> Settlements</div><div class="num">6</div><div class="delta flat">$214,380 in trust</div></div>
+        <div class="wf-kpi green"><div class="lab"><i class="fa fa-line-chart"></i> Brokerage MTD</div><div class="num">$48.2<small>k</small></div><div class="delta up"><i class="fa fa-arrow-up"></i> 12%</div></div>
+      </div>
+
+      <div class="wf-panel">
+        <div class="wf-panel-head"><i class="fa fa-star-o"></i> Watched markets <span class="spacer"></span><span class="ctrl"><i class="fa fa-plus"></i> Add market</span></div>
+        <div class="wf-panel-body flush">
+          <table class="wf-table">
+            <thead><tr><th>Market <span class="muted tiny">(region)</span></th><th class="r">Best bid</th><th class="r">Best ask</th><th class="r">Last</th><th class="r">Bid depth</th><th class="c">Status</th></tr></thead>
+            <tbody>
+              <tr><td class="strong">7 VIC Murray (Barmah→SA) GMW – High R <span class="sub">515</span></td><td class="r pos">$420</td><td class="r">$445</td><td class="r">$415</td><td class="r">5,635 ML</td><td class="c"><span class="pill live dot">Live</span></td></tr>
+              <tr><td class="strong">1A Greater Goulburn – High R <span class="sub">1165601</span></td><td class="r pos">$408</td><td class="r">$430</td><td class="r">$412</td><td class="r">3,120 ML</td><td class="c"><span class="pill live dot">Live</span></td></tr>
+              <tr><td class="strong">NSW Murray below Barmah – GS <span class="sub">1044</span></td><td class="r pos">$388</td><td class="r">$421</td><td class="r">$395</td><td class="r">2,410 ML</td><td class="c"><span class="pill live dot">Live</span></td></tr>
+              <tr><td class="strong">SA River Murray – Class 3 <span class="sub">318</span></td><td class="r muted">—</td><td class="r">$460</td><td class="r">$455</td><td class="r muted">0 ML</td><td class="c"><span class="pill susp dot">STR susp.</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="tiny muted"><i class="fa fa-info-circle"></i> The assistant is always one tap away via the launcher — bottom-right — on every console screen without leaving the page you're on.</p>
+    </main>
+  </div>
+</div>
+
+<!-- ══ floating launcher (FAB) ══ -->
+<div class="fab" title="Close assistant"><i class="fa fa-tint"></i><span class="spark"><i class="fa fa-star"></i></span></div>
+
+<!-- ══ open chat widget popover ══ -->
+<div class="chatwidget">
+  <div class="widget-head">
+    <span class="ai-mark"><i class="fa fa-tint"></i></span>
+    <div class="t">Waterfind AI<small><span class="live">●</span> Online · water-rights assistant</small></div>
+    <span class="spacer"></span>
+    <span class="wh-ic" title="Open full page"><i class="fa fa-expand"></i></span>
+    <span class="wh-ic" title="Minimise"><i class="fa fa-minus"></i></span>
+  </div>
+
+  <div class="widget-body">
+    <div class="chat">
+      <div class="msg ai">
+        <div class="av"><i class="fa fa-tint"></i></div>
+        <div class="stack2">
+          <div class="who"><b>Waterfind AI</b></div>
+          <div class="bubble">Hi Dion 👋 I can answer questions about your book, live markets, corridors and settlements — grounded in the <code>waterfind-db</code>. What do you need?</div>
+        </div>
+      </div>
+
+      <!-- quick starters -->
+      <div class="chips" style="padding-left:47px">
+        <button class="chip"><i class="fa fa-university"></i> Any settlements stuck?</button>
+        <button class="chip"><i class="fa fa-bell-o"></i> What alerts fired today?</button>
+        <button class="chip"><i class="fa fa-calculator"></i> Net on a 100 ML sale?</button>
+      </div>
+
+      <div class="msg user">
+        <div class="av"><i class="fa fa-user"></i></div>
+        <div class="stack2"><div class="who"><b>You</b></div>
+          <div class="bubble">Any settlements stuck?</div></div>
+      </div>
+
+      <div class="msg ai">
+        <div class="av"><i class="fa fa-tint"></i></div>
+        <div class="stack2">
+          <div class="who"><b>Waterfind AI</b> · grounded</div>
+          <div class="bubble">
+            <p><b>One</b> of your six is blocked:</p>
+            <div class="acard">
+              <div class="acard-h"><i class="fa fa-university"></i> Settlement #1378061 · Riverina Almonds <span class="spacer"></span>65%</div>
+              <div class="wf-panel-body" style="padding:11px 12px">
+                <div class="stages"><span class="st done"><span class="n"><i class="fa fa-check"></i></span>Docs</span><span class="st done"><span class="n"><i class="fa fa-check"></i></span>Funds</span><span class="st active"><span class="n">3</span>Authority</span><span class="st"><span class="n">4</span>Payout</span></div>
+                <div class="prog"><i style="width:65%"></i></div>
+              </div>
+            </div>
+            <p style="margin-bottom:0">Waiting on your <b>countersignature</b> at the Authority stage — the transfer docs are ready. The other five are on track.</p>
+            <div class="cites"><span class="cite"><i class="fa fa-table"></i> <code>client_payment</code></span></div>
+            <div class="ans-acts"><button class="ans-act primary"><i class="fa fa-pencil"></i> Countersign now</button><button class="ans-act"><i class="fa fa-arrow-right"></i> Open settlement</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- typing indicator example -->
+      <div class="msg ai">
+        <div class="av"><i class="fa fa-tint"></i></div>
+        <div class="stack2"><div class="bubble" style="padding:11px 14px"><span class="thinking"><span class="dots"><i></i><i></i><i></i></span> <span class="step">checking the trust ledger…</span></span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="widget-foot">
+    <div class="composer">
+      <textarea class="box" rows="1" placeholder="Message Waterfind AI…"></textarea>
+      <div class="tools">
+        <span class="tool-pill on"><i class="fa fa-check-circle"></i> Grounded</span>
+        <span class="tool-icon"><i class="fa fa-microphone"></i></span>
+        <span class="spacer"></span>
+        <button class="send-btn"><i class="fa fa-paper-plane"></i></button>
+      </div>
+    </div>
+    <div class="composer-foot"><i class="fa fa-info-circle"></i> Decision support only · verify before acting · logged</div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.composer .box').forEach(function(t){
+    t.addEventListener('input', function(){ t.style.height='auto'; t.style.height=Math.min(t.scrollHeight,110)+'px'; });
+  });
+  // FAB toggles the widget (wireframe demo)
+  var fab=document.querySelector('.fab'), w=document.querySelector('.chatwidget');
+  fab.addEventListener('click', function(){
+    var open = w.style.display!=='none';
+    w.style.display = open ? 'none':'flex';
+    fab.querySelector('i').className = open ? 'fa fa-comment' : 'fa fa-tint';
+  });
+</script>
+</body>
+</html>

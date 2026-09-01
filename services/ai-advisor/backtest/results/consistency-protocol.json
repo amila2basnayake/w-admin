@@ -1,0 +1,153 @@
+{
+ "label": "protocol",
+ "questions": [
+  {
+   "id": "Q1",
+   "mean_pct_overlap": 0.58,
+   "mean_dollar_overlap": 1,
+   "outlook_tool_rate": 1,
+   "mean_secs": 40,
+   "runs": [
+    {
+     "secs": 40,
+     "tools": [
+      "mcp__wf__get_my_holdings",
+      "mcp__wf__get_seasonal_outlook",
+      "mcp__wf__forecast_allocation",
+      "mcp__wf__get_authority_outlooks",
+      "mcp__wf__get_allocation_announcements"
+     ],
+     "sig": {
+      "pcts": [
+       0,
+       29,
+       30,
+       80,
+       90,
+       95,
+       100,
+       100,
+       100,
+       137
+      ],
+      "dollars": []
+     },
+     "text": "Your account holds several water shares, so I'll take the biggest, your VIC Murray high-reliability shares (250 ML, Dartmouth to Barmah). Here's the picture:\n\n**Where it stands now:** the Northern Victoria Resource Manager opened HRWS at **29%** for 2026-27, as at 1 July 2026, flagging roughly a 30% spill risk and a next update on 15 July (NVRM current seasonal determination).\n\n**Likely finish (HRWS):** high-reliability shares almost always ratchet to full. Across 14 comparable Waterfind seasons the final landed at **100%** in every case bar one (95%), and the 31-season base rate has the middle half at 100-137%. So a finish at or near 100% is the historically typical outcome, data as at the snapshot.\n\n**What decides the pace:** BOM/NSW DPIRD (issued 7 June 2026) have El Nino developing over winter-spring (~80% likelihood, near 90% by spring). El Nino leans drier over the southern Basin, which historically means a slower climb to 100%, not usually a lower HRWS endpoint. What would shift the view: a dry spring keeping inflows and Hume/Dartmouth storage low.\n\nOne flag: your **low-reliability** shares (the 158.6 ML Barmah-to-SA line and the Goulburn 1A parcel) are a very different story. LRWS opened at 0% for 2026-27 and often finishes low or nil in drier years. Want me to break those out separately?\n\nGeneral information only, not personal financial or trading advice. Figures are historical Waterfind frequencies, not predictions; verify the current determination with the NVRM before acting.\n\nSources:\n- [NVRM current seasonal determination](https://nvrm.net.au/seasonal-determinations/current)\n- [BOM ENSO Outlook](https://www.bom.gov.au/climate/enso/outlook/)"
+    },
+    {
+     "secs": 50,
+     "tools": [
+      "mcp__wf__get_my_holdings",
+      "mcp__wf__get_seasonal_outlook",
+      "mcp__wf__forecast_allocation",
+      "mcp__wf__get_authority_outlooks",
+      "mcp__wf__get_allocation_announcements",
+      "mcp__wf__get_allocation_history"
+     ],
+     "sig": {
+      "pcts": [
+       29,
+       30,
+       80,
+       90,
+       95,
+       100,
+       100,
+       100,
+       100,
+       200
+      ],
+      "dollars": []
+     },
+     "text": "Quick answer up front: your biggest parcel, the **250 ML of Victorian Murray high-reliability shares (HRWS)**, is the one \"allocation\" usually means, so I've focused there. Here's the outlook.\n\n**Where it stands now:** the Northern Victoria Resource Manager opened 2026-27 HRWS at **29%** on 1 July 2026, with about a 30% spill risk flagged and the next update due 15 July (NVRM/DEECA, as at 1 Jul 2026). Allocations climb through the season from that opening figure.\n\n**Historical range for the finish:** across 31 seasons of Waterfind data, VIC Murray HRWS has finished at or near 100% in most years, the middle of the spread sitting right on **100%**, with the drier tail down around **95%** and wet years carrying surplus above (p90 near 200% counting spillable water). High-reliability shares get first call on inflows, so they tend to reach 100% even in ordinary years.\n\n**What tilts it:** BOM/NSW DPIRD (issued 7 Jun 2026) have El Niño developing, roughly 80% through winter and near 90% into spring. El Niño leans drier over the southern Basin, which historically means a slower ratchet-up, so a soft, late climb is the main risk this year versus the usual push to 100%.\n\n**What would change the view:** a wet late-winter/spring lifting Dartmouth-Hume inflows would accelerate it; a dry one keeps it grinding. Watch the 15 July and subsequent NVRM determinations.\n\nYour other parcels sit on different paths, the Goulburn 1A and Murray \"Low R\" shares are low-reliability and climb far more slowly, and the SA and Murrumbidgee lines follow their own state determinations, so treat those separately if you want them.\n\nFigures are historical frequencies from Waterfind data as dated above, general information only, not financial or trading advice. Verify the live determination with the resource manager. Want me to pull the equivalent picture for the Goulburn or Low-Reliability parcels?\n\nSources:\n- [NVRM current seasonal determination](https://nvrm.net.au/seasonal-determinations/current)\n- [BOM ENSO Outlook](https://www.bom.gov.au/climate/enso/outlook/)"
+    },
+    {
+     "secs": 30,
+     "tools": [
+      "mcp__wf__get_my_holdings",
+      "mcp__wf__get_seasonal_outlook",
+      "mcp__wf__forecast_allocation",
+      "mcp__wf__get_authority_outlooks"
+     ],
+     "sig": {
+      "pcts": [
+       29,
+       80,
+       95,
+       100
+      ],
+      "dollars": []
+     },
+     "text": "For your Victorian Murray high-reliability shares, here's the picture. As at 1 July 2026 the current season (2026-27) opened at **29%** for VIC Murray HRWS (NVRM opening determination via the allocations snapshot). High-reliability shares are the most dependable class in the southern system, and historically they ratchet up strongly through the season.\n\nAcross 31 past VIC Murray HRWS seasons in the Waterfind record, the final allocation landed:\n\n| Outcome | Final % |\n|---|---:|\n| Median (typical) | 100 |\n| Lower quartile | 100 |\n| 10th percentile (drier end) | 95 |\n| Worst on record | 35 |\n\nSo in most seasons HRWS reaches 100% by year-end; the soft years are rare but real (2006-07 sat near 95%, and severe drought years have finished well below).\n\nThe one thing leaning against a fast climb this year: BOM's ENSO update (issued 7 June 2026) has El Niño developing over June-August with ~80% likelihood and persisting past November. El Niño seasons historically mean a slower allocation ratchet and firmer temporary-water prices across the southern Basin. That confidence is \"reported\", so worth checking the BOM ENSO page before you lean on it.\n\nWhat would move the view: winter-spring inflows into Dartmouth/Hume and the next NVRM determinations. Verify the live figure with the Northern Victoria Resource Manager, since the opening % climbs with each announcement.\n\nGeneral information only, not financial or trading advice; ranges are historical Waterfind frequencies, not predictions.\n\nIf you want, I can run the same outlook for your Goulburn or Murrumbidgee holdings.\n\nSources: [BOM ENSO Outlook](https://www.bom.gov.au/climate/enso/outlook/)"
+    }
+   ]
+  },
+  {
+   "id": "Q2",
+   "mean_pct_overlap": 0.5,
+   "mean_dollar_overlap": 0.78,
+   "outlook_tool_rate": 1,
+   "mean_secs": 30,
+   "runs": [
+    {
+     "secs": 28,
+     "tools": [
+      "mcp__wf__get_my_holdings",
+      "mcp__wf__get_seasonal_outlook"
+     ],
+     "sig": {
+      "pcts": [
+       80
+      ],
+      "dollars": [
+       110,
+       187,
+       374
+      ]
+     },
+     "text": "Here's the Waterfind house outlook for your main holding, the VIC Murray high-reliability zone (Dartmouth to Barmah), generated 1 Aug 2026.\n\nTemporary water is likely to sit in a median-season band of roughly **$110-$374/ML** next month (median about $187), firming into spring. These are historical-frequency bands, and the underlying price data is as at 30 Jan 2026, so treat it as stale and verify against live trades before acting.\n\n| Month ahead | Median-season band ($/ML) | Median | Dry-season band ($/ML) |\n|---|---:|---:|---:|\n| 1 | 110-374 | 187 | 121-429 |\n| 2 | 101-513 | 242 | 117-339 |\n| 3 | 132-627 | 308 | 176-1076 |\n| 4 | 97-513 | 275 | 130-482 |\n| 5 | 132-438 | 367 | 112-420 |\n\nThe band widens and lifts through spring, which is the usual seasonal pattern as irrigation demand builds. Which end you land on hinges mainly on the climate driver: BOM/NSW DPIRD (issued 7 Jun 2026) had ENSO neutral but ~80% odds of El Niño developing over June-August and persisting past November. El Niño seasons lean drier over the southern Basin, meaning a slower allocation ratchet and firmer temporary prices, so the upper half of these bands is the more likely path if that outlook holds. A wetter turn or a fast allocation climb would pull prices toward the lower band.\n\nRanges are historical frequencies from Waterfind data, not predictions. General information only, not personal financial advice. Want me to pull the live order book and recent settled trades for this zone to sharpen the near-term picture?"
+    },
+    {
+     "secs": 26,
+     "tools": [
+      "mcp__wf__get_my_holdings",
+      "mcp__wf__forecast_temp_price",
+      "mcp__wf__get_seasonal_outlook"
+     ],
+     "sig": {
+      "pcts": [
+       80,
+       100,
+       120
+      ],
+      "dollars": [
+       110,
+       187
+      ]
+     },
+     "text": "Here's the Waterfind house outlook for your main holding, the VIC Murray (Dartmouth to Barmah) high-reliability zone, generated 1 Aug 2026. Temporary water sits in a firm range: the near-month median-season band is about $110-374/ML (median ~$187), with dry seasons running higher. Ranges only, not a prediction.\n\n| Month | Median-season p25-p75 ($/ML) | Dry-season p25-p75 ($/ML) |\n|---|---:|---:|\n| Aug | 110-374 | 121-429 |\n| Sep | 101-513 | 117-339 |\n| Oct | 132-627 | 176-1076 |\n| Nov | 97-513 | 130-482 |\n| Dec | 132-438 | 112-420 |\n| Jan | 220-638 | 176-442 |\n\nWhere things stand: allocation was 100% at month 5 (as at 17 Nov 2025), and 14 similar seasons finished 100-120% in 8 of 10. The dry-season column is region-specific; the median/wet bands are pooled to the state series, so treat them as broader context.\n\nThe driver that decides which end you land on is ENSO. The Bureau/NSW DPIRD update (7 Jun 2026) has El Niño developing over Jun-Aug (~80%) and persisting past November, which historically means a slower allocation ratchet and firmer temporary prices, so the dry column is the more relevant read.\n\nOne caveat: the price bands are anchored to data as at 30 Jan 2026 with a large x2.2 level adjustment, so verify against live trades before acting. If you want, I can pull the current order book and recent settled band for the zone.\n\nGeneral information only, not personal financial or trading advice."
+    },
+    {
+     "secs": 36,
+     "tools": [
+      "mcp__wf__get_my_holdings",
+      "mcp__wf__get_seasonal_outlook",
+      "mcp__wf__forecast_temp_price"
+     ],
+     "sig": {
+      "pcts": [
+       80,
+       100
+      ],
+      "dollars": [
+       110,
+       187,
+       374
+      ]
+     },
+     "text": "Here's the Waterfind house outlook for your VIC Murray zone 6 (Dartmouth to Barmah), generated 1 Aug 2026. One caveat up front: the underlying temporary-trade data is stale, newest settled trade is 30 Jan 2026, so these are historical bands anchored to the market as at late January, not a live read on Aug-Nov 2026. Treat them as the shape of the seasonal pattern, not a calendar forecast.\n\nCentral view: next-month median-season band is **$110-$374/ML (median $187)** in nominal $/ML. Bands by month-of-season (median and dry scenarios):\n\n| Month of season | Median $/ML (p25-median-p75) | Dry $/ML (p25-median-p75) |\n|---|---:|---:|\n| 8 | 110 / 187 / 374 | 121 / 227 / 429 |\n| 9 | 101 / 242 / 513 | 117 / 242 / 339 |\n| 10 | 132 / 308 / 627 | 176 / 530 / 1076 |\n| 11 | 97 / 275 / 513 | 130 / 264 / 482 |\n| 12 | 132 / 367 / 438 | 112 / 372 / 420 |\n\nThe pattern firms into the peak-demand months (spring-summer), with the widest upside in month 10. Dry seasons have run higher, and the driver that decides which end you land on is climate: BoM/NSW DPIRD (issued 7 Jun 2026) had ENSO neutral but El Niño developing over June-August (~80% likelihood) and persisting to at least November. El Niño leans drier over the southern Basin, meaning a slower allocation ratchet and firmer temporary prices. VIC Murray high-reliability allocation was already at 100% as at 17 Nov 2025.\n\nWhat would shift the view: a wetter turn or faster allocation recovery pulls prices toward the lower band; a confirmed strengthening El Niño pushes toward the dry band. Given the data is 6 months old, verify current allocations and recent trades with your resource manager before acting.\n\nGeneral information only, not financial or trading advice; ranges are historical frequencies from Waterfind data, not predictions.\n\nWant me to pull the live order book and recent price band for zone 6 to sit alongside this?"
+    }
+   ]
+  }
+ ]
+}

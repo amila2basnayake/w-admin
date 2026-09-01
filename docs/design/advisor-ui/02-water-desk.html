@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Waterfind Advisory — The Water Desk (Wireframe 2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Archivo+Expanded:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0e13; --panel:#0f151c; --panel-2:#131b24; --panel-3:#172230;
+    --line:#1e2a38; --line-soft:#18222e;
+    --txt:#d7e0ea; --txt-dim:#8295a8; --txt-faint:#566879;
+    --green:#3fd98a; --green-dim:#1d5e41; --amber:#f5b13e; --red:#ff6b6b; --cyan:#46c7e0; --violet:#9d8cff;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+    --sans:"Archivo",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:var(--sans); font-size:14px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(rgba(70,199,224,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(70,199,224,.035) 1px, transparent 1px),
+      radial-gradient(120% 80% at 80% -10%, rgba(63,217,138,.06), transparent 50%);
+    background-size:34px 34px, 34px 34px, 100% 100%;
+  }
+  .app{display:grid; grid-template-columns:236px 1fr 332px; height:100vh; max-height:100vh; overflow:hidden}
+
+  /* ───────── Left rail ───────── */
+  .rail{background:var(--panel); border-right:1px solid var(--line); display:flex; flex-direction:column; min-height:0}
+  .brand{display:flex; align-items:center; gap:10px; padding:16px 18px; border-bottom:1px solid var(--line)}
+  .logo{width:30px;height:30px;border-radius:7px; background:linear-gradient(135deg,var(--green),var(--cyan)); display:grid; place-items:center; color:#06241a; font-weight:800; font-family:"Archivo Expanded"; font-size:15px}
+  .brand .nm{font-family:"Archivo Expanded"; font-weight:800; letter-spacing:.01em; font-size:15px}
+  .brand .sub{font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:var(--txt-faint); margin-top:1px}
+  .rail h3{font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--txt-faint); margin:18px 18px 8px; font-weight:600}
+  .who{padding:12px 18px; border-bottom:1px solid var(--line)}
+  .who .org{font-weight:700; font-size:14px}
+  .who .role{font-size:11.5px; color:var(--txt-dim)}
+  .who .chip{display:inline-block; margin-top:7px; font-family:var(--mono); font-size:10px; padding:2px 7px; border-radius:4px; background:var(--panel-3); color:var(--cyan); border:1px solid var(--line)}
+
+  .mkt-list{padding:0 10px; overflow-y:auto; flex:1; min-height:0}
+  .mkt{display:flex; align-items:center; justify-content:space-between; padding:9px 10px; border-radius:7px; cursor:pointer; transition:.14s}
+  .mkt:hover{background:var(--panel-2)}
+  .mkt.active{background:var(--panel-3); box-shadow:inset 2px 0 0 var(--green)}
+  .mkt .l .code{font-family:var(--mono); font-size:11px; color:var(--txt-faint)}
+  .mkt .l .nm{font-size:12.5px; font-weight:500}
+  .mkt .r{text-align:right; font-family:var(--mono); font-size:12px}
+  .mkt .r .px{font-weight:600}
+  .up{color:var(--green)} .dn{color:var(--red)} .flat{color:var(--txt-dim)}
+  .mkt .r .chg{font-size:10px}
+
+  .rail-foot{padding:12px 18px; border-top:1px solid var(--line); font-size:10.5px; color:var(--txt-faint); font-family:var(--mono); display:flex; align-items:center; gap:7px}
+  .pulse{width:7px;height:7px;border-radius:50%; background:var(--green); box-shadow:0 0 0 0 rgba(63,217,138,.6); animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,217,138,.5)}70%{box-shadow:0 0 0 7px rgba(63,217,138,0)}100%{box-shadow:0 0 0 0 rgba(63,217,138,0)}}
+
+  /* ───────── Center: command surface ───────── */
+  .center{display:flex; flex-direction:column; min-height:0; background:linear-gradient(180deg, rgba(19,27,36,.4), transparent 120px)}
+  .topbar{display:flex; align-items:center; justify-content:space-between; padding:14px 22px; border-bottom:1px solid var(--line)}
+  .topbar .ctx h2{margin:0; font-family:"Archivo Expanded"; font-weight:700; font-size:16px; letter-spacing:.01em}
+  .topbar .ctx p{margin:1px 0 0; font-size:11.5px; color:var(--txt-dim); font-family:var(--mono)}
+  .topbar .asof{font-family:var(--mono); font-size:11px; color:var(--txt-faint); text-align:right}
+  .topbar .asof b{color:var(--amber); font-weight:600}
+
+  .thread{flex:1; overflow-y:auto; padding:24px 22px 8px; min-height:0; display:flex; flex-direction:column; gap:20px}
+  .turn{animation:fade .5s ease both}
+  @keyframes fade{from{opacity:0; transform:translateY(8px)}to{opacity:1; transform:none}}
+
+  .u{align-self:flex-end; max-width:78%}
+  .u .bubble{background:var(--panel-3); border:1px solid var(--line); border-radius:12px 12px 3px 12px; padding:11px 15px; font-size:14.5px}
+  .u .meta{font-family:var(--mono); font-size:10px; color:var(--txt-faint); text-align:right; margin-top:5px; letter-spacing:.06em}
+
+  .ai{max-width:92%}
+  .ai .head{display:flex; align-items:center; gap:9px; margin-bottom:9px}
+  .ai .av{width:24px;height:24px;border-radius:6px; background:linear-gradient(135deg,var(--green),var(--cyan)); display:grid; place-items:center; color:#06241a; font-weight:800; font-size:12px; font-family:"Archivo Expanded"}
+  .ai .head .nm{font-weight:700; font-size:12px; letter-spacing:.03em}
+  .ai .head .tag{font-family:var(--mono); font-size:9.5px; color:var(--green); border:1px solid var(--green-dim); border-radius:4px; padding:1px 6px; letter-spacing:.05em}
+  .ai .body{background:var(--panel); border:1px solid var(--line); border-radius:3px 12px 12px 12px; padding:15px 17px}
+  .ai .lead{font-size:15.5px; font-weight:600; line-height:1.45; margin:0 0 11px}
+  .ai .lead .hl{color:var(--green)}
+  .ai p{margin:0 0 10px; color:var(--txt); font-size:13.5px}
+  .ai p:last-child{margin-bottom:0}
+  .ai .num{font-family:var(--mono); font-weight:600}
+
+  /* fill ladder */
+  .ladder{margin:4px 0 12px; border:1px solid var(--line); border-radius:8px; overflow:hidden; font-family:var(--mono); font-size:12px}
+  .ladder .lh{display:grid; grid-template-columns:1fr 1fr 1.4fr; padding:7px 12px; background:var(--panel-2); color:var(--txt-faint); font-size:10px; letter-spacing:.1em; text-transform:uppercase}
+  .ladder .row{display:grid; grid-template-columns:1fr 1fr 1.4fr; padding:7px 12px; border-top:1px solid var(--line-soft); align-items:center; position:relative}
+  .ladder .row .depth{position:absolute; left:0; top:0; bottom:0; background:rgba(63,217,138,.09)}
+  .ladder .row .px,.ladder .row .qty,.ladder .row .cum{position:relative; z-index:1}
+  .ladder .row .px{color:var(--green); font-weight:600}
+  .ladder .row.fill .px{color:var(--amber)}
+  .ladder .row.fill{background:rgba(245,177,62,.06)}
+  .ladder .marg{display:flex; align-items:center; gap:7px; padding:7px 12px; background:rgba(245,177,62,.08); border-top:1px solid var(--amber); color:var(--amber); font-size:11px; letter-spacing:.04em}
+
+  .callout{display:flex; gap:10px; padding:11px 13px; border-radius:8px; background:var(--panel-2); border:1px solid var(--line); border-left:3px solid var(--amber); margin:4px 0 10px; font-size:12.5px; color:var(--txt-dim)}
+  .callout .ic{color:var(--amber); font-weight:700}
+  .summary{display:flex; gap:18px; flex-wrap:wrap; padding:11px 13px; border-radius:8px; background:var(--panel-2); border:1px solid var(--line); margin-top:4px}
+  .summary .kv .k{font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--txt-faint)}
+  .summary .kv .v{font-family:var(--mono); font-size:16px; font-weight:600}
+  .summary .kv .v.g{color:var(--green)}
+
+  .typing{display:flex; gap:6px; padding:8px 4px}
+  .typing i{width:7px;height:7px;border-radius:50%; background:var(--green); opacity:.5; animation:bl 1.2s infinite}
+  .typing i:nth-child(2){animation-delay:.15s} .typing i:nth-child(3){animation-delay:.3s}
+  @keyframes bl{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+
+  /* composer */
+  .composer{padding:14px 22px 18px; border-top:1px solid var(--line); background:var(--panel)}
+  .chips{display:flex; gap:8px; margin-bottom:11px; flex-wrap:wrap}
+  .chip2{font-family:var(--mono); font-size:11.5px; color:var(--cyan); background:var(--panel-2); border:1px solid var(--line); border-radius:20px; padding:6px 13px; cursor:pointer; transition:.14s}
+  .chip2:hover{border-color:var(--cyan); background:var(--panel-3)}
+  .field{display:flex; align-items:center; gap:10px; background:var(--panel-2); border:1px solid var(--line); border-radius:11px; padding:7px 7px 7px 15px}
+  .field:focus-within{border-color:var(--green)}
+  .field input{flex:1; background:transparent; border:none; outline:none; color:var(--txt); font-family:var(--sans); font-size:14px; padding:8px 0}
+  .field input::placeholder{color:var(--txt-faint)}
+  .go{background:var(--green); color:#06241a; border:none; border-radius:8px; padding:9px 16px; font-weight:700; font-family:var(--sans); font-size:13px; cursor:pointer; transition:.14s; display:flex; align-items:center; gap:6px}
+  .go:hover{background:var(--cyan)}
+  .disc{font-family:var(--mono); font-size:10px; color:var(--txt-faint); margin:9px 2px 0; text-align:center}
+
+  /* ───────── Right: market panels ───────── */
+  .market{background:var(--panel); border-left:1px solid var(--line); overflow-y:auto; min-height:0}
+  .mh{padding:14px 16px; border-bottom:1px solid var(--line)}
+  .mh .t{font-family:"Archivo Expanded"; font-weight:700; font-size:13px; letter-spacing:.02em}
+  .mh .s{font-family:var(--mono); font-size:11px; color:var(--txt-dim); margin-top:2px}
+  .bigpx{padding:14px 16px; border-bottom:1px solid var(--line); display:flex; align-items:flex-end; justify-content:space-between}
+  .bigpx .v{font-family:var(--mono); font-size:30px; font-weight:700; color:var(--green); line-height:1}
+  .bigpx .v small{font-size:13px; color:var(--txt-dim); font-weight:400}
+  .bigpx .meta{text-align:right; font-family:var(--mono); font-size:11px}
+  .bigpx .meta .chg{color:var(--green)}
+  .bigpx .meta .lbl{color:var(--txt-faint); font-size:10px}
+
+  .ob-h{display:flex; justify-content:space-between; padding:11px 16px 6px; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--txt-faint); font-weight:600}
+  .ob{font-family:var(--mono); font-size:12px; padding:0 16px 12px}
+  .ob .row{display:grid; grid-template-columns:1fr 1fr; padding:5px 0; position:relative; align-items:center}
+  .ob .row .bar{position:absolute; right:0; top:2px; bottom:2px; border-radius:3px}
+  .ob .row.bid .bar{background:rgba(63,217,138,.13)}
+  .ob .row .px{position:relative; z-index:1; color:var(--green); font-weight:600}
+  .ob .row .qty{position:relative; z-index:1; text-align:right; color:var(--txt-dim)}
+  .ob .best{border-top:1px dashed var(--line); border-bottom:1px dashed var(--line); margin:3px 0; padding:6px 0}
+  .ob .best .px{color:#fff; background:var(--green-dim); padding:1px 5px; border-radius:3px; display:inline-block}
+
+  .spark{padding:14px 16px; border-top:1px solid var(--line)}
+  .spark .lbl{font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--txt-faint); margin-bottom:8px; font-weight:600}
+  .spark svg{width:100%; height:54px; display:block}
+  .stats{padding:4px 16px 16px}
+  .stats .r{display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--line-soft); font-size:12px}
+  .stats .r .k{color:var(--txt-dim)} .stats .r .v{font-family:var(--mono); font-weight:600}
+
+  ::-webkit-scrollbar{width:9px;height:9px}
+  ::-webkit-scrollbar-thumb{background:var(--line); border-radius:6px}
+  ::-webkit-scrollbar-thumb:hover{background:var(--panel-3)}
+
+  @media(max-width:1100px){ .app{grid-template-columns:200px 1fr} .market{display:none} }
+</style>
+</head>
+<body>
+  <div class="app">
+
+    <!-- ───── LEFT RAIL ───── -->
+    <aside class="rail">
+      <div class="brand">
+        <div class="logo">W</div>
+        <div>
+          <div class="nm">WATERFIND</div>
+          <div class="sub">Water&nbsp;Desk</div>
+        </div>
+      </div>
+
+      <div class="who">
+        <div class="org">Upper Wantagong Station</div>
+        <div class="role">Dave Trinca · Station Manager</div>
+        <div class="chip">10,626 ML · NSW Murrumbidgee</div>
+      </div>
+
+      <h3>Your markets</h3>
+      <div class="mkt-list">
+        <div class="mkt active">
+          <div class="l"><div class="code">686 · TEMP</div><div class="nm">Murrumbidgee GS</div></div>
+          <div class="r"><div class="px up">$420</div><div class="chg up">▲ 50%</div></div>
+        </div>
+        <div class="mkt">
+          <div class="l"><div class="code">670 · TEMP</div><div class="nm">Coleambally GS</div></div>
+          <div class="r"><div class="px up">$420</div><div class="chg up">▲ bid</div></div>
+        </div>
+        <div class="mkt">
+          <div class="l"><div class="code">686 · PERM</div><div class="nm">Murrumbidgee GS</div></div>
+          <div class="r"><div class="px flat">$3,190</div><div class="chg flat">— flat</div></div>
+        </div>
+        <div class="mkt">
+          <div class="l"><div class="code">688 · TEMP</div><div class="nm">Murrumbidgee HS</div></div>
+          <div class="r"><div class="px up">$418</div><div class="chg up">▲ 4%</div></div>
+        </div>
+        <div class="mkt">
+          <div class="l"><div class="code">2513 · TEMP</div><div class="nm">Yanco/Billabong</div></div>
+          <div class="r"><div class="px dn">$405</div><div class="chg dn">▼ 2%</div></div>
+        </div>
+      </div>
+
+      <div class="rail-foot"><span class="pulse"></span> LIVE BOOK · snapshot 19 Jun 2026</div>
+    </aside>
+
+    <!-- ───── CENTER ───── -->
+    <section class="center">
+      <div class="topbar">
+        <div class="ctx">
+          <h2>Adviser</h2>
+          <p>context: 686 Murrumbidgee GS · temp · sell-side</p>
+        </div>
+        <div class="asof">liquidity = live order book<br />asof <b>2026-06-15</b></div>
+      </div>
+
+      <div class="thread">
+
+        <!-- U1 -->
+        <div class="turn u">
+          <div class="bubble">What's the temporary water market doing around our way right now — is it a good time to sell?</div>
+          <div class="meta">09:41 · DAVE</div>
+        </div>
+
+        <!-- AI1 -->
+        <div class="turn ai">
+          <div class="head"><div class="av">W</div><span class="nm">ADVISER</span><span class="tag">grounded · live book</span></div>
+          <div class="body">
+            <p class="lead">Yes — <span class="hl">good time to sell</span> temp allocation. Murrumbidgee GS is ~$420/ML, near a 12-month high.</p>
+            <p>15 live buyers want <span class="num">3,825 ML</span> (best bid <span class="num">$420</span>) against your <span class="num">654 ML</span> there — it clears fast. Your last temp sales ran $200–450/ML, so this is the top of your range.</p>
+            <div class="callout"><span class="ic">⚠</span><span>Your big <b>5,004 ML</b> sits in Coleambally (670). It has live in-region demand too — 17 buyers, 3,895 ML @ $420 — and trades 1:1 to Murrumbidgee, so you can list across both pools.</span></div>
+          </div>
+        </div>
+
+        <!-- U2 -->
+        <div class="turn u">
+          <div class="bubble">If I push 500 ML out through the Murrumbidgee this week, how fast does it clear and at what price?</div>
+          <div class="meta">09:43 · DAVE</div>
+        </div>
+
+        <!-- AI2 -->
+        <div class="turn ai">
+          <div class="head"><div class="av">W</div><span class="nm">ADVISER</span><span class="tag">order-book walk</span></div>
+          <div class="body">
+            <p class="lead">All <span class="hl">500 ML fills in one hit</span> — there's a 1,000 ML bid resting at $415.</p>
+            <div class="ladder">
+              <div class="lh"><span>BID PX</span><span>QTY ML</span><span>CUMULATIVE</span></div>
+              <div class="row"><span class="depth" style="width:7%"></span><span class="px">$420</span><span class="qty">7</span><span class="cum">7 ML</span></div>
+              <div class="row fill"><span class="depth" style="width:100%"></span><span class="px">$415</span><span class="qty">1,000</span><span class="cum">1,007 ML</span></div>
+              <div class="marg"><span>◀</span><span>500 ML marginal fill @ <b>$415</b> · VWAP ≈ $415/ML · clears immediately</span></div>
+            </div>
+            <div class="summary">
+              <div class="kv"><div class="k">Gross</div><div class="v">$207,500</div></div>
+              <div class="kv"><div class="k">Net est. (comm + GST)</div><div class="v g">~$209,670</div></div>
+              <div class="kv"><div class="k">Fill time</div><div class="v">immediate</div></div>
+            </div>
+            <p style="margin-top:11px; color:var(--txt-faint); font-size:12px">Covers your 654 ML in region 686 only — gov/authority transfer fees excluded, confirmed on settlement.</p>
+          </div>
+        </div>
+
+        <!-- typing -->
+        <div class="turn ai">
+          <div class="head"><div class="av">W</div><span class="nm">ADVISER</span></div>
+          <div class="typing"><i></i><i></i><i></i></div>
+        </div>
+
+      </div>
+
+      <!-- composer -->
+      <div class="composer">
+        <div class="chips">
+          <span class="chip2">↻ Refresh live book</span>
+          <span class="chip2">Compare 670 vs 686 net</span>
+          <span class="chip2">Best venue across all my markets</span>
+          <span class="chip2">Stage 5,000 ML without moving price</span>
+        </div>
+        <div class="field">
+          <input type="text" placeholder="Query the desk — price, depth, net proceeds, arbitrage…" />
+          <button class="go">Send ⏎</button>
+        </div>
+        <div class="disc">READ-ONLY ADVISER · cannot place orders · figures reconcile to settled trades &amp; the live book</div>
+      </div>
+    </section>
+
+    <!-- ───── RIGHT: MARKET PANEL ───── -->
+    <aside class="market">
+      <div class="mh">
+        <div class="t">686 · MURRUMBIDGEE GS</div>
+        <div class="s">Temporary allocation · sell-side</div>
+      </div>
+      <div class="bigpx">
+        <div class="v">$420<small>/ML</small></div>
+        <div class="meta"><div class="chg">▲ $140 (50%)</div><div class="lbl">vs spring low $280</div></div>
+      </div>
+
+      <div class="ob-h"><span>BIDS (DEMAND)</span><span>ML</span></div>
+      <div class="ob">
+        <div class="row bid best"><span class="px">$420</span><span class="qty">7</span></div>
+        <div class="row bid"><span class="bar" style="width:100%"></span><span class="px">$415</span><span class="qty">1,000</span></div>
+        <div class="row bid"><span class="bar" style="width:62%"></span><span class="px">$410</span><span class="qty">615</span></div>
+        <div class="row bid"><span class="bar" style="width:44%"></span><span class="px">$405</span><span class="qty">430</span></div>
+        <div class="row bid"><span class="bar" style="width:78%"></span><span class="px">$400</span><span class="qty">773</span></div>
+      </div>
+
+      <div class="spark">
+        <div class="lbl">Settled temp · 12 months</div>
+        <svg viewBox="0 0 280 54" preserveAspectRatio="none">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fd98a" stop-opacity=".35"/><stop offset="1" stop-color="#3fd98a" stop-opacity="0"/></linearGradient></defs>
+          <path d="M0,44 L28,42 L56,46 L84,38 L112,40 L140,30 L168,26 L196,22 L224,16 L252,12 L280,8" fill="none" stroke="#3fd98a" stroke-width="2"/>
+          <path d="M0,44 L28,42 L56,46 L84,38 L112,40 L140,30 L168,26 L196,22 L224,16 L252,12 L280,8 L280,54 L0,54 Z" fill="url(#g)"/>
+        </svg>
+      </div>
+
+      <div class="stats">
+        <div class="r"><span class="k">Best bid</span><span class="v up">$420/ML</span></div>
+        <div class="r"><span class="k">Total bid depth</span><span class="v">3,825 ML</span></div>
+        <div class="r"><span class="k">Live buyers</span><span class="v">15</span></div>
+        <div class="r"><span class="k">12-mo median (settled)</span><span class="v">$398</span></div>
+        <div class="r"><span class="k">Your position here</span><span class="v">654 ML</span></div>
+        <div class="r"><span class="k">Seller commission (actual)</span><span class="v">~2.8%</span></div>
+      </div>
+    </aside>
+
+  </div>
+</body>
+</html>

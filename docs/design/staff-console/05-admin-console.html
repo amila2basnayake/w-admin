@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin &amp; Settings · Waterfind Staff Console (wireframe)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="wf-console.css">
+</head>
+<body>
+<div class="wf-app">
+
+  <header class="wf-header">
+    <div class="wf-logo"><i class="fa fa-tint drop"></i><span class="word"><b>WATER</b><span>FIND</span></span></div>
+    <span class="console-tag">Broker Console</span>
+    <div class="spacer"></div>
+    <div class="wf-search"><i class="fa fa-search"></i><input placeholder="Search settings…"></div>
+    <span class="wf-wire">WIREFRAME</span>
+    <div class="wf-welcome">Welcome back,<br><b>Dion Martin</b> · <small>Broker · Sales</small></div>
+    <div class="wf-hicon sm"><i class="fa fa-bell"></i><span class="dot">4</span></div>
+    <div class="wf-hicon"><i class="fa fa-user"></i></div>
+  </header>
+
+  <div class="wf-body">
+    <!-- Admin & Settings is the LAST rail item, pinned to the BOTTOM of the ribbon -->
+    <nav class="wf-rail">
+      <ul>
+        <li><a href="01-broker-desk.html"><span class="stripe"></span><span class="ic"><i class="fa fa-tachometer"></i></span><span class="lbl">Broker Desk</span></a></li>
+        <li><a href="02-markets-orderbook.html"><span class="stripe"></span><span class="ic"><i class="fa fa-exchange"></i></span><span class="lbl">Markets &amp; Order Book</span></a></li>
+        <li><a href="03-client-360.html"><span class="stripe"></span><span class="ic"><i class="fa fa-users"></i></span><span class="lbl">Clients<span class="cnt">142</span></span></a></li>
+        <li><a href="04-settlements-trust.html"><span class="stripe"></span><span class="ic"><i class="fa fa-university"></i></span><span class="lbl">Settlements &amp; Trust<span class="cnt">6</span></span></a></li>
+        <li class="bottom active"><a href="05-admin-console.html"><span class="stripe"></span><span class="ic"><i class="fa fa-cog"></i></span><span class="lbl">Admin &amp; Settings</span></a></li>
+      </ul>
+    </nav>
+
+    <main class="wf-content">
+      <div class="wf-crumbs">Home <i class="fa fa-angle-right"></i> Admin &amp; Settings</div>
+      <div class="wf-titlebar">
+        ADMINISTRATION &amp; SETTINGS
+        <span class="sub">exchange configuration · access · rules · integrations · audit</span>
+        <span class="spacer"></span>
+        <span class="tb-act"><i class="fa fa-save"></i> Save changes</span>
+      </div>
+
+      <!-- ══ TAB STRIP — this page is fully tabbed ══ -->
+      <div class="tabs" id="tabstrip">
+        <button class="tab active" data-tab="profile"><i class="fa fa-user-circle-o"></i> My Profile</button>
+        <button class="tab" data-tab="users"><i class="fa fa-users"></i> Users &amp; Roles <span class="cnt">104</span></button>
+        <button class="tab" data-tab="fees"><i class="fa fa-percent"></i> Fees &amp; Commission</button>
+        <button class="tab" data-tab="rules"><i class="fa fa-random"></i> Tradability Rules <span class="cnt">59k</span></button>
+        <button class="tab" data-tab="alerts"><i class="fa fa-bell-o"></i> Notifications &amp; Alerts</button>
+        <button class="tab" data-tab="tenancy"><i class="fa fa-sitemap"></i> Tenancy &amp; Access</button>
+        <button class="tab" data-tab="integrations"><i class="fa fa-plug"></i> Integrations</button>
+        <button class="tab" data-tab="audit"><i class="fa fa-list-alt"></i> Audit Log</button>
+        <button class="tab" data-tab="compliance"><i class="fa fa-shield"></i> Compliance</button>
+      </div>
+
+      <!-- ─────────────── TAB 1 · My Profile ─────────────── -->
+      <section class="tabpanel active" data-panel="profile">
+        <div class="cols c-2-1">
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-id-badge"></i> Staff profile</div>
+            <div class="wf-panel-body">
+              <div class="formgrid">
+                <div class="field"><label>First name</label><input value="Dion"></div>
+                <div class="field"><label>Last name</label><input value="Martin"></div>
+                <div class="field"><label>Email</label><input value="dion.martin@waterfind.com.au"></div>
+                <div class="field"><label>Direct line</label><input value="+61 8 8110 4900"></div>
+                <div class="field"><label>Role <span class="hint">(access_type)</span></label><input value="sales" disabled></div>
+                <div class="field"><label>Staff ID</label><input value="wf-user 10442" disabled></div>
+              </div>
+              <hr class="soft">
+              <div class="rowflex"><span class="lbl">Two-factor authentication</span><span class="spacer"></span><span class="sw on"></span><span class="tiny muted">Enabled</span></div>
+              <div class="rowflex" style="margin-top:12px"><span class="lbl">Default landing page</span><span class="spacer"></span><select><option>Broker Desk</option><option>Markets &amp; Order Book</option></select></div>
+            </div>
+          </div>
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-sliders"></i> Preferences</div>
+            <div class="wf-panel-body">
+              <div class="stack" style="gap:14px">
+                <div class="rowflex"><span>Show prices as median settled (not indicative)</span><span class="spacer"></span><span class="sw on"></span></div>
+                <div class="rowflex"><span>Warn on quotes outside recent trade range</span><span class="spacer"></span><span class="sw on"></span></div>
+                <div class="rowflex"><span>Default order expiry</span><span class="spacer"></span><select><option>30 days</option><option>60 days</option><option>Season end</option></select></div>
+                <div class="rowflex"><span>Volume units</span><span class="spacer"></span><div class="seg"><button class="on">ML</button><button>GL</button></div></div>
+                <div class="rowflex"><span>Theme</span><span class="spacer"></span><div class="seg"><button class="on">Portal light</button><button>Dark</button></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── TAB 2 · Users & Roles ─────────────── -->
+      <section class="tabpanel" data-panel="users">
+        <div class="toolbar">
+          <span class="lbl">Role</span>
+          <select><option>All roles</option><option>admin</option><option>sales</option><option>user / client</option></select>
+          <input placeholder="Filter by name or email…" style="min-width:240px">
+          <span class="spacer"></span>
+          <button class="wf-btn wf-btn-primary sm"><i class="fa fa-user-plus"></i> Invite staff</button>
+        </div>
+        <div class="wf-panel">
+          <div class="wf-panel-head"><i class="fa fa-users"></i> Staff accounts <span class="spacer"></span><span class="ctrl">104 with <code>access_level ≥ 1</code></span></div>
+          <div class="wf-panel-body flush">
+            <table class="wf-table">
+              <thead><tr><th>Name</th><th class="c">Role <code>access_type</code></th><th class="c">Access level</th><th>Scope</th><th class="c">Status</th><th class="c">Actions</th></tr></thead>
+              <tbody>
+                <tr><td class="strong">Amara Okafor</td><td class="c"><span class="pill bad">admin</span></td><td class="c">9</td><td>Global — all tenants</td><td class="c"><span class="pill ok dot">Active</span></td><td class="c"><a href="#">Edit</a></td></tr>
+                <tr><td class="strong">Dion Martin <span class="sub">you</span></td><td class="c"><span class="pill blue">sales</span></td><td class="c">1</td><td>Waterfind · own book (142)</td><td class="c"><span class="pill ok dot">Active</span></td><td class="c"><a href="#">Edit</a></td></tr>
+                <tr><td class="strong">Priya Menon</td><td class="c"><span class="pill blue">sales</span></td><td class="c">1</td><td>Waterfind · NSW desk</td><td class="c"><span class="pill ok dot">Active</span></td><td class="c"><a href="#">Edit</a></td></tr>
+                <tr><td class="strong">Tomás Rivera</td><td class="c"><span class="pill mut">ops</span></td><td class="c">2</td><td>Settlements &amp; trust</td><td class="c"><span class="pill ok dot">Active</span></td><td class="c"><a href="#">Edit</a></td></tr>
+                <tr><td class="strong">Wei Zhang</td><td class="c"><span class="pill blue">sales</span></td><td class="c">1</td><td>Waterfind · VIC desk</td><td class="c"><span class="pill warn dot">Suspended</span></td><td class="c"><a href="#">Edit</a></td></tr>
+              </tbody>
+            </table>
+            <div class="wf-note"><i class="fa fa-lock"></i> Object-level rule: a user may see a <code>registry_user</code> iff they share ≥1 tenant, with a bypass for global admins (<code>access_type IN ('admin','sales')</code>). Role — <b>not</b> <code>subclass</code> — decides staff vs client.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── TAB 3 · Fees & Commission ─────────────── -->
+      <section class="tabpanel" data-panel="fees">
+        <div class="cols c-2-1">
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-table"></i> Rate card <span class="muted" style="font-weight:400">(<code>waterfind_fees</code>)</span> <span class="spacer"></span><span class="ctrl">state × product · not date-versioned</span></div>
+            <div class="wf-panel-body flush">
+              <table class="wf-table">
+                <thead><tr><th>State</th><th class="c">Product</th><th class="r">Brokerage %</th><th class="r">Flat init.</th><th class="r">Min fee</th><th class="c">Tiered</th></tr></thead>
+                <tbody>
+                  <tr><td>VIC</td><td class="c"><span class="pill temp">Temp</span></td><td class="r">1.00%</td><td class="r">$0</td><td class="r">$88</td><td class="c">—</td></tr>
+                  <tr><td>VIC</td><td class="c"><span class="pill perm">Perm</span></td><td class="r">2.00%</td><td class="r">$0</td><td class="r">$220</td><td class="c">✓</td></tr>
+                  <tr><td>NSW</td><td class="c"><span class="pill temp">Temp</span></td><td class="r">1.50%</td><td class="r">$0</td><td class="r">$99</td><td class="c">—</td></tr>
+                  <tr><td>SA</td><td class="c"><span class="pill temp">Temp</span></td><td class="r">1.25%</td><td class="r">$0</td><td class="r">$88</td><td class="c">—</td></tr>
+                  <tr><td>SA</td><td class="c"><span class="pill perm">Perm</span></td><td class="r">3.00%</td><td class="r">$150</td><td class="r">$330</td><td class="c">✓</td></tr>
+                </tbody>
+              </table>
+              <div class="wf-note"><i class="fa fa-exclamation-triangle"></i> Rate card is a <b>ballpark</b> — per-client overrides (<code>fees_registry_user</code>) and negotiated codes (<code>fee_code</code>) resolve in app code and win. A prospective net is only an estimate until settlement.</div>
+            </div>
+          </div>
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-user-secret"></i> Per-client overrides</div>
+            <div class="wf-panel-body flush">
+              <table class="wf-table" style="font-size:13px">
+                <thead><tr><th>Client</th><th class="c">Side</th><th class="r">Rate</th></tr></thead>
+                <tbody>
+                  <tr><td>Njernda A.C.</td><td class="c">Sell·Temp</td><td class="r strong">2.67%</td></tr>
+                  <tr><td>Riverina Almonds</td><td class="c">Buy·Temp</td><td class="r strong">1.10%</td></tr>
+                  <tr><td>Paisley Hill</td><td class="c">Sell·Perm</td><td class="r strong">1.75%</td></tr>
+                </tbody>
+              </table>
+              <div class="wf-note"><i class="fa fa-info-circle"></i> 360 overrides on file (<code>fees_registry_user</code>) + 3,782 discount codes (<code>fee_code</code>).</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── TAB 4 · Tradability Rules ─────────────── -->
+      <section class="tabpanel" data-panel="rules">
+        <div class="toolbar">
+          <span class="lbl">From region</span>
+          <select style="min-width:260px"><option>7 VIC Murray (Barmah→SA) GMW – High R · 515</option></select>
+          <span class="lbl">Product</span>
+          <div class="seg"><button class="on">Temp</button><button>Perm</button></div>
+          <span class="spacer"></span>
+          <div class="legend"><span><i class="sw-c" style="background:var(--wf-green)"></i> Tradable</span><span><i class="sw-c" style="background:var(--wf-red)"></i> Suspended</span></div>
+        </div>
+        <div class="cols c-2-1">
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-random"></i> Trading corridors <span class="muted" style="font-weight:400">(<code>region_trading_relationship</code> → STR gate)</span></div>
+            <div class="wf-panel-body flush">
+              <table class="wf-table">
+                <thead><tr><th>Destination region</th><th class="r">×rate</th><th class="c">RTR</th><th class="c">STR gate</th><th class="c">Season window</th><th class="c">Net</th></tr></thead>
+                <tbody>
+                  <tr><td class="strong">NSW Murray below Barmah – GS</td><td class="r">1.00</td><td class="c"><span class="pill ok">on</span></td><td class="c"><span class="pill ok">open</span></td><td class="c mono">1/07→25/04</td><td class="c"><span class="pill ok dot">Tradable</span></td></tr>
+                  <tr><td class="strong">Murray Irrigation Ltd</td><td class="r">1.00</td><td class="c"><span class="pill ok">on</span></td><td class="c"><span class="pill ok">open</span></td><td class="c mono">1/07→13/06</td><td class="c"><span class="pill ok dot">Tradable</span></td></tr>
+                  <tr><td class="strong">SA River Murray – Class 3</td><td class="r">1.00</td><td class="c"><span class="pill ok">on</span></td><td class="c"><span class="pill bad">susp</span></td><td class="c mono">1/07→30/05</td><td class="c"><span class="pill bad dot">Blocked</span></td></tr>
+                  <tr><td class="strong">Lower Darling</td><td class="r">0.94</td><td class="c"><span class="pill ok">on</span></td><td class="c"><span class="pill ok">open</span></td><td class="c mono">1/07→22/06</td><td class="c"><span class="pill ok dot">Tradable</span></td></tr>
+                  <tr><td class="strong">VIC Murray – Low R (donor cap)</td><td class="r">1.00</td><td class="c"><span class="pill bad">susp</span></td><td class="c"><span class="pill ok">open</span></td><td class="c mono">—</td><td class="c"><span class="pill bad dot">Blocked</span></td></tr>
+                </tbody>
+              </table>
+              <div class="wf-note"><i class="fa fa-exclamation-triangle"></i> Tradable only if RTR not suspended <b>AND</b> its STR gate open <b>AND</b> today inside the season window. Ignoring the STR gate over-reports corridors by ~26% (63% of RTRs, 79% of STRs suspended).</div>
+            </div>
+          </div>
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-file-text-o"></i> Corridor rule prose</div>
+            <div class="wf-panel-body">
+              <div class="callout">
+                <div class="h"><i class="fa fa-quote-left"></i> 515 → NSW Murray below Barmah</div>
+                <p style="font-style:italic">"Inter-valley trade subject to Barmah Choke capacity. Tagged water may not exceed carryover limits. Refer MDBP trade rules…"</p>
+              </div>
+              <div class="wf-note"><i class="fa fa-info-circle"></i> The <code>rule</code> field is free-text HTML (1,098 distinct) — <b>display only, never a matching input</b>. No quantitative caps are machine-readable; carryover/tagging/inter-valley limits are prose.</div>
+              <hr class="soft">
+              <div class="rowflex"><span class="lbl">Global suspend this corridor</span><span class="spacer"></span><span class="sw"></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── TAB 5 · Notifications & Alerts ─────────────── -->
+      <section class="tabpanel" data-panel="alerts">
+        <div class="cols c-1-1">
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-bell-o"></i> My alert rules <span class="muted" style="font-weight:400">(<code>wateralert</code>)</span></div>
+            <div class="wf-panel-body flush">
+              <table class="wf-table">
+                <thead><tr><th>Trigger</th><th>Scope</th><th class="c">Channel</th><th class="c">On</th></tr></thead>
+                <tbody>
+                  <tr><td>Temp price &gt; $400/ML</td><td>Region 515</td><td class="c">Email · SMS</td><td class="c"><span class="sw on"></span></td></tr>
+                  <tr><td>Allocation % change &gt; 5pts</td><td>My markets</td><td class="c">Email</td><td class="c"><span class="sw on"></span></td></tr>
+                  <tr><td>Corridor suspended/reopened</td><td>My clients' holdings</td><td class="c">In-app</td><td class="c"><span class="sw on"></span></td></tr>
+                  <tr><td>New matchable EOI</td><td>Murrumbidgee GS</td><td class="c">Email</td><td class="c"><span class="sw"></span></td></tr>
+                </tbody>
+              </table>
+              <div class="wf-panel-body"><button class="wf-btn wf-btn-default sm"><i class="fa fa-plus"></i> Add alert rule</button></div>
+            </div>
+          </div>
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-envelope-o"></i> Client contact defaults</div>
+            <div class="wf-panel-body">
+              <p class="tiny muted" style="margin-bottom:12px">Consent flags on <code>registry_user</code> are honoured on every send — the switches below only set the default template, never override opt-out.</p>
+              <div class="stack" style="gap:14px">
+                <div class="rowflex"><span>Trade confirmation (email)</span><span class="spacer"></span><span class="sw on"></span></div>
+                <div class="rowflex"><span>Settlement receipt (email)</span><span class="spacer"></span><span class="sw on"></span></div>
+                <div class="rowflex"><span>Seasonal allocation digest</span><span class="spacer"></span><span class="sw on"></span></div>
+                <div class="rowflex"><span>Marketing campaigns (SMS)</span><span class="spacer"></span><span class="sw"></span></div>
+              </div>
+              <div class="wf-note" style="margin-top:14px"><i class="fa fa-ban"></i> Respect <code>*_notification_optin</code> / <code>campaign_optin</code> / <code>sms_*_optin</code> before contacting.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── TAB 6 · Tenancy & Access ─────────────── -->
+      <section class="tabpanel" data-panel="tenancy">
+        <div class="wf-panel">
+          <div class="wf-panel-head"><i class="fa fa-sitemap"></i> Tenancy &amp; access model <span class="muted" style="font-weight:400">(<code>tenant_to_user</code>)</span></div>
+          <div class="wf-panel-body">
+            <div class="callout warn">
+              <div class="h"><i class="fa fa-shield"></i> No database-level tenant isolation</div>
+              <p>Single <code>public</code> schema — a naïve <code>SELECT *</code> leaks every client. Access is enforced <b>only in the app layer</b>, keyed on <code>registry_user</code>. Every advisory read must replicate the <code>EXISTS (… tenant_to_user …)</code> join.</p>
+            </div>
+            <div class="cols c-1-1" style="margin-top:4px">
+              <table class="wf-table" style="font-size:13px">
+                <thead><tr><th>Tenant</th><th class="r">Mappings</th><th class="c">Access levels</th></tr></thead>
+                <tbody>
+                  <tr><td class="strong">Waterfind (tenant 1)</td><td class="r">85,583</td><td class="c">0 = client (85,479) · ≥1 = staff (104)</td></tr>
+                </tbody>
+              </table>
+              <table class="wf-table" style="font-size:13px">
+                <thead><tr><th>Scope rule</th><th class="c">Applied</th></tr></thead>
+                <tbody>
+                  <tr><td>Broker sees own book only (<code>primary_contact_sales</code> OR live <code>tag_extension</code>)</td><td class="c"><span class="pill ok dot">On</span></td></tr>
+                  <tr><td>Global-admin bypass</td><td class="c"><span class="pill warn dot">admin only</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── TAB 7 · Integrations ─────────────── -->
+      <section class="tabpanel" data-panel="integrations">
+        <div class="wf-panel">
+          <div class="wf-panel-head"><i class="fa fa-plug"></i> Connected systems</div>
+          <div class="wf-panel-body flush">
+            <table class="wf-table">
+              <thead><tr><th>System</th><th>Purpose</th><th class="c">Mode</th><th class="c">Status</th><th class="c">Last sync</th></tr></thead>
+              <tbody>
+                <tr><td class="strong"><i class="fa fa-calculator"></i> MYOB</td><td>Accounting / GL sync</td><td class="c"><span class="pill mut">async · fire-and-forget</span></td><td class="c"><span class="pill ok dot">Healthy</span></td><td class="c">3 min ago</td></tr>
+                <tr><td class="strong"><i class="fa fa-exchange"></i> Remote trading</td><td>Cross-exchange order relay</td><td class="c"><span class="pill mut">sync · in-tx</span></td><td class="c"><span class="pill ok dot">Healthy</span></td><td class="c">live</td></tr>
+                <tr><td class="strong"><i class="fa fa-database"></i> State water registers</td><td>Licence / allocation (NSW·VIC·SA)</td><td class="c"><span class="pill mut">nightly ETL</span></td><td class="c"><span class="pill warn dot">Partial</span></td><td class="c">last night</td></tr>
+                <tr><td class="strong"><i class="fa fa-university"></i> Trust bank feed</td><td>Reconciliation import</td><td class="c"><span class="pill mut">daily</span></td><td class="c"><span class="pill ok dot">Healthy</span></td><td class="c">06:00</td></tr>
+                <tr><td class="strong"><i class="fa fa-cloud"></i> BOM / allocation feeds</td><td>Seasonal drivers (dam, SOI)</td><td class="c"><span class="pill mut">weekly</span></td><td class="c"><span class="pill warn dot">Stale</span></td><td class="c">weather ~1 yr</td></tr>
+              </tbody>
+            </table>
+            <div class="wf-note"><i class="fa fa-info-circle"></i> MYOB sync is async / fire-and-forget; remote trading fans out synchronously in-transaction during clearing. Register &amp; environmental feeds are known-coarse (see data map §7.5).</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── TAB 8 · Audit Log ─────────────── -->
+      <section class="tabpanel" data-panel="audit">
+        <div class="toolbar">
+          <span class="lbl">Actor</span><select><option>All staff</option><option>Dion Martin</option></select>
+          <span class="lbl">Entity</span><select><option>All</option><option>order_listing</option><option>waterfind_trust_account</option><option>registry_user</option></select>
+          <input placeholder="Search action_log…" style="min-width:220px">
+          <span class="spacer"></span>
+          <span class="freshness"><i class="fa fa-database"></i> 15.0M events</span>
+        </div>
+        <div class="wf-panel">
+          <div class="wf-panel-head"><i class="fa fa-list-alt"></i> Audit trail <span class="muted" style="font-weight:400">(<code>action_log</code>)</span></div>
+          <div class="wf-panel-body flush">
+            <table class="wf-table">
+              <thead><tr><th>Timestamp</th><th>Actor</th><th>Action</th><th>Entity</th><th class="c">Result</th></tr></thead>
+              <tbody>
+                <tr><td class="mono">01 Jul 09:41:22</td><td>Dion Martin</td><td>Placed sell order 100 ML @ $415</td><td>order_listing #1378091</td><td class="c"><span class="pill ok dot">OK</span></td></tr>
+                <tr><td class="mono">01 Jul 09:12:04</td><td>Tomás Rivera</td><td>Settlement payout EFT $29,120</td><td>client_payment #442810</td><td class="c"><span class="pill ok dot">OK</span></td></tr>
+                <tr><td class="mono">01 Jul 08:55:10</td><td>Amara Okafor</td><td>Suspended STR gate</td><td>state_trading_relationship #3391</td><td class="c"><span class="pill warn dot">Config</span></td></tr>
+                <tr><td class="mono">30 Jun 17:03:48</td><td>system</td><td>MYOB GL sync batch</td><td>waterfind_billing (241 rows)</td><td class="c"><span class="pill ok dot">OK</span></td></tr>
+                <tr><td class="mono">30 Jun 16:20:31</td><td>Wei Zhang</td><td>Denied — outside tenant scope</td><td>registry_user 2031884</td><td class="c"><span class="pill bad dot">Blocked</span></td></tr>
+              </tbody>
+            </table>
+            <div class="wf-note"><i class="fa fa-lock"></i> Append-only. Every mutation through the Spring-proxied delegate is logged with actor, tenant, and before/after — the independently-audited record underpinning ISO-9001 and trust-account assurance.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── TAB 9 · Compliance ─────────────── -->
+      <section class="tabpanel" data-panel="compliance">
+        <div class="wf-kpis k4">
+          <div class="wf-kpi green"><div class="lab">Trust reconciliation</div><div class="num">Balanced</div><div class="delta flat">today 06:00 · $0.00 variance</div></div>
+          <div class="wf-kpi"><div class="lab">ISO-9001</div><div class="num">Certified</div><div class="delta flat">next audit Sep 2026</div></div>
+          <div class="wf-kpi orange"><div class="lab">Open exceptions</div><div class="num">1</div><div class="delta flat">funds overdue #1378072</div></div>
+          <div class="wf-kpi"><div class="lab">Jurisdictions</div><div class="num">4</div><div class="delta flat">VIC · NSW · SA + MDBP</div></div>
+        </div>
+        <div class="wf-panel">
+          <div class="wf-panel-head"><i class="fa fa-shield"></i> Regulatory posture</div>
+          <div class="wf-panel-body flush">
+            <table class="wf-table">
+              <thead><tr><th>Control</th><th>Basis</th><th class="c">Status</th></tr></thead>
+              <tbody>
+                <tr><td class="strong">Trust account segregation</td><td>Independently audited trust ledger</td><td class="c"><span class="pill ok dot">Passing</span></td></tr>
+                <tr><td class="strong">MDBP trade-rule conformance</td><td>Corridor + STR gates enforced pre-clear</td><td class="c"><span class="pill ok dot">Passing</span></td></tr>
+                <tr><td class="strong">State register reconciliation</td><td>Nightly ETL vs NSW/VIC/SA</td><td class="c"><span class="pill warn dot">Partial coverage</span></td></tr>
+                <tr><td class="strong">Consent / privacy on contact</td><td>Opt-in flags enforced on send</td><td class="c"><span class="pill ok dot">Passing</span></td></tr>
+                <tr><td class="strong">Audit trail completeness</td><td><code>action_log</code> append-only</td><td class="c"><span class="pill ok dot">Passing</span></td></tr>
+              </tbody>
+            </table>
+            <div class="wf-note"><i class="fa fa-info-circle"></i> Regulated across multiple Australian state jurisdictions and the Murray–Darling Basin Plan. Trust accounts are independently audited.</div>
+          </div>
+        </div>
+      </section>
+
+      <p class="tiny muted" style="margin-top:6px"><i class="fa fa-info-circle"></i> Wireframe / reference only — a fully tabbed admin surface reached from the bottom of the nav ribbon. Illustrative data from the loaded <code>waterfind-db</code>. No stack chosen.</p>
+    </main>
+  </div>
+</div>
+
+<script>
+  // Tab switching for the fully tabbed Admin & Settings page
+  var strip = document.getElementById('tabstrip');
+  strip.addEventListener('click', function(e){
+    var btn = e.target.closest('.tab');
+    if(!btn) return;
+    var name = btn.getAttribute('data-tab');
+    strip.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('active', t === btn); });
+    document.querySelectorAll('.tabpanel').forEach(function(p){
+      p.classList.toggle('active', p.getAttribute('data-panel') === name);
+    });
+    document.querySelector('.wf-content').scrollTop = 0;
+  });
+</script>
+</body>
+</html>

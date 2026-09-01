@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Waterfind — Adviser (slide-in drawer) · native skin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="wf-theme.css" />
+<style>
+  .dim{position:absolute; inset:0; background:rgba(0,0,0,.35); z-index:40; animation:fadein .3s ease}
+  @keyframes fadein{from{opacity:0}to{opacity:1}}
+  .drawer{
+    position:fixed; top:70px; right:0; bottom:0; width:410px; max-width:92vw; background:#fff; z-index:50;
+    display:flex; flex-direction:column; box-shadow:-6px 0 24px -8px rgba(0,0,0,.4);
+    animation:slidein .35s cubic-bezier(.2,.7,.2,1);
+  }
+  @keyframes slidein{from{transform:translateX(100%)}to{transform:none}}
+  .drawer .wf-panel-head{border-right:none; border-left:10px solid var(--wf-orange)}
+  .drawer-scroll{flex:1; min-height:0; overflow:auto; padding:16px; background:var(--wf-bg)}
+  .drawer .composer{padding:14px 16px}
+  .fab{
+    position:fixed; right:26px; bottom:26px; z-index:60; height:54px; padding:0 22px; border:none; cursor:pointer;
+    background:var(--wf-orange); color:#fff; border-radius:28px; font-family:inherit; font-size:15px; font-weight:600;
+    display:flex; align-items:center; gap:10px; box-shadow:0 10px 22px -8px rgba(246,137,31,.8);
+  }
+  .fab .dot{width:9px; height:9px; border-radius:50%; background:#fff; box-shadow:0 0 0 0 rgba(255,255,255,.7); animation:fabpulse 2s infinite}
+  @keyframes fabpulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.6)}70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+</style>
+</head>
+<body>
+<div class="wf-app">
+
+  <!-- header -->
+  <header class="wf-header">
+    <div class="wf-logo"><img src="../../../crm/waterfind.com.au/webapp/jsp/market/images/logo_invert.png" alt="Waterfind" /></div>
+    <div class="spacer"></div>
+    <div class="oldview">OLD<br />MARKET<br />VIEW</div>
+    <div class="wf-hicon sm" title="Help"><i class="fa fa-question"></i></div>
+    <div class="wf-hicon sm" title="Ask the Adviser" style="background:var(--wf-orange);color:#fff"><i class="fa fa-comments"></i></div>
+    <div class="wf-welcome">Welcome back<br /><b>Kyle Egan</b></div>
+    <div class="wf-hicon" title="Profile" style="margin-right:24px"><i class="fa fa-user"></i></div>
+  </header>
+
+  <div class="wf-body">
+
+    <!-- rail -->
+    <nav class="wf-rail">
+      <ul>
+        <li class="active"><span class="stripe"></span><span class="ic"><i class="fa fa-university"></i></span><span class="lbl">Market</span></li>
+        <li><span class="stripe"></span><span class="ic"><i class="fa fa-line-chart"></i></span><span class="lbl">Data</span></li>
+        <li><span class="stripe"></span><span class="ic"><i class="fa fa-exchange"></i></span><span class="lbl">My Orders</span></li>
+        <li><span class="stripe"></span><span class="ic"><i class="fa fa-random"></i></span><span class="lbl">Trades</span></li>
+      </ul>
+    </nav>
+
+    <!-- content: the real market dashboard (the adviser drawer floats over it) -->
+    <main class="wf-content">
+      <div class="wf-titlebar">
+        7 VIC MURRAY (BARMAH→SA) GMW – HIGH R &nbsp;·&nbsp; Spot &nbsp;·&nbsp; Temp
+        <img class="swoosh" src="../../../crm/waterfind.com.au/webapp/jsp/market/images/swoosh.png" alt="" />
+        <span class="gear"><i class="fa fa-cog"></i></span>
+      </div>
+
+      <div class="wf-stats">
+        <div class="wf-stat"><div class="h">Last Trade</div><div class="v">$415<small>/ML</small></div><div class="more">MORE DATA</div></div>
+        <div class="wf-stat"><div class="h">Allocation</div><div class="v">100<small>%</small></div><div class="more">MORE DATA</div></div>
+        <div class="wf-stat"><div class="h">Dam Storage</div><div class="v">57<small>%</small></div><div class="more">MORE DATA</div></div>
+      </div>
+
+      <div class="wf-panel">
+        <div class="wf-panel-head">Market <span class="spacer"></span>
+          <span class="ctrl"><i class="fa fa-bell"></i> Alerts</span>
+          <span class="ctrl"><i class="fa fa-plus"></i> Add Order</span>
+        </div>
+        <div class="wf-panel-body" style="padding:0">
+          <div class="ord"><div class="side">SELLER OF</div><div class="vol">100.0 ML</div><div class="px">$ <b>420</b></div><button class="wf-btn wf-btn-green">Buy this Water</button></div>
+          <div class="ord"><div class="side">SELLER OF</div><div class="vol">25.0 ML</div><div class="px">$ <b>418</b></div><button class="wf-btn wf-btn-green">Buy this Water</button></div>
+          <div class="ord last"><div class="side" style="background:transparent;color:var(--wf-ink)">Last Trade</div><div class="vol">100.0 ML</div><div class="px">$ <b>415</b></div><div style="text-align:right;font-size:12px;color:var(--wf-muted2)">CURRENT</div></div>
+          <div class="ord"><div class="side">BUYER OF</div><div class="vol">1,000.0 ML</div><div class="px">$ <b>415</b></div><button class="wf-btn wf-btn-purple">Sell my Water</button></div>
+          <div class="ord"><div class="side">BUYER OF</div><div class="vol">773.0 ML</div><div class="px">$ <b>400</b></div><button class="wf-btn wf-btn-purple">Sell my Water</button></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- dim + drawer overlay -->
+  <div class="dim"></div>
+  <aside class="drawer">
+    <div class="wf-panel-head">
+      <div class="adviser-av" style="width:28px;height:28px;flex:0 0 28px;font-size:13px"><i class="fa fa-tint"></i></div>
+      Water Rights Adviser
+      <span class="spacer"></span>
+      <i class="fa fa-times" style="cursor:pointer;font-size:18px"></i>
+    </div>
+
+    <div class="drawer-scroll">
+      <div class="chat">
+        <div class="msg adviser" style="max-width:100%">
+          <div class="adviser-av"><i class="fa fa-tint"></i></div>
+          <div class="b">
+            <div class="name">Adviser</div>
+            <p>You're viewing <b>515 VIC Murray</b>. Live best bid is <span class="num">$420/ML</span> with 5,635 ML of demand — your 372 ML clears immediately. Want me to size a sale?</p>
+            <div class="freshness"><i class="fa fa-clock-o"></i> live book asof 15 Jun 2026</div>
+          </div>
+        </div>
+
+        <div class="msg client" style="max-width:100%">
+          <div class="b">Yes — what would 200 ML at the $420 bid net me?</div>
+          <div class="who">Kyle Egan</div>
+        </div>
+
+        <div class="msg adviser" style="max-width:100%">
+          <div class="adviser-av"><i class="fa fa-tint"></i></div>
+          <div class="b">
+            <div class="name">Adviser</div>
+            <div class="verdict">~<span class="hl">$80,470</span> net on $84,000 gross. <span class="badge-est"><i class="fa fa-info-circle"></i> Est.</span></div>
+            <table class="wf-table">
+              <tbody>
+                <tr><td>200 ML × $420</td><td class="r">$84,000</td></tr>
+                <tr><td>Brokerage 3.79% + GST</td><td class="r">−$3,530</td></tr>
+                <tr class="total"><td>Net to you</td><td class="r">~$80,470</td></tr>
+              </tbody>
+            </table>
+            <p style="font-size:12.5px;color:var(--wf-muted2)">Gov/authority transfer fees extra.</p>
+            <div class="cta-row"><button class="wf-btn wf-btn-purple" style="width:100%;justify-content:center"><i class="fa fa-arrow-up"></i> Pre-fill a Sell order for 200 ML</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="composer">
+      <div class="chips">
+        <button>Sell all 372 ML?</button>
+        <button>Compare other markets</button>
+      </div>
+      <div class="field">
+        <input type="text" placeholder="Ask about this market…" />
+        <button class="wf-btn wf-btn-primary"><i class="fa fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- closed-state trigger (shown for reference) -->
+  <button class="fab"><span class="dot"></span><i class="fa fa-comments"></i> Ask the Adviser</button>
+
+</div>
+</body>
+</html>

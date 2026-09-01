@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Assistant · Waterfind Water-Rights Assistant (wireframe)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../staff-console/wf-console.css">
+<link rel="stylesheet" href="wf-ai.css">
+</head>
+<body>
+<div class="wf-app">
+
+  <!-- ══ top header (shared shell) ══ -->
+  <header class="wf-header">
+    <div class="wf-logo"><i class="fa fa-tint drop"></i><span class="word"><b>WATER</b><span>FIND</span></span></div>
+    <span class="console-tag">Broker Console</span>
+    <div class="spacer"></div>
+    <div class="wf-search"><i class="fa fa-search"></i><input placeholder="Search clients, markets, trade #…"></div>
+    <span class="wf-wire">WIREFRAME</span>
+    <div class="wf-welcome">Welcome back,<br><b>Dion Martin</b> · <small>Broker · Sales</small></div>
+    <div class="wf-hicon sm"><i class="fa fa-bell"></i><span class="dot">4</span></div>
+    <div class="wf-hicon"><i class="fa fa-user"></i></div>
+  </header>
+
+  <div class="wf-body">
+    <!-- ══ left navigation ribbon — AI Assistant pinned to the BOTTOM, active ══ -->
+    <nav class="wf-rail">
+      <ul>
+        <li><a href="../staff-console/01-broker-desk.html"><span class="stripe"></span><span class="ic"><i class="fa fa-tachometer"></i></span><span class="lbl">Broker Desk</span></a></li>
+        <li><a href="../staff-console/02-markets-orderbook.html"><span class="stripe"></span><span class="ic"><i class="fa fa-exchange"></i></span><span class="lbl">Markets &amp; Order Book</span></a></li>
+        <li><a href="../staff-console/03-client-360.html"><span class="stripe"></span><span class="ic"><i class="fa fa-users"></i></span><span class="lbl">Clients<span class="cnt">142</span></span></a></li>
+        <li><a href="../staff-console/04-settlements-trust.html"><span class="stripe"></span><span class="ic"><i class="fa fa-university"></i></span><span class="lbl">Settlements &amp; Trust<span class="cnt">6</span></span></a></li>
+        <li class="bottom"><a href="../staff-console/05-admin-console.html"><span class="stripe"></span><span class="ic"><i class="fa fa-cog"></i></span><span class="lbl">Admin &amp; Settings</span></a></li>
+        <li class="ai active"><a href="01-assistant-workspace.html"><span class="stripe"></span><span class="ic"><i class="fa fa-comments"></i></span><span class="lbl">AI Assistant<span class="tagnew">AI</span></span></a></li>
+      </ul>
+    </nav>
+
+    <!-- ══ content ══ -->
+    <main class="wf-content">
+      <div class="wf-crumbs">Home <i class="fa fa-angle-right"></i> AI Assistant</div>
+      <div class="wf-titlebar">
+        AI WATER-RIGHTS ASSISTANT
+        <span class="sub">grounded in your book · the live <code>waterfind-db</code> · trade rules &amp; corridors — answers are decision support, not advice</span>
+        <span class="spacer"></span>
+        <span class="tb-act"><i class="fa fa-plus"></i> New thread</span>
+        <span class="tb-act"><i class="fa fa-history"></i> History</span>
+      </div>
+
+      <!-- ══ TAB STRIP — this page is fully tabbed ══ -->
+      <div class="tabs" id="tabstrip">
+        <button class="tab active" data-tab="ask"><i class="fa fa-comment-o"></i> Ask</button>
+        <button class="tab" data-tab="threads"><i class="fa fa-history"></i> Threads <span class="cnt">37</span></button>
+        <button class="tab" data-tab="library"><i class="fa fa-th-large"></i> Prompt Library</button>
+        <button class="tab" data-tab="sources"><i class="fa fa-database"></i> Knowledge &amp; Sources</button>
+        <button class="tab" data-tab="guardrails"><i class="fa fa-shield"></i> Guardrails</button>
+      </div>
+
+      <!-- ─────────────── TAB 1 · Ask (the live conversation) ─────────────── -->
+      <section class="tabpanel active" data-panel="ask">
+        <div class="cols c-3-2" style="align-items:stretch">
+          <!-- conversation column -->
+          <div>
+            <div class="wf-panel" style="min-height:520px">
+              <div class="wf-panel-head"><i class="fa fa-comments"></i> Njernda · region 515 sell
+                <span class="spacer"></span>
+                <span class="ctrl"><i class="fa fa-lock"></i> Scoped to your book</span>
+                <span class="ctrl"><i class="fa fa-ellipsis-h"></i></span>
+              </div>
+              <div class="wf-panel-body">
+                <div class="scopebar"><i class="fa fa-crosshairs"></i> Context: <b>Kyle Egan · Njernda Aboriginal Corp</b> · <code>waterfind_user 2026296</code> · region <b>515</b> <span class="x"><i class="fa fa-times"></i></span></div>
+
+                <div class="chat">
+                  <!-- user turn -->
+                  <div class="msg user">
+                    <div class="av"><i class="fa fa-user"></i></div>
+                    <div class="stack2">
+                      <div class="who"><b>Dion Martin</b> · 09:41</div>
+                      <div class="bubble">Kyle Egan (Njernda) wants to sell <b>100&nbsp;ML</b> on region&nbsp;515. What's it worth today, and what does he net after fees?</div>
+                    </div>
+                  </div>
+
+                  <!-- assistant turn -->
+                  <div class="msg ai">
+                    <div class="av"><i class="fa fa-tint"></i></div>
+                    <div class="stack2" style="max-width:100%">
+                      <div class="who"><b>Waterfind AI</b> · grounded · 09:41</div>
+                      <div class="bubble">
+                        <p class="lead">≈ $41,500 gross · about $40,400 net — but confirm on the live book before quoting.</p>
+                        <p>Region <b>515</b> (7 VIC Murray Barmah→SA, High-reliability temporary) is trading with a best bid of <b>$420</b> and last settled <b>$415/ML</b>. I priced the sell at the <b>median of recent settled trades</b>, not the region's indicative figure — that indicative price is stale (~2022, ~$60/ML) and would badly under-quote him.</p>
+
+                        <div class="netstack">
+                          <div class="r"><span class="lab">Gross · 100&nbsp;ML @ $415 (median settled)</span><span class="spacer"></span><span class="val">$41,500</span></div>
+                          <div class="r neg"><span class="lab">Brokerage · Njernda override 2.67% <span class="badge-est">est</span></span><span class="spacer"></span><span class="val">−$1,108</span></div>
+                          <div class="r tot"><span class="lab"><b>Estimated net to client</b></span><span class="spacer"></span><span class="val">$40,392</span></div>
+                        </div>
+
+                        <p style="margin-bottom:0">Njernda carries a per-client rate override (<b>2.67%</b> sell·temp), which overrides the VIC 1.00% rate-card figure — I used the override. Final fee resolves in app code at settlement, so treat the net as an estimate.</p>
+
+                        <div class="cites">
+                          <span class="lbl">Sources</span>
+                          <span class="cite"><span class="n">1</span><i class="fa fa-table"></i> <code>order_completed → wateroffer</code></span>
+                          <span class="cite"><span class="n">2</span><i class="fa fa-table"></i> <code>fees_registry_user</code></span>
+                          <span class="cite"><span class="n">3</span><i class="fa fa-table"></i> <code>region 515</code></span>
+                        </div>
+
+                        <div class="verify"><i class="fa fa-exclamation-triangle"></i> Median of settled trades over the last 90 days; depth &amp; best bid are a 15&nbsp;Jun snapshot. I can't see live opposite-side orders in real time — <b>confirm best bid/ask on the order book</b> before you quote a firm price.</div>
+
+                        <div class="ans-acts">
+                          <button class="ans-act primary"><i class="fa fa-exchange"></i> Draft sell order on the book</button>
+                          <button class="ans-act"><i class="fa fa-random"></i> Check where 515 can trade</button>
+                          <button class="ans-act"><i class="fa fa-copy"></i> Copy</button>
+                          <button class="ans-act"><i class="fa fa-flag-o"></i> Flag answer</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- follow-up suggestions -->
+                <div class="followups">
+                  <button class="chip"><i class="fa fa-random"></i> Which corridors is 515 tradable to right now?</button>
+                  <button class="chip"><i class="fa fa-clock-o"></i> Did he leave value on the table in October?</button>
+                  <button class="chip"><i class="fa fa-line-chart"></i> Show 515 price trend this season</button>
+                </div>
+              </div>
+
+              <!-- composer -->
+              <div class="wf-panel-body" style="border-top:1px solid var(--wf-surface);padding-top:14px">
+                <div class="composer">
+                  <textarea class="box" rows="1" placeholder="Ask about a client, market, corridor, allocation, or trade… (⌘↵ to send)"></textarea>
+                  <div class="tools">
+                    <span class="tool-pill on"><i class="fa fa-check-circle"></i> Grounded on <code>waterfind-db</code></span>
+                    <span class="tool-pill"><i class="fa fa-lock"></i> Your book only</span>
+                    <span class="tool-icon" title="Attach a client or market"><i class="fa fa-paperclip"></i></span>
+                    <span class="spacer"></span>
+                    <span class="tool-pill"><i class="fa fa-cube"></i> Opus 4.8</span>
+                    <button class="send-btn" title="Send"><i class="fa fa-paper-plane"></i></button>
+                  </div>
+                </div>
+                <div class="composer-foot"><i class="fa fa-info-circle"></i> Decision support only — answers can be wrong or stale. Verify against the live book before acting. Every prompt &amp; answer is written to <code>action_log</code>.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- right rail: context + trust -->
+          <div>
+            <div class="wf-panel">
+              <div class="wf-panel-head"><i class="fa fa-crosshairs"></i> In context</div>
+              <div class="wf-panel-body">
+                <div class="rowflex"><div class="avatar">KE</div><div class="stack"><b>Kyle Egan</b><span class="tiny muted">Njernda Aboriginal Corp · <code>2026296</code></span></div></div>
+                <hr class="soft">
+                <div class="stack" style="gap:9px">
+                  <div class="rowflex tiny"><span class="muted">Region</span><span class="spacer"></span><b>515 · 7 VIC Murray High R</b></div>
+                  <div class="rowflex tiny"><span class="muted">Holdings</span><span class="spacer"></span><b>~970 ML · 6 REG lines</b></div>
+                  <div class="rowflex tiny"><span class="muted">Best bid / last</span><span class="spacer"></span><b class="pos" style="color:var(--wf-green-dk)">$420 / $415</b></div>
+                  <div class="rowflex tiny"><span class="muted">Consent to contact</span><span class="spacer"></span><span class="pill ok dot">Opt-in</span></div>
+                </div>
+                <hr class="soft">
+                <a href="../staff-console/03-client-360.html" class="wf-btn wf-btn-default block sm"><i class="fa fa-arrow-right"></i> Open Client 360</a>
+              </div>
+            </div>
+
+            <div class="wf-panel">
+              <div class="wf-panel-head"><i class="fa fa-shield"></i> How this answer is grounded</div>
+              <div class="wf-panel-body">
+                <div class="stack" style="gap:11px">
+                  <div class="rowflex"><span class="ai-mark sm"><i class="fa fa-database"></i></span><span class="tiny">Reads the live <code>waterfind-db</code> — never invents figures; cites the table behind each number.</span></div>
+                  <div class="rowflex"><span class="ai-mark sm"><i class="fa fa-lock"></i></span><span class="tiny">Every read passes the <code>tenant_to_user</code> gate — you only see your book. No DB-level isolation, so the gate is enforced in the query.</span></div>
+                  <div class="rowflex"><span class="ai-mark sm"><i class="fa fa-eye-slash"></i></span><span class="tiny">Never places or edits a trade itself — it drafts; you review &amp; submit through the order path.</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="wf-panel">
+              <div class="wf-panel-head"><i class="fa fa-lightbulb-o"></i> Proactive flag</div>
+              <div class="wf-panel-body">
+                <div class="sugcard"><b>Heads-up:</b> Njernda sold 100&nbsp;ML at <b>$300</b> in Oct 2025; comparable water is ~$415 now. Worth a call before the next sale — <a href="#">draft talking points</a>.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── TAB 2 · Threads (history) ─────────────── -->
+      <section class="tabpanel" data-panel="threads">
+        <div class="toolbar">
+          <span class="lbl">Scope</span>
+          <div class="seg"><button class="on">My threads</button><button>Shared with me</button><button>Team</button></div>
+          <input placeholder="Search conversations…" style="min-width:240px">
+          <span class="spacer"></span>
+          <span class="freshness"><i class="fa fa-lock"></i> Private to you · retained per policy · in <code>action_log</code></span>
+        </div>
+        <div class="cols c-1-1">
+          <div>
+            <ul class="threadlist">
+              <li class="active"><span class="ti"><i class="fa fa-comments"></i></span><div class="m"><b>Njernda · region 515 sell</b><div class="d">≈ $41,500 gross, ~$40,400 net after the 2.67% override…</div></div><span class="tm">now</span></li>
+              <li><span class="ti"><i class="fa fa-random"></i></span><div class="m"><b>Where can 1A Greater Goulburn trade?</b><div class="d">4 corridors open, SA Class 3 blocked on the STR gate…</div></div><span class="tm">2h</span></li>
+              <li><span class="ti"><i class="fa fa-users"></i></span><div class="m"><b>Which clients are over-holding temp?</b><div class="d">11 clients with latent supply above their 5-yr average…</div></div><span class="tm">Yst</span></li>
+              <li><span class="ti"><i class="fa fa-university"></i></span><div class="m"><b>Explain settlement #1378061 delay</b><div class="d">Stuck at Authority stage — countersign outstanding…</div></div><span class="tm">Mon</span></li>
+            </ul>
+          </div>
+          <div>
+            <ul class="threadlist">
+              <li><span class="ti"><i class="fa fa-tint"></i></span><div class="m"><b>Murrumbidgee GS allocation lift</b><div class="d">27%→32% effective 2 Feb — who has latent supply to sell…</div></div><span class="tm">Mon</span></li>
+              <li><span class="ti"><i class="fa fa-percent"></i></span><div class="m"><b>Fee override sanity-check · Paisley Hill</b><div class="d">1.75% sell·perm vs 2.00% card — confirmed override wins…</div></div><span class="tm">Fri</span></li>
+              <li><span class="ti"><i class="fa fa-line-chart"></i></span><div class="m"><b>Season price recap · southern connected</b><div class="d">Median temp $388–$420 across watched markets…</div></div><span class="tm">Wk</span></li>
+              <li><span class="ti"><i class="fa fa-file-text-o"></i></span><div class="m"><b>Draft EOI note · lease-in 300 ML</b><div class="d">Murrumbidgee GS, matches 2 clients' latent supply…</div></div><span class="tm">Wk</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="tiny muted"><i class="fa fa-info-circle"></i> Threads are private to you. Sharing a thread shares the answer text only — never your clients' data with anyone outside their tenant scope.</p>
+      </section>
+
+      <!-- ─────────────── TAB 3 · Prompt Library ─────────────── -->
+      <section class="tabpanel" data-panel="library">
+        <div class="toolbar">
+          <span class="lbl">Category</span>
+          <select><option>All</option><option>Trading</option><option>Advisory</option><option>Back-office</option><option>Compliance</option></select>
+          <input placeholder="Search prompts…" style="min-width:220px">
+          <span class="spacer"></span>
+          <button class="wf-btn wf-btn-primary sm"><i class="fa fa-plus"></i> New prompt</button>
+        </div>
+        <div class="promptgrid">
+          <div class="promptcard"><div class="ph"><span class="pi"><i class="fa fa-calculator"></i></span><b>Net-proceeds estimate</b></div><p>Given a client, region and volume, estimate gross at median settled and net after their fee override.</p><div class="pf"><span class="tagx">Advisory</span><span class="tagx">grounded</span><span class="spacer"></span><i class="fa fa-play-circle"></i> Run</div></div>
+          <div class="promptcard"><div class="ph"><span class="pi"><i class="fa fa-random"></i></span><b>Tradability check</b></div><p>Where can this region legally trade today? Applies RTR + STR gate + season window, not just the RTR.</p><div class="pf"><span class="tagx">Trading</span><span class="tagx">rules</span><span class="spacer"></span><i class="fa fa-play-circle"></i> Run</div></div>
+          <div class="promptcard"><div class="ph"><span class="pi"><i class="fa fa-clock-o"></i></span><b>Left-value-on-the-table scan</b></div><p>Find clients who sold below the subsequent median for that region and product — call list.</p><div class="pf"><span class="tagx">Advisory</span><span class="spacer"></span><i class="fa fa-play-circle"></i> Run</div></div>
+          <div class="promptcard"><div class="ph"><span class="pi"><i class="fa fa-university"></i></span><b>Settlement status explainer</b></div><p>Plain-English status &amp; blocker for a trade #, with the next action and who owns it.</p><div class="pf"><span class="tagx">Back-office</span><span class="spacer"></span><i class="fa fa-play-circle"></i> Run</div></div>
+          <div class="promptcard"><div class="ph"><span class="pi"><i class="fa fa-tint"></i></span><b>Allocation-change opportunities</b></div><p>An allocation % just moved — which of my clients now have latent supply to sell or need to buy?</p><div class="pf"><span class="tagx">Advisory</span><span class="spacer"></span><i class="fa fa-play-circle"></i> Run</div></div>
+          <div class="promptcard"><div class="ph"><span class="pi"><i class="fa fa-shield"></i></span><b>Consent-safe contact list</b></div><p>Build a call/email list that already respects each client's opt-in flags before you contact them.</p><div class="pf"><span class="tagx">Compliance</span><span class="spacer"></span><i class="fa fa-play-circle"></i> Run</div></div>
+        </div>
+      </section>
+
+      <!-- ─────────────── TAB 4 · Knowledge & Sources ─────────────── -->
+      <section class="tabpanel" data-panel="sources">
+        <div class="callout"><div class="h"><i class="fa fa-database"></i> What the assistant can read</div><p>Answers are grounded in these sources only. Each is read <b>through the same access rules as the app</b> — the <code>tenant_to_user</code> gate, your book scope, and consent flags. Freshness is shown honestly so you know when a number may be stale.</p></div>
+        <div class="wf-panel">
+          <div class="wf-panel-head"><i class="fa fa-table"></i> Grounding sources <span class="spacer"></span><span class="ctrl">read-only · no writes</span></div>
+          <div class="wf-panel-body flush">
+            <table class="wf-table">
+              <thead><tr><th>Source</th><th>Used for</th><th class="c">Scope gate</th><th class="c">Freshness</th><th class="c">Status</th></tr></thead>
+              <tbody>
+                <tr><td class="strong"><code>order_listing</code> / <code>order_completed</code></td><td>Live orders, settled prices, depth</td><td class="c"><span class="pill blue">tenant + book</span></td><td class="c">15 Jun snapshot</td><td class="c"><span class="pill ok dot">On</span></td></tr>
+                <tr><td class="strong"><code>wateroffer</code></td><td>Price per ML on settled trades</td><td class="c"><span class="pill blue">tenant + book</span></td><td class="c">live</td><td class="c"><span class="pill ok dot">On</span></td></tr>
+                <tr><td class="strong"><code>region_trading_relationship</code> + <code>state_trading_relationship</code></td><td>Corridors &amp; STR gates (tradability)</td><td class="c"><span class="pill mut">reference</span></td><td class="c">daily</td><td class="c"><span class="pill ok dot">On</span></td></tr>
+                <tr><td class="strong"><code>fees_registry_user</code> / <code>fee_code</code></td><td>Per-client fee overrides &amp; codes</td><td class="c"><span class="pill blue">tenant + book</span></td><td class="c">live</td><td class="c"><span class="pill ok dot">On</span></td></tr>
+                <tr><td class="strong"><code>registry_user</code> (+ consent flags)</td><td>Identity, holdings, opt-in status</td><td class="c"><span class="pill blue">tenant + book</span></td><td class="c">live</td><td class="c"><span class="pill ok dot">On</span></td></tr>
+                <tr><td class="strong"><code>region</code> indicative price</td><td>—</td><td class="c"><span class="pill mut">reference</span></td><td class="c">~2022</td><td class="c"><span class="pill bad dot">Suppressed</span></td></tr>
+                <tr><td class="strong">BOM / allocation feeds</td><td>Seasonal drivers</td><td class="c"><span class="pill mut">reference</span></td><td class="c">weather ~1&nbsp;yr</td><td class="c"><span class="pill warn dot">Stale</span></td></tr>
+              </tbody>
+            </table>
+            <div class="wf-note"><i class="fa fa-exclamation-triangle"></i> The stale ~2022 <code>region</code> indicative price is <b>deliberately suppressed</b> — the assistant prices from settled trades instead. The free-text corridor <code>rule</code> field is shown as context only, never used as a matching input.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── TAB 5 · Guardrails ─────────────── -->
+      <section class="tabpanel" data-panel="guardrails">
+        <div class="cols c-2-1">
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-shield"></i> Safety &amp; scope</div>
+            <div class="wf-panel-body">
+              <div class="stack" style="gap:14px">
+                <div class="rowflex"><span>Restrict every answer to my tenant &amp; book (<code>tenant_to_user</code>)</span><span class="spacer"></span><span class="sw on"></span></div>
+                <div class="rowflex"><span>Read-only — assistant may draft but never place/edit a trade</span><span class="spacer"></span><span class="sw on"></span></div>
+                <div class="rowflex"><span>Honour consent flags before building any contact list</span><span class="spacer"></span><span class="sw on"></span></div>
+                <div class="rowflex"><span>Require a cited source for every figure (suppress un-grounded numbers)</span><span class="spacer"></span><span class="sw on"></span></div>
+                <div class="rowflex"><span>Warn when a quote falls outside the recent settled range</span><span class="spacer"></span><span class="sw on"></span></div>
+                <div class="rowflex"><span>Log all prompts &amp; answers to the append-only <code>action_log</code></span><span class="spacer"></span><span class="sw on"></span></div>
+              </div>
+              <hr class="soft">
+              <div class="rowflex"><span class="lbl">Answer style</span><span class="spacer"></span><div class="seg"><button class="on">Concise</button><button>Detailed</button><button>Numbers only</button></div></div>
+              <div class="rowflex" style="margin-top:12px"><span class="lbl">Model</span><span class="spacer"></span><select><option>Opus 4.8 (most capable)</option><option>Sonnet 4.6 (faster)</option></select></div>
+            </div>
+          </div>
+          <div class="wf-panel">
+            <div class="wf-panel-head"><i class="fa fa-info-circle"></i> Why the guardrails</div>
+            <div class="wf-panel-body">
+              <div class="callout warn"><div class="h"><i class="fa fa-lock"></i> No DB-level tenant isolation</div><p>The database is a single <code>public</code> schema — a naïve read leaks every client. The assistant must replicate the app's <code>EXISTS (… tenant_to_user …)</code> gate on every query, which is why scope can't be turned off.</p></div>
+              <div class="callout good"><div class="h"><i class="fa fa-check-circle"></i> Auditable by design</div><p>Regulated across VIC · NSW · SA + the MDBP with independently-audited trust accounts. Grounding, citations and the <code>action_log</code> trail keep every AI-assisted decision traceable.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <p class="tiny muted" style="margin-top:6px"><i class="fa fa-info-circle"></i> Wireframe / reference only — the AI Water-Rights Assistant as a fully tabbed page reached from the bottom of the nav ribbon. Illustrative data from the loaded <code>waterfind-db</code> worked example. No stack chosen (see repo <code>CLAUDE.md</code>).</p>
+    </main>
+  </div>
+</div>
+
+<script>
+  // Tab switching for the fully tabbed AI Assistant page
+  var strip = document.getElementById('tabstrip');
+  strip.addEventListener('click', function(e){
+    var btn = e.target.closest('.tab');
+    if(!btn) return;
+    var name = btn.getAttribute('data-tab');
+    strip.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('active', t === btn); });
+    document.querySelectorAll('.tabpanel').forEach(function(p){
+      p.classList.toggle('active', p.getAttribute('data-panel') === name);
+    });
+    document.querySelector('.wf-content').scrollTop = 0;
+  });
+  // Auto-grow the composer textarea
+  document.querySelectorAll('.composer .box').forEach(function(t){
+    t.addEventListener('input', function(){ t.style.height='auto'; t.style.height=Math.min(t.scrollHeight,150)+'px'; });
+  });
+</script>
+</body>
+</html>

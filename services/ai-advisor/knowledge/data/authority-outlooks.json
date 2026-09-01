@@ -1,0 +1,464 @@
+{
+  "dataset": "authority-outlooks",
+  "description": "Forward-looking statements published by the authorities that decide or forecast water availability: state allocation outlooks, BOM/agency climate outlooks. The advisor RELAYS these (with authority + issue date), it does not adopt them as its own predictions.",
+  "as_at": "2026-08-30",
+  "outlooks": [
+    {
+      "id": "nsw-opening-2026-27",
+      "authority": "NSW DCCEEW (Water)",
+      "kind": "allocation_opening",
+      "jurisdiction": "NSW",
+      "valley": "Murrumbidgee",
+      "title": "1 July 2026 opening allocations - Murrumbidgee regulated river",
+      "summary": "2026-27 opening allocation: general security 40% of entitlement, high security 95%. Regular fortnightly water allocation statements (which carry forward scenario projections under dry/median/wet inflows) resumed 15 July 2026.",
+      "issued": "2026-07-01",
+      "valid_for": "2026-27 water year",
+      "source_url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-06/was-opening-regulated-rivers-1-july-2026.pdf",
+      "confidence": "reported",
+      "verification_note": "Figures via secondary reporting of the official opening statement; the linked PDF is the primary source - verify there before high-stakes use."
+    },
+    {
+      "id": "nsw-was-cadence-2026-27",
+      "authority": "NSW DCCEEW (Water)",
+      "kind": "publication_cadence",
+      "jurisdiction": "NSW",
+      "valley": null,
+      "title": "Water allocation statements - fortnightly cadence",
+      "summary": "Fortnightly water allocation statements for major inland regulated rivers resumed 15 July 2026; each statement includes projected allocation improvements under defined inflow scenarios. These statements are the authoritative forward outlook for NSW allocations.",
+      "issued": "2026-07-15",
+      "valid_for": "2026-27 water year",
+      "source_url": "https://www.water.dcceew.nsw.gov.au/our-work/allocations-and-availability/allocations/water-allocation-statements",
+      "confidence": "reported",
+      "verification_note": "Cadence and content described on the DCCEEW allocation-statements page."
+    },
+    {
+      "id": "bom-enso-current",
+      "authority": "Bureau of Meteorology",
+      "kind": "climate_outlook",
+      "jurisdiction": "AU",
+      "valley": null,
+      "title": "ENSO status: El Niño",
+      "summary": "Strong El Niño continues to intensify amid record-warm global sea-surface temperatures. Latest relative Niño3.4 index +2.20°C (El Niño threshold +0.80°C). Indian Ocean Dipole: neutral. Southern Annular Mode (SAM) index: neutral. El Niño seasons lean drier over the southern Basin: historically slower allocation ratchet-up and firmer temporary-water prices; La Niña the reverse. The IOD and SAM act alongside ENSO — a negative IOD favours wetter conditions over south-east Australia and can offset an El Niño signal, and a positive SAM in winter-spring tends to reduce southern rainfall. Read the three together, not ENSO alone.",
+      "issued": "2026-08-11",
+      "valid_for": "current",
+      "source_url": "https://www.bom.gov.au/climate/enso/",
+      "confidence": "scraped",
+      "verification_note": "Machine-extracted from the BOM southern-hemisphere monitoring wrap-up; read the source page for the full text and model survey.",
+      "drivers": {
+        "enso": "El Niño",
+        "enso_nino34_relative_c": 2.2,
+        "iod": "neutral",
+        "sam": "neutral"
+      }
+    },
+    {
+      "id": "nsw-was-latest-statements",
+      "authority": "NSW DCCEEW (Water)",
+      "kind": "allocation_outlook_index",
+      "jurisdiction": "NSW",
+      "valley": null,
+      "source_url": "https://www.water.dcceew.nsw.gov.au/our-work/allocations-and-availability/allocations/water-allocation-statements",
+      "title": "Latest NSW water allocation statements (per valley)",
+      "summary": "Newest per-valley allocation statement PDFs — each carries the current determination and forward scenario projections. Direct the client to the statement for their valley.",
+      "issued": "2026-08-30",
+      "valid_for": "current",
+      "confidence": "scraped",
+      "statements": [
+        {
+          "valley": "paterson",
+          "date": "2026-08-25",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-08/was-paterson-20260825.pdf"
+        },
+        {
+          "valley": "richmond",
+          "date": "2026-08-25",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-08/was-richmond-20260825.pdf"
+        },
+        {
+          "valley": "murray",
+          "date": "2026-08-17",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-08/WAS-murray-20260817.pdf"
+        },
+        {
+          "valley": "murrumbidgee",
+          "date": "2026-08-17",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-08/WAS-murrumbidgee-20260817.pdf"
+        },
+        {
+          "valley": "macquarie",
+          "date": "2026-08-12",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-08/WAS-macquarie-20260812.pdf"
+        },
+        {
+          "valley": "Lachlan",
+          "date": "2026-08-10",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-08/WAS-Lachlan-20260810.pdf"
+        },
+        {
+          "valley": "namoi",
+          "date": "2026-08-07",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-08/was-namoi-20260807.pdf"
+        },
+        {
+          "valley": "gwydir",
+          "date": "2026-08-07",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-08/was-gwydir-20260807.pdf"
+        },
+        {
+          "valley": "peel",
+          "date": "2026-08-05",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-08/was-peel-20260805.pdf"
+        },
+        {
+          "valley": "macquarie-cudgegong",
+          "date": "2026-07-10",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-07/WAS-macquarie-cudgegong-20260710.pdf"
+        },
+        {
+          "valley": "lachlan",
+          "date": "2026-07-08",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-07/was-lachlan-20260708.pdf"
+        },
+        {
+          "valley": "belubula",
+          "date": "2026-05-27",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-05/was-belubula-20260527.pdf"
+        },
+        {
+          "valley": "border-rivers",
+          "date": "2026-05-21",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-05/WAS-border-rivers-20260521.pdf"
+        },
+        {
+          "valley": "hunter",
+          "date": "2026-05-11",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-05/WAS-hunter-20260511.pdf"
+        },
+        {
+          "valley": "bega-brogo",
+          "date": "2026-04-02",
+          "url": "https://www.water.dcceew.nsw.gov.au/sites/default/files/2026-04/WAS-bega-brogo-20260402.pdf"
+        }
+      ]
+    },
+    {
+      "id": "nvrm-hrws-outlook",
+      "kind": "allocation_outlook",
+      "jurisdiction": "VIC",
+      "valley": null,
+      "authority": "Northern Victoria Resource Manager",
+      "title": "Victorian HRWS seasonal-determination outlook (2026/27 season)",
+      "summary": "NVRM's published outlook of high-reliability water share determinations for Murray System, Goulburn and Loddon System, Broken System: projected determination % at each upcoming announcement date under Wet / Average / Dry / Extreme Dry inflow scenarios, each anchored to a similar historical season. This is the resource manager's own forward guidance — lead with it for VIC allocation outlook questions.",
+      "issued": "2026-08-30",
+      "valid_for": "2026/27 season",
+      "source_url": "https://nvrm.net.au/outlooks/current-outlook",
+      "confidence": "scraped",
+      "verification_note": "Machine-extracted from the NVRM outlook page tables; verify against the page before high-stakes use.",
+      "systems": [
+        {
+          "system": "Murray System",
+          "water_share_class": "high-reliability",
+          "scenarios": [
+            {
+              "inflow_conditions": "Wet",
+              "similar_season": "2021/22",
+              "projections": [
+                {
+                  "date": "15 October 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 November 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 December 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 February 2027",
+                  "determination_pct": "100%"
+                }
+              ]
+            },
+            {
+              "inflow_conditions": "Average",
+              "similar_season": "2023/24",
+              "projections": [
+                {
+                  "date": "15 October 2026",
+                  "determination_pct": "78%"
+                },
+                {
+                  "date": "15 November 2026",
+                  "determination_pct": "99%"
+                },
+                {
+                  "date": "15 December 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 February 2027",
+                  "determination_pct": "100%"
+                }
+              ]
+            },
+            {
+              "inflow_conditions": "Dry",
+              "similar_season": "2025/26",
+              "projections": [
+                {
+                  "date": "15 October 2026",
+                  "determination_pct": "59%"
+                },
+                {
+                  "date": "15 November 2026",
+                  "determination_pct": "65%"
+                },
+                {
+                  "date": "15 December 2026",
+                  "determination_pct": "69%"
+                },
+                {
+                  "date": "15 February 2027",
+                  "determination_pct": "85%"
+                }
+              ]
+            },
+            {
+              "inflow_conditions": "Extreme Dry",
+              "similar_season": "2006/07",
+              "projections": [
+                {
+                  "date": "15 October 2026",
+                  "determination_pct": "47%"
+                },
+                {
+                  "date": "15 November 2026",
+                  "determination_pct": "48%"
+                },
+                {
+                  "date": "15 December 2026",
+                  "determination_pct": "48%"
+                },
+                {
+                  "date": "15 February 2027",
+                  "determination_pct": "49%"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "system": "Goulburn and Loddon System",
+          "water_share_class": "high-reliability",
+          "scenarios": [
+            {
+              "inflow_conditions": "Wet",
+              "similar_season": "2010/11",
+              "projections": [
+                {
+                  "date": "15 October 2026",
+                  "determination_pct": "94%"
+                },
+                {
+                  "date": "15 November 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 December 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 February 2027",
+                  "determination_pct": "100%"
+                }
+              ]
+            },
+            {
+              "inflow_conditions": "Average",
+              "similar_season": "2023/24",
+              "projections": [
+                {
+                  "date": "15 October 2026",
+                  "determination_pct": "70%"
+                },
+                {
+                  "date": "15 November 2026",
+                  "determination_pct": "84%"
+                },
+                {
+                  "date": "15 December 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 February 2027",
+                  "determination_pct": "100%"
+                }
+              ]
+            },
+            {
+              "inflow_conditions": "Dry",
+              "similar_season": "2025/26",
+              "projections": [
+                {
+                  "date": "15 October 2026",
+                  "determination_pct": "48%"
+                },
+                {
+                  "date": "15 November 2026",
+                  "determination_pct": "53%"
+                },
+                {
+                  "date": "15 December 2026",
+                  "determination_pct": "57%"
+                },
+                {
+                  "date": "15 February 2027",
+                  "determination_pct": "63%"
+                }
+              ]
+            },
+            {
+              "inflow_conditions": "Extreme Dry",
+              "similar_season": "2006/07",
+              "projections": [
+                {
+                  "date": "15 October 2026",
+                  "determination_pct": "43%"
+                },
+                {
+                  "date": "15 November 2026",
+                  "determination_pct": "44%"
+                },
+                {
+                  "date": "15 December 2026",
+                  "determination_pct": "45%"
+                },
+                {
+                  "date": "15 February 2027",
+                  "determination_pct": "46%"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "system": "Broken System",
+          "water_share_class": "high-reliability",
+          "scenarios": [
+            {
+              "inflow_conditions": "Wet",
+              "similar_season": "2022/23",
+              "projections": [
+                {
+                  "date": "15 October 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 November 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 December 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 February 2027",
+                  "determination_pct": "100%"
+                }
+              ]
+            },
+            {
+              "inflow_conditions": "Average",
+              "similar_season": "2023/24",
+              "projections": [
+                {
+                  "date": "15 October 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 November 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 December 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 February 2027",
+                  "determination_pct": "100%"
+                }
+              ]
+            },
+            {
+              "inflow_conditions": "Dry",
+              "similar_season": "2024/25",
+              "projections": [
+                {
+                  "date": "15 October 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 November 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 December 2026",
+                  "determination_pct": "100%"
+                },
+                {
+                  "date": "15 February 2027",
+                  "determination_pct": "100%"
+                }
+              ]
+            },
+            {
+              "inflow_conditions": "Extreme Dry",
+              "similar_season": "2006/07",
+              "projections": [
+                {
+                  "date": "15 October 2026",
+                  "determination_pct": "80%"
+                },
+                {
+                  "date": "15 November 2026",
+                  "determination_pct": "80%"
+                },
+                {
+                  "date": "15 December 2026",
+                  "determination_pct": "80%"
+                },
+                {
+                  "date": "15 February 2027",
+                  "determination_pct": "80%"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "last_refresh": {
+    "at": "2026-08-30",
+    "method": "refresh-outlooks.ts",
+    "sources_attempted": [
+      {
+        "url": "https://www.bom.gov.au/climate/enso/",
+        "status": "fetch failed",
+        "updated_records": 0
+      },
+      {
+        "url": "https://nvrm.net.au/outlooks/current-outlook",
+        "status": "ok (3 systems)",
+        "updated_records": 1
+      },
+      {
+        "url": "https://www.water.dcceew.nsw.gov.au/our-work/allocations-and-availability/allocations/water-allocation-statements",
+        "status": "ok (15 valleys)",
+        "updated_records": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+Call Campaigns — the two CRM files the page changes (reference for the SVN commit; the same edits are
+applied idempotently by deploy-campaigns.mjs, which is the way to install). Context assumes the AI Trainer
+Home hunks (ai-trainer-home.crm.patch) are already in place. No Java change: the JSP gates on the existing
+UserRoles.ROLE_BROKER / ROLE_SUPERUSER constants.
+
+Index: webapp/jsp/common/manager-homepage-links.jsp
+===================================================================
+--- webapp/jsp/common/manager-homepage-links.jsp	(AI Trainer Home applied)
++++ webapp/jsp/common/manager-homepage-links.jsp	(working copy)
+@@ -20,6 +20,8 @@
+ 		pageIndex = 6;
+ 	} else if(servletPath.indexOf("ai-trainer") != -1) {
+ 		pageIndex = 7;
++	} else if(servletPath.indexOf("ai-campaigns") != -1) {
++		pageIndex = 8;
+ 	}
+
+ 	boolean isExecutive = wfDelegate.hasAccess(UserRoles.ROLE_EXECUTIVE, loggedInUserId);
+@@ -32,11 +34,13 @@
+ 	// AI Trainer Home is gated on the AI_TRAINER role alone (not the executive catch-all): it is a
+ 	// working tool that edits what the AI Water Advisor tells clients, so the grant is explicit.
+ 	boolean showAiTrainer = wfDelegate.hasAccess(UserRoles.ROLE_AI_TRAINER, loggedInUserId);
++	// Call Campaigns: outbound AI Advisor calls to a list of clients — brokers (BROKER) and superusers (SU).
++	boolean showCallCampaigns = wfDelegate.hasAccess(UserRoles.ROLE_BROKER, loggedInUserId) || wfDelegate.hasAccess(UserRoles.ROLE_SUPERUSER, loggedInUserId);
+
+ 	boolean isBroker = wfDelegate.isLoggedInUserIsSales();
+
+ 	// only show the specialised homepages to users with the required roles
+-	if(isExecutive || showSalesManager || showTradeManager || showWAIIFManager || showMarketingTeam || showCeo || showAiTrainer)
++	if(isExecutive || showSalesManager || showTradeManager || showWAIIFManager || showMarketingTeam || showCeo || showAiTrainer || showCallCampaigns)
+ 	{
+ 		String selectedStyle = "style=\"font-weight:bold; color:#0093d0;\"";
+ %>
+@@ -121,6 +125,16 @@
+ 		</td>
+ 		<%
+ 			}
++
++			if(showCallCampaigns)
++			{
++		%>
++		<td>
++			<a <%=pageIndex==8 ? selectedStyle : "" %>
++				href="/ai-campaigns-home.html">Call Campaigns</a> &nbsp;
++		</td>
++		<%
++			}
+ 		%>
+ 	</tr>
+ </table>
+Index: webapp/WEB-INF/struts-config.xml
+===================================================================
+--- webapp/WEB-INF/struts-config.xml	(AI Trainer Home applied)
++++ webapp/WEB-INF/struts-config.xml	(working copy)
+@@ -3684,6 +3684,16 @@
+             <forward name="failure" path="/login.html?nextPage=/ai-trainer-home.html"/>
+         </action>
+
++        <!-- Call Campaigns (staff home page; the tool renders for BROKER / SU role holders and the advisor
++             sidecar re-verifies staff usertype + role from the DB on every request, fail-closed) -->
++        <action
++            path="/ai-campaigns-home"
++            type="com.waterfind.user.CheckSalesAdminLoggedInAction">
++            <forward name="success" path="/jsp/admin/ai-campaigns-home.jsp"/>
++            <forward name="failure" path="/login.html?nextPage=/ai-campaigns-home.html"/>
++        </action>
++
+
+         <action
+             path="/admin-menu-dynamic"
+@@ -10733,6 +10743,8 @@
+ 		<!-- Knowledge Curator (the AI Trainer Home tool; the sidecar verifies staff usertype + the AI_TRAINER role from the DB, fail-closed) -->
+ 		<action path="/ai-curator" forward="/jsp/userhome/app/ai-curator.jsp"/>
++		<!-- Call Campaigns tool (staff-only; the sidecar verifies staff usertype + BROKER/SU role from the DB, fail-closed) -->
++		<action path="/ai-campaigns" forward="/jsp/userhome/app/ai-campaigns.jsp"/>
+ 		<!-- Broker-assist advisor rail on the CRM client page (staff-only; the sidecar re-verifies staff usertype from the DB, fail-closed) -->
+ 		<action path="/ai-client-advisor" forward="/jsp/userhome/app/ai-client-advisor.jsp"/>

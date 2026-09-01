@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waterfind Staff Console · wireframe gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="wf-console.css">
+<style>
+  body{overflow:auto}
+  .gal{max-width:1180px; margin:0 auto; padding:34px 24px 60px}
+  .gal h1{font-size:26px; font-weight:600; color:var(--wf-ink); display:flex; align-items:center; gap:12px}
+  .gal h1 .drop{color:var(--wf-blue)}
+  .gal .lede{color:var(--wf-muted2); font-size:14.5px; line-height:1.6; margin:10px 0 26px; max-width:820px}
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:#fff; box-shadow:var(--wf-shadow-1); text-decoration:none; color:inherit; display:flex; flex-direction:column; transition:.18s; border-top:4px solid var(--wf-blue)}
+  .card:hover{box-shadow:var(--wf-shadow-2); transform:translateY(-2px); text-decoration:none}
+  .card.req{border-top-color:var(--wf-orange)}
+  .card .top{display:flex; align-items:center; gap:13px; padding:18px 18px 6px}
+  .card .ico{width:46px; height:46px; border-radius:9px; background:#e8f1f8; color:var(--wf-blue); display:grid; place-items:center; font-size:22px; flex:0 0 46px}
+  .card.req .ico{background:#fdefdd; color:var(--wf-orange)}
+  .card .num{font-size:11px; letter-spacing:.14em; color:var(--wf-muted); text-transform:uppercase}
+  .card h2{font-size:17px; font-weight:600; color:var(--wf-ink); margin-top:2px}
+  .card p{padding:2px 18px 14px; color:var(--wf-muted2); font-size:13.3px; line-height:1.55; flex:1}
+  .card .foot{padding:11px 18px; border-top:1px solid var(--wf-surface); font-size:12px; color:var(--wf-blue); display:flex; align-items:center; gap:7px}
+  .tagline{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--wf-orange); border:1px solid var(--wf-orange); border-radius:3px; padding:2px 8px; margin-left:8px}
+  .disc{margin-top:26px; font-size:12.5px; color:var(--wf-muted2); background:#fff; border-left:3px solid var(--wf-orange); padding:13px 16px; box-shadow:var(--wf-shadow-1); line-height:1.6}
+</style>
+</head>
+<body>
+<div class="gal">
+  <h1><i class="fa fa-tint drop"></i> Waterfind — Broker / Staff Console</h1>
+  <p class="lede">Five exploratory wireframes for internal broker &amp; staff tooling, sharing one shell: the brand header, the
+  64px hover-expand <b>left navigation ribbon</b>, and the navy/orange section bars reconstructed from the live client portal.
+  Data is illustrative, drawn from the loaded <code>waterfind-db</code> worked example (Kyle Egan · Njernda, region 515).
+  <b>Reference only — no stack chosen</b> (see repo <code>CLAUDE.md</code>).</p>
+
+  <div class="grid">
+    <a class="card" href="01-broker-desk.html">
+      <div class="top"><div class="ico"><i class="fa fa-tachometer"></i></div><div><div class="num">01 · Dashboard</div><h2>Broker Desk</h2></div></div>
+      <p>Landing overview — KPIs for your book, watched-market prices &amp; depth, recent settled trades, an action queue, firing alerts, and settlements needing attention.</p>
+      <div class="foot"><i class="fa fa-arrow-right"></i> Open wireframe</div>
+    </a>
+
+    <a class="card" href="02-markets-orderbook.html">
+      <div class="top"><div class="ico"><i class="fa fa-exchange"></i></div><div><div class="num">02 · Trading</div><h2>Markets &amp; Order Book</h2></div></div>
+      <p>Live bid/ask ladder with depth, price strip, recent settled trades, and a place-order-on-behalf-of-client panel with an estimated-net + match preview. Routes through the real order path.</p>
+      <div class="foot"><i class="fa fa-arrow-right"></i> Open wireframe</div>
+    </a>
+
+    <a class="card" href="03-client-360.html">
+      <div class="top"><div class="ico"><i class="fa fa-users"></i></div><div><div class="num">03 · CRM</div><h2>Client 360</h2></div></div>
+      <p>One client, whole picture — identity &amp; consent, holdings, tradability reach, trade history with the net-proceeds breakdown, seasonal allocation, and a read-only advisory synthesis.</p>
+      <div class="foot"><i class="fa fa-arrow-right"></i> Open wireframe</div>
+    </a>
+
+    <a class="card" href="04-settlements-trust.html">
+      <div class="top"><div class="ico"><i class="fa fa-university"></i></div><div><div class="num">04 · Back office</div><h2>Settlements &amp; Trust</h2></div></div>
+      <p>The money trail — settlement pipeline with stage progress, the ISO-9001 trust ledger reconciled to $0, money-flow summary, disputes, and compliance exceptions.</p>
+      <div class="foot"><i class="fa fa-arrow-right"></i> Open wireframe</div>
+    </a>
+
+    <a class="card req" href="05-admin-console.html">
+      <div class="top"><div class="ico"><i class="fa fa-cog"></i></div><div><div class="num">05 · Bottom of the ribbon</div><h2>Admin &amp; Settings <span class="tagline"><i class="fa fa-folder-o"></i> fully tabbed</span></h2></div></div>
+      <p>The required screen: pinned to the <b>bottom</b> of the left nav ribbon and organised as <b>nine working tabs</b> — Profile, Users &amp; Roles, Fees &amp; Commission, Tradability Rules, Notifications, Tenancy &amp; Access, Integrations, Audit Log, Compliance.</p>
+      <div class="foot"><i class="fa fa-arrow-right"></i> Open wireframe</div>
+    </a>
+  </div>
+
+  <div class="disc"><i class="fa fa-info-circle"></i> <b>Wireframe / reference only.</b> These are design artifacts, not a committed plan or a chosen stack. Figures are illustrative
+  (real names/holdings/trades from the sanitized dump; emails are placeholders). Data-model notes referenced in the screens come from
+  <code>docs/broker-advisory/</code> and <code>docs/architecture/</code>.</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Waterfind — Adviser (full-page) · native skin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="wf-theme.css" />
+<style>
+  .wf-content{display:flex; flex-direction:column}
+  .conv-panel{flex:1; min-height:0}
+  .conv-panel .wf-panel-body{flex:1; min-height:0; display:flex; flex-direction:column; padding:0}
+  .conv-scroll{flex:1; min-height:0; overflow:auto; padding:18px}
+  .conv-foot{padding:14px 18px}
+</style>
+</head>
+<body>
+<div class="wf-app">
+
+  <!-- ───── header ───── -->
+  <header class="wf-header">
+    <div class="wf-logo"><img src="../../../crm/waterfind.com.au/webapp/jsp/market/images/logo_invert.png" alt="Waterfind" /></div>
+    <div class="spacer"></div>
+    <div class="oldview">OLD<br />MARKET<br />VIEW</div>
+    <div class="wf-hicon sm" title="Help"><i class="fa fa-question"></i></div>
+    <div class="wf-hicon sm" title="Contact Us"><i class="fa fa-info"></i></div>
+    <div class="wf-welcome">Welcome back<br /><b>Kyle Egan</b></div>
+    <div class="wf-hicon" title="Profile" style="margin-right:24px"><i class="fa fa-user"></i></div>
+  </header>
+
+  <div class="wf-body">
+
+    <!-- ───── left icon rail ───── -->
+    <nav class="wf-rail">
+      <ul>
+        <li><span class="stripe"></span><span class="ic"><i class="fa fa-university"></i></span><span class="lbl">Market</span></li>
+        <li><span class="stripe"></span><span class="ic"><i class="fa fa-line-chart"></i></span><span class="lbl">Data</span></li>
+        <li><span class="stripe"></span><span class="ic"><i class="fa fa-exchange"></i></span><span class="lbl">My Orders</span></li>
+        <li><span class="stripe"></span><span class="ic"><i class="fa fa-random"></i></span><span class="lbl">Trades</span></li>
+        <li class="active"><span class="stripe"></span><span class="ic"><i class="fa fa-comments"></i></span><span class="lbl">Adviser</span></li>
+      </ul>
+    </nav>
+
+    <!-- ───── content ───── -->
+    <main class="wf-content">
+
+      <div class="wf-titlebar">
+        <span class="left"><i class="fa fa-chevron-left"></i></span>
+        WATER RIGHTS ADVISER &nbsp;·&nbsp; NJERNDA ABORIGINAL CORPORATION
+        <img class="swoosh" src="../../../crm/waterfind.com.au/webapp/jsp/market/images/swoosh.png" alt="" />
+        <span class="gear"><i class="fa fa-refresh"></i></span>
+      </div>
+
+      <!-- holdings snapshot, same stat-card pattern as the dashboard -->
+      <div class="wf-stats">
+        <div class="wf-stat">
+          <div class="h">Your Holdings</div>
+          <div class="v">970<small> ML</small></div>
+          <div class="more">11 ACTIVE · VIC MURRAY + GOULBURN</div>
+        </div>
+        <div class="wf-stat">
+          <div class="h">515 Best Bid (live)</div>
+          <div class="v">$420<small>/ML</small></div>
+          <div class="more">5,635 ML DEMAND · ASOF 15 JUN</div>
+        </div>
+        <div class="wf-stat">
+          <div class="h">Your Last 515 Sale</div>
+          <div class="v">$300<small>/ML</small></div>
+          <div class="more">23 OCT 2025 · 100 ML</div>
+        </div>
+      </div>
+
+      <!-- conversation -->
+      <section class="wf-panel conv-panel">
+        <div class="wf-panel-head">
+          <i class="fa fa-tint"></i> Conversation
+          <span class="spacer"></span>
+          <span class="ctrl"><i class="fa fa-history"></i> History</span>
+        </div>
+        <div class="wf-panel-body">
+          <div class="conv-scroll">
+            <div class="chat">
+
+              <!-- Q1 -->
+              <div class="msg client">
+                <div class="b">G'day. We've got water spread across the Murray and the Goulburn. Money's a bit tight this season — should we be selling any of it right now, or sitting tight?</div>
+                <div class="who">Kyle Egan · 9:02 am</div>
+              </div>
+
+              <!-- A1 -->
+              <div class="msg adviser">
+                <div class="adviser-av"><i class="fa fa-tint"></i></div>
+                <div class="b">
+                  <div class="name">Water Rights Adviser <span class="tag">grounded in live trades</span></div>
+                  <div class="verdict"><span class="hl">Sell now — and lead with the Murray.</span></div>
+                  <p>Your 515 (VIC Murray) median is $300/ML but live demand is deep: <span class="num">34 bids, 263,000 ML wanted, best bid $420/ML</span>. Your last 515 sale was $300 — this is the top of the range.</p>
+                  <table class="wf-table">
+                    <thead><tr><th>Holding</th><th class="r">ML</th><th class="r">Median</th><th class="r">Best bid</th><th>Call</th></tr></thead>
+                    <tbody>
+                      <tr><td>515 VIC Murray</td><td class="r">372</td><td class="r">$300</td><td class="r"><b>$420</b></td><td>Sell now</td></tr>
+                      <tr><td>Greater Goulburn HI-R</td><td class="r">193</td><td class="r">$278</td><td class="r">$410</td><td>Sell — Murray first</td></tr>
+                      <tr><td>Lower Goulburn</td><td class="r">188</td><td class="r">$263</td><td class="r">—</td><td>Hold; thin market</td></tr>
+                      <tr><td>Smaller parcels</td><td class="r">~218</td><td class="r">—</td><td class="r">—</td><td>Hold</td></tr>
+                    </tbody>
+                  </table>
+                  <p>On 372 ML @ ~$415 ≈ <span class="num">$154k gross</span>. If you want a single move this season, clear the 515 parcel at $400+.</p>
+                  <div class="cta-row">
+                    <button class="wf-btn wf-btn-purple"><i class="fa fa-arrow-up"></i> Sell my 515 Water</button>
+                    <button class="wf-btn wf-btn-default">Model exact net at a price</button>
+                  </div>
+                  <div class="freshness"><i class="fa fa-clock-o"></i> Holdings as at 19 Jun · live book asof 15 Jun 2026</div>
+                </div>
+              </div>
+
+              <!-- Q2 -->
+              <div class="msg client">
+                <div class="b">Say I sell 200 ML of the Murray (515) at $400/ML — what do I actually walk away with after your fees and GST?</div>
+                <div class="who">Kyle Egan · 9:05 am</div>
+              </div>
+
+              <!-- A2 -->
+              <div class="msg adviser">
+                <div class="adviser-av"><i class="fa fa-tint"></i></div>
+                <div class="b">
+                  <div class="name">Water Rights Adviser</div>
+                  <div class="verdict">On 200 ML @ $400 = $80,000 gross, you walk away with <span class="hl">~$76,661</span>. <span class="badge-est"><i class="fa fa-info-circle"></i> Estimate</span></div>
+                  <table class="wf-table">
+                    <tbody>
+                      <tr><td>Gross (200 ML × $400)</td><td class="r">$80,000</td></tr>
+                      <tr><td>Less brokerage — 3.79% (rate actually charged on your 515 sales)</td><td class="r">−$3,032</td></tr>
+                      <tr><td>Less GST on brokerage</td><td class="r">−$303</td></tr>
+                      <tr><td>Plus rounding to settlement</td><td class="r">−$4</td></tr>
+                      <tr class="total"><td>Net proceeds to you</td><td class="r">~$76,661</td></tr>
+                    </tbody>
+                  </table>
+                  <p>This excludes any government/authority transfer fee — the exact figure lands on your settlement statement.</p>
+                  <div class="freshness"><i class="fa fa-clock-o"></i> Brokerage basis: your settled 515 trades, not the rate-card floor</div>
+                </div>
+              </div>
+
+              <!-- typing -->
+              <div class="msg adviser">
+                <div class="adviser-av"><i class="fa fa-tint"></i></div>
+                <div class="b" style="border-left-color:var(--wf-line)"><div class="typing"><i></i><i></i><i></i></div></div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- composer -->
+          <div class="conv-foot composer">
+            <div class="chips">
+              <button>Where can my 515 water trade?</button>
+              <button>Best price across all my markets</button>
+              <button>Who is my broker?</button>
+            </div>
+            <div class="field">
+              <input type="text" placeholder="Ask about your holdings, the market, or a trade…" />
+              <button class="wf-btn wf-btn-primary"><i class="fa fa-paper-plane"></i> Ask</button>
+            </div>
+            <div class="disc">Indicative guidance from live exchange data — not financial advice. The adviser cannot place orders; exact net is confirmed at settlement.</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

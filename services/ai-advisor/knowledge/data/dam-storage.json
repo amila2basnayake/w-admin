@@ -1,0 +1,175 @@
+{
+  "dataset": "dam-storage",
+  "description": "Current water-in-storage snapshot for major Murray-Darling Basin storages, ingested from public operator/agency pages. Not live-scraped at question time.",
+  "provenance": {
+    "source_name": "Goulburn-Murray Water (VIC storages), WaterNSW (NSW regional dams), MDBA River Murray data (Lake Victoria)",
+    "source_url": [
+      "https://www.g-mwater.com.au/water-operations/storage-levels",
+      "https://www.g-mwater.com.au/water-resources/catchments/storages/goulburn/lakeeildon",
+      "https://www.waternsw.com.au/nsw-dams/nsw-storage-levels/regional-nsw-dam-levels",
+      "https://www.waternsw.com.au/nsw-dams/regional-nsw-dams/burrinjuck-dam",
+      "https://riverdata.mdba.gov.au/list-view/lake-victoria"
+    ],
+    "fetched_at": "2026-07-08",
+    "licence_or_terms_note": "Australian government / government-owned-corporation water data. BoM, MDBA and most state water data are published under Creative Commons Attribution 4.0 (CC BY 4.0) - attribute the issuing agency. WaterNSW and Goulburn-Murray Water are state-owned corporations; confirm per-site terms of use before redistribution. Attribute each figure to its listed source.",
+    "gaps": [
+      "MDBA pages (mdba.gov.au 'Current Basin water in storage report'; riverdata.mdba.gov.au) return HTTP 403 to non-browser fetches, so the whole-of-Basin total and Lake Victoria current (July) values could not be pulled directly. Lake Victoria below carries its most recent reachable reading (2026-05-06, MDBA via search extraction) and is flagged confidence=reported.",
+      "No basin-wide total captured (MDBA source blocked). A Goulburn-Murray Water regional total is included under system_totals as the best available aggregate.",
+      "BoM MDB Water Information Portal (mdbwip.bom.gov.au) is a JavaScript single-page app and did not render server-side for fetch; not used."
+    ],
+    "last_refresh": {
+      "at": "2026-08-30T17:43:38.912Z",
+      "sources": [
+        {
+          "url": "https://www.g-mwater.com.au/water-operations/storage-levels",
+          "status": "fetched but nothing parsed (kept old data)",
+          "updated_records": 0
+        },
+        {
+          "url": "https://www.waternsw.com.au/nsw-dams/nsw-storage-levels/regional-nsw-dam-levels",
+          "status": "fetch-failed/blocked (kept old data)",
+          "updated_records": 0
+        }
+      ]
+    }
+  },
+  "as_at": "2026-07-08",
+  "unit_note": "volume_gl and capacity_gl are gigalitres (1 GL = 1000 ML). pct_full is percent of full storage capacity.",
+  "storages": [
+    {
+      "storage": "Dartmouth Dam",
+      "system": "River Murray (upper Mitta Mitta)",
+      "state": "VIC",
+      "volume_gl": 2662.528,
+      "capacity_gl": 3856.232,
+      "pct_full": 69.04,
+      "as_at": "2026-07-08",
+      "source_name": "Goulburn-Murray Water storage levels",
+      "source_url": "https://www.g-mwater.com.au/water-operations/storage-levels",
+      "confidence": "high"
+    },
+    {
+      "storage": "Hume Dam (Lake Hume)",
+      "system": "River Murray",
+      "state": "NSW/VIC border",
+      "volume_gl": 1298.994,
+      "capacity_gl": 3005.157,
+      "pct_full": 43.23,
+      "as_at": "2026-07-08",
+      "source_name": "Goulburn-Murray Water storage levels",
+      "source_url": "https://www.g-mwater.com.au/water-operations/storage-levels",
+      "confidence": "high",
+      "note": "WaterNSW reported the same storage at 1249.996 GL / 42% on the same day; small operator-to-operator/read-time differences are normal."
+    },
+    {
+      "storage": "Lake Eildon",
+      "system": "Goulburn",
+      "state": "VIC",
+      "volume_gl": 1581.108,
+      "capacity_gl": 3334.158,
+      "pct_full": 47.42,
+      "as_at": "2026-07-08",
+      "source_name": "Goulburn-Murray Water storage levels",
+      "source_url": "https://www.g-mwater.com.au/water-operations/storage-levels",
+      "confidence": "high"
+    },
+    {
+      "storage": "Burrinjuck Dam (Lake Burrinjuck)",
+      "system": "Murrumbidgee",
+      "state": "NSW",
+      "volume_gl": 495.955,
+      "capacity_gl": 1024.75,
+      "pct_full": 48.4,
+      "as_at": "2026-07-08",
+      "source_name": "WaterNSW regional NSW dam levels",
+      "source_url": "https://www.waternsw.com.au/nsw-dams/nsw-storage-levels/regional-nsw-dam-levels",
+      "confidence": "high"
+    },
+    {
+      "storage": "Blowering Dam",
+      "system": "Murrumbidgee",
+      "state": "NSW",
+      "volume_gl": 746.127,
+      "capacity_gl": 1604.01,
+      "pct_full": 46.5,
+      "as_at": "2026-07-08",
+      "source_name": "WaterNSW regional NSW dam levels",
+      "source_url": "https://www.waternsw.com.au/nsw-dams/nsw-storage-levels/regional-nsw-dam-levels",
+      "confidence": "high"
+    },
+    {
+      "storage": "Menindee Lakes (combined storage)",
+      "system": "Lower Darling",
+      "state": "NSW",
+      "volume_gl": 560.572,
+      "capacity_gl": 1731.45,
+      "pct_full": 32.4,
+      "as_at": "2026-07-08",
+      "source_name": "WaterNSW regional NSW dam levels",
+      "source_url": "https://www.waternsw.com.au/nsw-dams/nsw-storage-levels/regional-nsw-dam-levels",
+      "confidence": "high"
+    },
+    {
+      "storage": "Lake Victoria",
+      "system": "River Murray (lower)",
+      "state": "NSW/SA border",
+      "volume_gl": 285,
+      "capacity_gl": 677,
+      "pct_full": 42,
+      "as_at": "2026-05-06",
+      "source_name": "MDBA River Murray data (via search extraction; page blocks direct fetch)",
+      "source_url": "https://riverdata.mdba.gov.au/list-view/lake-victoria",
+      "confidence": "reported",
+      "note": "Most recent reachable reading (2026-05-06). Direct fetch of MDBA riverdata returns HTTP 403; value obtained via search extraction and should be re-verified against the primary page. Not a July value."
+    },
+    {
+      "storage": "Waranga Basin",
+      "system": "Goulburn (off-river)",
+      "state": "VIC",
+      "volume_gl": 358.96,
+      "capacity_gl": 432.36,
+      "pct_full": 83.02,
+      "as_at": "2026-07-08",
+      "source_name": "Goulburn-Murray Water storage levels",
+      "source_url": "https://www.g-mwater.com.au/water-operations/storage-levels",
+      "confidence": "high"
+    },
+    {
+      "storage": "Lake Eppalock",
+      "system": "Campaspe",
+      "state": "VIC",
+      "volume_gl": 180.854,
+      "capacity_gl": 304.651,
+      "pct_full": 59.36,
+      "as_at": "2026-07-08",
+      "source_name": "Goulburn-Murray Water storage levels",
+      "source_url": "https://www.g-mwater.com.au/water-operations/storage-levels",
+      "confidence": "high"
+    },
+    {
+      "storage": "Cairn Curran Reservoir",
+      "system": "Loddon",
+      "state": "VIC",
+      "volume_gl": 66.9,
+      "capacity_gl": 147.13,
+      "pct_full": 45.47,
+      "as_at": "2026-07-08",
+      "source_name": "Goulburn-Murray Water storage levels",
+      "source_url": "https://www.g-mwater.com.au/water-operations/storage-levels",
+      "confidence": "high"
+    }
+  ],
+  "system_totals": [
+    {
+      "system": "Goulburn-Murray Water storages (northern Victoria regional total)",
+      "volume_gl": 6379.406,
+      "capacity_gl": 11412.708,
+      "pct_full": 55.9,
+      "as_at": "2026-07-08",
+      "source_name": "Goulburn-Murray Water storage levels",
+      "source_url": "https://www.g-mwater.com.au/water-operations/storage-levels",
+      "confidence": "high",
+      "note": "Covers G-MW-operated storages only (not a whole-of-Basin total). MDBA Basin total was unreachable - see provenance.gaps."
+    }
+  ]
+}

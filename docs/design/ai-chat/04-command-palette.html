@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Command Palette · Waterfind Water-Rights Assistant (wireframe)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../staff-console/wf-console.css">
+<link rel="stylesheet" href="wf-ai.css">
+</head>
+<body>
+<div class="wf-app">
+
+  <header class="wf-header">
+    <div class="wf-logo"><i class="fa fa-tint drop"></i><span class="word"><b>WATER</b><span>FIND</span></span></div>
+    <span class="console-tag">Broker Console</span>
+    <div class="spacer"></div>
+    <div class="wf-search cmdk-trigger"><i class="fa fa-magic"></i><input placeholder="Ask AI or jump to…  ⌘K" readonly></div>
+    <span class="wf-wire">WIREFRAME</span>
+    <div class="wf-welcome">Welcome back,<br><b>Dion Martin</b> · <small>Broker · Sales</small></div>
+    <div class="wf-hicon sm"><i class="fa fa-bell"></i><span class="dot">4</span></div>
+    <div class="wf-hicon"><i class="fa fa-user"></i></div>
+  </header>
+
+  <div class="wf-body">
+    <nav class="wf-rail">
+      <ul>
+        <li><a href="../staff-console/01-broker-desk.html"><span class="stripe"></span><span class="ic"><i class="fa fa-tachometer"></i></span><span class="lbl">Broker Desk</span></a></li>
+        <li class="active"><a href="../staff-console/03-client-360.html"><span class="stripe"></span><span class="ic"><i class="fa fa-users"></i></span><span class="lbl">Clients<span class="cnt">142</span></span></a></li>
+        <li><a href="../staff-console/02-markets-orderbook.html"><span class="stripe"></span><span class="ic"><i class="fa fa-exchange"></i></span><span class="lbl">Markets &amp; Order Book</span></a></li>
+        <li><a href="../staff-console/04-settlements-trust.html"><span class="stripe"></span><span class="ic"><i class="fa fa-university"></i></span><span class="lbl">Settlements &amp; Trust<span class="cnt">6</span></span></a></li>
+        <li class="bottom"><a href="../staff-console/05-admin-console.html"><span class="stripe"></span><span class="ic"><i class="fa fa-cog"></i></span><span class="lbl">Admin &amp; Settings</span></a></li>
+        <li class="ai"><a href="01-assistant-workspace.html"><span class="stripe"></span><span class="ic"><i class="fa fa-comments"></i></span><span class="lbl">AI Assistant<span class="tagnew">AI</span></span></a></li>
+      </ul>
+    </nav>
+
+    <!-- host screen (Client 360, condensed) sits dimmed behind the palette -->
+    <main class="wf-content">
+      <div class="wf-crumbs">Home <i class="fa fa-angle-right"></i> Clients <i class="fa fa-angle-right"></i> Kyle Egan</div>
+      <div class="wf-titlebar">CLIENT 360 — KYLE EGAN · NJERNDA ABORIGINAL CORP<span class="sub">waterfind_user 2026296 · region 515</span><span class="spacer"></span><span class="tb-act"><i class="fa fa-phone"></i> Call</span></div>
+      <div class="wf-kpis k4">
+        <div class="wf-kpi"><div class="lab">Holdings</div><div class="num">970<small>ML</small></div><div class="delta flat">6 REG lines</div></div>
+        <div class="wf-kpi orange"><div class="lab">Region</div><div class="num">515</div><div class="delta flat">7 VIC Murray High R</div></div>
+        <div class="wf-kpi green"><div class="lab">Last trade</div><div class="num">$300</div><div class="delta down"><i class="fa fa-arrow-down"></i> vs $415 now</div></div>
+        <div class="wf-kpi purple"><div class="lab">Consent</div><div class="num">Opt-in</div><div class="delta flat">email · SMS</div></div>
+      </div>
+      <p class="tiny muted"><i class="fa fa-keyboard-o"></i> Press <span class="kbd">⌘</span> <span class="kbd">K</span> anywhere to ask the assistant or jump to a screen without leaving your work.</p>
+    </main>
+  </div>
+</div>
+
+<!-- ══ ⌘K command palette overlay (open, showing an inline AI answer) ══ -->
+<div class="cmdk-scrim">
+  <div class="cmdk">
+    <div class="cmdk-input">
+      <span class="ai-mark"><i class="fa fa-tint"></i></span>
+      <input value="what will Kyle net selling 100 ML on 515?" autofocus>
+      <span class="esc">ESC</span>
+    </div>
+
+    <div class="cmdk-body">
+      <!-- inline AI answer -->
+      <div class="cmdk-sec"><i class="fa fa-tint"></i> AI answer · grounded</div>
+      <div class="cmdk-answer">
+        <div class="bubble" style="box-shadow:none;border-color:var(--wf-line)">
+          <p class="lead">≈ $40,392 net on 100&nbsp;ML at today's price.</p>
+          <div class="netstack" style="margin:8px 0">
+            <div class="r"><span class="lab">Gross · 100 ML @ $415 (median settled)</span><span class="spacer"></span><span class="val">$41,500</span></div>
+            <div class="r neg"><span class="lab">Brokerage · Njernda 2.67% override <span class="badge-est">est</span></span><span class="spacer"></span><span class="val">−$1,108</span></div>
+            <div class="r tot"><span class="lab"><b>Estimated net</b></span><span class="spacer"></span><span class="val">$40,392</span></div>
+          </div>
+          <div class="cites">
+            <span class="cite"><span class="n">1</span><i class="fa fa-table"></i> <code>order_completed → wateroffer</code></span>
+            <span class="cite"><span class="n">2</span><i class="fa fa-table"></i> <code>fees_registry_user</code></span>
+          </div>
+          <div class="verify"><i class="fa fa-exclamation-triangle"></i> Priced at the 90-day median settled, not the stale indicative ($60). Confirm live best bid before quoting.</div>
+          <div class="ans-acts">
+            <button class="ans-act primary"><i class="fa fa-arrow-right"></i> Open in full assistant</button>
+            <button class="ans-act"><i class="fa fa-exchange"></i> Draft the sell order</button>
+            <button class="ans-act"><i class="fa fa-copy"></i> Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- command results (navigate / run) -->
+      <div class="cmdk-sec">Jump to</div>
+      <div class="cmdk-item sel"><span class="ik"><i class="fa fa-exchange"></i></span><div class="m"><b>Region 515 · Markets &amp; Order Book</b><div class="d">live ladder, depth &amp; place-order-on-behalf</div></div><span class="go">↵</span></div>
+      <div class="cmdk-item"><span class="ik"><i class="fa fa-user"></i></span><div class="m"><b>Kyle Egan · Client 360</b><div class="d">holdings, tradability, trade history</div></div><span class="go">↵</span></div>
+      <div class="cmdk-sec">Run a prompt</div>
+      <div class="cmdk-item"><span class="ik"><i class="fa fa-random"></i></span><div class="m"><b>Tradability check — where can 515 trade today?</b><div class="d">RTR + STR gate + season window</div></div><span class="go">↵</span></div>
+      <div class="cmdk-item"><span class="ik"><i class="fa fa-clock-o"></i></span><div class="m"><b>Did Kyle leave value on the table?</b><div class="d">compares his sales to subsequent median</div></div><span class="go">↵</span></div>
+    </div>
+
+    <div class="cmdk-foot">
+      <span class="k"><span class="kbd">↑</span><span class="kbd">↓</span> navigate</span>
+      <span class="k"><span class="kbd">↵</span> select</span>
+      <span class="k"><span class="kbd">Tab</span> ask AI</span>
+      <span class="spacer"></span>
+      <span><i class="fa fa-lock" style="color:var(--wf-orange)"></i> scoped to your book · logged</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

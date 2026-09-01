@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Advisor Runbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #f6f8fa;
+    --panel: #ffffff;
+    --ink: #172033;
+    --ink-2: #4a5568;
+    --ink-3: #7a8699;
+    --line: #d9e0e8;
+    --accent: #0f6b7a;
+    --accent-ink: #0b5561;
+    --accent-soft: #e3f1f3;
+    --code-bg: #eef2f6;
+    --code-ink: #1f2a3d;
+    --todo-bg: #fff4dc; --todo-ink: #7a4b00;
+    --decide-bg: #ece6fb; --decide-ink: #4a2f9c;
+    --fixed-bg: #e6f0ea; --fixed-ink: #1f5b36;
+    --rail-w: 15rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0f141b;
+      --panel: #151c25;
+      --ink: #e6ebf2;
+      --ink-2: #aab5c4;
+      --ink-3: #7c889a;
+      --line: #263140;
+      --accent: #4fb3c2;
+      --accent-ink: #7ccbd6;
+      --accent-soft: #153138;
+      --code-bg: #0b1017;
+      --code-ink: #d6dee8;
+      --todo-bg: #3a2a08; --todo-ink: #f2c66d;
+      --decide-bg: #2a2147; --decide-ink: #c5b6f5;
+      --fixed-bg: #14301f; --fixed-ink: #8fd3a8;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0f141b;
+    --panel: #151c25;
+    --ink: #e6ebf2;
+    --ink-2: #aab5c4;
+    --ink-3: #7c889a;
+    --line: #263140;
+    --accent: #4fb3c2;
+    --accent-ink: #7ccbd6;
+    --accent-soft: #153138;
+    --code-bg: #0b1017;
+    --code-ink: #d6dee8;
+    --todo-bg: #3a2a08; --todo-ink: #f2c66d;
+    --decide-bg: #2a2147; --decide-ink: #c5b6f5;
+    --fixed-bg: #14301f; --fixed-ink: #8fd3a8;
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent-ink); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .wrap { max-width: 78rem; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; display: grid; grid-template-columns: var(--rail-w) minmax(0, 1fr); gap: 3rem; }
+  @media (max-width: 900px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; } .rail { position: static !important; } }
+
+  header.masthead { grid-column: 1 / -1; border-bottom: 1px solid var(--line); padding-bottom: 1.25rem; display: grid; gap: .35rem; }
+  .eyebrow { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); }
+  h1 { font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif; font-weight: 600; font-size: 2.1rem; line-height: 1.1; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+  .lede { color: var(--ink-2); max-width: 70ch; margin: .25rem 0 0; }
+  .lede code { font-size: .88em; }
+  .facts { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: .5rem; font-size: .85rem; color: var(--ink-2); }
+  .facts b { color: var(--ink); font-weight: 500; }
+
+  .rail { position: sticky; top: 1.25rem; align-self: start; font-size: .84rem; }
+  .rail ol { list-style: none; margin: 0; padding: 0; display: grid; gap: .1rem; }
+  .rail a { display: grid; grid-template-columns: 1.6rem 1fr; gap: .4rem; padding: .3rem .5rem; border-radius: 4px; color: var(--ink-2); text-decoration: none; }
+  .rail a:hover { background: var(--accent-soft); color: var(--accent-ink); }
+  .rail .n { font-family: "IBM Plex Mono", monospace; color: var(--ink-3); font-size: .78rem; padding-top: .12rem; }
+  .rail .legend { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--line); display: grid; gap: .35rem; color: var(--ink-3); }
+
+  main { min-width: 0; display: grid; gap: 2.75rem; }
+  section { display: grid; gap: .9rem; scroll-margin-top: 1rem; }
+  h2 { font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif; font-weight: 600; font-size: 1.35rem; margin: 0; display: flex; align-items: baseline; gap: .6rem; padding-bottom: .4rem; border-bottom: 1px solid var(--line); }
+  h2 .n { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: .85rem; color: var(--accent-ink); letter-spacing: .04em; }
+  h3 { font-size: 1rem; font-weight: 600; margin: .5rem 0 0; }
+  h3 .n { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: .8rem; color: var(--ink-3); margin-right: .45rem; }
+  p { margin: 0; max-width: 72ch; }
+  p.note { color: var(--ink-2); font-size: .92rem; }
+
+  .tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  th, td { text-align: left; vertical-align: top; padding: .5rem .75rem; border-bottom: 1px solid var(--line); }
+  th { font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; background: var(--paper); }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { font-weight: 500; white-space: nowrap; }
+  td code, p code, li code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .86em; background: var(--code-bg); color: var(--code-ink); padding: .08em .35em; border-radius: 3px; white-space: nowrap; }
+  td.wrap-ok code { white-space: normal; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  pre { margin: 0; background: var(--code-bg); color: var(--code-ink); border: 1px solid var(--line); border-radius: 6px; padding: .8rem 1rem; overflow-x: auto; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .84rem; line-height: 1.5; position: relative; }
+  pre .lbl { position: absolute; top: .45rem; right: .6rem; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+  pre .c { color: var(--ink-3); }
+
+  .chip { display: inline-block; font-size: .72rem; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; padding: .12rem .5rem; border-radius: 999px; white-space: nowrap; }
+  .chip.todo { background: var(--todo-bg); color: var(--todo-ink); }
+  .chip.decide { background: var(--decide-bg); color: var(--decide-ink); }
+  .chip.fixed { background: var(--fixed-bg); color: var(--fixed-ink); }
+
+  .callout { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: .7rem .9rem; border-radius: 0 6px 6px 0; font-size: .92rem; max-width: 72ch; }
+  .callout b { font-weight: 600; }
+
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">Waterfind AUS CRM · Production deployment</div>
+    <h1>AI Advisor Runbook</h1>
+    <p class="lede">One Node service (<code>ai-advisor</code>) on <code>127.0.0.1:3100</code>, proxied by the existing Apache under <code>/ai/</code>, sharing the CRM database (own schema <code>ai_advisor</code> plus a read-only role). One instance only.</p>
+    <div class="facts">
+      <span><b>Target</b> AWS EC2 Sydney · Apache → Resin · PostgreSQL 9.6</span>
+      <span><b>Order</b> sections 1–8 as written</span>
+      <span><b>Section 0</b> White Dove finishes before handover</span>
+      <span><b>Section 9</b> Waterfind fills in</span>
+    </div>
+  </header>
+
+  <nav class="rail" aria-label="Sections">
+    <ol>
+      <li><a href="#s0"><span class="n">0</span><span>Before handover</span></a></li>
+      <li><a href="#s1"><span class="n">1</span><span>Prerequisites</span></a></li>
+      <li><a href="#s2"><span class="n">2</span><span>Install</span></a></li>
+      <li><a href="#s3"><span class="n">3</span><span>Configuration</span></a></li>
+      <li><a href="#s4"><span class="n">4</span><span>Service</span></a></li>
+      <li><a href="#s5"><span class="n">5</span><span>Database</span></a></li>
+      <li><a href="#s6"><span class="n">6</span><span>CRM</span></a></li>
+      <li><a href="#s7"><span class="n">7</span><span>Verify</span></a></li>
+      <li><a href="#s8"><span class="n">8</span><span>Operate</span></a></li>
+      <li><a href="#s9"><span class="n">9</span><span>Waterfind fills in</span></a></li>
+    </ol>
+    <div class="legend">
+      <span><span class="chip todo">todo</span> White Dove, pre-handover</span>
+      <span><span class="chip decide">decision</span> needs a call from Waterfind</span>
+      <span><span class="chip fixed">fixed</span> value is not negotiable</span>
+    </div>
+  </nav>
+
+  <main>
+    <section id="s0">
+      <h2><span class="n">0</span>Before handover (White Dove)</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Item</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="wrap-ok" style="white-space:normal">Strip dev test-order action (<code>TestPlaceOrderAction.java</code>, <code>userhome.jsp</code> Auto Buy/Sell buttons, struts entry) from the CRM diff</td><td><span class="chip todo">todo</span></td></tr>
+          <tr><td style="white-space:normal">Normalise <code>userhome.jsp</code> line endings so the SVN diff is ~70 lines</td><td><span class="chip todo">todo</span></td></tr>
+          <tr><td style="white-space:normal"><code>AIADVISOR_ASOF</code> defaults to a fixed 2026-06-15 when unset — change the default to “today” for live data</td><td><span class="chip todo">todo</span></td></tr>
+          <tr><td style="white-space:normal"><code>db/grants-rls.sql</code> hardcodes database name <code>waterfind-db</code> and password <code>ai_ro_local</code> — parameterise</td><td><span class="chip todo">todo</span></td></tr>
+          <tr><td style="white-space:normal"><code>tsx</code> is a devDependency — move to <code>dependencies</code> (or ship a <code>tsc</code> build)</td><td><span class="chip todo">todo</span></td></tr>
+          <tr><td style="white-space:normal">Scheduler guard <code>AIADVISOR_PRIMARY=1</code> so a second instance never double-runs refresh/email jobs</td><td><span class="chip todo">todo</span></td></tr>
+          <tr><td style="white-space:normal">Decide the <code>ai_advisor</code> flag default for prod (see 6.2)</td><td><span class="chip decide">decision</span></td></tr>
+          <tr><td style="white-space:normal">Rehearse this runbook top-to-bottom on a clean Ubuntu host</td><td><span class="chip todo">todo</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="s1">
+      <h2><span class="n">1</span>Prerequisites</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Need</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>OS</td><td>Linux x86_64 (tested: Ubuntu 24.04). Amazon Linux 2023 should work; not rehearsed</td></tr>
+          <tr><td>Node</td><td>22 LTS</td></tr>
+          <tr><td>PostgreSQL</td><td>9.6 (the CRM DB). Superuser access once, for schema + roles</td></tr>
+          <tr><td>Apache</td><td><code>mod_proxy</code>, <code>mod_proxy_http</code>, <code>mod_proxy_wstunnel</code>, <code>mod_rewrite</code></td></tr>
+          <tr><td>Disk</td><td>2 GB for code + <code>node_modules</code>; <code>knowledge/</code> grows slowly (MB)</td></tr>
+          <tr><td>RAM / CPU</td><td>2 GB / 2 vCPU minimum. Load is network-bound (LLM APIs)</td></tr>
+          <tr><td>Outbound HTTPS</td><td class="wrap-ok"><code>api.anthropic.com</code> <code>api.openai.com</code> <code>api.elevenlabs.io</code> <code>api.retellai.com</code> <code>www.bom.gov.au</code> <code>www.water.dcceew.nsw.gov.au</code> <code>www.waternsw.com.au</code> <code>www.g-mwater.com.au</code> <code>nvrm.net.au</code> <code>tableau.dpie.nsw.gov.au</code> <code>smtp.sendgrid.net:587</code></td></tr>
+          <tr><td>Inbound</td><td>Only via Apache (443). The service binds <code>127.0.0.1</code></td></tr>
+          <tr><td>Egress IP</td><td>Must be whitelisted with the PBX/recording provider (call notes)</td></tr>
+        </tbody>
+      </table></div>
+<pre><span class="lbl">bash</span><span class="c"># Node 22 (Ubuntu/Debian)</span>
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt-get install -y nodejs git
+node -v   <span class="c"># v22.x</span></pre>
+    </section>
+
+    <section id="s2">
+      <h2><span class="n">2</span>Install</h2>
+<pre><span class="lbl">bash</span>sudo useradd --system --create-home --home-dir /var/lib/ai-advisor --shell /usr/sbin/nologin aiadvisor
+sudo mkdir -p /opt/waterfind &amp;&amp; cd /opt/waterfind
+sudo git clone &lt;repo-url&gt; waterfind &amp;&amp; cd waterfind
+sudo git checkout &lt;release-tag&gt;
+cd services/ai-advisor
+sudo npm ci                      <span class="c"># includes tsx (dev dep) until the section-0 item lands</span>
+sudo mkdir -p agent-workdir
+sudo chown -R aiadvisor:aiadvisor /opt/waterfind/waterfind/services/ai-advisor</pre>
+      <p class="note">Writable paths (owned by <code>aiadvisor</code>): <code>knowledge/</code> (edited by the AI Trainer at runtime) and <code>agent-workdir/</code> (agent sandbox). Everything else can be read-only.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="n">3</span>Configuration</h2>
+<pre><span class="lbl">bash</span>sudo install -m 600 -o aiadvisor -g aiadvisor /dev/null /etc/waterfind/ai-advisor.env
+sudo nano /etc/waterfind/ai-advisor.env
+<span class="c"># generate a secret:</span>
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"</pre>
+      <div class="tbl"><table>
+        <thead><tr><th>Variable</th><th>Value</th><th>Supplied by</th></tr></thead>
+        <tbody>
+          <tr><td><code>PORT</code></td><td><code>3100</code></td><td><span class="chip fixed">fixed</span></td></tr>
+          <tr><td><code>CORS_ORIGINS</code></td><td><code>https://my.waterfind.com.au</code> (the CRM origin; comma-separated if several)</td><td>Waterfind</td></tr>
+          <tr><td><code>AIADVISOR_SHARED_SECRET</code></td><td>random 64-hex; must equal <code>wf.ai.secret</code> (6.4)</td><td>generate</td></tr>
+          <tr><td><code>AIADVISOR_TOKEN_TTL</code></td><td><code>1800</code></td><td><span class="chip fixed">fixed</span></td></tr>
+          <tr><td><code>AIADVISOR_EXEC_SECRET</code></td><td>random 64-hex, different from above; must equal <code>wf.ai.exec-secret</code></td><td>generate</td></tr>
+          <tr><td><code>AIADVISOR_CRM_BASE</code></td><td><code>http://127.0.0.1:11000</code> (Resin direct) or <code>https://my.waterfind.com.au</code></td><td>Waterfind</td></tr>
+          <tr><td><code>PGHOST</code> / <code>PGPORT</code></td><td>DB host / <code>5432</code></td><td>Waterfind</td></tr>
+          <tr><td><code>PGDATABASE</code></td><td><code>waterfind</code> (prod name; dev was <code>waterfind-db</code>)</td><td>Waterfind</td></tr>
+          <tr><td><code>PGUSER</code> / <code>PGPASSWORD</code></td><td>the CRM app role (needs write on schema <code>ai_advisor</code> only)</td><td>Waterfind</td></tr>
+          <tr><td><code>PGSCHEMA</code></td><td><code>ai_advisor</code></td><td><span class="chip fixed">fixed</span></td></tr>
+          <tr><td><code>PGRO_USER</code> / <code>PGRO_PASSWORD</code></td><td><code>ai_advisor_ro</code> / the password set in 5.2</td><td>generate</td></tr>
+          <tr><td><code>AIADVISOR_ASOF</code></td><td>leave unset once the section-0 fix lands; until then set today’s date daily</td><td>—</td></tr>
+          <tr><td><code>ANTHROPIC_API_KEY</code></td><td>Waterfind’s Anthropic key</td><td>Waterfind</td></tr>
+          <tr><td><code>AIADVISOR_MODEL</code></td><td><code>opus</code></td><td><span class="chip fixed">fixed</span></td></tr>
+          <tr><td><code>AIADVISOR_OPENAI_API_KEY</code></td><td>OpenAI key (dictation + read-aloud). Omit = mic hidden, nothing else changes</td><td>Waterfind</td></tr>
+          <tr><td><code>TRAINER_ENABLED</code></td><td><code>1</code></td><td><span class="chip fixed">fixed</span></td></tr>
+          <tr><td><code>TRAINER_ROLE_ID</code></td><td><code>AI_TRAINER</code></td><td><span class="chip fixed">fixed</span></td></tr>
+          <tr><td><code>TRAINER_GIT_COMMIT</code></td><td><code>0</code></td><td><span class="chip fixed">fixed</span></td></tr>
+          <tr><td><code>AIADVISOR_SMTP_HOST/PORT/USER/PASSWORD</code></td><td><code>smtp.sendgrid.net</code> / <code>587</code> / <code>apikey</code> / SendGrid key (post-rotation)</td><td>Waterfind</td></tr>
+          <tr><td><code>AIADVISOR_MAIL_FROM</code></td><td><code>ai-advisor@waterfind.com.au</code></td><td>Waterfind</td></tr>
+          <tr><td><code>ASSIST_ENABLED</code></td><td><code>1</code></td><td><span class="chip fixed">fixed</span></td></tr>
+          <tr><td><code>AIADVISOR_CALL_NOTES</code></td><td><code>1</code>; <code>AIADVISOR_PBX_SOURCE=db</code> (reads the CRM’s <code>phone_system_settings</code>)</td><td><span class="chip fixed">fixed</span></td></tr>
+          <tr><td><code>AIADVISOR_CRM_TZ</code></td><td><code>Australia/Adelaide</code></td><td><span class="chip fixed">fixed</span></td></tr>
+          <tr><td><code>AIADVISOR_VOICE_ENABLED</code></td><td><code>0</code> until the phone phase is deployed</td><td><span class="chip fixed">fixed</span></td></tr>
+          <tr><td><code>AIADVISOR_PRIMARY</code></td><td><code>1</code> (after the section-0 item lands)</td><td><span class="chip fixed">fixed</span></td></tr>
+          <tr><td><code>NODE_ENV</code></td><td><code>production</code></td><td><span class="chip fixed">fixed</span></td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">Full reference with defaults: <code>services/ai-advisor/.env.example</code>.</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="n">4</span>Service</h2>
+      <p><code>/etc/systemd/system/ai-advisor.service</code></p>
+<pre><span class="lbl">ini</span>[Unit]
+Description=Waterfind AI Advisor sidecar
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=aiadvisor
+Group=aiadvisor
+WorkingDirectory=/opt/waterfind/waterfind/services/ai-advisor
+EnvironmentFile=/etc/waterfind/ai-advisor.env
+Environment=HOME=/var/lib/ai-advisor
+ExecStart=/opt/waterfind/waterfind/services/ai-advisor/node_modules/.bin/tsx src/server.ts
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+LimitNOFILE=65536
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/opt/waterfind/waterfind/services/ai-advisor/knowledge /opt/waterfind/waterfind/services/ai-advisor/agent-workdir /var/lib/ai-advisor
+
+[Install]
+WantedBy=multi-user.target</pre>
+<pre><span class="lbl">bash</span>sudo systemctl daemon-reload
+sudo systemctl enable --now ai-advisor
+sudo systemctl status ai-advisor
+sudo journalctl -u ai-advisor -f
+curl -s http://127.0.0.1:3100/health | head -c 300     <span class="c"># {"ok":true,"service":"waterfind-ai-advisor",...}</span></pre>
+    </section>
+
+    <section id="s5">
+      <h2><span class="n">5</span>Database (once, as superuser)</h2>
+      <h3><span class="n">5.1</span>Schema</h3>
+<pre><span class="lbl">bash</span>cd /opt/waterfind/waterfind/services/ai-advisor
+sudo -u aiadvisor bash -c 'set -a; . /etc/waterfind/ai-advisor.env; set +a; npm run db:init'</pre>
+      <p class="note">Runs <code>db/schema.sql</code>, projects, brokerage, attachments, workflow, feedback, trainer, assist, call-notes, voice, campaigns, default-questions, kb-refresh, spend — in order. Idempotent; safe to re-run on upgrades.</p>
+
+      <h3><span class="n">5.2</span>Read-only role + RLS</h3>
+<pre><span class="lbl">bash</span>sed -e 's/"waterfind-db"/"waterfind"/' \
+    -e "s/PASSWORD 'ai_ro_local'/PASSWORD '&lt;PGRO_PASSWORD&gt;'/" db/grants-rls.sql &gt; /tmp/grants-rls.sql
+psql -U postgres -d waterfind -f /tmp/grants-rls.sql</pre>
+      <p class="note">Creates <code>ai_advisor_ro</code> (LOGIN, no superuser), grants SELECT on an explicit table allowlist, and enables row-level security on <code>property</code>, <code>fees_registry_user</code> and the water-management tables with policies scoped to the caller’s account. The CRM connects as the table owner and bypasses RLS: no CRM behaviour changes.</p>
+<pre><span class="lbl">sql · verify</span><span class="c">-- as ai_advisor_ro, without a scoped account: must return 0</span>
+SELECT count(*) FROM property;
+<span class="c">-- with a scope: returns only that account's rows</span>
+SELECT set_config('ai.account','&lt;registry_user id&gt;',false); SELECT count(*) FROM property;</pre>
+
+      <h3><span class="n">5.3</span>CRM role + note author</h3>
+<pre><span class="lbl">bash</span>psql -U postgres -d waterfind -f db/ai-trainer-role.sql     <span class="c"># user_role AI_TRAINER</span>
+psql -U postgres -d waterfind -f db/note-author-seed.sql    <span class="c"># dedicated "AI Advisor" staff user; note its id for wf.ai.note-author-id</span></pre>
+      <p class="note">Grant <code>AI_TRAINER</code> to staff in the CRM (user record → Roles).</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="n">6</span>CRM</h2>
+      <h3><span class="n">6.1</span>Code</h3>
+      <p>Deploy SVN <code>branches/Iteration46</code> at the release revision (<code>r&lt;TBD&gt;</code>, based on r25481). Java changes are included, so this is a normal Ant release build, not a JSP-only drop.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>Area</th><th>Files</th></tr></thead>
+        <tbody>
+          <tr><td>Java</td><td class="wrap-ok"><code>WFContactUser.java/.hbm.xml</code> <code>UserRoles.java</code> <code>WaterfindUserBo.java</code> <code>RegistryUserInformationBo.java</code> <code>RegistryUserInformationDto.java</code> <code>UserCredentialsDto.java</code> <code>WaterfindDelegate.java</code> <code>action/ChangeAiAdvisorStatusAction.java</code></td></tr>
+          <tr><td>Config</td><td class="wrap-ok"><code>WEB-INF/struts-config.xml</code> — forwards <code>/ai-advisor</code> <code>/ai-broker-exec</code> <code>/ai-curator</code> <code>/ai-client-advisor</code> <code>/change-ai-advisor-status</code></td></tr>
+          <tr><td>JSP</td><td class="wrap-ok"><code>jsp/userhome/userhome.jsp</code> <code>jsp/admin/registry/segments/user-reg-details.body.jsp</code> <code>jsp/admin/registry/registry-add-comment.jsp</code> <code>jsp/common/manager-homepage-links.jsp</code></td></tr>
+          <tr><td>New pages</td><td class="wrap-ok"><code>jsp/userhome/app/ai-advisor.*</code> <code>ai-broker-exec.jsp</code> <code>ai-curator.*</code> <code>ai-client-advisor.*</code> <code>jsp/admin/ai-trainer-home.jsp</code></td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="n">6.2</span>Migration</h3>
+      <p><code>sql/schema/REV46-20260707/SchemaUpdate_1.sql</code></p>
+<pre><span class="lbl">sql</span>ALTER TABLE waterfind_user ADD COLUMN ai_advisor boolean NOT NULL DEFAULT true;</pre>
+      <div class="callout"><b>Decision.</b> <code>DEFAULT true</code> means every client sees the advisor immediately. For a pilot, apply with <code>DEFAULT false</code> and enable per client (client record → AI Advisor toggle, or <code>UPDATE waterfind_user SET ai_advisor = true WHERE id IN (...)</code>).</div>
+
+      <h3><span class="n">6.3</span>Apache</h3>
+      <p>Inside the <code>my.waterfind.com.au</code> (and any other CRM host) <code>&lt;VirtualHost *:443&gt;</code>, before the existing <code>ProxyPass / http://localhost:11000/</code>:</p>
+<pre><span class="lbl">apache</span><span class="c"># AI Advisor sidecar</span>
+ProxyPreserveHost On
+ProxyTimeout 600
+RewriteEngine On
+RewriteCond %{HTTP:Upgrade} =websocket [NC]
+RewriteRule ^/ai/(.*)$ ws://127.0.0.1:3100/$1 [P,L]
+ProxyPass        /ai/ http://127.0.0.1:3100/ retry=0 timeout=600
+ProxyPassReverse /ai/ http://127.0.0.1:3100/</pre>
+<pre><span class="lbl">bash</span>sudo a2enmod proxy proxy_http proxy_wstunnel rewrite
+sudo apachectl configtest &amp;&amp; sudo systemctl reload apache2     <span class="c"># or httpd</span>
+curl -s https://my.waterfind.com.au/ai/health | head -c 120</pre>
+
+      <h3><span class="n">6.4</span>Properties (read by the JSPs, server side)</h3>
+      <p>File: <code>~/.waterfind-ai-advisor.properties</code> in the home directory of the user Resin runs as, mode 600.</p>
+<pre><span class="lbl">properties</span>wf.ai.base-url=https://my.waterfind.com.au/ai
+wf.ai.secret=&lt;AIADVISOR_SHARED_SECRET&gt;
+wf.ai.exec-secret=&lt;AIADVISOR_EXEC_SECRET&gt;
+wf.ai.note-author-id=&lt;id from 5.3&gt;
+wf.ai.token-ttl=1800</pre>
+      <p class="note">Restart Resin after creating it. Missing file or key = the advisor page fails closed (no token, no access).</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="n">7</span>Verify</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Check</th><th>Command</th><th>Expect</th></tr></thead>
+        <tbody>
+          <tr><td>Service up</td><td><code>curl -s 127.0.0.1:3100/health</code></td><td><code>"ok":true</code>, <code>started_at</code> = last restart</td></tr>
+          <tr><td>Through Apache</td><td><code>curl -s https://my.waterfind.com.au/ai/health</code></td><td>same body</td></tr>
+          <tr><td>Token + identity</td><td class="wrap-ok"><code>TOKEN=$(npm run -s mint -- &lt;uid&gt; "&lt;name&gt;" &lt;usertype&gt;)</code> then <code>curl -s -H "Authorization: Bearer $TOKEN" 127.0.0.1:3100/me</code></td><td>JSON with the user’s identity and capability flags (<code>transcribe</code>, <code>tts</code>, <code>reader</code>)</td></tr>
+          <tr><td>Grounded answer</td><td><code>npm run smoke:agent</code></td><td>a reply citing live figures; no tool errors in the journal</td></tr>
+          <tr><td>Browser</td><td>log in as an enabled client → AI Advisor tab</td><td>chat streams; mic shows only if the OpenAI key is set</td></tr>
+          <tr><td>Staff surfaces</td><td>staff user with <code>AI_TRAINER</code> → AI Trainer Home; broker → client page rail</td><td>both load</td></tr>
+          <tr><td>Isolation</td><td>section 5.2 SQL</td><td>0 rows unscoped</td></tr>
+          <tr><td>Schedulers</td><td class="wrap-ok"><code>journalctl -u ai-advisor | grep -E '\[kb-refresh\]|\[call-notes\]|refresh'</code> after 15 min</td><td>one tick logged, no duplicates</td></tr>
+          <tr><td>Spend ledger</td><td class="wrap-ok"><code>psql -c "select count(*), sum(cost_usd) from ai_advisor.spend where at &gt; now() - interval '1 day'"</code></td><td>rows after the smoke test</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="s8">
+      <h2><span class="n">8</span>Operate</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Task</th><th>How</th></tr></thead>
+        <tbody>
+          <tr><td>Restart</td><td><code>sudo systemctl restart ai-advisor</code> (in-flight chats get a stream error and retry)</td></tr>
+          <tr><td>Upgrade</td><td class="wrap-ok"><code>git fetch &amp;&amp; git checkout &lt;tag&gt; &amp;&amp; npm ci &amp;&amp; npm run db:init &amp;&amp; systemctl restart ai-advisor</code> — <code>db:init</code> is idempotent</td></tr>
+          <tr><td>Logs</td><td><code>journalctl -u ai-advisor</code>; ship with the CloudWatch agent (<code>journald</code> source)</td></tr>
+          <tr><td>Alerts</td><td><code>/ai/health</code> non-200 for 2 min; daily spend from <code>ai_advisor.spend</code> above threshold</td></tr>
+          <tr><td>Rotate a key</td><td>edit the env file → restart. Shared/exec secrets: change both the env and <code>~/.waterfind-ai-advisor.properties</code>, restart both services</td></tr>
+          <tr><td>Kill switches</td><td class="wrap-ok"><code>TRAINER_ENABLED=0</code> <code>ASSIST_ENABLED=0</code> <code>AIADVISOR_CALL_NOTES=0</code> <code>ADVISOR_NOTES=0</code> (a bad staff note), then restart</td></tr>
+          <tr><td>Disable for one client</td><td>client record → AI Advisor toggle (<code>waterfind_user.ai_advisor</code>)</td></tr>
+          <tr><td>Backups</td><td class="wrap-ok"><code>knowledge/</code> nightly to S3 (<code>aws s3 sync knowledge/ s3://&lt;bucket&gt;/ai-advisor/knowledge/</code>); schema <code>ai_advisor</code> rides in the existing DB dump</td></tr>
+          <tr><td>Rollback</td><td class="wrap-ok"><code>systemctl stop ai-advisor</code>; comment out the Apache block; remove <code>~/.waterfind-ai-advisor.properties</code> (pages fail closed). CRM code: redeploy the previous revision; the <code>ai_advisor</code> column and schema can stay</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="s9">
+      <h2><span class="n">9</span>Waterfind fills in</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Item</th><th>Owner</th></tr></thead>
+        <tbody>
+          <tr><td style="white-space:normal">EC2 access / decision: same host as Resin vs a sibling instance in the VPC</td><td>Amila</td></tr>
+          <tr><td style="white-space:normal">PG location (on-instance vs RDS), superuser for section 5</td><td>Amila</td></tr>
+          <tr><td style="white-space:normal">Apache vhost edit (6.3)</td><td>Amila</td></tr>
+          <tr><td style="white-space:normal">Anthropic + OpenAI accounts and keys under Waterfind billing</td><td>Ted / Amila</td></tr>
+          <tr><td style="white-space:normal">SendGrid SMTP key (post-rotation)</td><td>Amila</td></tr>
+          <tr><td style="white-space:normal">PBX provider whitelist for the host’s egress IP</td><td>Amila</td></tr>
+          <tr><td style="white-space:normal">Security group egress to the hosts in section 1</td><td>Amila</td></tr>
+          <tr><td style="white-space:normal">CloudWatch agent config for <code>journald</code></td><td>Amila</td></tr>
+          <tr><td style="white-space:normal">Pilot client list and the flag default (6.2)</td><td>Tom</td></tr>
+          <tr><td style="white-space:normal">Staff to hold <code>AI_TRAINER</code></td><td>Tom</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

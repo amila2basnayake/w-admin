@@ -1,0 +1,73 @@
+# ---- Claude Code local-only / runtime (per-machine; never source) ----
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+.claude/worktrees/
+.claude/agent-memory/
+
+# ---- Secrets / local config ----
+.env
+.env.local
+.env.*.local
+secrets/
+*.local.json
+# Private keys / certs — never commit (e.g. the SVN ssh key)
+*.pem
+*.key
+*.ppk
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---- Logs / runtime data / coverage ----
+*.log
+logs/
+data/
+!services/ai-advisor/knowledge/data/
+!services/ai-advisor/knowledge/data/**
+*.db
+*.sqlite
+*.sqlite3
+.coverage
+.coverage.*
+htmlcov/
+
+# ---- Build / dist ----
+dist/
+build/
+*.tsbuildinfo
+
+# ---- Common language ecosystems (kept generic; harmless if unused) ----
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+*.egg-info/
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ---- Waterfind CRM SVN working copies (managed by SVN, not git) ----
+/crm/*
+!/crm/README.md
+
+# ---- Local DB load workspace: 4+ GB of production-derived table copies (real PII) ----
+/_dbwork/
+
+# ---- AI-advisor runtime/test artifacts ----
+services/ai-advisor/agent-workdir/
+services/ai-advisor/e2e/chrome-profile*/
+services/ai-advisor/e2e/*.png
+services/ai-advisor/trainer-workdir/
+services/ai-advisor/knowledge/uploads/
+services/ai-advisor/knowledge/.staging/

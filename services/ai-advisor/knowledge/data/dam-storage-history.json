@@ -1,0 +1,188 @@
+{
+  "dataset": "dam-storage-history",
+  "description": "Dated point readings of storage level (pct_full) per storage, seeding a 'current vs same-time-of-year' comparison. This is a growing seed: the refresh script appends the current authoritative reading each run, so the same-month baseline densifies over time.",
+  "provenance": {
+    "source_name": "Goulburn-Murray Water, WaterNSW, MDBA River Murray weekly reports/river data, and regional reporting",
+    "source_url": [
+      "https://www.g-mwater.com.au/water-operations/storage-levels",
+      "https://www.waternsw.com.au/nsw-dams/nsw-storage-levels/regional-nsw-dam-levels",
+      "https://www.mdba.gov.au/publications-and-data/data-and-dashboards/river-murray-weekly-reports-0",
+      "https://riverdata.mdba.gov.au/list-view"
+    ],
+    "fetched_at": "2026-07-08",
+    "licence_or_terms_note": "As per dam-storage.json: government / GOC water data, mostly CC BY 4.0 - attribute the issuing agency. 'reported' readings are from secondary reporting or search extraction of blocked primary pages and are NOT verified against the primary record - treat as indicative.",
+    "gaps": [
+      "A dense multi-year monthly series is only published by BoM Water Data Online / MDBA, both of which block non-browser fetches (HTTP 403) or are JS SPAs. The long-run monthly history could not be bulk-ingested here.",
+      "The initial seed is sparse: high-confidence data is the 2026-07-08 fetch; older same-month anchors are secondary ('reported') and thin (1-2 prior years for July). The refresh script is designed to append each monthly current reading, so the same-time-of-year average becomes robust as it accumulates.",
+      "granularity_achieved: dated point readings (not a continuous monthly series). July anchors: Hume & Dartmouth have 2 prior-year points (2023, 2024) plus 2026; other storages currently have 2026 only for July."
+    ],
+    "last_refresh": {
+      "at": "2026-08-30T17:43:38.912Z",
+      "sources": [
+        {
+          "url": "https://www.g-mwater.com.au/water-operations/storage-levels",
+          "status": "fetched but nothing parsed (kept old data)",
+          "updated_records": 0
+        },
+        {
+          "url": "https://www.waternsw.com.au/nsw-dams/nsw-storage-levels/regional-nsw-dam-levels",
+          "status": "fetch-failed/blocked (kept old data)",
+          "updated_records": 0
+        }
+      ]
+    }
+  },
+  "granularity_note": "Per-storage array of {date, pct_full, volume_gl (nullable), source_name, source_url, confidence}. To compute 'current vs historical average for this month', filter to readings whose calendar month matches the current reading's month, from prior years.",
+  "storages": {
+    "Dartmouth Dam": [
+      {
+        "date": "2026-07-08",
+        "pct_full": 69.04,
+        "volume_gl": 2662.528,
+        "source_name": "Goulburn-Murray Water",
+        "source_url": "https://www.g-mwater.com.au/water-operations/storage-levels",
+        "confidence": "high"
+      },
+      {
+        "date": "2026-05-13",
+        "pct_full": 65.2,
+        "volume_gl": 2514,
+        "source_name": "MDBA River Murray Weekly Report (via search)",
+        "source_url": "https://www.mdba.gov.au/publications-and-data/data-and-dashboards/river-murray-weekly-reports-0",
+        "confidence": "reported"
+      },
+      {
+        "date": "2026-02-25",
+        "pct_full": 67,
+        "volume_gl": 2599,
+        "source_name": "MDBA River Murray Weekly Report (via search)",
+        "source_url": "https://www.mdba.gov.au/publications-and-data/data-and-dashboards/river-murray-weekly-reports-0",
+        "confidence": "reported"
+      },
+      {
+        "date": "2024-07-01",
+        "pct_full": 98.5,
+        "volume_gl": null,
+        "source_name": "Regional reporting (start of 2024-25 water year)",
+        "source_url": "https://www.mdba.gov.au/water-management/infrastructure/dartmouth-dam",
+        "confidence": "reported"
+      },
+      {
+        "date": "2023-07-25",
+        "pct_full": 97,
+        "volume_gl": null,
+        "source_name": "Regional reporting (post-2022-23 flood peak)",
+        "source_url": "https://www.mdba.gov.au/water-management/infrastructure/dartmouth-dam",
+        "confidence": "reported"
+      }
+    ],
+    "Hume Dam (Lake Hume)": [
+      {
+        "date": "2026-07-08",
+        "pct_full": 43.23,
+        "volume_gl": 1298.994,
+        "source_name": "Goulburn-Murray Water",
+        "source_url": "https://www.g-mwater.com.au/water-operations/storage-levels",
+        "confidence": "high"
+      },
+      {
+        "date": "2026-05-13",
+        "pct_full": 22,
+        "volume_gl": 663,
+        "source_name": "MDBA River Murray Weekly Report (via search)",
+        "source_url": "https://www.mdba.gov.au/publications-and-data/data-and-dashboards/river-murray-weekly-reports-0",
+        "confidence": "reported"
+      },
+      {
+        "date": "2024-07-01",
+        "pct_full": 90,
+        "volume_gl": null,
+        "source_name": "Regional reporting (start of 2024-25 water year)",
+        "source_url": "https://en.wikipedia.org/wiki/Hume_Dam",
+        "confidence": "reported"
+      },
+      {
+        "date": "2023-07-25",
+        "pct_full": 97,
+        "volume_gl": null,
+        "source_name": "Regional reporting (post-2022-23 flood peak)",
+        "source_url": "https://en.wikipedia.org/wiki/Hume_Dam",
+        "confidence": "reported"
+      }
+    ],
+    "Lake Eildon": [
+      {
+        "date": "2026-07-08",
+        "pct_full": 47.42,
+        "volume_gl": 1581.108,
+        "source_name": "Goulburn-Murray Water",
+        "source_url": "https://www.g-mwater.com.au/water-operations/storage-levels",
+        "confidence": "high"
+      },
+      {
+        "date": "2026-02-15",
+        "pct_full": 47.9,
+        "volume_gl": null,
+        "source_name": "Regional reporting (Inside Water)",
+        "source_url": "https://insidewater.com.au/lake-eildon-storage-levels-eppalock-update/",
+        "confidence": "reported"
+      }
+    ],
+    "Menindee Lakes (combined storage)": [
+      {
+        "date": "2026-07-08",
+        "pct_full": 32.4,
+        "volume_gl": 560.572,
+        "source_name": "WaterNSW",
+        "source_url": "https://www.waternsw.com.au/nsw-dams/nsw-storage-levels/regional-nsw-dam-levels",
+        "confidence": "high"
+      },
+      {
+        "date": "2026-05-06",
+        "pct_full": 33,
+        "volume_gl": 571,
+        "source_name": "MDBA (via search)",
+        "source_url": "https://riverdata.mdba.gov.au/list-view/menindee-lakes-combined-storage",
+        "confidence": "reported"
+      },
+      {
+        "date": "2026-02-25",
+        "pct_full": 39,
+        "volume_gl": 683,
+        "source_name": "MDBA River Murray Weekly Report (via search)",
+        "source_url": "https://www.mdba.gov.au/publications-and-data/data-and-dashboards/river-murray-weekly-reports-0",
+        "confidence": "reported"
+      }
+    ],
+    "Lake Victoria": [
+      {
+        "date": "2026-05-06",
+        "pct_full": 42,
+        "volume_gl": 285,
+        "source_name": "MDBA River Murray data (via search)",
+        "source_url": "https://riverdata.mdba.gov.au/list-view/lake-victoria",
+        "confidence": "reported"
+      }
+    ],
+    "Burrinjuck Dam (Lake Burrinjuck)": [
+      {
+        "date": "2026-07-08",
+        "pct_full": 48.4,
+        "volume_gl": 495.955,
+        "source_name": "WaterNSW",
+        "source_url": "https://www.waternsw.com.au/nsw-dams/nsw-storage-levels/regional-nsw-dam-levels",
+        "confidence": "high"
+      }
+    ],
+    "Blowering Dam": [
+      {
+        "date": "2026-07-08",
+        "pct_full": 46.5,
+        "volume_gl": 746.127,
+        "source_name": "WaterNSW",
+        "source_url": "https://www.waternsw.com.au/nsw-dams/nsw-storage-levels/regional-nsw-dam-levels",
+        "confidence": "high"
+      }
+    ]
+  }
+}

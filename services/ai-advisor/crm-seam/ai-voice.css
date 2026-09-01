@@ -1,0 +1,42 @@
+/* AI Water Advisor — speech controls shared by every chat surface (ai-voice.js): the dictation mic
+   (a live level meter while listening), the voice-mode toggle (a sound wave that animates while the
+   advisor speaks) and the per-message Listen button. Colours come from the host page's tokens with
+   neutral fallbacks, so the same file sits inside the advisor tab, the Client Rail and the Trainer. */
+
+/* Dictation (mic) button — hidden until the server reports STT is configured. While listening it
+   is a live level meter (four bars driven by the microphone); tapping it again stops. */
+.wfai-mic { border: none; background: none; cursor: pointer; flex-shrink: 0; width: 32px; height: 36px;
+  color: var(--text-dim, #6a726d); font-size: 16px; border-radius: 8px; padding: 0; display: inline-flex;
+  align-items: center; justify-content: center; transition: width .15s ease, background .15s ease; }
+.wfai-mic[hidden] { display: none; }
+.wfai-mic:hover { color: var(--wfai-accent, #2f8f5b); background: var(--bg, rgba(0,0,0,.05)); }
+.wfai-mic.connecting, .wfai-mic.listening, .wfai-mic.finishing { width: 46px; color: #b13636; background: rgba(177,54,54,.12); }
+.wfai-mic.connecting { color: var(--text-dim, #6a726d); background: var(--bg, rgba(0,0,0,.05)); }
+.wfai-mic.listening:hover { background: rgba(177,54,54,.2); }
+.wfai-mic.finishing { color: var(--text-dim, #6a726d); cursor: default; }
+.wfai-meter { display: inline-flex; align-items: center; gap: 3px; height: 20px; }
+.wfai-meter i { display: block; width: 3px; height: 3px; border-radius: 2px; background: currentColor;
+  transition: height .06s linear; }
+[data-theme="dark"] .wfai-mic.connecting, [data-theme="dark"] .wfai-mic.listening, [data-theme="dark"] .wfai-mic.finishing { background: rgba(230,90,90,.16); }
+[data-theme="dark"] .wfai-mic.listening { color: #e66; }
+
+/* Voice-mode toggle (sound-wave icon) — accent while on; the bars animate while the advisor speaks */
+.wfai-voice { border: none; background: none; cursor: pointer; flex-shrink: 0; width: 32px; height: 36px;
+  color: var(--text-dim, #6a726d); border-radius: 8px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+.wfai-voice[hidden] { display: none; }
+.wfai-voice:hover { color: var(--wfai-accent, #2f8f5b); background: var(--bg, rgba(0,0,0,.05)); }
+.wfai-voice.on { color: #fff; background: var(--wfai-accent, #2f8f5b); }
+.wfai-voice.on:hover { background: var(--wfai-accent-d, #26794c); color: #fff; }
+.wfai-voice .wfai-wave { display: block; }
+.wfai-voice .wfai-wave rect { transform-origin: center; transform-box: fill-box; }
+.wfai-voice.speaking .wfai-wave rect { animation: wfai-wave 1s ease-in-out infinite; }
+.wfai-voice.speaking .wfai-wave rect:nth-child(1) { animation-delay: -.2s; }
+.wfai-voice.speaking .wfai-wave rect:nth-child(2) { animation-delay: -.5s; }
+.wfai-voice.speaking .wfai-wave rect:nth-child(3) { animation-delay: -.1s; }
+.wfai-voice.speaking .wfai-wave rect:nth-child(4) { animation-delay: -.7s; }
+.wfai-voice.speaking .wfai-wave rect:nth-child(5) { animation-delay: -.35s; }
+@keyframes wfai-wave { 0%, 100% { transform: scaleY(.45); } 50% { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) { .wfai-voice.speaking .wfai-wave rect { animation: none; } .wfai-meter i { transition: none; } }
+
+/* Per-message Listen button — accent while loading/playing */
+button.wfai-speak.speaking { color: var(--wfai-accent, #2f8f5b) !important; }
